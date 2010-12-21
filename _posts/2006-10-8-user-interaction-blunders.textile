@@ -1,0 +1,26 @@
+--- 
+title: User interaction blunders
+layout: post
+---
+I typically conduct all of my personal business online: mortgage, credit card bills, utility bills, cell phone bill, etc. It's a great convenience. That's probably the primary reason. It's simply more convenient than anything else. I can't think of any other reason I do it. If there were some attendant in a window I frequently walked by, I'd just as soon give the person a check or credit card to pay a bill. With no waiting line, it would take about the same amount of time.
+
+But since online is the most convenient, I usually use it. Now, since paying these bills means I'm parting with hard-earned money, I tend to be pretty critical of the process. Add to that the fact that these folks, bankers, etc. generally have a ton of money, I expect them to present a pretty nice experience when separating me and my cash. If not nice exactly, it should work well.
+
+So after an experience with Chase's credit card site, I decided to send them a little note of helpful criticism. I will say, that Chase's newly redesigned site is probably the best of the 8 or so I frequently use. Even so, I don't understand how stuff like this gets into the website. Maybe I just have too high of expectations.
+
+<blockquote>
+Hi,
+
+I just went in to update my business phone number today and was required to fill out every piece of information about my address and personal phone number. That is plainly stupid. I wanted to change one small bit of info and I had to retype everything. There was not even a way to load the existing values into the form.
+
+Please consider your user when designing these forms. Making me enter all that information again when I did not want to change it was both a waste of my time and created the potential for me to accidentally enter incorrect information.
+
+Overall, your site redesign is quite nice and I enjoy using this website much more than the last one. However, things like this form are awfully annoying when forced to deal with them. It creates the tendency to not want to update information because of the hassle. That's surely not the result you're aiming at.
+
+Hope you can get these things straighted out. Just because they may be rarely used parts of the website doesn't mean they should not get the same level of intelligent design. And if the folks who are designing the website don't understand these issues, that's a big problem.
+
+Cheers,<br />
+Brian
+</blockquote>
+
+So, do you think I'm expecting too much? What are your favorite examples of websites that should be a cut above, but often fall flat on their faces?

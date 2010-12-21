@@ -1,0 +1,83 @@
+--- 
+title: All shiny and new
+layout: post
+---
+*UPDATE 2.0:* You really did see the update below, right? You're getting "Charlie":http://blog.headius.com/ all worried with your enthusiasm for Rubinius.
+
+*UPDATE:* Ahem, you should probably also read: "This is NOT cold fusion":http://blog.brightredglow.com/2009/2/12/this-is-not-cold-fusion. No, it's not April 1st. Sorry about that. Are you still excited? Read on!
+
+It's a pattern I'm fairly familiar with now. "Evan":http://blog.fallingsnow.net/ will be pondering an issue with "Rubinius":http://rubini.us. I'll catch wind of it when he starts asking some questions of smart people, reading academic CS papers, other implementation's code, and tossing out some "what if..." questions. Next thing you know, he's frenetically churning out code. Suddenly, Rubinius is much better, and in this case, _faster_.
+
+Well, it's happened again and the preliminary results are _outstanding_. A couple weeks ago, Evan began coding some changes to the way the Rubinius bytecode interperter works. He changed the stackless execution architecture that implemented an optimized kind of "spaghetti stack":http://en.wikipedia.org/wiki/Spaghetti_stack to use the C stack more directly and naturally. This better enables the CPU optimizations of the past dozen years to work. It also significantly simplifies the code for our FFI, C-API for C extensions, JIT, and for potentially leveraging LLVM much more effectively. This change also brings native threads, and a much better GC for the mature generation is also in the works.
+
+Now, for some details. Again, these results are preliminary. There is still a lot of breakage on the "stackfull":http://github.com/evanphx/rubinius/commits/stackfull branch but MSpec is already running and _many_ of the CI specs run. I'll be getting a new CI set in place today and we'll get the remaining breakage fixed quickly (don't ya just love those specs).
+
+Here's some numbers for compiling and running the String specs.
+
+First, on the Rubinius master branch:
+
+<pre>
+    Finished in 25.829773 seconds
+
+    69 files, 763 examples, 5632 expectations, 0 failures, 0 errors
+</pre>
+
+Now, on the Rubinius stackfull branch:
+
+<pre>
+    Finished in 5.834874 seconds
+
+    69 files, 754 examples, 5563 expectations, 6 failures, 19 errors
+</pre>
+
+Here's the numbers for running after the specs have been compiled.
+
+Again, on the master branch:
+
+<pre>
+    Finished in 5.101799 seconds
+
+    69 files, 763 examples, 5632 expectations, 0 failures, 0 errors
+</pre>
+
+And now the stackfull branch:
+
+<pre>
+    Finished in 1.564942 seconds
+
+    69 files, 754 examples, 5563 expectations, 6 failures, 19 errors
+</pre>
+
+I'll let that sink in a bit...
+
+The numbers for Hash with compilation are similar.
+
+Master:
+
+<pre>
+    Finished in 5.379050 seconds
+
+    48 files, 195 examples, 425 expectations, 0 failures, 0 errors
+</pre>
+
+Stackfull:
+
+<pre>
+    Finished in 1.295544 seconds
+
+    48 files, 193 examples, 421 expectations, 0 failures, 0 errors
+</pre>
+
+That's right, <del>between 4.1 and 4.4</del> *approaching 2* _times_ faster (see the UPDATE above). And we are just getting started. The significant GC changes are not in yet. We are not _yet_ doing any significant optimizations in the compiler, no profile-directed optimizations at runtime, and our nascent JIT is not hooked up by default. As I said at the outset, these optimizations are made easier by this architecture change.
+
+While I'm breaking the news, Evan deserves the credit for the architecture decisions and generally being courageous enough to try and learn (some would say fail) and try again. Some have doubted that the lofty goals Rubinius has set are realistic. Doubters have a seat.
+
+If you want to try this at home, clone the "Rubinius Github":http://github.com/evanphx/rubinius/tree/master repository and do the following:
+
+<pre>
+    $ git branch --track stackfull origin/stackfull
+    $ rake build
+    $ bin/mspec ci core/string
+</pre>
+
+Thanks to "Engine Yard":http://engineyard.com for trusting in Evan's excellent judgment and system architecture talents and in all our hard work even if it doesn't look immediately relevant. The path is clear. The goods are in the truck and they will be delivered.

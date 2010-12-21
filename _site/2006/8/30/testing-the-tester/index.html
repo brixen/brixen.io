@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Testing the tester</h2>
+        
+              <div class="meta">
+        <p><span class="date">30 August 2006</span></p>
+      </div>
+
+         <div class="entrybody"><p>I recently wrote about the [assert_cookie](http://blog.brightredglow.com/articles/2006/08/27/assert_cookie-for-ooey-gooey-fun) custom test assertion plugin I put together. When I started writing the assertion, it was just a helper method to wrap up the funky logic for testing stuff about a cookie. I wasn&#8217;t thinking about tests. And my first tries were definitely not test-driven.</p>
+<p>When I was wrapping it up as a plugin, this started bugging me a lot. Especially because my first tries at the assertion method weren&#8217;t very good. (Ugh! `svn diff -r59:72 http://svn.planetargon.org/rails/plugins/assert\<em>cookie/lib/assert\</em>cookie.rb`) But the idea of testing it was confounding. How do you think about testing the tester?</p>
+<p>The first thing I had to get straight was what I expected. It basically reduced to expecting the assertion to pass or fail. When an assertion fails, it raises the `AssertionFailedError` exception. Excellent, now I was making progress.</p>
+<p>I started writing tests like:<br />
+<pre><typo:code lang="ruby"><br />
+def test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure<br />
+  assert_nothing_raised { assert_cookie :secret, :secure =&gt; true }<br />
+end</p>
+<p>def test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure<br />
+  assert_raise(AssertionFailedError) { assert_cookie :open_secret, <br />
+      :secure =&gt; true }<br />
+end</p>
+<p></typo:code></pre></p>
+<p>and notices a lot of repetition of `assert\<em>raise(AssertionFailedError)` and `assert\<em>nothing\<em>raised`. It was ugly to read. I decided to write a couple helper assertions:<br />
+<pre><typo:code lang="ruby"><br />
+def assert_pass<br />
+  assert</em>block(&quot;assert</em>pass must be called with a block.&quot;) { block</em>given? }<br />
+  yield<br />
+end</p>
+<p>def assert_fail<br />
+  assert_block(&#8220;assert_fail must be called with a block.&#8221;) { block_given? }<br />
+  yield<br />
+rescue AssertionFailedError<br />
+end</p>
+<p></typo:code></pre></p>
+<p>The hard part again was figuring out what I was expecting. My first try was to use `assert\<em>raise` and `assert\<em>nothing\<em>raised` as before. But those failed miserable because they call `yield`. I lamented to [Andrew](http://www.stopdropandrew.com/) that I wished `yield` would work like `raise`. After thinking a bit more, I realized I only cared whether an `AssertionFailedError` exception was raised or not. The previous tests now look like this:<br />
+<pre><typo:code lang="ruby"><br />
+def test_assertion_cookie_is_secure_should_pass_when_cookie_is</em>secure<br />
+  assert</em>pass { assert</em>cookie :secret, :secure =&gt; true }<br />
+end</p>
+<p>def test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure<br />
+  assert_fail { assert_cookie :open_secret, :secure =&gt; true }<br />
+end</p>
+<p></typo:code></pre></p>
+<p>There is one last thing that bugs me. I wanted the tests to run outside of Rails but function correctly in Rails. Rails adds a method to `Test::Unit::Assertions` called `clean\<em>backtrace`. I couldn&#8217;t figure out how to get that required correctly, so I created a stub in `test\</em>helper.rb`. Can anyone help me fix this?</p>
+<p>Install the plugin with `script/plugin install http://svn.planetargon.org/rails/plugins/assert_cookie`. Navigate to the `vendor/plugins/assert_cookie` directory, type `rake` and watch the tests run. :)<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+--- 
+title: Pardon my dust
+layout: post
+---
+And now for a public service announcement...
+
+Over the past month I've made a lot of changes to my VPS. Plug for "Quantact":http://www.quantact.com, they've been great. Actually, I almost never talk to them. Which is just the way I like it; means everything is running fine.
+
+So, a few highlights if you're interested:
+
+* Debian 3.1 to Ubuntu 6.06 Dapper Drake.
+* lighttpd+fcgi to lighttpd+mod_proxy
+* lighttpd+mod_proxy to nginx
+* Typo to Mephisto
+
+You probably haven't noticed much but the last one. Hopefully I didn't put any wrinkles in your day. I've been using Feedburner almost since the beginning of this blog. That feed has been updated and I believe is working. I've set up a route for the old Typo-style URLs so your links should not break. I'll be getting tag based feeds going as soon as I can. And I'll lovingly replace this awful default Mephisto theme. "Justin Palmer":http://encytemedia.com/ is awesome, -but I think he stubbed his big toe with this one-. (Oops, the Hemingway theme is by Kyle Neath. Sorry Justin.)
+
+I'll post soon about setting up Mephisto in svk and svn, thanks to inspiration from "Octoblog":http://octopod.info/2006/8/19/managing-multiple-local-mephisto-repos-with-svk. Actually, double thanks, since Octopod inspired me to set up my VPS in the beginning.

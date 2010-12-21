@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Looking yourself in the eye</h2>
+        
+              <div class="meta">
+        <p><span class="date">06 December 2007</span></p>
+      </div>
+
+         <div class="entrybody"><p>I&#8217;m hanging out this week at the <a href="http://engineyard.com">Engine Yard</a> office in South Park hoping to catch a glimpse of Cartman and pals (I wish!). You&#8217;ve heard it all before but I would be remiss to not toss in my congratulations to my new (very soon) colleagues. <a href="http://blog.fallingsnow.net">Evan</a>, <a href="http://metaclass.org/">Wilson</a>, <a href="http://blog.zenspider.com/">Ryan</a>, and <a href="http://blog.segment7.net/">Eric</a> are a stellar group of folks and a great bunch of personalities to boot. I am honored and extremely happy to be working closely with them, as well as the fantastic group of contributors world-wide.</p>
+<p>Everyone at Engine Yard deserves big accolades for the vision, daring, and execution in making all this possible. Here&#8217;s my opinion (and gauntlet): This is why it is always the little companies that do something great. I see Ruby in general and <a href="http://rubini.us">Rubinius</a> in particular as a powerful antidote to insane lumbering companies that have foisted agony, fear, and self-loathing on legions of otherwise decent folks with their sharp, pointy brackets and stupidly limited language features. Bring your hungry masses to our shores. We have the very ambitious intent to build the best programming language and system to date. Hubris? We&#8217;ll see.</p>
+<p>Oh yeah, but about this looking at your own eyeball without a mirror thing. Some of you may recall that I&#8217;ve been working a bit on writing specs for Ruby as part of this project. Since we could not run <a href="http://rspec.rubyforge.org">RSpec</a> initially because of its extensive use of very advanced Ruby features, we wrote a minimal replacement for it that I affectionately dubbed mini_rspec. At the time I wrote this, we were converting a ton of specs from the early host/target architecture I started with. We may have been able to run miniunit at that time, but my intention was to write specs for mini_rspec as I went along evolving the features of the framework itself. This is a very difficult bootstrap process akin to looking at your own eyeball&#8230; you get the picture. So, I must say I&#8217;m solely responsible for this little gem:</p>
+<pre><code>
+require File.dirname(__FILE__) + '/../spec_helper'
+
+# hmm, this is embarrassing
+
+describe "mini rspec" do
+end
+</code></pre>
+<p>Of course, I took a nice bit of friendly needling (or should I say snickering) from Ryan for that one. But let&#8217;s not dwell on the sordid details of the past. Currently, in my branch I have a rewritten (and renamed) mSpec. This is a little better::</p>
+<pre style="overflow: auto;"><code>
+euler:rubinius brian$ spec mspec/spec
+.................................................................................................................................................................
+
+Finished in 0.062927 seconds
+
+161 examples, 0 failures
+
+</code></pre>
+<p>That&#8217;s what I&#8217;m talking about. This time, I wisely just used existing RSpec to write the specs because my goal is not necessarily to be able to run the mSpec specs with mSpec, but to be able to evolve the system while still keeping layers of it so simple that nascent Ruby implementations will actually be able to use it</p>
+<p>A final word about the other approach. We wrote thousands of specs for Ruby using mini_rspec. We ran these specs against <span class="caps">MRI</span> 1.8.6 and they behaved as expected. So, those specs were essentially an indirect spec for mini_rspec. The challenge of that approach, of course, is that you do not have a simple and clear way to observe the impact of changes you make to the mini_rspec system. Anyway, I should finish up this massive bunch of changes very soon and push it out.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+--- 
+title: Oh, _why!
+layout: post
+---
+This post has no nutritional value. Feel free to put it over there by the jelly-filled pastry, bearclaw, and glazed pop tart, go back to your granola. You health nuts, you.
+
+Now, to the jelly filling. Seems that _why dropped by #rubinius, not once, but twice yesterday. I missed it, but hopefully he'll be back. For your viewing pleasure (no names have been changed to protect the innocents).
+
+<pre style="overflow: auto;">
+19:06   _why >> whoa
+19:06   _why >> well fellows
+19:06   _why >> i am blown away!
+19:07   _why >> looks like things are really comin along
+...
+19:30   _why >> oh backflip
+19:30   _why >> interpolation works, splat works, IO works
+19:30   Vagabond >> spat is pretty new
+19:30   Vagabond >> I think it's not completely tested
+19:30   shadowfiend >> Yeah, like a couple of hours old :-)
+19:31   Vagabond >> it's remarkable how much is actually implemented though
+19:31   _why >> yeah it's got that new splat smell
+
+</pre>

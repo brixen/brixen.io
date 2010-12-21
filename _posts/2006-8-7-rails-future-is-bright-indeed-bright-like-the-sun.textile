@@ -1,0 +1,91 @@
+--- 
+title: Rails' future is bright indeed, bright like the sun
+layout: post
+---
+If you don't get a chance to hang out on our irc channel much (#planetargon on irc.freenode.net), you may have missed some of the innovations on the horizon for Rails: We'll let you know when the nuclear-powered Rails beta is up for testing.
+
+Anyway, Happy Birthday Rails!
+
+<style type="text/css">
+.utterance {
+	color: palegoldenrod;
+	font-size: 11pt;
+}
+.time {
+	color: slategray;
+	font-weight: bold;
+	font-family: sans-serif;
+	font-size: 10pt;
+}
+.tacodog, .harrisj, .lanaer, .dgibbons, .brixen, .tshine {
+	font-family: sans-serif;
+	font-size: 11pt;
+	width: 7em;
+}
+.tacodog {
+	color: cornflowerblue;
+}
+.harrisj {
+	color: orange;
+}
+.brixen {
+	color: mediumslateblue;
+}
+.lanaer {
+	color: mediumseagreen;
+}
+.tshine {
+	color: yellow;
+}
+.dgibbons {
+	color: lightgreen;
+}
+.block {
+	width: 500px;
+	padding: 8px;
+	background-color: black;
+}
+</style>
+<div class="block">
+<span class="time">12:24</span>   <span class="tacodog">tacodog</span> <span class="utterance">hrm. there are 3ppb of uranium in seawater.</span><br />
+<span class="time">12:24</span>   <span class="tacodog">tacodog</span> <span class="utterance">4.5b estimated tons of uranium in the ocean</span><br />
+<span class="time">12:24</span>   <span class="tacodog">tacodog</span> <span class="utterance">even more thorium.</span><br />
+<span class="time">12:25</span>   <span class="tacodog">tacodog</span> <span class="utterance">the uranium alone could power the world for the next 6500 years.</span><br />
+<span class="time">12:26</span>  <span class="harrisj">* harrisj</span> <span class="utterance">hatches a world-domination scheme</span><br />
+<span class="time">12:41</span>   <span class="tacodog">tacodog</span> <span class="utterance">you know how i came across all this? one day i was eating crab with the wife</span><br />
+<span class="time">12:42</span>   <span class="tacodog">tacodog</span> <span class="utterance">i looked over and saw a pile of crabshells</span><br />
+<span class="time">12:42</span>   <span class="tacodog">tacodog</span> <span class="utterance">wondered what it could be used for</span><br />
+<span class="time">12:42</span>   <span class="tacodog">tacodog</span> <span class="utterance">chitin is the second most common organic substance in the world. second only to cellulose</span><br />
+<span class="time">12:42</span>   <span class="tacodog">tacodog</span> <span class="utterance">and one of the things you can do with chitin is to clean water.</span><br />
+<span class="time">12:42</span>   <span class="tacodog">tacodog</span> <span class="utterance">sewer water</span><br />
+<span class="time">12:42</span>   <span class="harrisj">harrisj</span> <span class="utterance">what about keratin?</span><br />
+<span class="time">12:42</span>   <span class="tacodog">tacodog</span> <span class="utterance">it absorbs metals</span><br />
+<span class="time">12:43</span>   <span class="tacodog">tacodog</span> <span class="utterance">dunno.</span><br />
+<span class="time">12:43</span>   <span class="tacodog">tacodog</span> <span class="utterance">but chitin is crabs, insects, etc.</span><br />
+<span class="time">12:43</span>   <span class="tacodog">tacodog</span> <span class="utterance">so, it absorbs metals in water</span><br />
+<span class="time">12:43</span>   <span class="tacodog">tacodog</span> <span class="utterance">uranium, titanium adn thorium are dissolved in seawater</span><br />
+<span class="time">12:43</span>   <span class="tacodog">tacodog</span> <span class="utterance">so... i started doing some research</span><br />
+<span class="time">12:44</span>   <span class="tacodog">tacodog</span> <span class="utterance">a japanese scientist 'mined' yellow cake from the ocean</span><br />
+<span class="time">12:44</span>   <span class="tacodog">tacodog</span> <span class="utterance">amazing</span><br />
+<span class="time">12:44</span>   <span class="harrisj">harrisj</span> <span class="utterance">tacodog: wow</span><br />
+<span class="time">12:45</span>   <span class="tacodog">tacodog</span> <span class="utterance">more thorium than uranium in seawater</span><br />
+<span class="time">12:45</span>   <span class="tacodog">tacodog</span> <span class="utterance">more expensive to use thorium in a reactor, but it's possible</span><br />
+<span class="time">12:45</span>   <span class="tacodog">tacodog</span> <span class="utterance">and... pair this with pebble bed reactors...</span><br />
+<span class="time">12:45</span>   <span class="tacodog">tacodog</span> <span class="utterance">and you got yourself a bidness</span><br />
+<span class="time">12:46</span>   <span class="tacodog">tacodog</span> <span class="utterance">sorry, i'm a nerd. i admit it. this fascinates me.</span><br />
+<span class="time">12:47</span>   <span class="lanaer">lanaer</span> <span class="utterance">bah, no apologies.</span><br />
+<span class="time">12:47</span>   <span class="lanaer">lanaer</span> <span class="utterance">just keep adding to the interesting tidbits of info I come across in my day :)</span><br />
+<span class="time">12:47</span>   <span class="dgibbons">dgibbons</span> <span class="utterance">yeah this is much better then the talk in my other channels</span><br />
+<span class="time">12:48</span>   <span class="lanaer">lanaer</span> <span class="utterance">heh</span><br />
+<span class="time">13:49</span>   <span class="brixen">brixen</span> <span class="utterance">tacodog: thanks, now #planetargon just bubbled to the top of the list at NSA</span><br />
+<span class="time">13:49</span>   <span class="brixen">brixen</span> <span class="utterance">they're busily researching everybody</span><br />
+<span class="time">13:51</span>   <span class="brixen">brixen</span> <span class="utterance">but I like the idea: get your own nuclear powered rails app :P</span><br />
+<span class="time">13:52</span>   <span class="brixen">brixen</span> <span class="utterance">rails on uranium, or thorium</span><br />
+<span class="time">13:52</span>   <span class="tshine">tshine</span> <span class="utterance">nuclear powered rails aparams</span><br />
+<span class="time">13:52</span>   <span class="tshine">tshine</span> <span class="utterance">opps</span><br />
+<span class="time">13:52</span>   <span class="tacodog">tacodog</span> <span class="utterance">hahaha</span><br />
+<span class="time">13:52</span>   <span class="tshine">tshine</span> <span class="utterance">nuclear powered rails on a 9-volt budget</span><br />
+<span class="time">13:52</span>  <span class="tacodog">* tacodog</span> <span class="utterance">is back from lunch</span><br />
+<span class="time">13:53</span>   <span class="tshine">tshine</span> <span class="utterance">my hotkey proggy inserted that little tidbit :( </span><br />
+<span class="time">13:53</span>   <span class="dgibbons">dgibbons</span> <span class="utterance">your rails app generates enough power you can sell it back to the power company</span><br />
+</div>

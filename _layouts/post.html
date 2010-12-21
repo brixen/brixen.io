@@ -1,0 +1,18 @@
+---
+layout: site
+---
+  {% include header.html %}
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">{{ page.title }}</h2>
+        {% assign post = page %}
+        {% include by_line.html %}
+         <div class="entrybody">{{ content }}</div>
+      </div>
+    </div>
+    {% include sidebar.html %}
+  </div>
+
+  {% include footer.html %}

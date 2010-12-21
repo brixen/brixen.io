@@ -1,0 +1,13 @@
+--- 
+title: My favorite button to push
+layout: post
+---
+A long time ago, I remember discovering while using Windows 3.1 a button with a question mark on it. Click on it and you got a cursor with a question mark and pointer. It was the "what's this" button; click on a control and up popped a blurb to explain something about it. Unfortunately, it seemed that developers saw this as mostly an after thought since I don't recall ever getting anything useful. Usually it was something like "Name field" when the control was already labeled "Name:". But it was the kernel of a great idea.
+
+Taken further, the idea that software would have responsive features to assist the user manifests in context sensitive help agents and "show me" button activated tutorials. A reasonable argument would be that such features are required by overly complex and difficult software. But even as we strive to construct less software that is easier to use, how do we assess and implement "helpful" features.
+
+The holy grail for me is software that can provide anything from a little to a lot of help, contextually, and with my own data, without intruding terribly on my flow (e.g. opening new windows, obscuring my view, losing my place). Take over the mouse pointer, click here, highlight this, type that. When I move the mouse, the "tutor" silently retreats and I continue with my work. Just like asking another person over to show me how to do something.
+
+That sort of utility would encourage people to be more exploratory and, I think, derive greater satisfaction from using their software tools.
+
+Oh, and I wish people had a "show me" button.

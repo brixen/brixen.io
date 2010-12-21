@@ -1,0 +1,21 @@
+--- 
+title: Rubinius runs RSpec 1.1.2
+layout: post
+---
+This day has been a long time coming. About a year ago, I started trying to get "Rubinius":http://rubini.us to run "RSpec":http://rspec.rubyforge.org. Hats off to all the wonderful Rubinius contributors and special mention to the cool guys who hung out with me at "pdx.rbc meetups":http://rubini.us/forums/5/topics/11 in early 2007. (Unfortunately, the page in that link will disappear soon. Maybe I'll make a pdf out of it and keep it here. You know, nostalgia.)
+
+Everyone's efforts have paid off and here is the proof:
+
+<pre style="overflow: auto;">
+$ shotgun/rubinius -I ../rspec-1.1.2/lib/ ../rspec-1.1.2/bin/spec spec/ruby/1.8/core/true/
+.....
+
+Finished in 0.988572 seconds
+
+5 examples, 0 failures
+
+</pre>
+
+The TrueClass specs were some of the very first ones I wrote, so I thought it fitting those be the first ones I ran successfully with RSpec.
+
+Congratulations everyone!

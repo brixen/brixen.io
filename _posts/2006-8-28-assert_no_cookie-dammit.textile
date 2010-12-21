@@ -1,0 +1,27 @@
+--- 
+title: assert_no_cookie dammit
+layout: post
+---
+I hate cookies. Or maybe I'm just feeling schizo today. Actually, I do love cookies, just not testing them with Rails.
+
+
+I've added <code>assert\_no\_cookie</code> method to the <code>assert\_cookie</code> plugin. That's because in your functional tests, <code>cookies['chocolate']</code> may be something, nil, or an empty array depending on what you've just done. For example, in this code I had tried <code>assert\_nil cookies['pass']</code> but that failed because <code>cookies['pass']</code> was <code>[]</code> after calling <code>cookies.delete :pass</code> in the controller:
+
+<pre><typo:code lang="ruby">
+def test_destroy_should_remove_persistent_login_cookie
+  post :create, :username => 'brian.ford', :password => 'secret', 
+      :remember_me => '1'
+  pass = cookies['pass']
+  
+  @request.cookies['pass'] = cookies['pass']
+  post :destroy, :_method => 'delete'
+  
+  assert_no_cookie :pass
+  user = User.find_by_username 'brian.ford'
+  assert_nil user.persistent_logins.find_by_pass(pass)
+end
+</typo:code></pre>
+
+Anyway, as before, you can get this by <code>script/plugin http://svn.planetargon.org/rails/plugins/assert_cookie</code>.
+
+And thanks yet again to <a href="http://www.pluitsolutions.com/2006/08/02/rails-functional-test-with-cookie/">Pluit Solutions</a> for helping me keep my head straight about how to work with cookies in functional tests. Next stop, a patch for Rails (would a generous soul please donate some time to this so I don't have to).

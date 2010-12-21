@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">When describe'ing it ain't enough</h2>
+        
+              <div class="meta">
+        <p><span class="date">03 March 2009</span></p>
+      </div>
+
+         <div class="entrybody"><p>One of the things I like about the <a href="http://rspec.info">RSpec</a> syntax is that it packs a lot of information into a few concise, consistent constructs. It&#8217;s relatively easy to read through a spec file and pick out what I am looking for. The use of blocks both enable flexible execution strategies and provide simple containment boundaries.</p>
+<p>Perhaps the most valuable aspect, though, is the ability to extend the RSpec syntax constructs easily and consistently. No need to grow a third arm here. In <a href="http://rubini.us">Rubinius</a>, we recently encountered a situation needing some extra sauce when fixing our compiler specs.</p>
+<p>A compiler can be thought of as something that chews up data in one form and spits it out in another, equivalent, form. Typically, these transformations from one form to another happen in a particular order. And there may be several of them from the very beginning to the very end of the compilation process.</p>
+<p>To write specs for such a process, it would be nice to focus just on the forms of the data (that&#8217;s what we care about) with as little noise as possible about how they got there. Here&#8217;s what we have in Rubinius:</p>
+<pre>&lt;typo:code lang="ruby"&gt;
+describe "An And node" do
+  relates "(a and b)" do
+    parse do
+      [:and, [:call, nil, :a, [:arglist]], [:call, nil, :b, [:arglist]]]
+    end
+
+    compile do |g|
+      g.push :self
+      g.send :a, 0, true
+      g.dup
+
+      lhs_true = g.new_label
+      g.gif lhs_true
+
+      g.pop
+      g.push :self
+      g.send :b, 0, true
+
+      lhs_true.set!
+    end
+  end
+end
+&lt;/typo:code&gt;</pre>
+<p>The <code>relates</code> block introduces the Ruby source code and contains the blocks that show various intermediate forms. A single word like <code>parse</code> and <code>compile</code> encapsulates the process of generating that particular form, as well as concisely documenting the specs</p>
+<p>The format is sufficiently flexible to allow for other forms. For instance, <code>ast</code> for generating an <span class="caps">AST</span> directly from the parse tree rather than using the sexp as an intermediate form. Or <code>llvm</code> to emit <a href="http://llvm.org"><span class="caps">LLVM</span></a> IR directly from our compiler.</p>
+<p>Another interesting aspect of this, it was possible with only a few custom extensions to <a href="http://github.com/rubyspec/mspec/commits/master">MSpec</a>. Recently, I had added custom options to the MSpec runner scripts to enable such things as our <code>--gc-stats</code>. I didn&#8217;t know how easy it would be to add something more extensive. Turns out it was pretty easy. You can check out the source in our <a href="http://github.com/evanphx/rubinius/tree/master/spec/custom">spec/custom</a> directory.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

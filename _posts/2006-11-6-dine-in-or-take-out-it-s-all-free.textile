@@ -1,0 +1,16 @@
+--- 
+title: "Dine in or take out: it's all free"
+layout: post
+---
+One of the more amazing and wonderful things about the internet is the sheer volume of information available for free. And just like going to a friend's party, one way to show appreciation is to partake of the feast prepared in honor of the guests. But a lot of the time it's more like a grocery store than a nice restaurant. Lots of food but not the place to savor the cooking. Once in a while, though, you happen across a gem.
+
+Since everyone has a different background, we're all learning at our own rates. If you've always wanted to understand more about declarative versus imperative languages, syntactic sugar, dynamic versus static typing, tail recursion, lazy evaluation, currying, concurrency, exceptions, computation models, polymorphism, etc. _and_ you'd like to learn about it in a comprehensive, integrated fashion, then definitely grab a copy of "Concepts, Techniques, and Models of Computer Programming":http://www.info.ucl.ac.be/~pvr/book.html, here's a direct link "to the pdf.":http://www.ulb.ac.be/di/rwuyts/INFO020_2003/vanRoyHaridi2003-book.pdf The book teaches the main concepts of computer science using the "Mozart Programming System":http://www.mozart-oz.org/ based on the "Oz programming language.":http://en.wikipedia.org/wiki/Oz_programming_language
+
+Now, for the fun part. If you're using OS X and have ports installed, getting the Mozart system is as easy as:
+
+<pre>
+sudo port install mozart
+</pre>
+
+There, you're ready to dive right in. However, one thing will make your experience much easier. Install "Aquamacs: Emacs for OS X.":http://aquamacs.org/ Mozart will use it if it finds it, and for me it's a nicer experience than Emacs in iTerm.
+

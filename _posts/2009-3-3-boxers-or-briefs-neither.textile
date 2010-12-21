@@ -1,0 +1,83 @@
+--- 
+title: Boxers or Briefs? -- Neither?!
+layout: post
+---
+The emperor is wearing clothes and everything looks hunky-dory and sane on the outside. Usually, that's a good thing. For instance, when running "RubySpec":http://rubyspec.org on a released version of MRI, it's good to know that things are behaving as expected and _all known issues_ are accounted for. In other words, you won't see any failures unless a spec is broken or a new spec has uncovered a bug.
+
+<pre>
+$ mspec library/stringio/reopen_spec.rb 
+ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]
+........................
+
+Finished in 0.021797 seconds
+
+1 file, 24 examples, 59 expectations, 0 failures, 0 errors
+</pre>
+
+While the above can be reassuring, it may not tell the whole story. RubySpec uses "guards":http://rubyspec.org/wiki/rubyspec/Guards to control which specs are run. This enables the specs to accommodate differences in behavior due to varying platforms, versions, implementations, and bugs.
+
+I've added a couple features to "MSpec":http://github.com/rubyspec/mspec/commits/master to enable discrete and not-so-discrete peeks under the robes, as it were. The first of these is akin to just yanking down the trousers. By passing the @--no-ruby_bug@ option, all @ruby_bug@ guards are disabled and the guarded specs are run.
+
+<pre>
+$ mspec --no-ruby_bug library/stringio/reopen_spec.rb 
+ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]
+............FF.....FF.....FF......
+
+1)
+StringIO#reopen when passed [Object, Object] resets self's position to 0 FAILED
+Expected 5
+ to have same value and type as 0
+
+./library/stringio/reopen_spec.rb:117
+./library/stringio/reopen_spec.rb:110:in `all?'
+./library/stringio/reopen_spec.rb:61
+
+---- snip ----
+
+Finished in 0.022210 seconds
+
+1 file, 34 examples, 76 expectations, 6 failures, 0 errors
+</pre>
+
+If you cringe a little when blasted by a bunch of failures, don't worry, So do I. For a more subtle examination, there is also the ability to run the specs and note which specs _would have run_ but did not due to guards.
+
+<pre>
+$ mspec --report library/stringio/reopen_spec.rb 
+ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]
+........................
+
+Finished in 0.009809 seconds
+
+1 file, 24 examples, 59 expectations, 0 failures, 0 errors, 10 guards
+
+
+4 specs omitted by guard: ruby_bug #, 1.8.6.114:
+
+StringIO#reopen reopens a stream when given a String argument
+StringIO#reopen reopens a stream in append mode when flagged as such
+StringIO#reopen reopens and truncate when reopened in write mode
+StringIO#reopen truncates the given string, not a copy
+
+6 specs omitted by guard: ruby_bug #, 1.8.7:
+
+StringIO#reopen when passed [Object, Object] resets self's position to 0
+StringIO#reopen when passed [Object, Object] resets self's line number to 0
+StringIO#reopen when passed [String] resets self's position to 0
+StringIO#reopen when passed [String] resets self's line number to 0
+StringIO#reopen when passed no arguments resets self's position to 0
+StringIO#reopen when passed no arguments resets self's line number to 0
+</pre>
+
+The guards are reported only if they have altered how the specs were run. Since the @ruby_bug@ guard can only prevent specs from running on the _standard implementation_, MRI, those guards are not reported when running under JRuby, for instance.
+
+<pre>
+$ mspec -t jruby --report library/stringio/reopen_spec.rb 
+jruby 1.2.0RC1 (ruby 1.8.6 patchlevel 287) (2009-02-26 rev 9326) [i386-java]
+..................................
+
+Finished in 0.257000 seconds
+
+1 file, 34 examples, 76 expectations, 0 failures, 0 errors, 0 guards
+</pre>
+
+So, if you are wondering what is going on with some specs for a particular library, you can get a quick peek using the @--report@ option before digging into the spec files. There is also a @--report-on GUARD@ option that allows you to narrow the focus of your peeking.

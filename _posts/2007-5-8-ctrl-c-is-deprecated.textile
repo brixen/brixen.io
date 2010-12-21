@@ -1,0 +1,11 @@
+--- 
+title: Ctrl-C is deprecated
+layout: post
+---
+Well, not exactly. But here's a nice anecdote that will give you pause then next time you sprint for the ^C escape hatch.
+
+Yesterday, while compiling Subversion 1.4.3 from source on Ubuntu 6.06, I had invoked the command @sudo checkinstall make install-swig-rb@ and, thinking it was going to overwrite my previous .deb package for subversion, hit ^C. Now that's something I've done a million times, I'm sure. It's the panic, "Oh shit, I don't really want to do that" button. When you realize in a split second that there may be dire consequences from that ill-thought command, it's a natural reflex.
+
+But on that fine day, ^C left me with a root directory that had 700 permissions. The consequence was that nothing except a root shell could spawn. I couldn't even @su <user>@ as root. Yeah, that's right. Insane. And this was on a VPS. Lucky for me, "Quantact":http://quantact.com has their Xen VPS setup configured so you can actually access a console remotely without needing to go through your VPS's networking. Tim at Quantact took a look and suggested that the permissions could be causing the issue. He was right and boy, was I happy that's all it was.
+
+Most likely, something in @checkinstall@ misbehaved, but needless to say, I didn't try to reproduce the problem. Now, whenever I head for ^C there will undoubtedly be a microsecond pause to evaluate the relative merits. Hopefully, that won't result in a "Buridan's Ass":http://en.wikipedia.org/wiki/Buridan's_ass dilemma.

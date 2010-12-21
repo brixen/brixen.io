@@ -1,0 +1,13 @@
+--- 
+title: The Dev'ilz in ur projects, trackin' ur changz
+layout: post
+---
+The "Dev'il":http://devil.brightredglow.com is out; get it while it's hot. What's that? you're wondering.
+
+This is the story behind it. The "Rubinius":http://rubini.us project (where *The Best Ruby VM of All Time* &trade; is being built) had tried a couple project collaboration tools before "Evan":http://blog.fallingsnow.net gave me the ok to try something different. My goal was a project collaboration tool that collected the relevant information in one place, making it easy to access and modify. Communication is key, so I decided to build on the excellent "Beast":http://beast.caboo.se forum.
+
+The big question is: What is _relevant_ information? I have some opinions about that. We have a liberal commit bit policy, which encourages a lot of participation. To balance that, we need to always stay on top of what is being committed. In my experience, that means RSS and graphical browsing of Subversion changes. We need tickets to track bugs. However, our tickets are super light. Basically, a ticket has a title, body, and status. A user can _take_ a ticket to indicate that she is working on it. There are no comments, and no priorities. Tickets are versioned, so a user cannot destroy pertinent information. The ticket body should always be the definitive statement of the problem. No browsing through comments and attachments trying to figure out what is relevant. I'll be writing more about the design decisions in the "Dev'il docs":http://devil.brightredglow.com/pages.
+
+I do owe a big debt to "Trac":http://trac.edgewall.org/ , "Collaboa":http://collaboa.org, "Devalot":http://software.pmade.com/devalot , "Retrospectiva":http://retrospectiva.org, mostly for showing me (especially Trac) what I did not want to do, which can be a great source of inspiration. The name itself came from a combination of pure frustration working on Devalot and Evan's quote about rubinius having "a little evil built in". It was mostly a response to the "alot" in Devalot. I wanted something much lighter and easier to understand and use. Anyway, if you're offended by the name, it's very easy to change: drop a file named @project.rb@ in your lib directory that contains your project name.
+
+The project is still under development. I've released the source because a few folks were clamoring for it. Drop by the "Dev'il forums":http://devil.brightredglow.com/forums for features in the works and to offer up some feedback.

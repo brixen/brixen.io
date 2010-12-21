@@ -1,0 +1,14 @@
+--- 
+title: OSCON 2008
+layout: post
+---
+If you're headed to "OSCON 2008":http://en.oreilly.com/oscon2008/public/content/home, I hope I'll have a chance to meet you. I'll be speaking on Thursday afternoon, something about Ruby performance. Come and heckle me if you wish. Here's the talk details:
+
+* "Who Wants a Faster Ruby?":http://en.oreilly.com/oscon2008/public/schedule/detail/2333
+* 07/24/2008
+* 2:35pm -  3:20pm PDT
+* Room: F151
+
+Also, please do come check out "FOSCON":http://pdxfoscon.org/. This is the 4th year for FOSCON. w00t.
+
+*UPDATE:* Thanks to all who attended my talk. I've uploaded the "slides":http://blog.brightredglow.com/assets/2008/7/24/faster_ruby_oscon08.pdf. If you attended, please take a moment to "send feedback":http://en.oreilly.com/oscon2008/public/schedule/evaluate/2333.

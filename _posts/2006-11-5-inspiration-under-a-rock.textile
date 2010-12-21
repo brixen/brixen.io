@@ -1,0 +1,14 @@
+--- 
+title: Inspiration under a rock
+layout: post
+---
+"PLANET ARGON's":http://www.planetargon.com office is a hop, skip, and a jump (about 3 city blocks) from Portland's "Pearl District":http://www.explorethepearl.com/history.htm, which is a really nice thing for lunch with one's girlfriend. Everyone knows that girls love to shop, right? Gross over-generalization or not, it's true. Anyway, while browsing through "Anthropologie":http://www.anthropologie.com/jump.jsp?itemID=0&itemType=HOME_PAGE, I'm of course drawn to any stack of books I see. On a nice diagonal book shelf, I located two quite interesting books: "Modern Glamour: The Art of Unexpected Style":http://www.amazon.com/gp/product/0060394420/ref=wl_it_dp/104-8500968-6579924?ie=UTF8&coliid=I26HUYE8IJG7NR&colid=1RKL9HG42CFPO and "China Chic":http://www.amazon.com/gp/product/0060796634/ref=wl_it_dp/104-8500968-6579924?ie=UTF8&coliid=I3QOPAZJNHPLTH&colid=1RKL9HG42CFPO.
+
+Yeah, both a little different than typical books I read, but they got me thinking. First, they have lots of interesting compositions; colors, shapes, arrangements that are a pleasure to look at. Second, the compositions are, of course, much more than _just_ collections of colors and shapes. It's the arrangement part, the whole design, that got me thinking.
+
+With software, we're often confronted with a level of granularity that isn't very useful. If an application has some sort of access control, we may be required to twiddle read/write/execute-type permissions for each object. That's just an example, but one that is particularly problematic for non-savvy users. The implementation model is bleeding through worse than a horror-flick bloody corpse. At that level of granularity, it's like all the fabrics, wall-hangings, window-treatments, and furniture are arranged in a nice matrix of boxes in the middle of the room instead of making up the room as a whole.
+
+For one of our projects, we're exploring how we can create idioms that allow the user to manipulate objects at a much higher level. For example, adding someone as a co-worker to a project allows them to make changes, while sharing the project with a friend allows the friend to leave comments but not make changes.
+
+So, are you creating stylish, integrated, holistic rooms in your software? And where do you find odd inspiration in your everyday life?
+ 

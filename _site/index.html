@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></h2>
+            <div class="meta">
+        <p><span class="date">18 March 2009</span></p>
+      </div>
+
+       <div class="entrybody"><p>With the recent switch away from the spaghetti stack execution model, <a href="http://rubini.us">Rubinius</a> has also acquired native threads. A big part of understanding something is syncing up our mental model with reality. If you&#8217;ve ever tried to explain what an OS is to your mom, you know that can be a challenge. So let&#8217;s peel back a few layers and see where these native thread critters fit into Rubinius.</p>
+<p>Rubinius is an implementation of the Ruby programming language. One of the bigger components is the virtual machine. But what is that? Unfortunately, <em>virtual machine</em> is a label for a category of software (and maybe hardware) that, well, does a bunch of different things. Virtual machines are often thought of as virtual computers or virtual CPUs. The problem with trying to equate two things is that you look at the one you know about and try to understand the one you do not by looking for analogous structures. Therein lie the seeds of misunderstanding. Since Rubinius has this <code>vm/</code> directory, we&#8217;ve got to try to nail some of this gelatin to the wall.</p>
+<p>Thinking about threads running inside a physical computer, you might visualize the relationship something like the following Ruby-ish pseudo code. As the program starts up, it creates a virtual machine.</p>
+<pre>&lt;typo:code lang="ruby"&gt;
+def main
+  vm = VM.new
+  # do some setup
+  vm.run
+end
+&lt;/typo:code&gt;</pre>
+<p>Sometime later in the program, you add a new thread, which might be implemented something like this</p>
+<pre>&lt;typo:code lang="ruby"&gt;
+def Thread.new
+  thr = VM.threads.create
+  # ...
+  return thr
+end
+&lt;/typo:code&gt;</pre>
+<p>You might imagine the <code>VM</code> instance having a <code>Scheduler</code> component that would supervise the threads and arrange for running them on one or more processors or cores. In this model, the VM is really like a virtual computer in which all execution is occurring. In other words, the VM is composed of multiple threads of execution</p>
+<p>The point of this mental exercise is to expose the tacit assumptions we might have about our mapping between a real computer and the virtual machine. Now let&#8217;s delve into Rubinius.</p>
+<p>The <code>main</code> function is located in <code>vm/drivers/cli.cpp</code>. The first thing it does is create an instance of <code>Environment</code>, which is composed of an instance of <code>VMManager</code>, <code>SharedState</code>, and <code>VM</code>. In the <code>Environment</code> constructor, the command line is parsed for configuration options. Then the manager creates a new shared state. The shared state creates a vm. And finally the vm is initialized. During initialization, the <code>ObjectMemory</code> is created. The object memory in turn is composed of garbage collected heaps for the young and mature generations.</p>
+<p>Back in <code>main</code>, a platform-specific configuration file is loaded, the &#8220;vm&#8221; is booted, the command line is loaded into <code>ARGV</code>, the kernel is loaded (i.e. the compiled versions of the files located in the <code>kernel/</code> directory), the preemption and signal threads are started, and finally the compiled version of <code>kernel/loader.rb</code> is run, which will process the command line arguments, run scripts, start <span class="caps">IRB</span>, etc. When your script, <span class="caps">IRB</span>, <code>-e</code> command, etc. finish running, <code>loader.rb</code> finishes, <code>main</code> finishes, resources are cleaned up, and finally the process exits</p>
+<p>Whew. The point of this whirlwind tour is to illustrate that <em>VM</em> is a rather fuzzy concept, even though we have a class named <code>VM</code>. Now let&#8217;s take a look at how threads fit in.</p>
+<p>Rubinius has a 1:1 native thread model. In other words, each time you do <code>Thread.new</code> in your Ruby code, the instance returned maps to a single native thread. In fact, let&#8217;s look at the code for <code>Thread.new</code> in <code>kernel/common/thread.rb</code>.</p>
+<pre>&lt;typo:code lang="ruby"&gt;
+class Thread
+  def self.new(*args, &amp;block)
+    thr = allocate
+    thr.initialize *args, &amp;block
+    thr.fork
+
+    return thr
+  end
+end
+&lt;/typo:code&gt;</pre>
+<p>The calls to <code>allocate</code> and <code>fork</code> are implemented as primitives in C++ code. They are short, so we&#8217;ll take a look at them, too</p>
+<pre>&lt;typo:code lang="C++"&gt;
+Thread* Thread::allocate(STATE) {
+  VM* vm = state-&gt;shared.new_vm();
+  Thread* thread = Thread::create(state, vm);
+
+  return thread;
+}
+
+Object* Thread::fork(STATE) {
+  state-&gt;interrupts.enable_preempt = true;
+
+  native_thread_ = new NativeThread(vm);
+
+  // Let it run.
+  native_thread_-&gt;run();
+  return Qnil;
+}
+&lt;/typo:code&gt;</pre>
+<p>The call to <code>allocate</code> creates a new instance of <code>VM</code> as thread local data. The call to <code>fork</code> creates the new native thread. The call to <code>native_thread_-&gt;run()</code> will eventually call the <code>__run__</code> method in <code>kernel/common/thread.rb</code>. Something to note about this snippet of C++ code is the nice consistency between the primitives and the Ruby code that calls them</p>
+<p>We&#8217;ve encountered the <code>VM</code> class in two contexts: 1) when starting up the Rubinius process, and 2) when creating a new <code>Thread</code>. We can consider the <code>VM</code> instance to be an abstraction of the state of a single thread of execution, and in fact, <code>state</code> is the name most often given to an instance of <code>VM</code> in the Rubinius source</p>
+<p>As we&#8217;ve seen, Rubinius as a running process is composed of various abstractions, including the <code>Environment</code>, <code>SharedState</code>, <code>NativeThread</code>, and <code>VM</code> to name a few. While it is accurate to call Rubinius a virtual machine, it is apparent that concept can cover a fair bit of complexity. But breaking it into parts makes it fairly easy to understand. Let us know what things you&#8217;d like to understand better. We have the <code>doc/</code> directory in the source that we&#8217;re (slowly) building out. If you&#8217;re interested in contributing, docs would be a great way to help everyone.<br />
+</p></div>
+    </div>
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></h2>
+            <div class="meta">
+        <p><span class="date">06 March 2009</span></p>
+      </div>
+
+       <div class="entrybody"><p>If you live in or would like to visit beautiful Portland, OR, consider <a href="http://opensourcebridge.org/attend/">signing up</a> for the <a href="http://opensourcebridge.org/">Open Source Bridge</a> conference. I will (probably) be giving a talk on <a href="http://opensourcebridge.org/proposals/13">RubySpec</a> and <a href="http://opensourcebridge.org/proposals/12">Rubinius 1.0</a>. There&#8217;s lots of interesting folks giving great <a href="http://opensourcebridge.org/events/2009/proposals/">talks</a>. This is an opportunity to hear how people are developing the open-source community.</p>
+<p>Hope to see you there!<br />
+</p></div>
+    </div>
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></h2>
+            <div class="meta">
+        <p><span class="date">03 March 2009</span></p>
+      </div>
+
+       <div class="entrybody"><p>One of the things I like about the <a href="http://rspec.info">RSpec</a> syntax is that it packs a lot of information into a few concise, consistent constructs. It&#8217;s relatively easy to read through a spec file and pick out what I am looking for. The use of blocks both enable flexible execution strategies and provide simple containment boundaries.</p>
+<p>Perhaps the most valuable aspect, though, is the ability to extend the RSpec syntax constructs easily and consistently. No need to grow a third arm here. In <a href="http://rubini.us">Rubinius</a>, we recently encountered a situation needing some extra sauce when fixing our compiler specs.</p>
+<p>A compiler can be thought of as something that chews up data in one form and spits it out in another, equivalent, form. Typically, these transformations from one form to another happen in a particular order. And there may be several of them from the very beginning to the very end of the compilation process.</p>
+<p>To write specs for such a process, it would be nice to focus just on the forms of the data (that&#8217;s what we care about) with as little noise as possible about how they got there. Here&#8217;s what we have in Rubinius:</p>
+<pre>&lt;typo:code lang="ruby"&gt;
+describe "An And node" do
+  relates "(a and b)" do
+    parse do
+      [:and, [:call, nil, :a, [:arglist]], [:call, nil, :b, [:arglist]]]
+    end
+
+    compile do |g|
+      g.push :self
+      g.send :a, 0, true
+      g.dup
+
+      lhs_true = g.new_label
+      g.gif lhs_true
+
+      g.pop
+      g.push :self
+      g.send :b, 0, true
+
+      lhs_true.set!
+    end
+  end
+end
+&lt;/typo:code&gt;</pre>
+<p>The <code>relates</code> block introduces the Ruby source code and contains the blocks that show various intermediate forms. A single word like <code>parse</code> and <code>compile</code> encapsulates the process of generating that particular form, as well as concisely documenting the specs</p>
+<p>The format is sufficiently flexible to allow for other forms. For instance, <code>ast</code> for generating an <span class="caps">AST</span> directly from the parse tree rather than using the sexp as an intermediate form. Or <code>llvm</code> to emit <a href="http://llvm.org"><span class="caps">LLVM</span></a> IR directly from our compiler.</p>
+<p>Another interesting aspect of this, it was possible with only a few custom extensions to <a href="http://github.com/rubyspec/mspec/commits/master">MSpec</a>. Recently, I had added custom options to the MSpec runner scripts to enable such things as our <code>--gc-stats</code>. I didn&#8217;t know how easy it would be to add something more extensive. Turns out it was pretty easy. You can check out the source in our <a href="http://github.com/evanphx/rubinius/tree/master/spec/custom">spec/custom</a> directory.<br />
+</p></div>
+    </div>
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></h2>
+            <div class="meta">
+        <p><span class="date">03 March 2009</span></p>
+      </div>
+
+       <div class="entrybody"><p>According to the folks over at <a href="http::rubyspec.org">http://rubyspec.org</a>, &#8220;RubySpec is a project to write a complete, executable specification for the Ruby programming language.&#8221; As with any sufficiently concise summary, there&#8217;s some opportunity for misunderstanding here, so let&#8217;s explore a few aspects of this definition.</p>
+<p>Since this post is a bit long, here&#8217;s a summary:</p>
+<ol>
+<p>There is one <em>standard</em> definition of Ruby.</p>
+</li>
+<p>RubySpec benefits the whole Ruby ecosystem.</p>
+</li>
+<p>RubySpec does not guarantee that program A will run on implementation B.</p>
+</li>
+<p>RubySpec includes only specs for the correct behavior when bugs are discovered in <span class="caps">MRI</span>.</p>
+</li>
+<p>Help your favorite Ruby implementation by contributing to RubySpec.</p>
+</li>
+</ol>
+<p>First, what does it mean to be &#8220;the Ruby programming language&#8221;? The answer to this question used to be a little simpler before Ruby 1.9. Originally, there was the single Ruby implementation that Matz and friends built, referred to as <span class="caps">MRI</span> (Matz&#8217;s Ruby Interpreter). Now there is also RubyVM or <span class="caps">KRI</span> (Koichi&#8217;s Ruby Implementation) or simply Ruby 1.9. Either way, <span class="caps">MRI</span> 1.8.x and [KM]RI 1.9.x are the <em>standard</em> or <em>reference</em> implementations for Ruby. Everyone else is making an alternative implementation that either complies with the standard or deviates from it.</p>
+<p>This is the way RubySpec is written. I realize that it&#8217;s possible to consider &#8220;the Ruby programming language&#8221; to be an abstract thing and <em>all</em> the Ruby projects as merely more or less equal attempts to implement the language. I won&#8217;t try to convince you that either way of viewing this is more or less correct. I just want to be clear about the way RubySpec views it.</p>
+<p>At the time I began writing what eventually became RubySpec, the only Ruby implementation in wide-spread use was <span class="caps">MRI</span>. My biggest concern when getting involved with <a href="http://rubini.us">Rubinius</a> was that the project would be consistent with Ruby the way Matz defines it and not cause fragmentation of the language. My reason was quite selfish. I loved programming in Ruby and I wanted to see the language thrive.</p>
+<p>So, RubySpec&#8217;s over-arching value proposition is a single, comprehensive definition of the Ruby programming language. To see if the value proposition is actually universal, let&#8217;s examine the three categories of people involved with Ruby: consumers, programmers, and implementers.</p>
+<p>I define <em>consumers</em> as anyone who depends on a product or service written in Ruby. Consumers may use these products and services directly, or they may own or work for companies that provide them, or they may use products and services that are themselves supported by software written in Ruby. Consumers are the biggest part of the Ruby ecosystem.</p>
+<p>Interacting closely with the consumers are <em>programmers</em>, the men and women who write software or frameworks in Ruby. In fact, the same folks may be both consumers and programmers.</p>
+<p>The <em>implementers</em> are the people writing Ruby implementations for the programmers and consumers. They want to experiment with ways to better support programmers without worrying that they are breaking their programs in unknown ways. Again, the implementers may be programmers or consumers themselves.</p>
+<p>If you&#8217;ve ever used a proprietary implementation of a programming language or know what vendor lock-in means, then I am preaching to the choir. If not, then consider that system requirements change, hardware changes, services change, customers change, development teams change, everything changes.</p>
+<p>Consumers want assurance that the products and services on which they depend will remain available and will grow with their needs. Programmers want assurance that they will be able to meet their customers&#8217; needs. Implementers want to provide programmers the ability to do so. A single, consistent Ruby language really is a win-win-win situation.</p>
+<p>With everything seeming so sunny, one may be tempted to think: &#8220;If implementation A and B perform the same on RubySpec, then a program running on A now should run just fine on B.&#8221; Unfortunately, it is not quite that simple. Just as a program may not run on both OS X and Linux simply because <span class="caps">MRI</span> runs on both. Once in a while, RubySpec finds bugs in <span class="caps">MRI</span>, though not that often considering the tens of thousands of expectations. Since a lot of the code in <span class="caps">MRI</span> has been around for years, this illustrates that even running thousands of programs (RubySpec is just another program) is no guarantee that there are not bugs lurking around the corner.</p>
+<p>What can tell you whether a program will (likely) run on both A and B is the program&#8217;s own test suite. In this regard, the program&#8217;s test suite and RubySpec are complementary. If the tests discover something that RubySpec did not, it is an opportunity to enhance RubySpec. If running on another implementation expose issues not uncovered by the program&#8217;s tests, it is an opportunity to enhance the tests.</p>
+<p>Ruby versioning is complex affair and another area where possible misunderstandings exist about RubySpec. It seems pretty simple that Ruby 1.8 and Ruby 1.9 are different. But then there is 1.8.7, which is like 1.8.6 and 1.9. And there may be 1.8.8, which will likely be different than 1.8.6 and 1.8.7 and 1.9. It is dizzying. RubySpec handles the different versions by using the <code>ruby_version_is</code> guard. (Read the <a href="http://rubyspec.org/wiki/rubyspec/Guards">guard documentation</a> for full details.)</p>
+<p>Generally, the version guards work fine. Each implementation provides the <code>RUBY_VERSION</code> constant and based on its value, the guards permit the correct specs to run. Some have assumed this means RubySpec will tell you that alternate implementation A is just like <span class="caps">MRI</span> version X.Y.Z &#8220;bugs and all&#8221; because A says it is version X.Y.Z</p>
+<p>The principles RubySpec strives for are correctness, clarity, and consistency. There is no way to provide <em>clear</em> and <em>consistent</em> results if RubySpec included specs for the <em>wrong</em> behavior as well as specs for the correct behavior. Either clarity or consistency suffer, badly. Matz is the one who ultimately determines whether a behavior is a bug or not. RubySpec simply includes specs for only correct behaviors.</p>
+<p>These are some of the factors that complicate this issue:</p>
+<ol>
+<p>There is no definition of what <em>is</em> a bug. It may be a segfault, an incorrect value computed, a frozen state not set or respected, the wrong exception class raised. The list is endless and impossible to consistently categorize.</p>
+</li>
+<p>All implementations, including <span class="caps">MRI</span>, have their own release processes and schedules.</p>
+</li>
+<p>RubySpec is a social as well as technical project. An aspect of the value-added proposition for any given implementation is the quality that they provide. There is no way the alternative implementations will consistently agree to defer fixing bugs until <span class="caps">MRI</span> releases a fix. Rather than supporting cherry-picking which bugs to fix, RubySpec only includes correct specs.</p>
+</li>
+<p>Bugs discovered by RubySpec in <span class="caps">MRI</span> are quite rare.</p>
+</li>
+</ol>
+<p>Finally, contributing to RubySpec is one of the lowest barriers-to-entry means of supporting your favorite Ruby implementation and the Ruby ecosystem as a whole.</p>
+<p>Consider what the view looks like from the outside: Ruby has a vibrant community of implementations meeting consumers&#8217; and programmers&#8217; needs on virtually every significant platform, including on Java, .<span class="caps">NET</span>, Mac (Obj-C), and semi-platform-agnostic implementations like <span class="caps">MRI</span> and Rubinius. Internally, it means that Ruby programmers can focus more on writing their programs using the best tools for the job, confident that if requirements change they can move to a different platform with ease and confidence.</p>
+<p>Check out the <a href="http://rubyspec.org/wiki/rubyspec">RubySpec docs</a> if you are interested in helping out.<br />
+</p></div>
+    </div>
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></h2>
+            <div class="meta">
+        <p><span class="date">03 March 2009</span></p>
+      </div>
+
+       <div class="entrybody"><p>The emperor is wearing clothes and everything looks hunky-dory and sane on the outside. Usually, that&#8217;s a good thing. For instance, when running <a href="http://rubyspec.org">RubySpec</a> on a released version of <span class="caps">MRI</span>, it&#8217;s good to know that things are behaving as expected and <em>all known issues</em> are accounted for. In other words, you won&#8217;t see any failures unless a spec is broken or a new spec has uncovered a bug.</p>
+<pre>
+$ mspec library/stringio/reopen_spec.rb 
+ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]
+........................
+
+Finished in 0.021797 seconds
+
+1 file, 24 examples, 59 expectations, 0 failures, 0 errors
+</pre>
+<p>While the above can be reassuring, it may not tell the whole story. RubySpec uses <a href="http://rubyspec.org/wiki/rubyspec/Guards">guards</a> to control which specs are run. This enables the specs to accommodate differences in behavior due to varying platforms, versions, implementations, and bugs</p>
+<p>I&#8217;ve added a couple features to <a href="http://github.com/rubyspec/mspec/commits/master">MSpec</a> to enable discrete and not-so-discrete peeks under the robes, as it were. The first of these is akin to just yanking down the trousers. By passing the <code>--no-ruby_bug</code> option, all <code>ruby_bug</code> guards are disabled and the guarded specs are run.</p>
+<pre>
+$ mspec --no-ruby_bug library/stringio/reopen_spec.rb 
+ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]
+............FF.....FF.....FF......
+
+1)
+StringIO#reopen when passed [Object, Object] resets self's position to 0 FAILED
+Expected 5
+ to have same value and type as 0
+
+./library/stringio/reopen_spec.rb:117
+./library/stringio/reopen_spec.rb:110:in `all?'
+./library/stringio/reopen_spec.rb:61
+
+---- snip ----
+
+Finished in 0.022210 seconds
+
+1 file, 34 examples, 76 expectations, 6 failures, 0 errors
+</pre>
+<p>If you cringe a little when blasted by a bunch of failures, don&#8217;t worry, So do I. For a more subtle examination, there is also the ability to run the specs and note which specs <em>would have run</em> but did not due to guards</p>
+<pre>
+$ mspec --report library/stringio/reopen_spec.rb 
+ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]
+........................
+
+Finished in 0.009809 seconds
+
+1 file, 24 examples, 59 expectations, 0 failures, 0 errors, 10 guards
+
+
+4 specs omitted by guard: ruby_bug #, 1.8.6.114:
+
+StringIO#reopen reopens a stream when given a String argument
+StringIO#reopen reopens a stream in append mode when flagged as such
+StringIO#reopen reopens and truncate when reopened in write mode
+StringIO#reopen truncates the given string, not a copy
+
+6 specs omitted by guard: ruby_bug #, 1.8.7:
+
+StringIO#reopen when passed [Object, Object] resets self's position to 0
+StringIO#reopen when passed [Object, Object] resets self's line number to 0
+StringIO#reopen when passed [String] resets self's position to 0
+StringIO#reopen when passed [String] resets self's line number to 0
+StringIO#reopen when passed no arguments resets self's position to 0
+StringIO#reopen when passed no arguments resets self's line number to 0
+</pre>
+<p>The guards are reported only if they have altered how the specs were run. Since the <code>ruby_bug</code> guard can only prevent specs from running on the </p>
+<pre>
+$ mspec -t jruby --report library/stringio/reopen_spec.rb 
+jruby 1.2.0RC1 (ruby 1.8.6 patchlevel 287) (2009-02-26 rev 9326) [i386-java]
+..................................
+
+Finished in 0.257000 seconds
+
+1 file, 34 examples, 76 expectations, 0 failures, 0 errors, 0 guards
+</pre>
+<p>So, if you are wondering what is going on with some specs for a particular library, you can get a quick peek using the <code>--report</code> option before digging into the spec files. There is also a <code>--report-on GUARD</code> option that allows you to narrow the focus of your peeking.<br />
+</p></div>
+    </div>
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></h2>
+            <div class="meta">
+        <p><span class="date">26 February 2009</span></p>
+      </div>
+
+       <div class="entrybody"><p><strong><span class="caps">UPDATE</span>:</strong> In further discussions with Jim Deville of IronRuby it appears that there may be a legal issue preventing IronRuby devs from patching Ruby code themselves. However it may be possible for IronRuby to use a commonly maintained and patched version of the standard library.</p>
+<p>Reviewing the logs and considering this was Shri&#8217;s first major discussion in the <span class="caps">IRC</span> channel, I unfortunately grouped him in with Charles&#8217; intolerable behavior and personal attacks which have occurred on a number of occasions in #rubyspec and #rubinius. My apologies to Shri. The struck out text below remains merely for historical accuracy.</p>
+<p><strong><span class="caps">UPDATE</span>:</strong> Charles response to this post wasn&#8217;t exactly positive, but I think it&#8217;s fair to have this discussion in public: <a href="http://pastie.org/400493">http://pastie.org/400493</a> Also, please note that I&#8217;ve struck out Shri&#8217;s name below as I may have misunderstood him in the earlier discussion.</p>
+<hr />
+<p>You, the trusting consumer, would probably like to receive such cautionary advertisement were you to use a product that did, in fact, ship to you code that includes known bugs. And not just known bugs, but known bugs that have fixes for them.</p>
+<p>You would like to know this, right? I mean, I&#8217;m not just some hard-headed asshole that thinks there&#8217;s something a bit whack here, am I? Please, do tell me.</p>
+<p>Well, as luck would have it, you can also tell this to <a href="http://http://blog.headius.com/">Charles Oliver Nutter</a> of <a href="http://jruby.codehaus.org/">JRuby</a> <del>and <a href="http://blogs.msdn.com/shrib/">Shri Borde</a> of <a href="http://www.ironruby.net/">IronRuby</a></del>.</p>
+<p>Here&#8217;s the drama: There&#8217;s this project <a href="http://rubyspec.org">RubySpec</a>. You may have heard of it. It attempts to describe the behavior of the Ruby programming language. All the alternative Ruby implementations use the RubySpec project to attempt to show that they are &#8220;Ruby&#8221;</p>
+<p>All the alternative implementations also choose to ship some version or other of the Ruby standard library. At least the parts written in Ruby. Makes sense, since they all implement the Ruby programming language.</p>
+<p>As is the case with all software, from time to time bugs are discovered in Ruby. Usually, these are fixed soon after they are discovered and the fix is committed to the trunk version of <span class="caps">MRI</span> (Matz&#8217;s Ruby Implementation). Eventually, trunk becomes another stable release with a particular patchlevel.</p>
+<p>The RubySpecs deal with this situation with a <code>ruby_bug</code> guard. You can read the details of <a href="http://rubyspec.org/wiki/rubyspec/Guards">RubySpec guards</a>. This particular guard has two functions:</p>
+<ol>
+<p>It prevents the guarded spec from executing on any version of <span class="caps">MRI</span> less than or equal to the version specified in the guard. This is because <span class="caps">MRI</span> cannot re-release a particular patchlevel <em>after</em> it has been released. And the bugs are discovered <em>after</em> a release.</p>
+</li>
+<p>It documents the spec, which shows what the correct behavior should be.</p>
+</li>
+</ol>
+<p>A key feature of the <code>ruby_bug</code> guard is that it <em>does not</em> prevent the spec from running on any alternative implementation. That is because every alternative implementation is expected to have the <em>correct</em> behavior. Additionally, these guards are only added after Matz or ruby-core has stated that the behavior at issue is a bug and the behavior of the spec is the correct behavior.</p>
+<p>Now here is the rub, Charles does not want to manage patching the Ruby standard library that he ships with JRuby <em>with the patches that already exist for known bugs</em>. He wants to ship whatever version <span class="caps">MRI</span> has most recently released. Further, when you run the RubySpecs with JRuby, he wants to <em><strong><span class="caps">MASK</span></strong></em> those bugs because he doesn&#8217;t think it&#8217;s fair that JRuby fails a spec which shows a known bug in the Ruby standard library for which patches are available.</p>
+<p>That&#8217;s Charles choice of strategies for managing JRuby packaging. I&#8217;m strongly of the opinion that you, the user, would like to know that. Charles apparently disagrees.</p>
+<p>In fact, he disagrees so vehemently that he takes to calling me names in the #rubyspec <span class="caps">IRC</span> channel because I refuse to change the fact that the <code>ruby_bug</code> guard will not silently mask spec failures on JRuby or any other alternative implementation. Aside from being immature, I think there is a real problem with this. Don&#8217;t you?</p>
+<p>Charlie will argue that it is simply impossible to ship the trunk version of Ruby standard library because it is an unknown quantity? However, the best defense against bugs in the Ruby standard library is better specs. And we&#8217;re talking about specs here that <em>show the bugs</em> and for which patches exist. Furthermore, there are actually relatively few bugs noted in the specs and most of those are in older versions of Ruby, not the current stable release.</p>
+<p>So, here&#8217;s my question to you: Would you like to know that JRuby <del>and possibly IronRuby</del> ship you code that contains know bugs for which patches exist? Would you also like to know that Charles wants you to run RubySpec on JRuby and not know there is a bug?<br />
+</p></div>
+    </div>
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2009/2/20/caveat-lector">Caveat Lector</a></h2>
+            <div class="meta">
+        <p><span class="date">20 February 2009</span></p>
+      </div>
+
+       <div class="entrybody"><p>I really did double-check this time and I won&#8217;t be making any wild claims here. Sorry to disappoint.</p>
+<p>We&#8217;re going to be running <a href="http://antoniocangiano.com/">Antonio&#8217;s</a> <a href="http://github.com/acangiano/ruby-benchmark-suite/tree/master">Ruby Benchmark Suite</a> daily to track our progress on performance in <a href="http://rubini.us">Rubinius</a>. The current <span class="caps">RBS</span> is a bit of a beast so I imported the files into the Rubinius <a href="http://github.com/evanphx/rubinius/commits/master">repository</a> and did some refactoring. You can <a href="http://groups.google.com/group/ruby-benchmark-suite/browse_frm/thread/34b7b7472fa5b80">read the details</a> and up-vote that if you&#8217;d like to see this merged back</p>
+<p>Now, for some baseline <span class="caps">RBS</span> results. If you want to follow along at home, here&#8217;s what I did. I generated these by running the <code>rake bench</code> task using the <code>VM</code> option (see the benchmark/utils/<span class="caps">README</span> in the Rubinius repository) for Rubinius on the <code>stackfull</code> and <code>master</code> branch and for <span class="caps">MRI</span> using the version installed on Debian lenny, 1.8.7p22. The system is a dual Intel&#174; Xeon&#8482; <span class="caps">CPU</span> 2.40GHz. Then I ran the <code>rake bench:to_csv</code> task, imported the <span class="caps">CSV</span> file into Google Docs, added the comparison columns and colors, and exported to <span class="caps">PDF</span>.</p>
+<p><a href="http://blog.brightredglow.com/assets/2009/2/20/mini-rbx-shootout.jpg">Here&#8217;s what I got.</a> The green is faster, the red is slower. The reported time is the minimum time recorded in five &#8220;iterations&#8221; of each benchmark per input. The maximum time allowed to run five iterations is 300 seconds, or an average of 60 seconds per iteration.</p>
+<p>A few notes about these numbers:</p>
+<ul>
+<p>We&#8217;re still fixing the breakage on the stackfull branch, so it is not surprising, for instance, that all the thread benchmarks errored out. The new native thread support is not 100% done.</p>
+</li>
+<p>There are a couple speed regressions on the stackfull branch, most minor. We&#8217;ll fix those.</p>
+</li>
+<p>Most of the benches do run on the stackfull branch.</p>
+</li>
+<p>On most of the benches that run slower in stackfull than <span class="caps">MRI</span>, we&#8217;re 2x or less slower than <span class="caps">MRI</span>.</p>
+</li>
+<p>We are <em>a lot</em> faster than <span class="caps">MRI</span> on quite a few benchmarks.</p>
+</li>
+<p>Rubinius on either branch does quite well relative to <span class="caps">MRI</span> on benches that <span class="caps">MRI</span> times-out on for certain inputs.</p>
+</li>
+</ul>
+<p>Perhaps the biggest point about the stackfull branch is that we haven&#8217;t done much optimization at all. Evan&#8217;s been coding in the basic new interpreter architecture, fixing the GC interaction, adding the native threading. We&#8217;re fixing breakage now so we can get this merged into the master branch. The <span class="caps">JIT</span> is not hooked up. The new GC work is not done. There is no inlining. In other words, there is lots of head room. And that is the key point. You can&#8217;t just &#8220;make it faster&#8221;. Architecture is crucial. Since RailsConf 2008, we&#8217;ve been working hard to lay the architectural foundations. With those (and the switch away from stackless), we can start focusing on the real dynamic language optimizations.</p>
+<p>While the benchmarks tell part of the story, there&#8217;s another part that is even more interesting <span class="caps">IMO</span>. And this is the part that <a href="http://blog.brightredglow.com/2009/2/12/all-shiny-and-new">got me so excited</a> I, um, well I <a href="http://blog.brightredglow.com/2009/2/12/this-is-not-cold-fusion">just got excited</a>&#8230;</p>
+<p>The two biggest pieces of Ruby software that we most often run are the Rubinius compiler and the <a href="http://rubyspec.org">RubySpecs</a>. The RubySpecs are much more &#8220;real-world&#8221; than these benchmarks. Here are the results of two complete CI runs on master and stackfull. Note that we are not quite running all the basic CI specs on stackfull, but we&#8217;ll figure in that difference in our calculations below.</p>
+<p>First, on master:</p>
+<pre style="overflow:auto">
+  $ bin/mspec ci --gc-stats
+  rubinius 0.10.0 (ruby 1.8.6) (f4c5576c4 12/31/2009) [i686-apple-darwin9.6.0]
+
+  Finished in 131.248169 seconds
+
+  1430 files, 6927 examples, 23006 expectations, 0 failures, 0 errors
+
+  Time spent in GC: 51.6s (39.3%)
+</pre>
+<p>And then on stackfull::</p>
+<pre style="overflow:auto">
+  $ bin/mspec ci --gc-stats
+  rubinius 0.11.0-dev (ruby 1.8.6) (e7b6a2d56 12/31/2009) [i686-apple-darwin9.6.0]
+
+  Finished in 66.357996 seconds
+
+  1349 files, 6298 examples, 21344 expectations, 0 failures, 0 errors
+
+  Time spent in GC: 12.7s (19.1%)
+</pre>
+<p>Let&#8217;s calculate how we do in expectations per second::</p>
+<pre>
+  $ irb
+  &gt;&gt; master = 23006 / 131.248169
+  =&gt; 175.286254850534
+  &gt;&gt; stackfull = 21344 / 66.357996
+  =&gt; 321.649255351232
+  &gt;&gt; stackfull / master
+  =&gt; 1.83499416782851
+</pre>
+<p>So, compiling and running the specs is about 1.8 times faster on stackfull. This is upside down from the normal results. Normally, we do better on the micro benchmarks and see that invert on &#8220;macro&#8221; benchmarks. On the <span class="caps">RBS</span> benches, stackfull is not 1.8 times faster than master. If I average the &#8220;x Master&#8221; column, I get </p>
+<p>There was something else in those spec run numbers I wanted to talk about&#8230; oh yeah, GC stats. We have a very simple GC timer stat right now. I&#8217;m going to be adding a few more stats. But what we see here is that the overall percentage of time spent in GC drops by half in stackfull. Even so, 19% is too much time to spend in GC. We expect to drop that by half again. Basically, leaning more on structures <code>alloca'd</code> on the C stack reduces a lot of pressure on the GC.</p>
+<p>Some would toss out that it&#8217;s not hard to be faster than <span class="caps">MRI</span>. Perhaps. But it is an accomplishment to write a reasonably good VM, garbage collector, compiler, and Ruby standard library without importing anyone else&#8217;s code. And, lest we forget, that is two VM&#8217;s in about 27 months of a public project.</p>
+<p>Some would also question the sanity of writing a VM and garbage collector when crazy smart people do things like that. Well, crazy smart people write papers that reasonably smart people can read and understand. From the benchmark result above, that is working pretty well.</p>
+<p>Here&#8217;s the point: Don&#8217;t ever let anyone tell you that something is a bad idea. Make your own decisions. We probably wouldn&#8217;t have Ruby itself if Matz fretted over whether Larry Wall or Adele Goldberg were smarter than he. My most recent favorites in this space: <a href="http://factorcode.org/">Factor</a>, <a href="http://clojure.org">Clojure</a>, and yes, <a href="http://code.macournoyer.com/tinyrb/">tinyrb</a>.</p>
+<p>We&#8217;re working frantically to get the stackfull branch breakages fixed and the branch merged back into master. Feel free to poke around and ask questions.<br />
+</p></div>
+    </div>
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></h2>
+            <div class="meta">
+        <p><span class="date">12 February 2009</span></p>
+      </div>
+
+       <div class="entrybody"><p>Um, whoops. It was really late last night. Have I mentioned you&rsquo;re wearing a great outfit today. Ok, already.</p>
+
+<p>There&rsquo;s this slight matter of <code>DEV=1 rake build</code> in Rubinius. Yes, I was debugging something. Started running some stuff under the stackfull branch, was intrigued by what I was seeing, decided to make some comparisons, could swear I ran <code>rake clean; rake</code> in the master branch, had a lot of green tea yesterday&hellip;</p>
+
+<p><em>All right already</em>. It&rsquo;s not 4x faster. Here&rsquo;s some new numbers:</p>
+
+<p>Master branch:</p>
+
+<pre style="overflow:auto">
+$ bin/mspec ci core/string
+rubinius 0.10.0 (ruby 1.8.6) (781eb14d3 12/31/2009) [i686-apple-darwin9.6.0]
+.....................................................................
+
+Finished in 10.576468 seconds
+
+69 files, 763 examples, 5632 expectations, 0 failures, 0 errors
+
+</pre>
+
+<p>Stackfull:</p>
+
+<pre style="overflow:auto">
+rubinius 0.10.0 (ruby 1.8.6) (325174a8e 12/31/2009) [i686-apple-darwin9.6.0]
+..................E.....E...E...F............E..E.EE..E........F..F..
+
+Finished in 6.124444 seconds
+
+69 files, 763 examples, 5545 expectations, 6 failures, 19 errors
+</pre>
+
+<p>That&rsquo;s about 58% as long, or 42% faster, or creeping up on 2x. </p>
+
+<p>If you rushed out and bought Evan a Valentine&rsquo;s bear, I do apologize. But send
+it anyway. All the rest in my <a href="/2009/2/12/all-shiny-and-new">previous post</a> about this being the beginning of a very good thing still holds. We&rsquo;ll be getting more results soon and fixing the spec breakage on the stackfull branch. Stay tuned!</p>
+</div>
+    </div>
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></h2>
+            <div class="meta">
+        <p><span class="date">12 February 2009</span></p>
+      </div>
+
+       <div class="entrybody"><p><strong><span class="caps">UPDATE</span> 2.0:</strong> You really did see the update below, right? You&#8217;re getting <a href="http://blog.headius.com/">Charlie</a> all worried with your enthusiasm for Rubinius.</p>
+<p><strong><span class="caps">UPDATE</span>:</strong> Ahem, you should probably also read: <a href="http://blog.brightredglow.com/2009/2/12/this-is-not-cold-fusion">This is <span class="caps">NOT</span> cold fusion</a>. No, it&#8217;s not April 1st. Sorry about that. Are you still excited? Read on!</p>
+<p>It&#8217;s a pattern I&#8217;m fairly familiar with now. <a href="http://blog.fallingsnow.net/">Evan</a> will be pondering an issue with <a href="http://rubini.us">Rubinius</a>. I&#8217;ll catch wind of it when he starts asking some questions of smart people, reading academic CS papers, other implementation&#8217;s code, and tossing out some &#8220;what if&#8230;&#8221; questions. Next thing you know, he&#8217;s frenetically churning out code. Suddenly, Rubinius is much better, and in this case, <em>faster</em>.</p>
+<p>Well, it&#8217;s happened again and the preliminary results are <em>outstanding_. A couple weeks ago, Evan began coding some changes to the way the Rubinius bytecode interperter works. He changed the stackless execution architecture that implemented an optimized kind of <a href="http://en.wikipedia.org/wiki/Spaghetti">spaghetti stack</a></em>stack to use the C stack more directly and naturally. This better enables the <span class="caps">CPU</span> optimizations of the past dozen years to work. It also significantly simplifies the code for our <span class="caps">FFI</span>, C-<span class="caps">API</span> for C extensions, <span class="caps">JIT</span>, and for potentially leveraging <span class="caps">LLVM</span> much more effectively. This change also brings native threads, and a much better GC for the mature generation is also in the works.</p>
+<p>Now, for some details. Again, these results are preliminary. There is still a lot of breakage on the <a href="http://github.com/evanphx/rubinius/commits/stackfull">stackfull</a> branch but MSpec is already running and <em>many</em> of the CI specs run. I&#8217;ll be getting a new CI set in place today and we&#8217;ll get the remaining breakage fixed quickly (don&#8217;t ya just love those specs).</p>
+<p>Here&#8217;s some numbers for compiling and running the String specs.</p>
+<p>First, on the Rubinius master branch:</p>
+<pre>
+    Finished in 25.829773 seconds
+
+    69 files, 763 examples, 5632 expectations, 0 failures, 0 errors
+</pre>
+<p>Now, on the Rubinius stackfull branch::</p>
+<pre>
+    Finished in 5.834874 seconds
+
+    69 files, 754 examples, 5563 expectations, 6 failures, 19 errors
+</pre>
+<p>Here&#8217;s the numbers for running after the specs have been compiled</p>
+<p>Again, on the master branch:</p>
+<pre>
+    Finished in 5.101799 seconds
+
+    69 files, 763 examples, 5632 expectations, 0 failures, 0 errors
+</pre>
+<p>And now the stackfull branch::</p>
+<pre>
+    Finished in 1.564942 seconds
+
+    69 files, 754 examples, 5563 expectations, 6 failures, 19 errors
+</pre>
+<p>I&#8217;ll let that sink in a bit</p>
+<p>The numbers for Hash with compilation are similar.</p>
+<p>Master:</p>
+<pre>
+    Finished in 5.379050 seconds
+
+    48 files, 195 examples, 425 expectations, 0 failures, 0 errors
+</pre>
+<p>Stackfull::</p>
+<pre>
+    Finished in 1.295544 seconds
+
+    48 files, 193 examples, 421 expectations, 0 failures, 0 errors
+</pre>
+<p>That&#8217;s right, <del>between 4.1 and 4.4</del> <strong>approaching 2</strong> <em>times</em> faster (see the <span class="caps">UPDATE</span> above). And we are just getting started. The significant GC changes are not in yet. We are not <em>yet</em> doing any significant optimizations in the compiler, no profile-directed optimizations at runtime, and our nascent <span class="caps">JIT</span> is not hooked up by default. As I said at the outset, these optimizations are made easier by this architecture change</p>
+<p>While I&#8217;m breaking the news, Evan deserves the credit for the architecture decisions and generally being courageous enough to try and learn (some would say fail) and try again. Some have doubted that the lofty goals Rubinius has set are realistic. Doubters have a seat.</p>
+<p>If you want to try this at home, clone the <a href="http://github.com/evanphx/rubinius/tree/master">Rubinius Github</a> repository and do the following:</p>
+<pre>
+    $ git branch --track stackfull origin/stackfull
+    $ rake build
+    $ bin/mspec ci core/string
+</pre>
+<p>Thanks to <a href="http://engineyard.com">Engine Yard</a> for trusting in Evan&#8217;s excellent judgment and system architecture talents and in all our hard work even if it doesn&#8217;t look immediately relevant. The path is clear. The goods are in the truck and they will be delivered.<br />
+</p></div>
+    </div>
+    
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></h2>
+            <div class="meta">
+        <p><span class="date">23 November 2008</span></p>
+      </div>
+
+       <div class="entrybody"><p>It&#8217;s sometimes hard to gauge troll, tirade, or spirited challenge online. <a href="http://kirindave.tumblr.com/post/60776407/the-opposite-of-momentum">The Opposite of Momentum</a> strikes me as a mix, though in what percentages, I haven&#8217;t decided. KirinDave is a little late to the bag&#45;on&#45;Ruby party, and if it&#8217;s Javascript he wants, <a href="http://steve-yegge.blogspot.com/">Yegge</a> was there well over a year ago. Browse some of the mind-expanding comments by the bottom feeders at <a href="http://www.reddit.com/r/programming/comments/7epu0/ruby_and_the_opposite_of_momentum/">Reddit</a> chewing on KirinDave&#8217;s post. It&#8217;s a reassuring, if disappointing, commentary on the consistency of human behavior: it is always easier to complain than to fix.</p>
+<p>But, anyway.</p>
+<p>True, the reference implementation of Ruby has some problems. But, Rubinius has a precise, generational garbage collector. It is definitely not &#8220;technically stagnant&#8221;, nor is it &#8220;in implementation limbo&#8221;. It was only in May of this year, before RailsConf, that we first got Rails running on Rubinius. We are close to getting it running again on the new VM. If we do that by year&#8217;s end, we will surely have some kind of record. For all the thousands of lines of Ruby code he&#8217;s written, KirinDave hasn&#8217;t contributed any code to Rubinius. That&#8217;s too bad.</p>
+<p>Ruby isn&#8217;t that extraordinary as a language. But it is a very good language. What is more, Ruby is a <em>humane</em> language, in the spirit of <a href="http://en.wikipedia.org/wiki/Jef_Raskin">Jef Raskin&#8217;s</a> <a href="http://www.amazon.com/Humane-Interface-Directions-Designing-Interactive/dp/0201379376/ref=pd_bbs_sr_1?ie=UTF8&amp;s=books&amp;qid=1227419893&amp;sr=8-1">The Humane Interface</a>. Furthermore, now like never before is the age of the dynamic programming language. The technical hurdles are being explored all around us. In fact, before the year is over, you should spend a few quality hours with one or more of the following languages.</p>
+<p><a href="http://www.factorcode.org/">Factor</a>. This fascinating <a href="http://en.wikipedia.org/wiki/Concatenative_language">concatenative</a> language will definitely get you thinking outside of the box. Rubinius is a stack-based VM. Writing some Factor code is a little like peeling back the syntax layer of Ruby and watching the muscles and tendons work. Check out the quotations and combinators and think about how you write functional code with Ruby. Don&#8217;t miss the Google <a href="http://www.youtube.com/watch?v=f_0QlhYlS8g">tech talk</a> by Factor&#8217;s creator, Slava Pestov.</p>
+<p><a href="http://clojure.org/">Clojure</a>. This is another fascinating language by another wicked smart guy, Rich Hickey (check out <a href="http://blip.tv/file/812787">the video</a>). In fact, this is currently my favorite language to study. It&#8217;s the Ruby of Lisps, in my opinion. And it contains a wealth of ideas that could be useful for implementing Rubinius, not to mention, thinking about writing concurrent programs.</p>
+<p><a href="http://www.iolanguage.com/">Io</a>. Like Javascript? You owe it to yourself to play with this language a bit. I&#8217;d be interested to see about an implementation of Io on <a href="http://webkit.org/blog/214/introducing-squirrelfish-extreme/">SquirrelFish Extreme</a></p>
+<p><a href="http://haskell.org/">Haskell</a>. Amaze your friends and improve your sex life. Jump stateful, side-effect tangled heaps of code with a single Monad. There is a cool new <a href="http://book.realworldhaskell.org/">online book</a> that will soon be released in print as well.</p>
+<p>Seriously, if you are a Ruby programmer, you could hardly do poorly by adopting any one of these languages. If Javascript makes your curly braces tingle, who am I to ridicule you. But if Ruby continues to maintain its captivating hold on your attention, don&#8217;t be disappointed. There is some awesome sauce in there, and we&#8217;re working on the recipe that really makes the flavor pop. Just a little request, instead of bitchin&#8217;, <a href="http://github.com/evanphx/rubinius/tree/master/doc/contributing.txt">pitch in</a>.<br />
+</p></div>
+    </div>
+    
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

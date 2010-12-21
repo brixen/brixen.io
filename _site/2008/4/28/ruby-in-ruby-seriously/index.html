@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Ruby in Ruby--Seriously</h2>
+        
+              <div class="meta">
+        <p><span class="date">28 April 2008</span></p>
+      </div>
+
+         <div class="entrybody"><p>All the attention that the various <a href="http://ruby-lang.org">Ruby</a> implementations are getting these days is a wonderful thing. Competition and lots of people trying out different ideas is a win for everyone. That said, there are still the silly human issues of ego and vested interest, always exacerbated by tossing some green into the mix.</p>
+<p>I would definitely assert that <a href="http://jruby.codehaus.org">JRuby</a> is one of the more impressive stabs at a Ruby implementation. And we have, in large measure, to thank <a href="http://headius.blogspot.com">Charles</a> for that. But, at the same time, Charles can write <a href="http://headius.blogspot.com/2008/04/promise-and-peril-for-alternative-ruby.html"><span class="caps">FUD</span></a> like the best of them. I haven&#8217;t made it through the whole article yet (it does ramble on a bit), but I should point out a couple things.</p>
+<p>Method dispatch is hard to get fast in Ruby, no matter what. Substitute a VM for an interpreter, C# for C for Java, whatever. And if you read carefully about what Charles is pinning his hopes on for the future of JRuby, it is precisely optimizations in the new <span class="caps">JVM</span> for better method dispatch. Rubinius will address these issues for sure. But instead of working on this with something like <strong>143,866</strong> lines of Java code, we have something like this: In the new C++ VM (which is not yet complete but substantially implemented), we have <strong>12,619</strong> lines of <code>C++</code>, and in our kernel directory, we have <strong>23,882</strong> lines of, what now, oh, right <em>Ruby</em> code. What you might miss when you think about the <strong>143,866</strong> lines of Java code is the several hundred thousand lines of <code>C++</code> that make up the <span class="caps">JVM</span>. Hmm.</p>
+<p>So, ultimately, Charles hopes to make JRuby fast using the same basic techniques that Rubinius does and will use. Except, it seems he&#8217;d rather use a 747 passenger jet to mow his lawn, rather than a comfy John Deere riding mower that your average small engine enthusiast can tinker with when something goes awry.</p>
+<p>Seriously, the &#8220;Ruby in Ruby&#8221; meme <em>must not die</em>. It is an inspiration to a lot of folks and, most importantly, it has great promise. Press Charles on the issue and he will admit he&#8217;d rather have more of JRuby written in Ruby. I sense something of &#8220;bitter-gate&#8221; in Charles&#8217; post. We don&#8217;t cling to Ruby because we can&#8217;t write C#, C, Java, etc. We don&#8217;t just like Ruby when it&#8217;s fun and fashionable and hyped. We are demonstrating that Ruby can be sanely implemented and push the state of the art for the language forward.</p>
+<p>The C VM (named shotgun) was not our last word. Nor is the next generation C++ VM. They are both pragmatic steps toward a higher goal. And, let&#8217;s be very clear. We have not recently implemented a bunch of core methods in C. I&#8217;ve done two major pieces of rework recently that introduced a number of primitives (chunks of C code that access the VM directly). One was LookupTable, which was written in C because it is used heavily in the VM. However, it is exposed to Ruby code as well because, oh yes, we write a ton of stuff in Ruby, like stuff related to method and constant lookup. LookupTable acts a lot like a Hash, but separating it from Hash actually made Hash more clear and enabled writing <em>even more</em> of Hash in Ruby.</p>
+<p>Another piece of work was optimizing some of String&#8217;s methods. You can see the performance enhancements in <a href="http://rubinius.lighthouseapp.com/projects/5089/tickets/359-task-improve-performance-of-string">this ticket</a>. I did introduce a couple new primitives in this rework, mostly to make a more sane set of composable primitives that were useful in many String methods. Primitives are a necessary fact of life in this composite implementation. Something has to bridge Ruby and <code>C/C++</code>. Also, by using a well-defined set of primitives, it makes it very easy to take our Ruby core libs and run them on something else. Ask Charles and he will tell you this. And if we write a little <code>C/C++</code> to get the performance of a large number of Ruby methods up to par, that&#8217;s a huge win.</p>
+<p>So again, the &#8220;Ruby in Ruby&#8221; meme is <em>really</em> important. Don&#8217;t let it die. And don&#8217;t let Charles tell you otherwise. While he can make snarky comments about our <code>C/C++</code> VM, he should really look at his own kettle of <strong>143,866</strong> lines of Java code plus hundred thousands more lines of <code>C++</code> <span class="caps">JVM</span>. The goal is a first-rate, powerful, extensible, approachable implementation of Ruby. Everyone in the Ruby ecosystem is contributing to that in various ways. Rubinius just seems to be putting the best pieces together, if I do say so myself.</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

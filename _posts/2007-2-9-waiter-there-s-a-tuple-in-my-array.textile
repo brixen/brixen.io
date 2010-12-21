@@ -1,0 +1,21 @@
+--- 
+title: Waiter, there's a Tuple in my Array
+layout: post
+---
+Implementing Ruby in Ruby raises some challenges. In the beginning, Ruby was implemented in C. Well, at least the interpreter and core libraries. In C, you have the standard library that provides things like the math functions, functions for manipulating arrays of chars, which can be considered strings of text, etc. So, what happens when you want to build Ruby with Ruby? Well, you use Ruby, of course. And since Ruby is a class-based language, you probably will use a class. Ladies and Gentlemen, meet Tuple.
+
+In "Rubinius":http://rubini.us, the class Tuple is present for all to see. And it's put to good use, underlying the implementation of Array for instance. You can use it, too:
+
+<pre><code>
+sirb:001> t = Tuple.new(3) => #<Tuple: nil, nil, nil>
+sirb:002> t.put(1, "foo")  => #<Tuple: nil, "foo", nil>
+sirb:003> t.shift          => #<Tuple: nil, "foo">
+</code></pre>
+
+Here's another example. Have you noticed the @chr@ method available on instances of @Integer@. Well, while implementing some @String@ methods, I decided it would be nice to say, @some_str[i].isspace@. If you've used C, you know that there is this thing @ctype@ that has macros or functions like @isspace@. Stumbling around a bit, I finally decided to add a module @CType@ and mix that in to @Integer@. Works pretty well.
+
+So, there's Tuple in all its glory sitting right in the middle of your Array. Is that a problem? I don't think so. This is _Ruby_, folks. Duck typing, open classes, mixins, methods appearing and disappearing any old time of the day are _the norm_. To clarify, the _behavior_ of the core classes, like Array, which have a different _implementation_ in Rubinius from that of the C one used in MRI, will not change. In other words, if you use Array methods, they'll behave like Array methods.
+
+I say, if your code depends on a class only having certain elements when you invoke @Foo.ancestors@, for Pete's sake, refactor. And if you happen to have a ByteArray or Tuple in your application, refactor that, too. We're the VM, we get certain privileges. Now, suppose you wrote your application to use all the deliciousness of Rubinius, thereby demonstrating you are a wise and thoughtful old soul. (Yes, that's right, CompiledMethod, Method, MethodContext, BlockContext, BlockEnvironment, and more are _classes_. Yum. And that is just the tip of the iceberg, I assure you.) But, you heavily built in dependencies on, say, Tuple, and now you're complaining it doesn't run on MRI... Well, here's your warning. In other words, don't be that silly.
+
+However, if this raises concerns for you, here's a suggestion: We're working feverishly on "RSpec":http://rspec.rubyforge.org specs for all of the core and standard Ruby libraries. We also have a directory for incompatibilities in the Rubinius implementation, which is predictably found in @spec/core/incompatible@. Feel free to join us in writing these specs. That way, you can run them against your favorite Ruby implementation and know what works. Perhaps, you can even integrate this knowledge into your own project's specs. You _are_ writing specs for your projects, aren't you? 

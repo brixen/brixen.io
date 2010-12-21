@@ -1,0 +1,26 @@
+--- 
+title: "RailsConf 2007: The case of the missing BDD"
+layout: post
+---
+Looks like the "RSpec":http://rspec.rubyforge.org folks dropped 1.0. Awesome! Congratulations!
+
+Hmm, where's the applause? This is the good shit. People should be knowing about this. So, as I sit here at "RailsConf 2007":http://conferences.oreillynet.com/rails/ looking over the schedule, I'm not seeing any talks scheduled for "BDD":http://behavior-driven.org or "RSpec":http://rspec.rubyforge.org. That's regrettable. So, my goal will be to embarrass, cajole, entice, encourage (pick your emotional poison) you into trying RSpec. Not sure if it's right for you? Try it. Not sure if it will work well? Try it. Don't get it yet? Try it, already!
+
+And while you're trying it, think about this: How can descriptions of the behavior of a system form the common language that spans the spectrum of development from clients to developers. Do you think your clients care about how many @def test_should_be_super_duper@ methods are in your tests? Why would they?
+
+Would your customer care about something like this?
+
+<pre>
+The Home page
+- has an entry field for username labelled 'User name'
+- has an entry field for password labelled 'Password'
+- has a submit button labeled 'Log in'
+- has a link to retrieve a lost password FAILED
+
+1) The Home page has a link to retrieve a lost password FAILED
+   <insert client comprehensible failure message here>
+</pre>
+
+Do you think this could form the basis of a dialogue with your clients? Would it be easier to trouble shoot this over a client saying, "The lost password link doesn't work." Do you see how this could make everyone's life easier?
+
+Is this all there is to BDD and RSpec? No, not by a long shot. So... yeah, you guessed it. Try it.

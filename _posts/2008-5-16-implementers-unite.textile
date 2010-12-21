@@ -1,0 +1,15 @@
+--- 
+title: Implementers Unite!
+layout: post
+---
+There's a lot of things that "Rubinius":http://rubini.us, "MatzRuby":http://ruby-lang.org/en/about (including "YARV":http://www.atdot.net/yarv/), "JRuby":http://jruby.codehaus.org, "IronRuby":http://www.ironruby.net/, "MacRuby":http://ruby.macosforge.org/trac/wiki/MacRuby, "Ruby.NET":http://rubyurl.com/XN99, "MagLev":http://ruby.gemstone.com/ don't agree on. But that's ok, because above all, they seem to agree that "Ruby":http://ruby-lang.org is one awesome language. And lately, that apparent agreement has gotten a boost of sorts.
+
+Earlier this week, Rubinius (an "Engine Yard":http://engineyard.com project) "announced":http://groups.google.com/group/ruby-talk-google/browse_thread/thread/e20f76ca2b8afe78 the "RubySpec":http://rubyspec.org project at "rubyspec.org":http://rubyspec.org. The effort to write an executable specification using "RSpec-style":http://rspec.info specs started with the Rubinius project in late December 2006. Since then, many people all over the world have contributed to the effort, including core folks from JRuby. "Engine Yard":http://engineyard.com has been financially supporting significant development of the RubySpecs since hiring "Evan":http://blog.fallingsnow.net in June 2007 and other full-time developers (myself included) in Jan 2008. All this effort has been to ensure that the Ruby programming language continues to evolve and receive the recognition it deserves.
+
+Another recent development has been a regular meeting of folks working on various Ruby implementations. These "Ruby design meetings":http://ruby-design.pbwiki.com/ are bringing together folks to discuss tough issues with Matz and everyone else.
+
+Well, after last night's meeting, Tanaka Akira (sorry, I don't have a link to his website; if you do, please let me know) checked in some "changes":http://svn.ruby-lang.org/cgi-bin/viewvc.cgi?view=rev&revision=16430 to the ruby-core Makefile to fetch and run the RubySpecs. This is a very proud moment for me.
+
+If you love Ruby, it doesn't matter what color shirt you wear, what language you play with, or what country you live in. You can play a valuable role in helping make Ruby a wonderful language for everyone. Please help us with the "RubySpecs":http://rubyspec.org.
+
+*Update:* I changed the link to the changeset for the Makefile. Thanks Michael.

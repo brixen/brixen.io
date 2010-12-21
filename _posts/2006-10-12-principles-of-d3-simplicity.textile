@@ -1,0 +1,35 @@
+--- 
+title: "Principles of d3: simplicity"
+layout: post
+---
+If you've paid any attention to our discussion of "d3":http://www.dialogue-driven.org, you've noticed that we're just beginning. We're trying to articulate the principles that we believe define an effective approach to "client" interaction. I say "client" because it's not necessarily true that the people are clients in the traditional sense. Organizations often address that with a term like "internal client" to refer to another department, for instance. But that's a different topic.
+
+In the #d3 channel on irc.freenode.net the other day, "Brasten":http://ibrasten.com posted this:
+
+<pre style="overflow: auto;">
+17:23   brasten >> anecdote--
+17:24   brasten >> spend 30 minutes on the phone with a client discussing a project...  going over all the features he 
+                   wanted.
+17:25   brasten >> weird stuff.... needed to send small emails with outlook-compatible attachments... import CVS 
+                   documents, yadda yadda... none of it made any sense...
+17:25   brasten >> finally I asked, "what exactly is the PROBLEM you're having that this project needs to address??"
+17:26   brasten >> the guy literally sighed.. paused... and said, "I just want to be able to run my business from my 
+                   BlackBerry."     ahhh.... now that's a very different project....we can solve that.
+17:26   brasten >> and we were the first developers to actually ask him that.
+17:27   tacodog >> hah
+17:27   brasten >> -- end anecdote.
+</pre>
+
+You may have had this same experience numerous times. It happens frequently enough to make us ask, "what's the dynamic here?"
+
+I think this exchange illustrates one of the core principles we're after: we prefer problem statements because they will always be simpler than a solution or implementation. The problem statement is at a different level of abstraction. It is easier to understand, and thus easier to talk about. The problem statement is as close as we can get to the core. Every possible solution or implementation will be layered around this.
+
+Simplicity is an interesting concept. My dashboard dictionary has this as one definition:
+
+bq. the quality or condition of being easy to understand or do.
+
+We often refer to implementations in terms of simplicity, or simple versus complicated. It's hard to imagine a compelling argument for something being more complicated than it needs to be. In general, we tend to equate "simpler" with "better".
+
+As a principle of d3, we want our client interaction to be simpler. So we want to talk about problems with our clients. We want these to be the concrete, explicit elements we dialogue about.
+
+I'll admit, I feel silly sometimes trying to describe these ideas. They seem really basic. But if this whole dialogue thing were that simple (pun intended), we would rarely, rather than frequently, have exchanges like that above. So, drop by #d3 and help us figure out how to make it as simple as it should be, but no simpler.

@@ -1,0 +1,35 @@
+--- 
+title: Irb on Rubinius
+layout: post
+---
+There are cat people and dog people, but when I say "Man's best friend", I don't mean either. I'm talking about that program that feels like a home away from home: @irb@. So, I've been chomping at the bit to get something resembling @irb@ running with "Rubinius":http://rubini.us.
+
+Today, a few of us pdx.rb folks got together for some Rubinius hacking. Of course, @irb@ was one of the things I proposed that we work on. We had a go at it, but in the end we didn't get too far. @irb@ is no trivial application. But, I think a good part of it was my fault. I've been working on these specs for so long, where at the moment we're forced to send everything to @rubinius@ in a subprocess, that I failed to grasp that we would have a persistent machine. Anyway, let's cut this short: Folks, we have a rudimentary @sirb@!
+
+<pre><code>
+sirb(eval):0> class Hello
+sirb(eval):1> def greet
+sirb(eval):2> puts "Hello, irb!"
+sirb(eval):3> end
+sirb(eval):4> end
+=> nil
+sirb(eval):5> Hello.new.greet
+=> Hello, irb!
+["Hello, irb!"]
+sirb(eval):6> @s = "Hello, earthling"
+=> "Hello, earthling"
+sirb(eval):7> p @s
+=> "Hello, earthling"
+["Hello, earthling"]
+sirb(eval):8> Hello
+=> Hello
+sirb(eval):9> Hello.class
+=> Class
+sirb(eval):10> Hello.new
+=> #<Hello:0x6696cc>
+sirb(eval):11> 
+</code></pre>
+
+In the words of Napolean Dynamite: *Sweet.* Of course, it _is_ pretty rough right now. You'll notice the use of an instance variable, @a. That's because I couldn't figure out how to get local variables to work. Basically, everything is evaluating with the default receiver being an instance of Object.
+
+Well, warts and all, I think it's a beautiful thing.

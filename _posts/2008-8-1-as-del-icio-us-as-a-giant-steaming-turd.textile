@@ -1,0 +1,11 @@
+--- 
+title: As del.icio.us as a giant, steaming turd
+layout: post
+---
+I often dislike the interfaces that I'm forced to use. Banking sites are about the highest on my list of horrid. The pain these things inflict.
+
+However, today I got a new jolt. Clicked on my handy "del.icio.us":http://del.icio.us shortcut in Firefox and was greeted by a bizarre interface. Not to worry, I powered on, since of course, the reason I use "del.icio.us":http://del.icio.us in the first place is because it was super quick and easy to add a bookmark. Quick is no longer in the vocabulary for "del.icio.us":http://del.icio.us. Instead of simply typing a few characters, hitting &lt;tab&gt; and being done with it, I now have to arrow in this stupid drop-down? Amazed, I started taking a closer look at the unwelcome intruder in my nice browse + bookmark flow.
+
+The lame new auto-complete behavior is a breaker for me. However, it's hard to say if that's the worst of the UI redesign. The 3-option choice for the main list display goes from bad to worse to horrid. Is the date, in washed out grey, _really_ the most important piece of info that I need to see in my normal scan from left-to-right? I can barely scan any of the options quickly for the information I need to help me select a link. And where did my nice big entry field go for typing in a tag? Oh, there it is, camouflaged in that bar at the top of the list. Don't really want me to use that, huh?
+
+I could go on, but what's the use. The amazing thing to me is that someone, somewhere thought this was a good idea. Have these idiots never heard of Alan Cooper, IxD, the rich body of books describing why you don't design interfaces like this? Harsh? Damn, right. Horrid.

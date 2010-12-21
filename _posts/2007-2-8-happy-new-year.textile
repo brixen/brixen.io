@@ -1,0 +1,17 @@
+--- 
+title: Happy New Year
+layout: post
+---
+Sometime between Jan 1 and Chinese New Year it finally dawns on me that we've begun a, well, new year. I start writing the correct dates on checks, the bank honors them, the rent gets paid. Things go much more smoothly.
+
+So, while trying to keep up with the homework from my "brilliant professor":http://www.mth.pdx.edu/people/faculty_page.asp?id=82 of "game theory":http://en.wikipedia.org/wiki/Game_theory, I thought I'd write a few predictions for 2007. Sure, some of these you could call resolutions, but since it's up to me to do them, lumping them into the predictions category might up my percentage correct score.
+
+This blog will finally get a real theme, shorter posts, an articles section, recent and popular links. Also, I'm going to spruce up the RSS served to be more useful in a reader. Finally, to break the asymmetry of time, I'll be putting titles of upcoming posts in before the post appears. When it does, the title will become a link.
+
+2007 will be the year of the alternate Ruby implementations. Several will be competing with MRI (Matz's Ruby Interpreter) for your love and admiration. Among these are "YARV":http://atdot.net/yarv/, "JRuby":http://jruby.sourceforge.net/ and "Rubinius":http://rubini.us . One of those will have a tremendous impact on enterprise coding and another will have a tremendous impact on CS in general. We'll see how that pans out. I'll be posting more about Rubinius soon. In the meantime, don't miss the wonderful, appreciated, and tireless work of Pat on the "On-Ruby Blog":http://on-ruby.blogspot.com to evangelize Rubinius and other cool projects.
+
+I'll be learning at least one new application this year: "Omnigraffle":http://www.omnigroup.com/applications/omnigraffle/. This comes highly recommended by our "Creative Director":http://www.planetargon.com/about.html, "Allison":http://www.allisbe.com/. Truth is, design and graphics is way more interesting to me than plain ol' code, but writing code usually wins out in a duel, so I'm hoping to even things out a bit.
+
+Finally, I hope to collaborate on writing a book; I'll let you guess the topic. And if things go well, I'll be co-announcing a currently top secret project. Ahh, I see the eyebrows rising. Also on my list of things to write about are some more thoughts on "d3":http://dialogue-driven.org and our experiences with it at "PLANET ARGON":http://www.planetargon.com.
+
+In the near future, check out _What's the Big Idea_ and _Another Liberating Constraint: Contracts_.

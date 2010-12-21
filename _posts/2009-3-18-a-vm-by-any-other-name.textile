@@ -1,0 +1,78 @@
+--- 
+title: A VM by any other name
+layout: post
+---
+With the recent switch away from the spaghetti stack execution model, "Rubinius":http://rubini.us has also acquired native threads. A big part of understanding something is syncing up our mental model with reality. If you've ever tried to explain what an OS is to your mom, you know that can be a challenge. So let's peel back a few layers and see where these native thread critters fit into Rubinius.
+
+Rubinius is an implementation of the Ruby programming language. One of the bigger components is the virtual machine. But what is that? Unfortunately, _virtual machine_ is a label for a category of software (and maybe hardware) that, well, does a bunch of different things. Virtual machines are often thought of as virtual computers or virtual CPUs. The problem with trying to equate two things is that you look at the one you know about and try to understand the one you do not by looking for analogous structures. Therein lie the seeds of misunderstanding. Since Rubinius has this @vm/@ directory, we've got to try to nail some of this gelatin to the wall.
+
+Thinking about threads running inside a physical computer, you might visualize the relationship something like the following Ruby-ish pseudo code. As the program starts up, it creates a virtual machine.
+
+<pre><typo:code lang="ruby">
+def main
+  vm = VM.new
+  # do some setup
+  vm.run
+end
+</typo:code></pre>
+
+Sometime later in the program, you add a new thread, which might be implemented something like this.
+
+<pre><typo:code lang="ruby">
+def Thread.new
+  thr = VM.threads.create
+  # ...
+  return thr
+end
+</typo:code></pre>
+
+You might imagine the @VM@ instance having a @Scheduler@ component that would supervise the threads and arrange for running them on one or more processors or cores. In this model, the VM is really like a virtual computer in which all execution is occurring. In other words, the VM is composed of multiple threads of execution.
+
+The point of this mental exercise is to expose the tacit assumptions we might have about our mapping between a real computer and the virtual machine. Now let's delve into Rubinius.
+
+The @main@ function is located in @vm/drivers/cli.cpp@. The first thing it does is create an instance of @Environment@, which is composed of an instance of @VMManager@, @SharedState@, and @VM@. In the @Environment@ constructor, the command line is parsed for configuration options. Then the manager creates a new shared state. The shared state creates a vm. And finally the vm is initialized. During initialization, the @ObjectMemory@ is created. The object memory in turn is composed of garbage collected heaps for the young and mature generations.
+
+Back in @main@, a platform-specific configuration file is loaded, the "vm" is booted, the command line is loaded into @ARGV@, the kernel is loaded (i.e. the compiled versions of the files located in the @kernel/@ directory), the preemption and signal threads are started, and finally the compiled version of @kernel/loader.rb@ is run, which will process the command line arguments, run scripts, start IRB, etc. When your script, IRB, @-e@ command, etc. finish running, @loader.rb@ finishes, @main@ finishes, resources are cleaned up, and finally the process exits. 
+
+Whew. The point of this whirlwind tour is to illustrate that _VM_ is a rather fuzzy concept, even though we have a class named @VM@. Now let's take a look at how threads fit in.
+
+Rubinius has a 1:1 native thread model. In other words, each time you do @Thread.new@ in your Ruby code, the instance returned maps to a single native thread. In fact, let's look at the code for @Thread.new@ in @kernel/common/thread.rb@.
+
+<pre><typo:code lang="ruby">
+class Thread
+  def self.new(*args, &block)
+    thr = allocate
+    thr.initialize *args, &block
+    thr.fork
+
+    return thr
+  end
+end
+</typo:code></pre>
+
+The calls to @allocate@ and @fork@ are implemented as primitives in C++ code. They are short, so we'll take a look at them, too.
+
+<pre><typo:code lang="C++">
+Thread* Thread::allocate(STATE) {
+  VM* vm = state->shared.new_vm();
+  Thread* thread = Thread::create(state, vm);
+
+  return thread;
+}
+
+Object* Thread::fork(STATE) {
+  state->interrupts.enable_preempt = true;
+
+  native_thread_ = new NativeThread(vm);
+
+  // Let it run.
+  native_thread_->run();
+  return Qnil;
+}
+</typo:code></pre>
+
+The call to @allocate@ creates a new instance of @VM@ as thread local data. The call to @fork@ creates the new native thread. The call to @native_thread_->run()@ will eventually call the @__run__@ method in @kernel/common/thread.rb@. Something to note about this snippet of C++ code is the nice consistency between the primitives and the Ruby code that calls them.
+
+We've encountered the @VM@ class in two contexts: 1) when starting up the Rubinius process, and 2) when creating a new @Thread@. We can consider the @VM@ instance to be an abstraction of the state of a single thread of execution, and in fact, @state@ is the name most often given to an instance of @VM@ in the Rubinius source. 
+
+As we've seen, Rubinius as a running process is composed of various abstractions, including the @Environment@, @SharedState@, @NativeThread@, and @VM@ to name a few. While it is accurate to call Rubinius a virtual machine, it is apparent that concept can cover a fair bit of complexity. But breaking it into parts makes it fairly easy to understand. Let us know what things you'd like to understand better. We have the @doc/@ directory in the source that we're (slowly) building out. If you're interested in contributing, docs would be a great way to help everyone.

@@ -1,0 +1,70 @@
+--- 
+title: Evil can be dangerous
+layout: post
+---
+The first post I read by "Evan":http://blog.fallingsnow.net/ about "Rubinius":http://rubini.us had a quote about "evil built in":http://blog.fallingsnow.net/rubinius/. Of course, that caught my eye. What was Evan's point? Legend has it (I wasn't there) that during Q&A someone asked about fundamental aspects of the Rubinius system being available for modification from normal user code. The issue was raised that perhaps something should restrict that unlimited power. Evan's response was that Rubinius sorta has evil built in. Usually, that's a good thing.
+
+In fact, it's a very sharp double-edged blade. We all cherish the dynamic nature of Ruby when it allows us to do useful things. For example, the following works great in MRI:
+
+<pre><code>
+class Fixnum
+  alias / quo
+end
+</code></pre>
+
+That little snippet and you've redefined fixed-point math to return a floating point number. That gem is one of the core pieces of the Mathn library in the Ruby standard library collection. Together with the Rational library, you can do some cool stuff:
+
+<pre><code>
+$ irb
+>> require 'rational'
+=> false
+>> require 'mathn'
+=> true
+>> 1 / 2
+=> 1/2
+>> 1 / 2 + 3 / 8
+=> 7/8
+</code></pre>
+
+Combine that with Matrix and Rational and you have at your disposal some pretty powerful tools for doing more realistic mathematics. Take a look at "what some folks do":http://google.com/codesearch?q=lang%3Aruby+require+mathn&hl=en&btnG=Search+Code with it.
+
+Fortunately, and unfortunately, Rubinius is very different than every other implementation of Ruby that I'm aware of. Rubinius follows the Smalltalk model and uses the Ruby language itself to build the implementation. That means that Array, for instance, calculates values for its internal operations using none other than the same Fixnum values that you use in your Ruby code. So, what happens when we redefine Fixnum#/ to return a Float instead?
+
+Yes, you guessed right. Things work differently. In fact, not at all.
+
+Since we're not about to rescind the promise of a better Ruby, we have to figure out some way to deal with this. There are several approaches possible. One would be to code all of the core library with a different set of numeric classes, say BasicFixnum and BasicBignum, that are superclasses of Fixnum and Bignum. That would be really cumbersome. Another approach would be to use different methods in the core library. Again, cumbersome. So, this sounds like there are some basic goals we have in mind. In fact, there are. We want to keep the core library code as simple as possible and provide the full power of Ruby at every level, to the greatest extent possible.
+
+This isn't necessarily the ultimate approach we'll use, but I checked in some code today that leverages a very slick feature that Evan built into the compiler. I created the following compiler plugin:
+
+<pre><code>
+class SafeMathOperators < Plugin
+  plugin :safemath
+  
+  MathOps = {
+    :/ => :divide
+  }
+  
+  def handle(g, call)
+    name = MathOps[call.method]
+    if name and call.argcount == 1
+      call.emit_args(g)
+      call.receiver_bytecode(g)
+      g.send name, 1, false
+      return true
+    end
+    return false
+  end
+end
+</code></pre>
+
+Essentially, what this does is map any calls to the #/ method to the #divide method. I've changed the core library classes Fixnum, Bignum, Float, and Numeric to handle this. So, the code in core looks the same, but is protected from the redefinition that the Mathn library performs. The compiler plugin is activated with the ==-frbx-safe-math== switch only when compiling the Rubinius core libraries.
+
+> *UPDATE:* Note that you do not have to do anything differently. The compiler flag is passed in automatically when you type @rake@ to build the Rubinius libraries. If you are writing user code, you also do not need to do anything differently. You just write your code as you normally would. If you require the Mathn library, <code>1 / 2 => 0.5</code>. If you also require the Rational library <code>1 / 2 => 1/2</code>. Invisible, maybe even a little evil.
+
+Again, this is not necessarily the way we'll always do it. The lessons are:
+
+# Ruby is a great, powerful language
+# Rubinius makes Ruby even more powerful
+# We can work around snags pretty dang easily, even if temporarily
+
+Of course, we're always learning. Any papers, systems, code, etc that you can point me to?

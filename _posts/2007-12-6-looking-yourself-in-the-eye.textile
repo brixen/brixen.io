@@ -1,0 +1,34 @@
+--- 
+title: Looking yourself in the eye
+layout: post
+---
+I'm hanging out this week at the "Engine Yard":http://engineyard.com office in South Park hoping to catch a glimpse of Cartman and pals (I wish!). You've heard it all before but I would be remiss to not toss in my congratulations to my new (very soon) colleagues. "Evan":http://blog.fallingsnow.net, "Wilson":http://metaclass.org/, "Ryan":http://blog.zenspider.com/, and "Eric":http://blog.segment7.net/ are a stellar group of folks and a great bunch of personalities to boot. I am honored and extremely happy to be working closely with them, as well as the fantastic group of contributors world-wide.
+
+Everyone at Engine Yard deserves big accolades for the vision, daring, and execution in making all this possible. Here's my opinion (and gauntlet): This is why it is always the little companies that do something great. I see Ruby in general and "Rubinius":http://rubini.us in particular as a powerful antidote to insane lumbering companies that have foisted agony, fear, and self-loathing on legions of otherwise decent folks with their sharp, pointy brackets and stupidly limited language features. Bring your hungry masses to our shores. We have the very ambitious intent to build the best programming language and system to date. Hubris? We'll see.
+
+Oh yeah, but about this looking at your own eyeball without a mirror thing. Some of you may recall that I've been working a bit on writing specs for Ruby as part of this project. Since we could not run "RSpec":http://rspec.rubyforge.org initially because of its extensive use of very advanced Ruby features, we wrote a minimal replacement for it that I affectionately dubbed mini_rspec. At the time I wrote this, we were converting a ton of specs from the early host/target architecture I started with. We may have been able to run miniunit at that time, but my intention was to write specs for mini_rspec as I went along evolving the features of the framework itself. This is a very difficult bootstrap process akin to looking at your own eyeball... you get the picture. So, I must say I'm solely responsible for this little gem:
+
+<pre><code>
+require File.dirname(__FILE__) + '/../spec_helper'
+
+# hmm, this is embarrassing
+
+describe "mini rspec" do
+end
+</code></pre>
+
+Of course, I took a nice bit of friendly needling (or should I say snickering) from Ryan for that one. But let's not dwell on the sordid details of the past. Currently, in my branch I have a rewritten (and renamed) mSpec. This is a little better:
+
+<pre style="overflow: auto;"><code>
+euler:rubinius brian$ spec mspec/spec
+.................................................................................................................................................................
+
+Finished in 0.062927 seconds
+
+161 examples, 0 failures
+
+</code></pre>
+
+That's what I'm talking about. This time, I wisely just used existing RSpec to write the specs because my goal is not necessarily to be able to run the mSpec specs with mSpec, but to be able to evolve the system while still keeping layers of it so simple that nascent Ruby implementations will actually be able to use it.
+
+A final word about the other approach. We wrote thousands of specs for Ruby using mini_rspec. We ran these specs against MRI 1.8.6 and they behaved as expected. So, those specs were essentially an indirect spec for mini_rspec. The challenge of that approach, of course, is that you do not have a simple and clear way to observe the impact of changes you make to the mini_rspec system. Anyway, I should finish up this massive bunch of changes very soon and push it out.

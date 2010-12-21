@@ -1,0 +1,8 @@
+---
+server: false
+
+markdown: kramdown
+
+pygments: true
+permalink: /:categories/:year/:i_month/:i_day/:title
+---

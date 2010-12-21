@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">The tangled web: data migrations</h2>
+        
+              <div class="meta">
+        <p><span class="date">06 September 2006</span></p>
+      </div>
+
+         <div class="entrybody"><p>Migrations are one of my favorite things about Rails. I remember being amazed at the simplicity and usefulness when I first saw them. I also remember a previous boss asserting that we would just use <span class="caps">SQL</span> in the migrations because, to paraphrase, that way we would know what was happening. There&#8217;s that saying about tossing rubies before chickens, or something. But as I was saying, migrations.</p>
+<p>One thing that makes migrations particularly useful is when they are the only means used to change the database. That way, you know the state you are in and unless you have a rare, non-reversible migration, you can migrate up and down at will. That all works great for the database structure. But what about data? We obviously won&#8217;t be funneling all the data changes through migrations. This isn&#8217;t much of an issue if your application starts as a blank slate and acquires data through use.</p>
+<p>Recently we had an application that needed a bunch of preloaded data. Unfortunately, it wasn&#8217;t a one-shot loading of data once the structure was mostly solidified. I needed to try out stuff and wanted the super useful migrations to be my tool. Previously, this had been done with some ad hoc `rake` tasks, which turned out to be, frankly, a mess.</p>
+<p>The single biggest challenge working with the data was the fact that the state of the data would be changing independent of the migrations. There was no way to ensure the state between one migration and the next.</p>
+<p>I decided that the one thing I could assert before and after a migration was that certain records with certain id&#8217;s did not exist (pre-) and then did exist (post-migration) (reverse that for migrating down). It turned out this would be good enough for what I needed.</p>
+<p>My first stab at implementing this was a couple helper functions that I used in migrations to update the datafiles (in yaml format) with keys for the id&#8217;s. This was a big problem because the files would be changing and were tracked in subversion, so they couldn&#8217;t really be shared by more than one developer. Playing around a bit, I came across this idea:</p>
+<pre>&lt;typo:code lang="ruby"&gt;
+class CreateGeographicTypesFacts &lt; ActiveRecord::Migration
+  def self.up
+    capture(:features, :details) do
+			# do whatever needed to create records
+    end
+  end
+
+  def self.down
+    release :features, :details
+  end
+end
+&lt;/typo:code&gt;</pre>
+<p>Basically, as the data migration runs, I want to keep track of what records are created (and which of those are possibly destroyed). Obviously, this assumes that I&#8217;ll be adding data on the up migration and removing it on the down. To implement this, I opened up the `ActiveRecord::Migration` class and added a couple methods::</p>
+<pre>&lt;typo:code lang="ruby"&gt;
+def self.capture(*args, &amp;block)
+  args.each do |name|
+    klass = name.to_s.classify.constantize
+    klass.class_eval &lt;&lt;-end_eval
+      @@capture_ids = []
+      def self.capture_ids
+        @@capture_ids.uniq
+      end
+
+      after_create do |obj|
+        @@capture_ids &lt;&lt; obj.id
+      end
+
+      after_destroy do |obj|
+        @@capture_ids.remove obj.id
+      end
+    end_eval
+  end
+
+  yield
+
+  File.open(data_migration_file, 'w') do |f|
+    f.write args.inject({}) { |hash, name|  
+      klass = name.to_s.classify.constantize
+      hash[name] = klass.capture_ids
+      hash
+    }.to_yaml
+  end
+end
+&lt;/typo:code&gt;</pre>
+<p>This `capture` method adds callbacks for `after\</p>
+<p>Migrating down is basically a matter of removing the records that were created when migrating up.<br />
+<pre><typo:code lang="ruby"><br />
+def self.release(*args)<br />
+  data_file = data_migration_file(:down)<br />
+  data = File.open(data_file, &#8216;r+&#8217;) { |f| <span class="caps">YAML</span>.load f }<br />
+  if block_given?<br />
+    yield *args.inject([]) { |list, name| list &lt;&lt; data[name] <br />
+    }.compact if block_given?<br />
+  else<br />
+    args.each do |name|<br />
+      klass = name.to_s.classify.constantize<br />
+      klass.delete data[name] unless data[name].blank?<br />
+    end<br />
+  end<br />
+  File.unlink data_file<br />
+end</p>
+<p></typo:code></pre></p>
+<p>If you provide a block to the `release` method, you take care of doing whatever you want to the records. If you just want to delete them, don&#8217;t pass a block and `release` will delete them. I used `delete` rather than `destroy` so that everything you specify on capture is deleted without running into issues with `:dependent =&gt; :destroy`.</p>
+<p>This has been useful for add and removing data while trying out different table structures. Obviously, it&#8217;s a rather targeted solution. I&#8217;ll be packaging it as a plugin and posting it to [<span class="caps">PLANET</span> ARGON&#8217;s](http://www.planetargon.org) community site soon.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

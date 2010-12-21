@@ -1,0 +1,42 @@
+--- 
+title: When describe'ing it ain't enough
+layout: post
+---
+One of the things I like about the "RSpec":http://rspec.info syntax is that it packs a lot of information into a few concise, consistent constructs. It's relatively easy to read through a spec file and pick out what I am looking for. The use of blocks both enable flexible execution strategies and provide simple containment boundaries.
+
+Perhaps the most valuable aspect, though, is the ability to extend the RSpec syntax constructs easily and consistently. No need to grow a third arm here. In "Rubinius":http://rubini.us, we recently encountered a situation needing some extra sauce when fixing our compiler specs.
+
+A compiler can be thought of as something that chews up data in one form and spits it out in another, equivalent, form. Typically, these transformations from one form to another happen in a particular order. And there may be several of them from the very beginning to the very end of the compilation process.
+
+To write specs for such a process, it would be nice to focus just on the forms of the data (that's what we care about) with as little noise as possible about how they got there. Here's what we have in Rubinius:
+
+<pre><typo:code lang="ruby">
+describe "An And node" do
+  relates "(a and b)" do
+    parse do
+      [:and, [:call, nil, :a, [:arglist]], [:call, nil, :b, [:arglist]]]
+    end
+
+    compile do |g|
+      g.push :self
+      g.send :a, 0, true
+      g.dup
+
+      lhs_true = g.new_label
+      g.gif lhs_true
+
+      g.pop
+      g.push :self
+      g.send :b, 0, true
+
+      lhs_true.set!
+    end
+  end
+end
+</typo:code></pre>
+
+The @relates@ block introduces the Ruby source code and contains the blocks that show various intermediate forms. A single word like @parse@ and @compile@ encapsulates the process of generating that particular form, as well as concisely documenting the specs.
+
+The format is sufficiently flexible to allow for other forms. For instance, @ast@ for generating an AST directly from the parse tree rather than using the sexp as an intermediate form. Or @llvm@ to emit "LLVM":http://llvm.org IR directly from our compiler.
+
+Another interesting aspect of this, it was possible with only a few custom extensions to "MSpec":http://github.com/rubyspec/mspec/commits/master. Recently, I had added custom options to the MSpec runner scripts to enable such things as our @--gc-stats@. I didn't know how easy it would be to add something more extensive. Turns out it was pretty easy. You can check out the source in our "spec/custom":http://github.com/evanphx/rubinius/tree/master/spec/custom directory.

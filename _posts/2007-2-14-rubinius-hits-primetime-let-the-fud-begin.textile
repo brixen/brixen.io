@@ -1,0 +1,9 @@
+--- 
+title: "Rubinius Hits Primetime: Let the FUD Begin"
+layout: post
+---
+For being a very young project (Evan's been working on it "about a year":http://blog.fallingsnow.net/rubinius, but it's only been in the public view for a few months), Rubinius has quickly hit primetime with the first (that I know of) "FUD-ish review":http://jesusphreak.infogami.com/blog/rubinius_fights_on The basic premise is that pypy had money, minds, and at least one goal to produce a simpler VM than CPython, but as it nears 1.0 it's much more complex than CPython. And since Rubinius is at least lacking in official monetary backing, it's got a real tough row to hoe. Maybe; but I'm unconvinced.
+
+The jury is still out on the mind-share Rubinius will ultimately attract. We're certainly not sneezing at anyone's contribution. And if you hang out in the channel, you might notice some rather interesting conversations between the JRuby folks and the Rubinius folks. You'll definitely hear conversations about PIC, STM, concurrency models that make you go "Ohh" (thanks "MenTaLguY":http://moonbase.rydia.net/mental/blog/programming/concurrency-five-ways.html), the possibilities of LLVM, even JIT'ing (though, to hear JP tell it, we're hopelessly unqualified for that). I'd guess a who's-who on Rubinius would turn up some rather accomplished folks. Personally, It is encouraging that I didn't have to write the "book on compilers":http://www.amazon.com/gp/product/0321486811/104-8500968-6579924 to be able to hack on Rubinius. But really, do you have to know everything to jump into a project and start learning and applying it?
+
+Let's just say, I'm sure glad Linus was not deterred by the fact that IBM, SCO, AT&T, and Micro$oft had billions of dollars to spend on operating system development. Anyway, I'll bet the "Yes, but does it scale?" posts will be showing up shortly. C'mon JP, live a little.

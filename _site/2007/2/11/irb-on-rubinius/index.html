@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Irb on Rubinius</h2>
+        
+              <div class="meta">
+        <p><span class="date">11 February 2007</span></p>
+      </div>
+
+         <div class="entrybody"><p>There are cat people and dog people, but when I say &#8220;Man&#8217;s best friend&#8221;, I don&#8217;t mean either. I&#8217;m talking about that program that feels like a home away from home: <code>irb</code>. So, I&#8217;ve been chomping at the bit to get something resembling <code>irb</code> running with <a href="http://rubini.us">Rubinius</a>.</p>
+<p>Today, a few of us pdx.rb folks got together for some Rubinius hacking. Of course, <code>irb</code> was one of the things I proposed that we work on. We had a go at it, but in the end we didn&#8217;t get too far. <code>irb</code> is no trivial application. But, I think a good part of it was my fault. I&#8217;ve been working on these specs for so long, where at the moment we&#8217;re forced to send everything to <code>rubinius</code> in a subprocess, that I failed to grasp that we would have a persistent machine. Anyway, let&#8217;s cut this short: Folks, we have a rudimentary <code>sirb</code>!</p>
+<pre><code>
+sirb(eval):0&gt; class Hello
+sirb(eval):1&gt; def greet
+sirb(eval):2&gt; puts "Hello, irb!"
+sirb(eval):3&gt; end
+sirb(eval):4&gt; end
+=&gt; nil
+sirb(eval):5&gt; Hello.new.greet
+=&gt; Hello, irb!
+["Hello, irb!"]
+sirb(eval):6&gt; @s = "Hello, earthling"
+=&gt; "Hello, earthling"
+sirb(eval):7&gt; p @s
+=&gt; "Hello, earthling"
+["Hello, earthling"]
+sirb(eval):8&gt; Hello
+=&gt; Hello
+sirb(eval):9&gt; Hello.class
+=&gt; Class
+sirb(eval):10&gt; Hello.new
+=&gt; #&lt;Hello:0x6696cc&gt;
+sirb(eval):11&gt; 
+</code></pre>
+<p>In the words of Napolean Dynamite: <strong>Sweet.</strong> Of course, it <em>is</em> pretty rough right now. You&#8217;ll notice the use of an instance variable, </p>
+<p>Well, warts and all, I think it&#8217;s a beautiful thing.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

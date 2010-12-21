@@ -1,0 +1,26 @@
+--- 
+title: Rubinius sprint retrospective
+layout: post
+---
+Last week, "Evan Phoenix":http://blog.fallingsnow.net/, "Wilson Bilkovich":http://metaclass.org/ and I met up in Denver (ok, _near_ Denver) for some serious "Rubinius":http://rubini.us coding, aka a sprint. "Charles Nutter":http://headius.blogspot.com/ (of "JRuby":http://jruby.codehaus.org/ fame) flew in just to hack with us for 15 hours straight and then flew back home. Very cool. When do you get collaboration like that from someone on a project that could be seen as a competitor? That's some serious goodwill, folks, and much appreciated. Charles had his laptop out on the taxi ride from the airport digging into some issues we have with including modules. If you hang out in #rubinius, you know there's a lot of collaboration occurring on different fronts.
+
+This was only the second time I've had the pleasure to hang out with these folks in person. The sprint was intended to enable us to get some face-to-face time and work out some foundational issues, hopefully speeding other development and contribution as we head toward "RubyConf07":http://www.rubycentral.org. Here's a few things we accomplished (in no particular order):
+
+* Evan hooked up Syck (the YAML parser) using our very cool _subtend_ (Ruby C API compatibility) component.
+* Wilson hammered out a bunch of StringIO specs in a couple hours.
+* Evan promptly began writing a Ruby StringIO that passed the specs.
+* Charles whipped out a bunch of @def@ and @case@ specs, the latter being a serious beast to compile.
+* Wilson added these wicked colorized backtraces that enable you to quickly pick out the ultimate failure line and some significant points in the backtrace.
+* Wilson implemented the rest of the missing @case@ support in the compiler.
+* Charles added some basic ObjectSpace support.
+* I checked in a complete reorganization and a lot of fixes to our Ruby core library specs. We have around 2,800 specs, of which we're passing over two thirds. We still have nearly 50% of the core library specs to complete.
+* Evan fixed our Thread support and added some preemption.
+* I added (with much help from Evan and some serious gdb sessions looking at x86 machine code) some coolness to our foreign function interface (FFI) to support reading and writing to C integers and doubles from Ruby. (The doubles support still needs a magic touch or two from Evan.) With that I was able to finish off our Math methods support and the rest of the Math specs.
+* Wilson hammered out a ton of the machinery necessary to support compiling @eval@. If you don't realize how awesome (and painful) this is, don't blame me.
+* I started on an implementation of @File.fnmatch@ in preparation for @Dir.glob@ (or "dear glob":http://blog.brightredglow.com/2007/9/17/dear-glob is it is not-so-affectionately known to me) and cleaned up our fnmatch specs a bunch.
+
+There's more where that came from. For all the nitty gritty details, browse the "git repository":http://git.rubini.us/?p=code;a=summary. There's some cool stuff just over the horizon that we didn't get to. Evan explained in more detail the architecture of our sampling profiler and our debugger support. Let's just say you'll be able to profile a Rails app in production with no significant performance penalty. And remote debugging is on it's way. Seriously, let that sink in for a minute.
+
+Interestingly, we did not consume 50 liters of coffee each and we had some incredible Japanese food one evening, thanks to a recommendation from one of Wilon's contacts. Overall, I'm quite impressed with our progress and highly impressed with the technical prowess of these guys. The point it, Rubinius is quite accessible. It's also some very cool and very real technology that's going to make writing, running, living, breathing, and enjoying Ruby _a lot_ better.
+
+And last but not least, a big thanks to "Sun":http://www.sun.com for their sponsorship, and in particular "Tim Bray":http://www.tbray.org/ongoing/ for his advocacy. Rubinius is a small, ambitious project. But at heart, it's very true to the value of making Ruby fun.

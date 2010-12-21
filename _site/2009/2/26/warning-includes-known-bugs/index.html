@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Warning: Includes Known Bugs</h2>
+        
+              <div class="meta">
+        <p><span class="date">26 February 2009</span></p>
+      </div>
+
+         <div class="entrybody"><p><strong><span class="caps">UPDATE</span>:</strong> In further discussions with Jim Deville of IronRuby it appears that there may be a legal issue preventing IronRuby devs from patching Ruby code themselves. However it may be possible for IronRuby to use a commonly maintained and patched version of the standard library.</p>
+<p>Reviewing the logs and considering this was Shri&#8217;s first major discussion in the <span class="caps">IRC</span> channel, I unfortunately grouped him in with Charles&#8217; intolerable behavior and personal attacks which have occurred on a number of occasions in #rubyspec and #rubinius. My apologies to Shri. The struck out text below remains merely for historical accuracy.</p>
+<p><strong><span class="caps">UPDATE</span>:</strong> Charles response to this post wasn&#8217;t exactly positive, but I think it&#8217;s fair to have this discussion in public: <a href="http://pastie.org/400493">http://pastie.org/400493</a> Also, please note that I&#8217;ve struck out Shri&#8217;s name below as I may have misunderstood him in the earlier discussion.</p>
+<hr />
+<p>You, the trusting consumer, would probably like to receive such cautionary advertisement were you to use a product that did, in fact, ship to you code that includes known bugs. And not just known bugs, but known bugs that have fixes for them.</p>
+<p>You would like to know this, right? I mean, I&#8217;m not just some hard-headed asshole that thinks there&#8217;s something a bit whack here, am I? Please, do tell me.</p>
+<p>Well, as luck would have it, you can also tell this to <a href="http://http://blog.headius.com/">Charles Oliver Nutter</a> of <a href="http://jruby.codehaus.org/">JRuby</a> <del>and <a href="http://blogs.msdn.com/shrib/">Shri Borde</a> of <a href="http://www.ironruby.net/">IronRuby</a></del>.</p>
+<p>Here&#8217;s the drama: There&#8217;s this project <a href="http://rubyspec.org">RubySpec</a>. You may have heard of it. It attempts to describe the behavior of the Ruby programming language. All the alternative Ruby implementations use the RubySpec project to attempt to show that they are &#8220;Ruby&#8221;</p>
+<p>All the alternative implementations also choose to ship some version or other of the Ruby standard library. At least the parts written in Ruby. Makes sense, since they all implement the Ruby programming language.</p>
+<p>As is the case with all software, from time to time bugs are discovered in Ruby. Usually, these are fixed soon after they are discovered and the fix is committed to the trunk version of <span class="caps">MRI</span> (Matz&#8217;s Ruby Implementation). Eventually, trunk becomes another stable release with a particular patchlevel.</p>
+<p>The RubySpecs deal with this situation with a <code>ruby_bug</code> guard. You can read the details of <a href="http://rubyspec.org/wiki/rubyspec/Guards">RubySpec guards</a>. This particular guard has two functions:</p>
+<ol>
+<p>It prevents the guarded spec from executing on any version of <span class="caps">MRI</span> less than or equal to the version specified in the guard. This is because <span class="caps">MRI</span> cannot re-release a particular patchlevel <em>after</em> it has been released. And the bugs are discovered <em>after</em> a release.</p>
+</li>
+<p>It documents the spec, which shows what the correct behavior should be.</p>
+</li>
+</ol>
+<p>A key feature of the <code>ruby_bug</code> guard is that it <em>does not</em> prevent the spec from running on any alternative implementation. That is because every alternative implementation is expected to have the <em>correct</em> behavior. Additionally, these guards are only added after Matz or ruby-core has stated that the behavior at issue is a bug and the behavior of the spec is the correct behavior.</p>
+<p>Now here is the rub, Charles does not want to manage patching the Ruby standard library that he ships with JRuby <em>with the patches that already exist for known bugs</em>. He wants to ship whatever version <span class="caps">MRI</span> has most recently released. Further, when you run the RubySpecs with JRuby, he wants to <em><strong><span class="caps">MASK</span></strong></em> those bugs because he doesn&#8217;t think it&#8217;s fair that JRuby fails a spec which shows a known bug in the Ruby standard library for which patches are available.</p>
+<p>That&#8217;s Charles choice of strategies for managing JRuby packaging. I&#8217;m strongly of the opinion that you, the user, would like to know that. Charles apparently disagrees.</p>
+<p>In fact, he disagrees so vehemently that he takes to calling me names in the #rubyspec <span class="caps">IRC</span> channel because I refuse to change the fact that the <code>ruby_bug</code> guard will not silently mask spec failures on JRuby or any other alternative implementation. Aside from being immature, I think there is a real problem with this. Don&#8217;t you?</p>
+<p>Charlie will argue that it is simply impossible to ship the trunk version of Ruby standard library because it is an unknown quantity? However, the best defense against bugs in the Ruby standard library is better specs. And we&#8217;re talking about specs here that <em>show the bugs</em> and for which patches exist. Furthermore, there are actually relatively few bugs noted in the specs and most of those are in older versions of Ruby, not the current stable release.</p>
+<p>So, here&#8217;s my question to you: Would you like to know that JRuby <del>and possibly IronRuby</del> ship you code that contains know bugs for which patches exist? Would you also like to know that Charles wants you to run RubySpec on JRuby and not know there is a bug?<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

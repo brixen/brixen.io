@@ -1,0 +1,11 @@
+--- 
+title: Needmore Designs
+layout: post
+---
+That pretty much sums up my feelings about the majority of the interactive gadgets I encounter, soft or hardware. So, I'm delighted to have the good fortune of joining the talented folks at "Needmore Designs":http://needmoredesigns.com. It'll be a challenge to keep the code as beautiful as "these designs":http://needmoredesigns.com/projects/, but using "Ruby":http://ruby-lang.org makes that a delicious challenge indeed.
+
+One particularly generous perk for a company this size is that I'll be able to spend around 20% of my time working on, I like to call them, "personal development" projects. Of course, I plan to contribute that to bettering the Ruby community. In particular, I'll be spending a good portion on the "Rubinius":http://rubini.us project. This alternative Ruby implementation aims to create an accessible, extensible, powerful, and _fast_ virtual machine. We're implementing as much as possible in Ruby and we have a lot of very cool things either implemented or in the works.
+
+Not only will this project contribute to Ruby being more suitable for a wider variety of computing tasks, but using rubinius will actually be great for the environment, too! Far fetched? Nope. Our continual thirst for more computing power translates to increasing demand for energy. Any type of energy pretty much means some contribution of carbon to the already overloaded atmosphere. So, when rubinius runs your favorite Ruby applications and web 2.0 sites more efficiently, that reduces the required energy and that's better for the environment. Ok, I've never made that pitch before but it's a great reason join up and help out.
+
+So, your moment of zen: not only has "Needmore":http://needmoredesigns.com given me this great opportunity to work with talented design professionals, but they're also contributing to a better environment. And if you treasure the abundance of green that we are privileged to have all around "Portland":http://maps.google.com/maps?f=q&hl=en&q=Portland,+OR&layer=&ie=UTF8&z=12&om=1, you know that's a very cool thing. Around the circle goes.

@@ -1,0 +1,42 @@
+--- 
+title: "Warning: Includes Known Bugs"
+layout: post
+---
+*UPDATE:* In further discussions with Jim Deville of IronRuby it appears that there may be a legal issue preventing IronRuby devs from patching Ruby code themselves. However it may be possible for IronRuby to use a commonly maintained and patched version of the standard library.
+
+Reviewing the logs and considering this was Shri's first major discussion in the IRC channel, I unfortunately grouped him in with Charles' intolerable behavior and personal attacks which have occurred on a number of occasions in #rubyspec and #rubinius. My apologies to Shri. The struck out text below remains merely for historical accuracy.
+
+*UPDATE:* Charles response to this post wasn't exactly positive, but I think it's fair to have this discussion in public: "http://pastie.org/400493":http://pastie.org/400493 Also, please note that I've struck out Shri's name below as I may have misunderstood him in the earlier discussion.
+
+---
+
+You, the trusting consumer, would probably like to receive such cautionary advertisement were you to use a product that did, in fact, ship to you code that includes known bugs. And not just known bugs, but known bugs that have fixes for them.
+
+You would like to know this, right? I mean, I'm not just some hard-headed asshole that thinks there's something a bit whack here, am I? Please, do tell me.
+
+Well, as luck would have it, you can also tell this to "Charles Oliver Nutter":http://http://blog.headius.com/ of "JRuby":http://jruby.codehaus.org/ <del>and "Shri Borde":http://blogs.msdn.com/shrib/ of "IronRuby":http://www.ironruby.net/</del>.
+
+
+
+Here's the drama: There's this project "RubySpec":http://rubyspec.org. You may have heard of it. It attempts to describe the behavior of the Ruby programming language. All the alternative Ruby implementations use the RubySpec project to attempt to show that they are "Ruby".
+
+All the alternative implementations also choose to ship some version or other of the Ruby standard library. At least the parts written in Ruby. Makes sense, since they all implement the Ruby programming language.
+
+As is the case with all software, from time to time bugs are discovered in Ruby. Usually, these are fixed soon after they are discovered and the fix is committed to the trunk version of MRI (Matz's Ruby Implementation). Eventually, trunk becomes another stable release with a particular patchlevel.
+
+The RubySpecs deal with this situation with a @ruby_bug@ guard. You can read the details of "RubySpec guards":http://rubyspec.org/wiki/rubyspec/Guards. This particular guard has two functions:
+
+# It prevents the guarded spec from executing on any version of MRI less than or equal to the version specified in the guard. This is because MRI cannot re-release a particular patchlevel _after_ it has been released. And the bugs are discovered _after_ a release.
+# It documents the spec, which shows what the correct behavior should be.
+
+A key feature of the @ruby_bug@ guard is that it _does not_ prevent the spec from running on any alternative implementation. That is because every alternative implementation is expected to have the _correct_ behavior. Additionally, these guards are only added after Matz or ruby-core has stated that the behavior at issue is a bug and the behavior of the spec is the correct behavior.
+
+Now here is the rub, Charles does not want to manage patching the Ruby standard library that he ships with JRuby _with the patches that already exist for known bugs_. He wants to ship whatever version MRI has most recently released. Further, when you run the RubySpecs with JRuby, he wants to _*MASK*_ those bugs because he doesn't think it's fair that JRuby fails a spec which shows a known bug in the Ruby standard library for which patches are available.
+
+That's Charles choice of strategies for managing JRuby packaging. I'm strongly of the opinion that you, the user, would like to know that. Charles apparently disagrees.
+
+In fact, he disagrees so vehemently that he takes to calling me names in the #rubyspec IRC channel because I refuse to change the fact that the @ruby_bug@ guard will not silently mask spec failures on JRuby or any other alternative implementation. Aside from being immature, I think there is a real problem with this. Don't you?
+
+Charlie will argue that it is simply impossible to ship the trunk version of Ruby standard library because it is an unknown quantity? However, the best defense against bugs in the Ruby standard library is better specs. And we're talking about specs here that _show the bugs_ and for which patches exist. Furthermore, there are actually relatively few bugs noted in the specs and most of those are in older versions of Ruby, not the current stable release.
+
+So, here's my question to you: Would you like to know that JRuby <del>and possibly IronRuby</del> ship you code that contains know bugs for which patches exist? Would you also like to know that Charles wants you to run RubySpec on JRuby and not know there is a bug?

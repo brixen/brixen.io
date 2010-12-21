@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Hash is all ponies</h2>
+        
+              <div class="meta">
+        <p><span class="date">03 September 2008</span></p>
+      </div>
+
+         <div class="entrybody"><p>We&#8217;ve been hard at work replacing the C virtual machine in <a href="http://rubini.us">Rubinius</a> with one written in C++. Along the way, we decided to use a simpler data structure internally where we had been using a Hash before. This allowed us to rewrite Hash in pure Ruby. Since our goal is to write as much <a href="http://blog.brightredglow.com/2008/4/28/ruby-in-ruby-seriously">Ruby in Ruby</a>, I was happy to work on this rewrite.</p>
+<p>You can check out the resulting code <a href="http://github.com/evanphx/rubinius/tree/cpp/kernel/bootstrap/hash.rb">here</a> and <a href="http://github.com/evanphx/rubinius/tree/cpp/kernel/common/hash.rb">here</a>. It hasn&#8217;t been polished much yet, but the idea was to use expressive and natural Ruby. I didn&#8217;t take any performance-conscious tacks. Hash should provide a great case study for looking at optimizations in our compiler and VM. For example, <code>Hash#keys</code> can be succinctly written as:</p>
+<pre>
+def keys
+  inject([]) { |ary, entry| ary &lt;&lt; entry.first }
+end
+</pre>
+<p>Since <code>#inject</code> comes from the <code>Enumerable</code> module, we know it&#8217;s using <code>#each</code> internally. And for Hash, I implemented an external iterator of sorts to help hide the implementation details. That iterator is making a method call for each item. So we&#8217;ve piled on two block calls and a method call for each item. The point is, we want that expressive Ruby code in our applications and let the implementation optimize it. So far, we really haven&#8217;t had any Ruby implementation to give us that</p>
+<p>Another thing to check out is the structure of our <a href="http://github.com/evanphx/rubinius/tree/7f8af1531125850bc75b8315269a7e0528e98c50/kernel">kernel directory</a>. Talking to the folks working on <a href="http://ruby.gemstone.com/">MagLev</a>, we&#8217;ve restructured our runtime kernel (aka Ruby standard library) to better allow sharing with other implementations. The <code>bootstrap</code> and <code>delta</code> directories are implementation specific, while the <code>common</code> directory is intended to be shared. The <code>bootstrap</code> directory provides just enough functionality to load the <code>common</code> directory. The <code>delta</code> directory provides a location for implementation specialization where specific methods can be replaced with more performant or otherwise specialized versions.</p>
+<p>As always, we love to hear from folks about what&#8217;s bugging them with Ruby. Drop by #rubinius on freenode.net or check out the <a href="http://github.com/evanphx/rubinius/tree/master">Rubinius</a> project on <a href="http://github.com">Github</a>. Even though we&#8217;re in the middle of this VM rewrite, there&#8217;s plenty still to be done on the Ruby standard library.</p>
+<p><strong>Update:</strong> <a href="http://blog.fallingsnow.net">Evan</a> points out that this is a better implementation of <code>#keys</code>:</p>
+<pre>
+def keys
+  map { |key, value| key }
+end
+</pre></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

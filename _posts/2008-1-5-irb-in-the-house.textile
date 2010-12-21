@@ -1,0 +1,9 @@
+--- 
+title: Irb in the house
+layout: post
+---
+I'm going to give this live blogging thing a go. As of 14:52 PST, "Evan":http://blog.fallingsnow.net announced that "Rubinius":http://rubini.us runs @irb@. It hasn't landed in the repository yet, but this is great news. Just a little while ago, we "started with an irb wannabe":http://blog.brightredglow.com/2007/2/11/sirb-the-rubinius-loupe. I guess a lot can happen in a year.
+
+Congrats to Evan and all the fantastic Rubinius supporters and contributors.
+
+*UPDATE:* So, I'm not a very good reporter. There's some other very big news related to getting @irb@ working. Evan "checked in":http://git.rubini.us/?p=code;a=commit;h=d54ed8791a74661adb87c938e92e037ece924c90 a working @eval@ yesterday. Enjoy!

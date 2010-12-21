@@ -1,0 +1,36 @@
+--- 
+title: Mephisto trunk + svk + svn + cap = blogtastic
+layout: post
+---
+One "Mephisto":http://mephistoblog.com/ feature I really like is saving an article as a draft. Unfortunately, I'm more likely to start an article than finish it. So, I'm looking forward to that auto-write feature that maybe Rick is working on. Until then, I'll just have to continue finishing them on my own, even if it takes a few weeks. Ahem, like this one.
+
+Inspired by "Octopod":http://octopod.info/2006/8/19/managing-multiple-local-mephisto-repos-with-svk yet "again":http://blog.brightredglow.com/2006/5/1/xen-and-the-art-of-noise-management, I've got the best of worlds: Mephisto edge at my chosen version mirrored to my own svn repository for my own hacking, all <code>cap deploy</code>'d to my VPS.
+
+I decided to put my svn repository on my VPS and develop in that. Basically, I use svk as a fancy adapter with the added advantage that I can update from Mephisto edge whenever it's convenient for me. Installing svk on Ubuntu 6.06 was a breeze. From there, I mostly followed Octopod's recipe: First, I create a mirror for Mephisto in my svk repository, then pull in Mephisto.
+
+<pre style="overflow: auto;"><code>
+svk mkdir //mirror
+svk mkdir //mirror/mephisto
+svk mirror http://svn.techno-weenie.net/projects/mephisto/trunk //mirror/mephisto/trunk
+svk sync //mirror/mephisto/trunk
+</code></pre>
+
+That's the Mephisto side of the cable. Now, for my local svn side.
+
+<pre style="overflow: auto;"><code>
+svk mkdir //svn
+svk mkdir //svn/mephisto
+svk mirror svn://svn.brightredglow.com/mephisto/trunk //svn/mephisto/trunk
+svk smerge --baseless //mirror/mephisto/trunk //svn/mephisto/trunk
+</code></pre>
+
+Now, I simply use the <code>sync</code> command above to pull new Mephisto changes to my svk repository and the following command to push those changes to my svn repository:
+
+<pre style="overflow: auto;"><code>
+svk smerge --incremental --log //mirror/mephisto/trunk //svn/mephisto/trunk
+</code></pre>
+
+From here, it's pretty simple. I check out a working copy of my svn Mephisto trunk and work normally. Using "Capistrano":http://rubyforge.org/projects/capistrano/, I can <code>cap deploy</code> or <code>cap rollback</code> to my heart's content.
+
+Finally, "Mongrel":http://mongrel.rubyforge.org/index.html + "Nginx":http://nginx.net/ + Mephisto are working flawlessly. My mongrel processes never get over about 35MB and they hum along day after day, week after week. Sometimes load gets too high for my VPS, but I can live with that. Speaking of VPS, "Quantact":http://www.quantact.com has recently added OpenVZ options. They're quiet but dependable. And recently I logged in to my control panel to find that I had 33% more RAM and another gig of disk space. I'm not saying they do this all the time, but for whatever reason they did it, I appreciate it.
+

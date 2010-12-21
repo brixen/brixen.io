@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Rubinius sprint retrospective</h2>
+        
+              <div class="meta">
+        <p><span class="date">17 September 2007</span></p>
+      </div>
+
+         <div class="entrybody"><p>Last week, <a href="http://blog.fallingsnow.net/">Evan Phoenix</a>, <a href="http://metaclass.org/">Wilson Bilkovich</a> and I met up in Denver (ok, <em>near</em> Denver) for some serious <a href="http://rubini.us">Rubinius</a> coding, aka a sprint. <a href="http://headius.blogspot.com/">Charles Nutter</a> (of <a href="http://jruby.codehaus.org/">JRuby</a> fame) flew in just to hack with us for 15 hours straight and then flew back home. Very cool. When do you get collaboration like that from someone on a project that could be seen as a competitor? That&#8217;s some serious goodwill, folks, and much appreciated. Charles had his laptop out on the taxi ride from the airport digging into some issues we have with including modules. If you hang out in #rubinius, you know there&#8217;s a lot of collaboration occurring on different fronts.</p>
+<p>This was only the second time I&#8217;ve had the pleasure to hang out with these folks in person. The sprint was intended to enable us to get some face-to-face time and work out some foundational issues, hopefully speeding other development and contribution as we head toward <a href="http://www.rubycentral.org">RubyConf07</a>. Here&#8217;s a few things we accomplished (in no particular order):</p>
+<ul>
+<p>Evan hooked up Syck (the <span class="caps">YAML</span> parser) using our very cool <em>subtend</em> (Ruby C <span class="caps">API</span> compatibility) component.</p>
+</li>
+<p>Wilson hammered out a bunch of StringIO specs in a couple hours.</p>
+</li>
+<p>Evan promptly began writing a Ruby StringIO that passed the specs.</p>
+</li>
+<p>Charles whipped out a bunch of <code>def</code> and <code>case</code> specs, the latter being a serious beast to compile.</p>
+</li>
+<p>Wilson added these wicked colorized backtraces that enable you to quickly pick out the ultimate failure line and some significant points in the backtrace.</p>
+</li>
+<p>Wilson implemented the rest of the missing <code>case</code> support in the compiler.</p>
+</li>
+<p>Charles added some basic ObjectSpace support.</p>
+</li>
+<p>I checked in a complete reorganization and a lot of fixes to our Ruby core library specs. We have around 2,800 specs, of which we&#8217;re passing over two thirds. We still have nearly 50% of the core library specs to complete.</p>
+</li>
+<p>Evan fixed our Thread support and added some preemption.</p>
+</li>
+<p>I added (with much help from Evan and some serious gdb sessions looking at x86 machine code) some coolness to our foreign function interface (<span class="caps">FFI</span>) to support reading and writing to C integers and doubles from Ruby. (The doubles support still needs a magic touch or two from Evan.) With that I was able to finish off our Math methods support and the rest of the Math specs.</p>
+</li>
+<p>Wilson hammered out a ton of the machinery necessary to support compiling <code>eval</code>. If you don&#8217;t realize how awesome (and painful) this is, don&#8217;t blame me.</p>
+</li>
+<p>I started on an implementation of <code>File.fnmatch</code> in preparation for <code>Dir.glob</code> (or <a href="http://blog.brightredglow.com/2007/9/17/dear-glob">dear glob</a> is it is not-so-affectionately known to me) and cleaned up our fnmatch specs a bunch.</p>
+</li>
+</ul>
+<p>There&#8217;s more where that came from. For all the nitty gritty details, browse the <a href="http://git.rubini.us/?p=code;a=summary">git repository</a>. There&#8217;s some cool stuff just over the horizon that we didn&#8217;t get to. Evan explained in more detail the architecture of our sampling profiler and our debugger support. Let&#8217;s just say you&#8217;ll be able to profile a Rails app in production with no significant performance penalty. And remote debugging is on it&#8217;s way. Seriously, let that sink in for a minute.</p>
+<p>Interestingly, we did not consume 50 liters of coffee each and we had some incredible Japanese food one evening, thanks to a recommendation from one of Wilon&#8217;s contacts. Overall, I&#8217;m quite impressed with our progress and highly impressed with the technical prowess of these guys. The point it, Rubinius is quite accessible. It&#8217;s also some very cool and very real technology that&#8217;s going to make writing, running, living, breathing, and enjoying Ruby <em>a lot</em> better.</p>
+<p>And last but not least, a big thanks to <a href="http://www.sun.com">Sun</a> for their sponsorship, and in particular <a href="http://www.tbray.org/ongoing/">Tim Bray</a> for his advocacy. Rubinius is a small, ambitious project. But at heart, it&#8217;s very true to the value of making Ruby fun.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

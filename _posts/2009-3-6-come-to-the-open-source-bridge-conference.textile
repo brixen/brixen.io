@@ -1,0 +1,7 @@
+--- 
+title: Come to the Open Source Bridge conference
+layout: post
+---
+If you live in or would like to visit beautiful Portland, OR, consider "signing up":http://opensourcebridge.org/attend/ for the "Open Source Bridge":http://opensourcebridge.org/ conference. I will (probably) be giving a talk on "RubySpec":http://opensourcebridge.org/proposals/13 and "Rubinius 1.0":http://opensourcebridge.org/proposals/12. There's lots of interesting folks giving great "talks":http://opensourcebridge.org/events/2009/proposals/. This is an opportunity to hear how people are developing the open-source community.
+
+Hope to see you there!

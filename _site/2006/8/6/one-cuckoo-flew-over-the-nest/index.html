@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">One cuckoo flew over the nest</h2>
+        
+              <div class="meta">
+        <p><span class="date">06 August 2006</span></p>
+      </div>
+
+         <div class="entrybody"><p>Firstly, a disclaimer in the words of the inimitable Ken Kesey:<br />
+&gt;Take what you can use and let the rest go by.</p>
+<p>Interestingly, when I googled this quote to ensure I was recalling it correctly, I found some other [excellent quotes](http://en.wikiquote.org/wiki/Ken_Kesey). Another that seems apropos:<br />
+&gt;You don&#8217;t plow under the corn because the seed was planted with a neighbor&#8217;s shovel.</p>
+<p>If Dialog Driven Development is merely [rounded corners](http://mechanismalley.com/blog/2006/08/04/on-product-backlogs/) to you, please continue to enjoy your square ones. This exploration is not aimed at gathering the true believers. I&#8217;m not the evangelist type. So, if you&#8217;re worried I&#8217;ll show up on your doorstep thumping my bible, rest assured I won&#8217;t. I&#8217;m an atheist.</p>
+<p>That said, I think there is value in creating distinctions to better understand the terrain. Agile is a big umbrella. If the processes were formulaic, all we would need to worry about is a good algorithm</p>
+<p>Recently on a flight to DC to meet with a new client, I delved into a book [Robby](http://www.robbyonrails.com) brought along: <em>Agile Project Management with Scrum</em> by Ken Schwaber, one of the co-founders of the Scrum method. Below are a few notes I jotted down on my index cards while reading the first 4 chapters and browsing the appendices. Since then I&#8217;ve browsed some of the other chapters but I haven&#8217;t finished the book</p>
+<p><b>advantages of Scrum</b></p>
+<ul>
+<p>emphasis on empirical process control</p>
+</li>
+<p>iterations</p>
+</li>
+<p>daily team meetings where each member presents what she did in the past 24 hours, what she&#8217;ll do in the next 24 hours, and any blockers</p>
+</li>
+<p>frequent feedback loop</p>
+</li>
+<p>clear separation of responsibility using the pigs and chickens metaphor to facilitate more effective decision making and reduce interference by chickens, which can bog down the process</p>
+</li>
+<p>The three legs that hold up the implementation of empirical process control: 1) visibility &#8211; aspects that affect the outcome must be visible to those controlling the process; 2) inspection &#8211; these aspects must be inspected frequently enough to change course if necessary before too much has elapsed; and 3) adaptation &#8211; changing course when new information suggests it is necessary</p>
+</li>
+<p>emphasis on having a <em>vision</em>, it must be a vision that is fairly resistant to change in order to guide the project, but able to change when required</p>
+</li>
+</ul>
+<p>&gt;&quot;_You can get through almost anything if you don&#8217;t try to impose rigid solutions before problems even arise, instead devising solutions as necessary when problems crop up.</p>
+<p><b>drawbacks to Scrum</b></p>
+<ul>
+<p>specifying the product backlog &#8211; this suggests too much <em>dictation</em> and not enough <em>collaboration</em>. According to the book, the product owner specifies the backlog and prioritizes the items in it. The team meets to decide which items it can deliver in the next sprint. That process is two monologues not a dialogue.</p>
+</li>
+<p>30-day sprint is too long. I don&#8217;t think the feedback cycle is nearly as effective at this scale because we need feedback long before functionality is &#8220;deliverable&#8221;. More frequent testing is needed to refine features. Imagine getting a haircut where you tell the stylist what you want. She then takes you to a room with no mirrors and starts chopping away. When she&#8217;s done she takes you to another room to demo your new haircut. Fortunately, the difference between a bad haircut and a good one is about 2 weeks. The same is hardly true of software.</p>
+</li>
+</ul>
+<p>The process of software development requires a lot of educating of the people involved. The product backlog does not encourage thinking in this way. I dislike the sequential list where the only explicit organizing idea is priority. Where is the context and relation between what is being specified? And how does the process ensure that the product owner doesn&#8217;t fall back to specifying things like, &#8220;Dialog X needs a dropdown field to display Y&#8221;, or &#8220;Build a screen to display user stats&#8221;? If you haven&#8217;t had to deal with this, then I desperately want to come visit your universe. If you don&#8217;t know why this is the biggest ingredient in a recipe for disaster, just continue building software this way.</p>
+<p>The way to challenge this is with true, effective dialogue. What that looks like varies a lot. But it&#8217;s not about particular artifacts. If you read [Manley&#8217;s](http://mechanismalley.com/blog/about/) criticism of our [rounded corners](http://mechanismalley.com/blog/2006/08/04/on-product-backlogs/), he relates the necessity of educating product owners. If dialogue is at the center of your process, the product backlog could function as a passable way to document the evolving mutual understanding.</p>
+<p>My favorite idiocy in software development is the crystal ball method. Everyone has a crystal ball on their desks from which they can conjure a precise, detailed, perfectly focused picture of any event at any point in the future. Of course, this is an absolute absurdity. But that doesn&#8217;t stop people from believing such feats are possible. The product backlog easily falls prey to this delusion.</p>
+<p>A much more useful metaphor is based on the simple fact of vision that any sighted person can appreciate. From where I stand, there are a number of things in crisp focus. Beyond that, things are mostly distinguishable by shape and relationship. I&#8217;m seeing the forest. Beyond that, only the vaguest, broadest features are distinguishable. I see that mountain, but the dark areas juxtaposing the snow may be forest or exposed rock. I can&#8217;t tell.</p>
+<p>Attempting to draw on this fact of vision to inform and structure dialogue about a recent project, we set up a wiki with a page to capture descriptions of the software&#8217;s behavior in terms of goals. We have three sections: 1) near term goals, 2) medium range goals, and 3) long range goals. These follow the rough divisions of visual clarity described above.</p>
+<p>The process of transforming those goals into software features and determining their priority based on architectural constraints is <b>not</b> something a client can dictate. You don&#8217;t tell your architect how to construct your house, you describe what you want in it. The reason for that is simple: physics dictates what is a viable structure. In software, we have no appreciation for physics. Clients believe they can do anything. All the rusting hulks of failed software littering the desert notwithstanding.</p>
+<p>The essential way to bring the analogue of physics to software development is mutual education mediated by effective dialogue. What that actually looks like needs a great deal of definition. If this is just rounded corners on existing work, please point us in the right direction.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

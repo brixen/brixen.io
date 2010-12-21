@@ -1,0 +1,62 @@
+--- 
+title: TSort in sirb
+layout: post
+---
+They say good things come in threes, or perhaps I'll bore you with another post about Rubinius, but what the heck. So, the other day I imported Ruby's standard library from the SVN repository into the Rubinius repository. I've been itching to go through and see what successfully loads. Ah, now that we have @sirb@, the perfect opportunity presents itself.
+
+<pre style="overflow: auto"><code>
+$ ./shotgun/rubinius apps/irb/sirb.rb
+sirb(eval):000> require 'tsort'
+Couldn't find tsort.rbc in runtime/compiler.rba (No such file/-1)
+Couldn't find tsort.rb in runtime/compiler.rba (No such file/-1)
+Unable to find 'tsort' to load
+                 main.raise at bootstrap/04kernel.rb:26
+               main.require at core/compile.rb:91
+       main.__eval_script__ at (eval):1
+    CompiledMethod#activate at bootstrap/compiled_method.rb:52
+            main.__script__ at apps/irb/sirb.rb:79
+                  main.load at core/compile.rb:56
+            main.__script__ at core/__loader.rb:50
+</code></pre>
+
+Hmm. Oh, yes! I think we need to check load path. (I've since added @stdlib@ to the default load path.)
+
+<pre style="overflow: auto"><code>
+sirb(eval):001> p $:
+[".", "runtime/compiler.rba", "lib"]
+=> nil
+sirb(eval):002> $:.push "stdlib"
+=> [".", "runtime/compiler.rba", "lib", "stdlib"]
+sirb(eval):003> require 'tsort'
+Couldn't find tsort.rbc in runtime/compiler.rba (No such file/-1)
+Couldn't find tsort.rb in runtime/compiler.rba (No such file/-1)
+=> true
+</code></pre>
+
+Oh baby. Just ignore those couple complaints. It's that @=> true@ that we're looking for. Nice! Now, we'll just try the example in the @tsort.rb@ file.
+
+<pre style="overflow: auto"><code>
+sirb(eval):004> class Hash
+sirb(eval):005>   include TSort
+sirb(eval):006>   alias :tsort_each_node :each_key
+sirb(eval):007>   def tsort_each_child(node, &block)
+sirb(eval):008>     fetch(node).each(&block)
+sirb(eval):009>   end
+sirb(eval):010> end
+=> nil
+sirb(eval):011> {1=>[2, 3], 2=>[3], 3=>[], 4=>[]}.tsort
+=> [3, 2, 1, 4]
+sirb(eval):012> {1=>[2], 2=>[3, 4], 3=>[2], 4=>[]}.strongly_connected_components
+=> [[4], [2, 3], [1]]
+sirb(eval):013>
+</code></pre>
+
+Excellent! Er, what's that? Did I hear you say, "So, big deal, @tsort.rb@ isn't that tough"? Well, ok, it isn't. (I didn't even know about @TSort@ before browsing through the source.) But, we can do other stuff, too.
+
+<pre style="overflow: auto"><code>
+sirb(eval):008> require 'csv'
+=> true
+sirb(eval):009>
+</code></pre>
+
+Yep, that's right, @csv.rb@ compiles! But, I'll spare you the pain that ensued trying to use it. Baby steps. Ok, enough fun. C'mon kids, there's a bunch of the core library still to implement!

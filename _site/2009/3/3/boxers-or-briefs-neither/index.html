@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Boxers or Briefs? -- Neither?!</h2>
+        
+              <div class="meta">
+        <p><span class="date">03 March 2009</span></p>
+      </div>
+
+         <div class="entrybody"><p>The emperor is wearing clothes and everything looks hunky-dory and sane on the outside. Usually, that&#8217;s a good thing. For instance, when running <a href="http://rubyspec.org">RubySpec</a> on a released version of <span class="caps">MRI</span>, it&#8217;s good to know that things are behaving as expected and <em>all known issues</em> are accounted for. In other words, you won&#8217;t see any failures unless a spec is broken or a new spec has uncovered a bug.</p>
+<pre>
+$ mspec library/stringio/reopen_spec.rb 
+ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]
+........................
+
+Finished in 0.021797 seconds
+
+1 file, 24 examples, 59 expectations, 0 failures, 0 errors
+</pre>
+<p>While the above can be reassuring, it may not tell the whole story. RubySpec uses <a href="http://rubyspec.org/wiki/rubyspec/Guards">guards</a> to control which specs are run. This enables the specs to accommodate differences in behavior due to varying platforms, versions, implementations, and bugs</p>
+<p>I&#8217;ve added a couple features to <a href="http://github.com/rubyspec/mspec/commits/master">MSpec</a> to enable discrete and not-so-discrete peeks under the robes, as it were. The first of these is akin to just yanking down the trousers. By passing the <code>--no-ruby_bug</code> option, all <code>ruby_bug</code> guards are disabled and the guarded specs are run.</p>
+<pre>
+$ mspec --no-ruby_bug library/stringio/reopen_spec.rb 
+ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]
+............FF.....FF.....FF......
+
+1)
+StringIO#reopen when passed [Object, Object] resets self's position to 0 FAILED
+Expected 5
+ to have same value and type as 0
+
+./library/stringio/reopen_spec.rb:117
+./library/stringio/reopen_spec.rb:110:in `all?'
+./library/stringio/reopen_spec.rb:61
+
+---- snip ----
+
+Finished in 0.022210 seconds
+
+1 file, 34 examples, 76 expectations, 6 failures, 0 errors
+</pre>
+<p>If you cringe a little when blasted by a bunch of failures, don&#8217;t worry, So do I. For a more subtle examination, there is also the ability to run the specs and note which specs <em>would have run</em> but did not due to guards</p>
+<pre>
+$ mspec --report library/stringio/reopen_spec.rb 
+ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]
+........................
+
+Finished in 0.009809 seconds
+
+1 file, 24 examples, 59 expectations, 0 failures, 0 errors, 10 guards
+
+
+4 specs omitted by guard: ruby_bug #, 1.8.6.114:
+
+StringIO#reopen reopens a stream when given a String argument
+StringIO#reopen reopens a stream in append mode when flagged as such
+StringIO#reopen reopens and truncate when reopened in write mode
+StringIO#reopen truncates the given string, not a copy
+
+6 specs omitted by guard: ruby_bug #, 1.8.7:
+
+StringIO#reopen when passed [Object, Object] resets self's position to 0
+StringIO#reopen when passed [Object, Object] resets self's line number to 0
+StringIO#reopen when passed [String] resets self's position to 0
+StringIO#reopen when passed [String] resets self's line number to 0
+StringIO#reopen when passed no arguments resets self's position to 0
+StringIO#reopen when passed no arguments resets self's line number to 0
+</pre>
+<p>The guards are reported only if they have altered how the specs were run. Since the <code>ruby_bug</code> guard can only prevent specs from running on the </p>
+<pre>
+$ mspec -t jruby --report library/stringio/reopen_spec.rb 
+jruby 1.2.0RC1 (ruby 1.8.6 patchlevel 287) (2009-02-26 rev 9326) [i386-java]
+..................................
+
+Finished in 0.257000 seconds
+
+1 file, 34 examples, 76 expectations, 0 failures, 0 errors, 0 guards
+</pre>
+<p>So, if you are wondering what is going on with some specs for a particular library, you can get a quick peek using the <code>--report</code> option before digging into the spec files. There is also a <code>--report-on GUARD</code> option that allows you to narrow the focus of your peeking.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

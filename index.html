@@ -1,0 +1,19 @@
+---
+layout: site
+---
+  {% include header.html %}
+
+  <div id="wrap">
+    <div id="content">
+    {% for post in site.posts limit:10 %}
+    <div class="entry home">
+      <h2 class="entrytitle"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      {% include by_line.html %}
+       <div class="entrybody">{{ post.content }}</div>
+    </div>
+    {% endfor %}
+    </div>
+    {% include sidebar.html %}
+  </div>
+
+  {% include footer.html %}

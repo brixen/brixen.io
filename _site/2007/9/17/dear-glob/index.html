@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Dear glob</h2>
+        
+              <div class="meta">
+        <p><span class="date">17 September 2007</span></p>
+      </div>
+
+         <div class="entrybody"><p>At some point, you likely needed to grab some files and do something with them. You probably had a vague recollection about <code>Dir[]</code> from reading the Pickaxe book. To refresh your memory, you crack it open and fire up irb. Ah, easy&#8230;</p>
+<pre><code>
+  irb(main):001:0&gt; Dir['spec/**/*_spec.rb'].each do |file|
+  irb(main):002:1* puts file
+  irb(main):003:1&gt; end
+</code></pre>
+<p>There&#8217;s no denying that Ruby makes this task dead simple. So simple, in fact, that you probably don&#8217;t think twice about how that nifty <code>Dir[]</code> method does its work. That is, unless you&#8217;re trying to implement it</p>
+<p>During the <a href="http://rubini.us/forums/6/topics/59">Rubinius sprint</a>, I realized that having this in Rubinius would enable me to make our continuous integration spec runner much better. Now, I know that there&#8217;s a <code>glob</code> function in C that provides behavior similar to what you get in the shell using * and ? to match file names. There&#8217;s also a function <code>fnmatch</code> that wraps up some of that magic. No problem. We&#8217;ve got this nifty foreign-function interface (<span class="caps">FFI</span>) that <a href="http://blog.fallingsnow.net">Evan</a> has graciously provided. Evan recommended I take that route first. Yep, took all of 10 minutes to hook everything up.</p>
+<p>Of course, it wouldn&#8217;t be <em>that</em> interesting were this the end of the story. It&#8217;s not. Our fnmatch specs were mostly passing, but when I looked into the failing ones, I discovered something that I&#8217;d probably tried to shield my psyche from. Ruby implements its own fnmatch and glob functions. And when I say &#8216;implements&#8217;, it doesn&#8217;t really give you any idea of the pain and suffering involved. Do take a peek:</p>
+<ul>
+<p>The <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/dir.c">Ruby source</a> (stable 1.8.6)</p>
+</li>
+<p>The <a href="http://svn.codehaus.org/jruby/trunk/jruby/src/org/jruby/util/Dir.java">JRuby source</a></p>
+</li>
+</ul>
+<p>It doesn&#8217;t take but a minute to see that <a href="http://ola-bini.blogspot.com/">Ola Bini&#8217;s</a> java code is extraordinarily more readable than the <span class="caps">MRI</span> source. But both are daunting to say the least. So, I&#8217;ve decided to take a different route</p>
+<pre style="overflow:auto;"><code>
+  def self.fnmatch(pattern, path, flags=0)
+    pattern = StringValue(pattern).dup
+    path = StringValue(path).dup
+    escape = (flags &amp; FNM_NOESCAPE) == 0
+    pathname = (flags &amp; FNM_PATHNAME) != 0
+    nocase = (flags &amp; FNM_CASEFOLD) != 0
+    period = (flags &amp; FNM_DOTMATCH) == 0
+    subs = { /\*{1,2}/ =&gt; '(.*)', /\?/ =&gt; '(.)', /\{/ =&gt; '\{', /\}/ =&gt; '\}' }
+    
+    return false if path[0] == ?. and pattern[0] != ?. and period
+    pattern.gsub!('.', '\.')
+    pattern = pattern.split(/(?&lt;pg&gt;\[(?:\\[\[\]]|[^\[\]]|\g&lt;pg&gt;)*\])/).collect do |part|
+      if part[0] == ?[
+        part.gsub!(/\\([*?])/, '\1')
+        part.gsub(/\[!/, '[^')
+      else
+        subs.each { |p,s| part.gsub!(p, s) }
+        if escape
+          part.gsub(/\\(.)/, '\1')
+        else
+          part.gsub(/(\\)([^*?\[\]])/, '\1\1\2')
+        end
+      end
+    end.join
+    
+    re = Regexp.new("^#{pattern}$", nocase ? Regexp::IGNORECASE : 0)
+    m = re.match path
+    if m
+      return false unless m[0].size == path.size
+      if pathname
+        return false if m.captures.any? { |c| c.include?('/') }
+        
+        a = StringValue(pattern).dup.split '/'
+        b = path.split '/'
+        return false unless a.size == b.size
+        return false unless a.zip(b).all? { |ary| ary[0][0] == ary[1][0] }
+      end
+      return true
+    else
+      return false
+    end
+  end
+</code></pre>
+<p>This code is only passing 80% of our existing specs for <code>File.fnmatch?</code>, so the jury is still out. And I&#8217;m sure someone can make this much better. The lesson for me is that 1) Ruby&#8217;s implementation is typically <em>not</em> accessible (I already knew that), and 2) writing Ruby code is a good way to handle tough problems</p>
+<p>But then, you already knew that. ;)</p>
+<p><strong><span class="caps">UPDATE</span>:</strong> I&#8217;ve changed the code here to reflect our current version. It&#8217;s now passing 100% of the existing specs.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">All shiny and new</h2>
+        
+              <div class="meta">
+        <p><span class="date">12 February 2009</span></p>
+      </div>
+
+         <div class="entrybody"><p><strong><span class="caps">UPDATE</span> 2.0:</strong> You really did see the update below, right? You&#8217;re getting <a href="http://blog.headius.com/">Charlie</a> all worried with your enthusiasm for Rubinius.</p>
+<p><strong><span class="caps">UPDATE</span>:</strong> Ahem, you should probably also read: <a href="http://blog.brightredglow.com/2009/2/12/this-is-not-cold-fusion">This is <span class="caps">NOT</span> cold fusion</a>. No, it&#8217;s not April 1st. Sorry about that. Are you still excited? Read on!</p>
+<p>It&#8217;s a pattern I&#8217;m fairly familiar with now. <a href="http://blog.fallingsnow.net/">Evan</a> will be pondering an issue with <a href="http://rubini.us">Rubinius</a>. I&#8217;ll catch wind of it when he starts asking some questions of smart people, reading academic CS papers, other implementation&#8217;s code, and tossing out some &#8220;what if&#8230;&#8221; questions. Next thing you know, he&#8217;s frenetically churning out code. Suddenly, Rubinius is much better, and in this case, <em>faster</em>.</p>
+<p>Well, it&#8217;s happened again and the preliminary results are <em>outstanding_. A couple weeks ago, Evan began coding some changes to the way the Rubinius bytecode interperter works. He changed the stackless execution architecture that implemented an optimized kind of <a href="http://en.wikipedia.org/wiki/Spaghetti">spaghetti stack</a></em>stack to use the C stack more directly and naturally. This better enables the <span class="caps">CPU</span> optimizations of the past dozen years to work. It also significantly simplifies the code for our <span class="caps">FFI</span>, C-<span class="caps">API</span> for C extensions, <span class="caps">JIT</span>, and for potentially leveraging <span class="caps">LLVM</span> much more effectively. This change also brings native threads, and a much better GC for the mature generation is also in the works.</p>
+<p>Now, for some details. Again, these results are preliminary. There is still a lot of breakage on the <a href="http://github.com/evanphx/rubinius/commits/stackfull">stackfull</a> branch but MSpec is already running and <em>many</em> of the CI specs run. I&#8217;ll be getting a new CI set in place today and we&#8217;ll get the remaining breakage fixed quickly (don&#8217;t ya just love those specs).</p>
+<p>Here&#8217;s some numbers for compiling and running the String specs.</p>
+<p>First, on the Rubinius master branch:</p>
+<pre>
+    Finished in 25.829773 seconds
+
+    69 files, 763 examples, 5632 expectations, 0 failures, 0 errors
+</pre>
+<p>Now, on the Rubinius stackfull branch::</p>
+<pre>
+    Finished in 5.834874 seconds
+
+    69 files, 754 examples, 5563 expectations, 6 failures, 19 errors
+</pre>
+<p>Here&#8217;s the numbers for running after the specs have been compiled</p>
+<p>Again, on the master branch:</p>
+<pre>
+    Finished in 5.101799 seconds
+
+    69 files, 763 examples, 5632 expectations, 0 failures, 0 errors
+</pre>
+<p>And now the stackfull branch::</p>
+<pre>
+    Finished in 1.564942 seconds
+
+    69 files, 754 examples, 5563 expectations, 6 failures, 19 errors
+</pre>
+<p>I&#8217;ll let that sink in a bit</p>
+<p>The numbers for Hash with compilation are similar.</p>
+<p>Master:</p>
+<pre>
+    Finished in 5.379050 seconds
+
+    48 files, 195 examples, 425 expectations, 0 failures, 0 errors
+</pre>
+<p>Stackfull::</p>
+<pre>
+    Finished in 1.295544 seconds
+
+    48 files, 193 examples, 421 expectations, 0 failures, 0 errors
+</pre>
+<p>That&#8217;s right, <del>between 4.1 and 4.4</del> <strong>approaching 2</strong> <em>times</em> faster (see the <span class="caps">UPDATE</span> above). And we are just getting started. The significant GC changes are not in yet. We are not <em>yet</em> doing any significant optimizations in the compiler, no profile-directed optimizations at runtime, and our nascent <span class="caps">JIT</span> is not hooked up by default. As I said at the outset, these optimizations are made easier by this architecture change</p>
+<p>While I&#8217;m breaking the news, Evan deserves the credit for the architecture decisions and generally being courageous enough to try and learn (some would say fail) and try again. Some have doubted that the lofty goals Rubinius has set are realistic. Doubters have a seat.</p>
+<p>If you want to try this at home, clone the <a href="http://github.com/evanphx/rubinius/tree/master">Rubinius Github</a> repository and do the following:</p>
+<pre>
+    $ git branch --track stackfull origin/stackfull
+    $ rake build
+    $ bin/mspec ci core/string
+</pre>
+<p>Thanks to <a href="http://engineyard.com">Engine Yard</a> for trusting in Evan&#8217;s excellent judgment and system architecture talents and in all our hard work even if it doesn&#8217;t look immediately relevant. The path is clear. The goods are in the truck and they will be delivered.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

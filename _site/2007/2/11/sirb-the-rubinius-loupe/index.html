@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Sirb: The Rubinius Loupe</h2>
+        
+              <div class="meta">
+        <p><span class="date">11 February 2007</span></p>
+      </div>
+
+         <div class="entrybody"><p>If <a href="http://blog.brightredglow.com/2007/2/11/irb-on-rubinius">my previous post</a> about <code>sirb</code> got you drooling a bit, read on. I&#8217;ve added some simple command line arguments to <code>sirb</code> that enable you to request that s-expressions, assembly, or bytecodes (or all of them) are printed each time through the <span class="caps">RCEPL</span> loop. You can get a hint at all the goodness by passing the <code>-h</code> switch.</p>
+<pre style="overflow: auto;"><code>
+$ ./shotgun/rubinius apps/irb/sirb.rb -h -p -x -s -b
+  Usage: sirb [options]
+    sirb is a RCEPL (read, compile, execute, print, loop) program for rubinius
+
+    Options: 
+            -p   Print the parsed s-expression
+            -x   Print the normalized s-expression.
+            -s   Print assembly instructions.
+            -b   Print bytecode encoding.
+
+sirb(eval):0&gt; puts "Hello, Rubinius. You rock my world!" 
+
+S-exp:
+[:newline, 1, "(eval)", [:fcall, :puts, [:array, [:str, "Hello, Rubinius. You rock my world!", 0]]]]
+
+Normalized S-exp:
+[:newline, 1, "(eval)", [:call, [:self], :puts, [:array, [:str, "Hello, Rubinius. You rock my world!", 0]]]]
+
+Asm:
+#line 1
+push_literal 0
+string_dup
+push self
+send puts 1
+ret
+
+
+Bytecodes:
+"\v\000\000\000\000:\f)\000\000\000\001\000\000\000\001'\000\000\000"
+Hello, Rubinius. You rock my world!
+=&gt; nil
+sirb(eval):1&gt;
+</code></pre>
+<p>As I mentioned, <code>sirb</code> is rudimentary at the moment. But it shows you how much can be done with <a href="http://rubini.us">Rubinius</a> right now. Swell! And, a big thanks to <a href="http://mattelder.org/"><strong>mae</strong></a> for fixing up how the output of the execution prints (no more <code>["foo"]</code>)</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

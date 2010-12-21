@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">What is RubySpec?</h2>
+        
+              <div class="meta">
+        <p><span class="date">03 March 2009</span></p>
+      </div>
+
+         <div class="entrybody"><p>According to the folks over at <a href="http::rubyspec.org">http://rubyspec.org</a>, &#8220;RubySpec is a project to write a complete, executable specification for the Ruby programming language.&#8221; As with any sufficiently concise summary, there&#8217;s some opportunity for misunderstanding here, so let&#8217;s explore a few aspects of this definition.</p>
+<p>Since this post is a bit long, here&#8217;s a summary:</p>
+<ol>
+<p>There is one <em>standard</em> definition of Ruby.</p>
+</li>
+<p>RubySpec benefits the whole Ruby ecosystem.</p>
+</li>
+<p>RubySpec does not guarantee that program A will run on implementation B.</p>
+</li>
+<p>RubySpec includes only specs for the correct behavior when bugs are discovered in <span class="caps">MRI</span>.</p>
+</li>
+<p>Help your favorite Ruby implementation by contributing to RubySpec.</p>
+</li>
+</ol>
+<p>First, what does it mean to be &#8220;the Ruby programming language&#8221;? The answer to this question used to be a little simpler before Ruby 1.9. Originally, there was the single Ruby implementation that Matz and friends built, referred to as <span class="caps">MRI</span> (Matz&#8217;s Ruby Interpreter). Now there is also RubyVM or <span class="caps">KRI</span> (Koichi&#8217;s Ruby Implementation) or simply Ruby 1.9. Either way, <span class="caps">MRI</span> 1.8.x and [KM]RI 1.9.x are the <em>standard</em> or <em>reference</em> implementations for Ruby. Everyone else is making an alternative implementation that either complies with the standard or deviates from it.</p>
+<p>This is the way RubySpec is written. I realize that it&#8217;s possible to consider &#8220;the Ruby programming language&#8221; to be an abstract thing and <em>all</em> the Ruby projects as merely more or less equal attempts to implement the language. I won&#8217;t try to convince you that either way of viewing this is more or less correct. I just want to be clear about the way RubySpec views it.</p>
+<p>At the time I began writing what eventually became RubySpec, the only Ruby implementation in wide-spread use was <span class="caps">MRI</span>. My biggest concern when getting involved with <a href="http://rubini.us">Rubinius</a> was that the project would be consistent with Ruby the way Matz defines it and not cause fragmentation of the language. My reason was quite selfish. I loved programming in Ruby and I wanted to see the language thrive.</p>
+<p>So, RubySpec&#8217;s over-arching value proposition is a single, comprehensive definition of the Ruby programming language. To see if the value proposition is actually universal, let&#8217;s examine the three categories of people involved with Ruby: consumers, programmers, and implementers.</p>
+<p>I define <em>consumers</em> as anyone who depends on a product or service written in Ruby. Consumers may use these products and services directly, or they may own or work for companies that provide them, or they may use products and services that are themselves supported by software written in Ruby. Consumers are the biggest part of the Ruby ecosystem.</p>
+<p>Interacting closely with the consumers are <em>programmers</em>, the men and women who write software or frameworks in Ruby. In fact, the same folks may be both consumers and programmers.</p>
+<p>The <em>implementers</em> are the people writing Ruby implementations for the programmers and consumers. They want to experiment with ways to better support programmers without worrying that they are breaking their programs in unknown ways. Again, the implementers may be programmers or consumers themselves.</p>
+<p>If you&#8217;ve ever used a proprietary implementation of a programming language or know what vendor lock-in means, then I am preaching to the choir. If not, then consider that system requirements change, hardware changes, services change, customers change, development teams change, everything changes.</p>
+<p>Consumers want assurance that the products and services on which they depend will remain available and will grow with their needs. Programmers want assurance that they will be able to meet their customers&#8217; needs. Implementers want to provide programmers the ability to do so. A single, consistent Ruby language really is a win-win-win situation.</p>
+<p>With everything seeming so sunny, one may be tempted to think: &#8220;If implementation A and B perform the same on RubySpec, then a program running on A now should run just fine on B.&#8221; Unfortunately, it is not quite that simple. Just as a program may not run on both OS X and Linux simply because <span class="caps">MRI</span> runs on both. Once in a while, RubySpec finds bugs in <span class="caps">MRI</span>, though not that often considering the tens of thousands of expectations. Since a lot of the code in <span class="caps">MRI</span> has been around for years, this illustrates that even running thousands of programs (RubySpec is just another program) is no guarantee that there are not bugs lurking around the corner.</p>
+<p>What can tell you whether a program will (likely) run on both A and B is the program&#8217;s own test suite. In this regard, the program&#8217;s test suite and RubySpec are complementary. If the tests discover something that RubySpec did not, it is an opportunity to enhance RubySpec. If running on another implementation expose issues not uncovered by the program&#8217;s tests, it is an opportunity to enhance the tests.</p>
+<p>Ruby versioning is complex affair and another area where possible misunderstandings exist about RubySpec. It seems pretty simple that Ruby 1.8 and Ruby 1.9 are different. But then there is 1.8.7, which is like 1.8.6 and 1.9. And there may be 1.8.8, which will likely be different than 1.8.6 and 1.8.7 and 1.9. It is dizzying. RubySpec handles the different versions by using the <code>ruby_version_is</code> guard. (Read the <a href="http://rubyspec.org/wiki/rubyspec/Guards">guard documentation</a> for full details.)</p>
+<p>Generally, the version guards work fine. Each implementation provides the <code>RUBY_VERSION</code> constant and based on its value, the guards permit the correct specs to run. Some have assumed this means RubySpec will tell you that alternate implementation A is just like <span class="caps">MRI</span> version X.Y.Z &#8220;bugs and all&#8221; because A says it is version X.Y.Z</p>
+<p>The principles RubySpec strives for are correctness, clarity, and consistency. There is no way to provide <em>clear</em> and <em>consistent</em> results if RubySpec included specs for the <em>wrong</em> behavior as well as specs for the correct behavior. Either clarity or consistency suffer, badly. Matz is the one who ultimately determines whether a behavior is a bug or not. RubySpec simply includes specs for only correct behaviors.</p>
+<p>These are some of the factors that complicate this issue:</p>
+<ol>
+<p>There is no definition of what <em>is</em> a bug. It may be a segfault, an incorrect value computed, a frozen state not set or respected, the wrong exception class raised. The list is endless and impossible to consistently categorize.</p>
+</li>
+<p>All implementations, including <span class="caps">MRI</span>, have their own release processes and schedules.</p>
+</li>
+<p>RubySpec is a social as well as technical project. An aspect of the value-added proposition for any given implementation is the quality that they provide. There is no way the alternative implementations will consistently agree to defer fixing bugs until <span class="caps">MRI</span> releases a fix. Rather than supporting cherry-picking which bugs to fix, RubySpec only includes correct specs.</p>
+</li>
+<p>Bugs discovered by RubySpec in <span class="caps">MRI</span> are quite rare.</p>
+</li>
+</ol>
+<p>Finally, contributing to RubySpec is one of the lowest barriers-to-entry means of supporting your favorite Ruby implementation and the Ruby ecosystem as a whole.</p>
+<p>Consider what the view looks like from the outside: Ruby has a vibrant community of implementations meeting consumers&#8217; and programmers&#8217; needs on virtually every significant platform, including on Java, .<span class="caps">NET</span>, Mac (Obj-C), and semi-platform-agnostic implementations like <span class="caps">MRI</span> and Rubinius. Internally, it means that Ruby programmers can focus more on writing their programs using the best tools for the job, confident that if requirements change they can move to a different platform with ease and confidence.</p>
+<p>Check out the <a href="http://rubyspec.org/wiki/rubyspec">RubySpec docs</a> if you are interested in helping out.<br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

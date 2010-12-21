@@ -1,0 +1,17 @@
+--- 
+title: What the hell
+layout: post
+---
+Warning. Long quote to follow. There, I've warned you. 
+
+<blockquote>
+The most useful products are those where the developers have understood what the product is intended to accomplish for its users and how it must accomplish that purpose. To understand these things, you must understand what kind of work the users want to do and how the product will affect that work and fit into the organization's goals. What the product does for its users and which constraints it must satisfy in this context are the product's requirements. Apart from a few fortuitous accidents, no product has ever succeeded without prior understanding of its requirements. It does not matter what kind of work the user wishes to do, be it scientific, commercial, e-commerce, or word processing. Nor does it matter which programming language or development tools are used to construct the product. The development process&mdash;whether agile, eXtreme Programming, prototyping, the Rational Unified Process, or any other method&mdash;is irrelevant to the need for understanding the requirements. <em>One fact always emerges: You must come to the correct understanding of the requirements, and have your client understand them, or your product or project will fail.</em>
+</blockquote>
+
+Emphasis added. Quoted from "Mastering the Requirements Process, 2nd Ed.":http://www.amazon.com/Mastering-Requirements-Process-Suzanne-Robertson/dp/0321419499/sr=8-1/qid=1162876588/ref=pd_bbs_sr_1/104-8500968-6579924?ie=UTF8&s=books
+
+To paraphrase: Knowing what you are doing is an absolute prerequisite to successfully doing it. It's not a guarantee you'll be successful, but there's no substitute for it.
+
+Agile means different things to different people. At times, _responding to change over following a plan_ is translated by someone into _planning is not agile; just jump in and see what happens because you won't know until you get there anyway_. There's also the agile concept of not doing more than necessary at each point. So, there's a tension set up between looking forward to where you're going and looking down at what you're doing. Overdoing either get's you in trouble. Like reading a newspaper while walking through a crowd. Pay too much attention to the people and you don't get reading done. Read too much and you'll bump into people.
+
+A few months ago, when Rails was really new, there was this idea circulating that Rails made it so easy, one didn't even really have to know Ruby to program with Rails. Yeah, uh, right. Unfortunately, claiming to be _agile_ is also often substituted for knowing what you're doing. It takes a lot of knowledge and experience to balance the tension described above. It takes a lot of judgment to know _how much do I need to do right now?_ Agile is not a substitute for knowledge and experience, although it may guide you to better apply those.

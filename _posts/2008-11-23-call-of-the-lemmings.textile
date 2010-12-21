@@ -1,0 +1,21 @@
+--- 
+title: Call of the lemming
+layout: post
+---
+It's sometimes hard to gauge troll, tirade, or spirited challenge online. "The Opposite of Momentum":http://kirindave.tumblr.com/post/60776407/the-opposite-of-momentum strikes me as a mix, though in what percentages, I haven't decided. KirinDave is a little late to the bag&#45;on&#45;Ruby party, and if it's Javascript he wants, "Yegge":http://steve-yegge.blogspot.com/ was there well over a year ago. Browse some of the mind-expanding comments by the bottom feeders at "Reddit":http://www.reddit.com/r/programming/comments/7epu0/ruby_and_the_opposite_of_momentum/ chewing on KirinDave's post. It's a reassuring, if disappointing, commentary on the consistency of human behavior: it is always easier to complain than to fix.
+
+But, anyway.
+
+True, the reference implementation of Ruby has some problems. But, Rubinius has a precise, generational garbage collector. It is definitely not "technically stagnant", nor is it "in implementation limbo". It was only in May of this year, before RailsConf, that we first got Rails running on Rubinius. We are close to getting it running again on the new VM. If we do that by year's end, we will surely have some kind of record. For all the thousands of lines of Ruby code he's written, KirinDave hasn't contributed any code to Rubinius. That's too bad.
+
+Ruby isn't that extraordinary as a language. But it is a very good language. What is more, Ruby is a _humane_ language, in the spirit of "Jef Raskin's":http://en.wikipedia.org/wiki/Jef_Raskin "The Humane Interface":http://www.amazon.com/Humane-Interface-Directions-Designing-Interactive/dp/0201379376/ref=pd_bbs_sr_1?ie=UTF8&s=books&qid=1227419893&sr=8-1. Furthermore, now like never before is the age of the dynamic programming language. The technical hurdles are being explored all around us. In fact, before the year is over, you should spend a few quality hours with one or more of the following languages.
+
+"Factor":http://www.factorcode.org/. This fascinating "concatenative":http://en.wikipedia.org/wiki/Concatenative_language language will definitely get you thinking outside of the box. Rubinius is a stack-based VM. Writing some Factor code is a little like peeling back the syntax layer of Ruby and watching the muscles and tendons work. Check out the quotations and combinators and think about how you write functional code with Ruby. Don't miss the Google "tech talk":http://www.youtube.com/watch?v=f_0QlhYlS8g by Factor's creator, Slava Pestov.
+
+"Clojure":http://clojure.org/. This is another fascinating language by another wicked smart guy, Rich Hickey (check out "the video":http://blip.tv/file/812787). In fact, this is currently my favorite language to study. It's the Ruby of Lisps, in my opinion. And it contains a wealth of ideas that could be useful for implementing Rubinius, not to mention, thinking about writing concurrent programs.
+
+"Io":http://www.iolanguage.com/. Like Javascript? You owe it to yourself to play with this language a bit. I'd be interested to see about an implementation of Io on "SquirrelFish Extreme":http://webkit.org/blog/214/introducing-squirrelfish-extreme/
+
+"Haskell":http://haskell.org/. Amaze your friends and improve your sex life. Jump stateful, side-effect tangled heaps of code with a single Monad. There is a cool new "online book":http://book.realworldhaskell.org/ that will soon be released in print as well.
+
+Seriously, if you are a Ruby programmer, you could hardly do poorly by adopting any one of these languages. If Javascript makes your curly braces tingle, who am I to ridicule you. But if Ruby continues to maintain its captivating hold on your attention, don't be disappointed. There is some awesome sauce in there, and we're working on the recipe that really makes the flavor pop. Just a little request, instead of bitchin', "pitch in":http://github.com/evanphx/rubinius/tree/master/doc/contributing.txt.

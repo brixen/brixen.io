@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Send my love to Ruby</h2>
+        
+              <div class="meta">
+        <p><span class="date">20 September 2007</span></p>
+      </div>
+
+         <div class="entrybody"><p>Over at the <a href="http://rubini.us">Rubinius</a> project, in between hatching plots to take over the world, we fit in some time for recreation. For example, we&#8217;ve got this masochistic interest in writing <a href="http://rspec.rubyforge.org">RSpec</a> compatible specs for the Ruby core library. One of the challenges there is the large number of aliased methods that Ruby has. Using RSpec&#8217;s shared behaviors as an example, I&#8217;ve created a flavor of shared behaviors in our <code>mini_rspec</code> implementation. As the code below shows, this makes it straightforward to spec all these aliases.</p>
+<pre><code>
+hash_store = shared "Hash#store" do |cmd|
+  describe "Hash##{cmd}" do
+    it "associates the key with the value and return the value" do
+      h = { :a =&gt; 1 }
+      (h.send(cmd, :b, 2).should == 2
+      h.should == {:b=&gt;2, :a=&gt;1}
+    end
+
+    it "duplicates and freezes string keys" do
+      key = "foo"
+      h = {}
+      h.send(cmd, key, 0)
+      key &lt;&lt; "bar"
+
+      h.should == { "foo" =&gt; 0 }
+      h.keys[0].frozen?.should == true
+    end
+
+    it "duplicates string keys using dup semantics" do
+      # dup doesn't copy singleton methods
+      key = "foo"
+      def key.reverse() "bar" end
+      h = {}
+      h.send(cmd, key, 0)
+
+      h.keys[0].reverse.should == "oof"
+    end  
+
+    it "raises TypeError if called on a frozen instance" do
+      should_raise(TypeError) { hash.send(cmd, 1, 2) }
+    end
+  end
+end
+
+describe "Hash#[]=" do
+  it_behaves_like(hash_store, :[]=)
+end
+</code></pre>
+<p>The very cool thing about this is how useful Ruby&#8217;s <code>send</code> method is. And in Rubinius, it gets even cooler, as you&#8217;ll see in <a href="http://blog.brightredglow.com/2007/9/20/send-my-love-to-ruby-ii">part II</a><br />
+</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

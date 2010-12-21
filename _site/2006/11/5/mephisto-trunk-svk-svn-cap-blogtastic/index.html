@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Mephisto" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Mephisto trunk + svk + svn + cap = blogtastic</h2>
+        
+              <div class="meta">
+        <p><span class="date">05 November 2006</span></p>
+      </div>
+
+         <div class="entrybody"><p>One <a href="http://mephistoblog.com/">Mephisto</a> feature I really like is saving an article as a draft. Unfortunately, I&#8217;m more likely to start an article than finish it. So, I&#8217;m looking forward to that auto-write feature that maybe Rick is working on. Until then, I&#8217;ll just have to continue finishing them on my own, even if it takes a few weeks. Ahem, like this one.</p>
+<p>Inspired by <a href="http://octopod.info/2006/8/19/managing-multiple-local-mephisto-repos-with-svk">Octopod</a> yet <a href="http://blog.brightredglow.com/2006/5/1/xen-and-the-art-of-noise-management">again</a>, I&#8217;ve got the best of worlds: Mephisto edge at my chosen version mirrored to my own svn repository for my own hacking, all <code>cap deploy</code>&#8217;d to my <span class="caps">VPS</span>.</p>
+<p>I decided to put my svn repository on my <span class="caps">VPS</span> and develop in that. Basically, I use svk as a fancy adapter with the added advantage that I can update from Mephisto edge whenever it&#8217;s convenient for me. Installing svk on Ubuntu 6.06 was a breeze. From there, I mostly followed Octopod&#8217;s recipe: First, I create a mirror for Mephisto in my svk repository, then pull in Mephisto.</p>
+<pre style="overflow: auto;"><code>
+svk mkdir //mirror
+svk mkdir //mirror/mephisto
+svk mirror http://svn.techno-weenie.net/projects/mephisto/trunk //mirror/mephisto/trunk
+svk sync //mirror/mephisto/trunk
+</code></pre>
+<p>That&#8217;s the Mephisto side of the cable. Now, for my local svn side</p>
+<pre style="overflow: auto;"><code>
+svk mkdir //svn
+svk mkdir //svn/mephisto
+svk mirror svn://svn.brightredglow.com/mephisto/trunk //svn/mephisto/trunk
+svk smerge --baseless //mirror/mephisto/trunk //svn/mephisto/trunk
+</code></pre>
+<p>Now, I simply use the <code>sync</code> command above to pull new Mephisto changes to my svk repository and the following command to push those changes to my svn repository::</p>
+<pre style="overflow: auto;"><code>
+svk smerge --incremental --log //mirror/mephisto/trunk //svn/mephisto/trunk
+</code></pre>
+<p>From here, it&#8217;s pretty simple. I check out a working copy of my svn Mephisto trunk and work normally. Using <a href="http://rubyforge.org/projects/capistrano/">Capistrano</a>, I can <code>cap deploy</code> or <code>cap rollback</code> to my heart&#8217;s content</p>
+<p>Finally, <a href="http://mongrel.rubyforge.org/index.html">Mongrel</a> + <a href="http://nginx.net/">Nginx</a> + Mephisto are working flawlessly. My mongrel processes never get over about 35MB and they hum along day after day, week after week. Sometimes load gets too high for my <span class="caps">VPS</span>, but I can live with that. Speaking of <span class="caps">VPS</span>, <a href="http://www.quantact.com">Quantact</a> has recently added OpenVZ options. They&#8217;re quiet but dependable. And recently I logged in to my control panel to find that I had 33% more <span class="caps">RAM</span> and another gig of disk space. I&#8217;m not saying they do this all the time, but for whatever reason they did it, I appreciate it.</p></div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
+          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+        <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
+      
+        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
+      
+      </ul>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+
+
+</body>
+</html>

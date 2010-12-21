@@ -1,0 +1,73 @@
+--- 
+title: Dear glob
+layout: post
+---
+At some point, you likely needed to grab some files and do something with them. You probably had a vague recollection about @Dir[]@ from reading the Pickaxe book. To refresh your memory, you crack it open and fire up irb. Ah, easy...
+
+<pre><code>
+  irb(main):001:0> Dir['spec/**/*_spec.rb'].each do |file|
+  irb(main):002:1* puts file
+  irb(main):003:1> end
+</code></pre>
+
+There's no denying that Ruby makes this task dead simple. So simple, in fact, that you probably don't think twice about how that nifty @Dir[]@ method does its work. That is, unless you're trying to implement it.
+
+During the "Rubinius sprint":http://rubini.us/forums/6/topics/59, I realized that having this in Rubinius would enable me to make our continuous integration spec runner much better. Now, I know that there's a @glob@ function in C that provides behavior similar to what you get in the shell using * and ? to match file names. There's also a function @fnmatch@ that wraps up some of that magic. No problem. We've got this nifty foreign-function interface (FFI) that "Evan":http://blog.fallingsnow.net has graciously provided. Evan recommended I take that route first. Yep, took all of 10 minutes to hook everything up.
+
+Of course, it wouldn't be _that_ interesting were this the end of the story. It's not. Our fnmatch specs were mostly passing, but when I looked into the failing ones, I discovered something that I'd probably tried to shield my psyche from. Ruby implements its own fnmatch and glob functions. And when I say 'implements', it doesn't really give you any idea of the pain and suffering involved. Do take a peek:
+
+* The "Ruby source":http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/dir.c (stable 1.8.6)
+* The "JRuby source":http://svn.codehaus.org/jruby/trunk/jruby/src/org/jruby/util/Dir.java
+
+It doesn't take but a minute to see that "Ola Bini's":http://ola-bini.blogspot.com/ java code is extraordinarily more readable than the MRI source. But both are daunting to say the least. So, I've decided to take a different route. 
+
+<pre style="overflow:auto;"><code>
+  def self.fnmatch(pattern, path, flags=0)
+    pattern = StringValue(pattern).dup
+    path = StringValue(path).dup
+    escape = (flags & FNM_NOESCAPE) == 0
+    pathname = (flags & FNM_PATHNAME) != 0
+    nocase = (flags & FNM_CASEFOLD) != 0
+    period = (flags & FNM_DOTMATCH) == 0
+    subs = { /\*{1,2}/ => '(.*)', /\?/ => '(.)', /\{/ => '\{', /\}/ => '\}' }
+    
+    return false if path[0] == ?. and pattern[0] != ?. and period
+    pattern.gsub!('.', '\.')
+    pattern = pattern.split(/(?<pg>\[(?:\\[\[\]]|[^\[\]]|\g<pg>)*\])/).collect do |part|
+      if part[0] == ?[
+        part.gsub!(/\\([*?])/, '\1')
+        part.gsub(/\[!/, '[^')
+      else
+        subs.each { |p,s| part.gsub!(p, s) }
+        if escape
+          part.gsub(/\\(.)/, '\1')
+        else
+          part.gsub(/(\\)([^*?\[\]])/, '\1\1\2')
+        end
+      end
+    end.join
+    
+    re = Regexp.new("^#{pattern}$", nocase ? Regexp::IGNORECASE : 0)
+    m = re.match path
+    if m
+      return false unless m[0].size == path.size
+      if pathname
+        return false if m.captures.any? { |c| c.include?('/') }
+        
+        a = StringValue(pattern).dup.split '/'
+        b = path.split '/'
+        return false unless a.size == b.size
+        return false unless a.zip(b).all? { |ary| ary[0][0] == ary[1][0] }
+      end
+      return true
+    else
+      return false
+    end
+  end
+</code></pre>
+
+This code is only passing 80% of our existing specs for @File.fnmatch?@, so the jury is still out. And I'm sure someone can make this much better. The lesson for me is that 1) Ruby's implementation is typically _not_ accessible (I already knew that), and 2) writing Ruby code is a good way to handle tough problems.
+
+But then, you already knew that. ;)
+
+*UPDATE:* I've changed the code here to reflect our current version. It's now passing 100% of the existing specs.

@@ -1,0 +1,54 @@
+--- 
+title: What is RubySpec?
+layout: post
+---
+According to the folks over at "http://rubyspec.org":http::rubyspec.org, "RubySpec is a project to write a complete, executable specification for the Ruby programming language." As with any sufficiently concise summary, there's some opportunity for misunderstanding here, so let's explore a few aspects of this definition.
+
+Since this post is a bit long, here's a summary:
+
+# There is one _standard_ definition of Ruby.
+# RubySpec benefits the whole Ruby ecosystem.
+# RubySpec does not guarantee that program A will run on implementation B.
+# RubySpec includes only specs for the correct behavior when bugs are discovered in MRI.
+# Help your favorite Ruby implementation by contributing to RubySpec.
+
+First, what does it mean to be "the Ruby programming language"? The answer to this question used to be a little simpler before Ruby 1.9. Originally, there was the single Ruby implementation that Matz and friends built, referred to as MRI (Matz's Ruby Interpreter). Now there is also RubyVM or KRI (Koichi's Ruby Implementation) or simply Ruby 1.9. Either way, MRI 1.8.x and [KM]RI 1.9.x are the _standard_ or _reference_ implementations for Ruby. Everyone else is making an alternative implementation that either complies with the standard or deviates from it.
+
+This is the way RubySpec is written. I realize that it's possible to consider "the Ruby programming language" to be an abstract thing and _all_ the Ruby projects as merely more or less equal attempts to implement the language. I won't try to convince you that either way of viewing this is more or less correct. I just want to be clear about the way RubySpec views it.
+
+At the time I began writing what eventually became RubySpec, the only Ruby implementation in wide-spread use was MRI. My biggest concern when getting involved with "Rubinius":http://rubini.us was that the project would be consistent with Ruby the way Matz defines it and not cause fragmentation of the language. My reason was quite selfish. I loved programming in Ruby and I wanted to see the language thrive.
+
+So, RubySpec's over-arching value proposition is a single, comprehensive definition of the Ruby programming language. To see if the value proposition is actually universal, let's examine the three categories of people involved with Ruby: consumers, programmers, and implementers.
+
+I define _consumers_ as anyone who depends on a product or service written in Ruby. Consumers may use these products and services directly, or they may own or work for companies that provide them, or they may use products and services that are themselves supported by software written in Ruby. Consumers are the biggest part of the Ruby ecosystem.
+
+Interacting closely with the consumers are _programmers_, the men and women who write software or frameworks in Ruby. In fact, the same folks may be both consumers and programmers.
+
+The _implementers_ are the people writing Ruby implementations for the programmers and consumers. They want to experiment with ways to better support programmers without worrying that they are breaking their programs in unknown ways. Again, the implementers may be programmers or consumers themselves.
+
+If you've ever used a proprietary implementation of a programming language or know what vendor lock-in means, then I am preaching to the choir. If not, then consider that system requirements change, hardware changes, services change, customers change, development teams change, everything changes.
+
+Consumers want assurance that the products and services on which they depend will remain available and will grow with their needs. Programmers want assurance that they will be able to meet their customers' needs. Implementers want to provide programmers the ability to do so. A single, consistent Ruby language really is a win-win-win situation.
+
+With everything seeming so sunny, one may be tempted to think: "If implementation A and B perform the same on RubySpec, then a program running on A now should run just fine on B." Unfortunately, it is not quite that simple. Just as a program may not run on both OS X and Linux simply because MRI runs on both. Once in a while, RubySpec finds bugs in MRI, though not that often considering the tens of thousands of expectations. Since a lot of the code in MRI has been around for years, this illustrates that even running thousands of programs (RubySpec is just another program) is no guarantee that there are not bugs lurking around the corner.
+
+What can tell you whether a program will (likely) run on both A and B is the program's own test suite. In this regard, the program's test suite and RubySpec are complementary. If the tests discover something that RubySpec did not, it is an opportunity to enhance RubySpec. If running on another implementation expose issues not uncovered by the program's tests, it is an opportunity to enhance the tests.
+
+Ruby versioning is complex affair and another area where possible misunderstandings exist about RubySpec. It seems pretty simple that Ruby 1.8 and Ruby 1.9 are different. But then there is 1.8.7, which is like 1.8.6 and 1.9. And there may be 1.8.8, which will likely be different than 1.8.6 and 1.8.7 and 1.9. It is dizzying. RubySpec handles the different versions by using the @ruby_version_is@ guard. (Read the "guard documentation":http://rubyspec.org/wiki/rubyspec/Guards for full details.)
+
+Generally, the version guards work fine. Each implementation provides the @RUBY_VERSION@ constant and based on its value, the guards permit the correct specs to run. Some have assumed this means RubySpec will tell you that alternate implementation A is just like MRI version X.Y.Z "bugs and all" because A says it is version X.Y.Z. 
+
+The principles RubySpec strives for are correctness, clarity, and consistency. There is no way to provide _clear_ and _consistent_ results if RubySpec included specs for the _wrong_ behavior as well as specs for the correct behavior. Either clarity or consistency suffer, badly. Matz is the one who ultimately determines whether a behavior is a bug or not. RubySpec simply includes specs for only correct behaviors.
+
+These are some of the factors that complicate this issue:
+
+# There is no definition of what _is_ a bug. It may be a segfault, an incorrect value computed, a frozen state not set or respected, the wrong exception class raised. The list is endless and impossible to consistently categorize.
+# All implementations, including MRI, have their own release processes and schedules.
+# RubySpec is a social as well as technical project. An aspect of the value-added proposition for any given implementation is the quality that they provide. There is no way the alternative implementations will consistently agree to defer fixing bugs until MRI releases a fix. Rather than supporting cherry-picking which bugs to fix, RubySpec only includes correct specs.
+# Bugs discovered by RubySpec in MRI are quite rare.
+
+Finally, contributing to RubySpec is one of the lowest barriers-to-entry means of supporting your favorite Ruby implementation and the Ruby ecosystem as a whole.
+
+Consider what the view looks like from the outside: Ruby has a vibrant community of implementations meeting consumers' and programmers' needs on virtually every significant platform, including on Java, .NET, Mac (Obj-C), and semi-platform-agnostic implementations like MRI and Rubinius. Internally, it means that Ruby programmers can focus more on writing their programs using the best tools for the job, confident that if requirements change they can move to a different platform with ease and confidence.
+
+Check out the "RubySpec docs":http://rubyspec.org/wiki/rubyspec if you are interested in helping out.

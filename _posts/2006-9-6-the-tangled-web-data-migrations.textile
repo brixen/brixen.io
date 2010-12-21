@@ -1,0 +1,87 @@
+--- 
+title: "The tangled web: data migrations"
+layout: post
+---
+Migrations are one of my favorite things about Rails. I remember being amazed at the simplicity and usefulness when I first saw them. I also remember a previous boss asserting that we would just use SQL in the migrations because, to paraphrase, that way we would know what was happening. There's that saying about tossing rubies before chickens, or something. But as I was saying, migrations.
+
+One thing that makes migrations particularly useful is when they are the only means used to change the database. That way, you know the state you are in and unless you have a rare, non-reversible migration, you can migrate up and down at will. That all works great for the database structure. But what about data? We obviously won't be funneling all the data changes through migrations. This isn't much of an issue if your application starts as a blank slate and acquires data through use.
+
+Recently we had an application that needed a bunch of preloaded data. Unfortunately, it wasn't a one-shot loading of data once the structure was mostly solidified. I needed to try out stuff and wanted the super useful migrations to be my tool. Previously, this had been done with some ad hoc `rake` tasks, which turned out to be, frankly, a mess.
+
+The single biggest challenge working with the data was the fact that the state of the data would be changing independent of the migrations. There was no way to ensure the state between one migration and the next.
+
+I decided that the one thing I could assert before and after a migration was that certain records with certain id's did not exist (pre-) and then did exist (post-migration) (reverse that for migrating down). It turned out this would be good enough for what I needed.
+
+My first stab at implementing this was a couple helper functions that I used in migrations to update the datafiles (in yaml format) with keys for the id's. This was a big problem because the files would be changing and were tracked in subversion, so they couldn't really be shared by more than one developer. Playing around a bit, I came across this idea:
+
+<pre><typo:code lang="ruby">
+class CreateGeographicTypesFacts < ActiveRecord::Migration
+  def self.up
+    capture(:features, :details) do
+			# do whatever needed to create records
+    end
+  end
+
+  def self.down
+    release :features, :details
+  end
+end
+</typo:code></pre>
+
+Basically, as the data migration runs, I want to keep track of what records are created (and which of those are possibly destroyed). Obviously, this assumes that I'll be adding data on the up migration and removing it on the down. To implement this, I opened up the `ActiveRecord::Migration` class and added a couple methods:
+
+<pre><typo:code lang="ruby">
+def self.capture(*args, &block)
+  args.each do |name|
+    klass = name.to_s.classify.constantize
+    klass.class_eval <<-end_eval
+      @@capture_ids = []
+      def self.capture_ids
+        @@capture_ids.uniq
+      end
+
+      after_create do |obj|
+        @@capture_ids << obj.id
+      end
+
+      after_destroy do |obj|
+        @@capture_ids.remove obj.id
+      end
+    end_eval
+  end
+
+  yield
+
+  File.open(data_migration_file, 'w') do |f|
+    f.write args.inject({}) { |hash, name|  
+      klass = name.to_s.classify.constantize
+      hash[name] = klass.capture_ids
+      hash
+    }.to_yaml
+  end
+end
+</typo:code></pre>
+
+This `capture` method adds callbacks for `after\_create` and `after\_destroy` to keep track of the id's. This is written out to a file in a `data` subdirectory of the `db/migrate` directory. These files can be ignored by Subversion so each developer can run the migrations on their own databases without clashing.
+
+Migrating down is basically a matter of removing the records that were created when migrating up.
+<pre><typo:code lang="ruby">
+def self.release(*args)
+  data_file = data_migration_file(:down)
+  data = File.open(data_file, 'r+') { |f| YAML.load f }
+  if block_given?
+    yield *args.inject([]) { |list, name| list << data[name] 
+    }.compact if block_given?
+  else
+    args.each do |name|
+      klass = name.to_s.classify.constantize
+      klass.delete data[name] unless data[name].blank?
+    end
+  end
+  File.unlink data_file
+end
+</typo:code></pre>
+
+If you provide a block to the `release` method, you take care of doing whatever you want to the records. If you just want to delete them, don't pass a block and `release` will delete them. I used `delete` rather than `destroy` so that everything you specify on capture is deleted without running into issues with `:dependent => :destroy`.
+
+This has been useful for add and removing data while trying out different table structures. Obviously, it's a rather targeted solution. I'll be packaging it as a plugin and posting it to [PLANET ARGON's](http://www.planetargon.org) community site soon.

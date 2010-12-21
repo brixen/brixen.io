@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>def euler(x); cos(x) + i*sin(x); end - Home</title>
+  <id>tag:blog.brightredglow.com,2009:mephisto/</id>
+  <generator uri="http://mephistoblog.com" version="0.7.2">Mephisto Noh-Varr</generator>
+  <link href="http://blog.brightredglow.com/feed/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://blog.brightredglow.com/" rel="alternate" type="text/html"/>
+  <updated>2009-03-18T00:10:45Z</updated>
+</feed>

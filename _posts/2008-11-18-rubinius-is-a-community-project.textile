@@ -1,0 +1,17 @@
+--- 
+title: Rubinius is a community project
+layout: post
+---
+Yesterday was a tough day. You can read the "details":http://blog.engineyard.com/2008/11/17/rubinius-past-present-and-future and "Evan's":http://blog.fallingsnow.net "thoughts":http://blog.fallingsnow.net/2008/11/18/a-sad-day/ about it.
+
+It was especially hard for me because "Wilson":http://metaclass.org/ was a mentor of sorts and the first person I talked to when I dropped into the #rubinius channel nearly two years ago. He allayed any fear I had that Rubinius would fragment the Ruby community and helped me get started contributing.
+
+And "Eero":http://journal.kittensoft.org/, among many other things, jumped on board right away and toiled for many hours on the early specs, putting up with my dead ends when the project that is now "RubySpec":http://rubyspec.org was merely an expedient to fast-track Rubinius development.
+
+So, I want to express my thanks to my teammates and wish them the best in their next endeavors. And I want to emphasize something that is well known to those of us who have worked hard on Rubinius from long before "Engine Yard":http://engineyard.com began to support the project: *Rubinius is a community project*.
+
+Evan's free-flowing commit bit, the early adoption of Git, and the emphasis on writing specs while developing are just a few aspects that have helped propel Rubinius very quickly in its couple year history. And there is still plenty of exciting and interesting work to be done. We are all very grateful for Engine Yard's support of the project, and that support remains strong and dedicated.
+
+But the key to Rubinius' success is the community. In the past year, I feel we have to some extent let you, the community, down. We need to make Rubinius even easier to try out, understand, and contribute to. And we need your feedback on ways we can do this. The recent VM rewrite has been a huge step forward in this regard. But have you opened up the code, poked around, asked us about stuff that doesn't make sense? If you haven't, let us know why not. Have you taken a look at a failing spec for the core library? There's tons of beautiful Ruby code just begging for some love. Let us know what barriers prevent you from spending some free time in there.
+
+If you're worried that development on Rubinius will slow down, I would challenge you to not let that happen. Evan produces prodigious amounts of code and has a terrific mix of genius and pragmatism. I will certainly not be working any less hard than I have for the past two years. So if you, like me, believe that Rubinius can be a terrific platform for Ruby, jump in. No contribution is too small. And we're building on a solid foundation of past success.

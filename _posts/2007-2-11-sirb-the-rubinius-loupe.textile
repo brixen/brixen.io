@@ -1,0 +1,42 @@
+--- 
+title: "Sirb: The Rubinius Loupe"
+layout: post
+---
+If "my previous post":http://blog.brightredglow.com/2007/2/11/irb-on-rubinius about @sirb@ got you drooling a bit, read on. I've added some simple command line arguments to @sirb@ that enable you to request that s-expressions, assembly, or bytecodes (or all of them) are printed each time through the RCEPL loop. You can get a hint at all the goodness by passing the @-h@ switch.
+
+<pre style="overflow: auto;"><code>
+$ ./shotgun/rubinius apps/irb/sirb.rb -h -p -x -s -b
+  Usage: sirb [options]
+    sirb is a RCEPL (read, compile, execute, print, loop) program for rubinius
+
+    Options: 
+            -p   Print the parsed s-expression
+            -x   Print the normalized s-expression.
+            -s   Print assembly instructions.
+            -b   Print bytecode encoding.
+
+sirb(eval):0> puts "Hello, Rubinius. You rock my world!" 
+
+S-exp:
+[:newline, 1, "(eval)", [:fcall, :puts, [:array, [:str, "Hello, Rubinius. You rock my world!", 0]]]]
+
+Normalized S-exp:
+[:newline, 1, "(eval)", [:call, [:self], :puts, [:array, [:str, "Hello, Rubinius. You rock my world!", 0]]]]
+
+Asm:
+#line 1
+push_literal 0
+string_dup
+push self
+send puts 1
+ret
+
+
+Bytecodes:
+"\v\000\000\000\000:\f)\000\000\000\001\000\000\000\001'\000\000\000"
+Hello, Rubinius. You rock my world!
+=> nil
+sirb(eval):1>
+</code></pre>
+
+As I mentioned, @sirb@ is rudimentary at the moment. But it shows you how much can be done with "Rubinius":http://rubini.us right now. Swell! And, a big thanks to "*mae*":http://mattelder.org/ for fixing up how the output of the execution prints (no more @["foo"]@). 

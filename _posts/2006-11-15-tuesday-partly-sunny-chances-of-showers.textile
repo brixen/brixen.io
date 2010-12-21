@@ -1,0 +1,11 @@
+--- 
+title: "Tuesday: partly sunny, chances of showers"
+layout: post
+---
+Maybe it's all the rain during this season. I sure look forward to those dry, maybe sunny days when I notice them on my dashboard weather widget. Alas, I'm often disappointed. A nice, bright sun a few days away mysteriously turns into a cloud or rain drops. It's a big disappointment. Often I call up the weather station and complain. Why can't they be more accurate? Why don't they develop better processes? Sometimes it gets nasty and I threaten to sue them. I mean, if I've planned my picnic because Saturday is forecasted to be sunny, shouldn't somebody have to pay to clean my soggy picnic blanket?
+
+Actually, that doesn't happen. In fact, we'd consider somebody a tad looney if they asserted that somehow the weather forecast should be guaranteed. We know that science is always advancing but weather forecasting is imprecise because the complexity of the "weather system" ensures it is affected by processes described by chaos and complexity theory. There is an inherent limit on precision.
+
+The most common analogy for software development is some form of construction. In fact, we talk about system architecture, building components, software construction. Creating software is less like building and more like weather forecasting.
+
+Methods and processes for constructing buildings are quite well established. And all buildings share far more commonalities than differences. Most importantly, interacting with buildings involves human cognition in extremely limited ways. Software, on the other hand, involves a tremendous amount of human cognition and social effects. There is conceptualization, definition, communication, attitudes, opinions, assumptions, the entire spectrum of human complexity. Given this, we might be advised to study meteorology as much as architecture.

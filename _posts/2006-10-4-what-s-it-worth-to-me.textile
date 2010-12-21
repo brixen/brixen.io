@@ -1,0 +1,21 @@
+--- 
+title: What's it worth to me?
+layout: post
+---
+After you begin practicing "TDD":http://www.testdriven.com, or better "BDD":http://www.behavior-driven.org, for even a short while, it clicks. Once you get in the habit of thinking about the behavior you expect and describing that first in a test or spec, you realize there is a qualitative difference in how you are writing code. It's not simply that you are writing code faster, or writing better code. You are working differently. A quantum leap, if you will. It's a great, "Ah, hah!" experience.
+
+I sketched a couple diagrams to try to describe this difference while chatting with "Robby":http://www.robbyonrails.com about "creating shared meaning":http://www.robbyonrails.com/articles/2006/09/27/project-enlightenment-with-d3 with clients. Check them out below.
+
+!http://blog.brightredglow.com/assets/2006/10/4/linear_development.png!
+p. Figure 1. Traditional linear perspective
+
+!http://blog.brightredglow.com/assets/2006/10/4/bdd_development.png!
+p. Figure 2. Circular BDD perspective
+
+The, seemingly, traditional view is linear. You start with no feature, do a bunch of whatever, and at the end you have the feature completed. The TDD/BDD view is quite different. Following the mantra&mdash;red, green, refactor&mdash;you start with a description of your expectations, you generate code that meets those expectations, and then you refactor. For all but the simplest bits of code, you will likely refactor numerous times. Refactoring is an explicit, purposeful, integral, regular part of creating code. And it's not, typically, something you do to fix errors, which is how someone with a traditional view tends to understand refactoring. You refactor when your code is meeting your expectations (tests, specs) and those ensure that the product of your refactoring continues to meet your expectations. You refactor because the process of writing code changes how you are thinking about and understanding the code you write.
+
+It's difficult to find an analogue to this process in our everyday world. In construction, we would surely not build a room and then tear it down to rebuild it because our understanding changed. But an architect may well do that many times with a model in the attempt to create a solution that works. There's no accurate, faithful way to transfer the architecture paradigm to software development. Many have tried, failed, and many will try again. Instead, BDD is an essential part of the software development paradigm and it's processes should be understood, to some degree, by everyone participating in software development, clients included.
+
+One significant challenge that we encounter is communicating the importance or value of a particular recommendation. There is more than conveying the information. We have experienced explaining to a client why it was necessary to refactor a particularly important part of an application. (In this case, it was more of a redesign, but since the behavior of the application was not intended to changed, we viewed it as a large scale refactoring.) The client acknowledged that our recommendation had technical merit, in some sense, but continued to view it as something of a diversion with little practical value. After all, the "features" were in place. We weren't asserting that we would significantly change anything that the user interacted with. And the client was feeling the crunch of getting new features in front of the users.
+
+So, the problem is much more than communicating information between developers and clients. It is essential to dialogue in a way that shared meaning evolves. The shared meaning brings our values into alignment. Then a true, rewarding process of collaboration powers the endeavor.
