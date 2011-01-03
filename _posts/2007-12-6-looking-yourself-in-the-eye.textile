@@ -1,6 +1,7 @@
 --- 
 title: Looking yourself in the eye
 layout: post
+author: Brian
 ---
 I'm hanging out this week at the "Engine Yard":http://engineyard.com office in South Park hoping to catch a glimpse of Cartman and pals (I wish!). You've heard it all before but I would be remiss to not toss in my congratulations to my new (very soon) colleagues. "Evan":http://blog.fallingsnow.net, "Wilson":http://metaclass.org/, "Ryan":http://blog.zenspider.com/, and "Eric":http://blog.segment7.net/ are a stellar group of folks and a great bunch of personalities to boot. I am honored and extremely happy to be working closely with them, as well as the fantastic group of contributors world-wide.
 

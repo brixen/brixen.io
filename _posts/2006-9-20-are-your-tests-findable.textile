@@ -1,6 +1,7 @@
 --- 
 title: Are your tests findable
 layout: post
+author: Brian
 ---
 I probably use Google search on average 20-30 times a day. It's an indispensable tool for me. It's definitely not the last word in search engines. I can imagine a lot of additional functionality, like contextualizing my searches over time or within categories. But overall, it works reasonably well.
 

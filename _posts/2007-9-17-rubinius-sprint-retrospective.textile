@@ -1,6 +1,7 @@
 --- 
 title: Rubinius sprint retrospective
 layout: post
+author: Brian
 ---
 Last week, "Evan Phoenix":http://blog.fallingsnow.net/, "Wilson Bilkovich":http://metaclass.org/ and I met up in Denver (ok, _near_ Denver) for some serious "Rubinius":http://rubini.us coding, aka a sprint. "Charles Nutter":http://headius.blogspot.com/ (of "JRuby":http://jruby.codehaus.org/ fame) flew in just to hack with us for 15 hours straight and then flew back home. Very cool. When do you get collaboration like that from someone on a project that could be seen as a competitor? That's some serious goodwill, folks, and much appreciated. Charles had his laptop out on the taxi ride from the airport digging into some issues we have with including modules. If you hang out in #rubinius, you know there's a lot of collaboration occurring on different fronts.
 

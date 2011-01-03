@@ -1,6 +1,7 @@
 --- 
 title: Why we focus on solutions, not products
 layout: post
+author: Brian
 ---
 Developing anything in the digital realm can be fantastically rewarding precisely because the ropes on our wings of fantasy are greatly weakened. We can imagine practically anything, and we can implement a lot of what we can imagine. The whir of excitement in our stomachs at the vision of some excellent idea prompts my favorite utterance, "Wouldn't it be cool if..."
 

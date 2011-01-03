@@ -1,6 +1,7 @@
 --- 
 title: Ethical Software Needs Dialogue
 layout: post
+author: Brian
 ---
 Growing up in the United States in the late 70's, early 80's, futbol was something I knew very little about. Let's see, we played once in a great while in gym class, my most memorable experience there was taking a hard-kicked ball right in the face. Later in high school, the soccer team was a mere blip on the screen in the shadow of football and baseball. Much later I started playing soccer and, having so much fun, lament that I didn't play as a kid. The interesting thing to me about soccer (and many games, but you'll especially appreciate this if you listen to a soccer game on a hispanic radio station) is that the myriad plays and activities that make up the game are all directed toward scoring a goal (and preventing the opposing team from doing so). In other words, the goal of the game is simple and clear, though not easily achieved.
 

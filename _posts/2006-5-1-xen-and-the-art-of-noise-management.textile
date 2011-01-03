@@ -1,6 +1,7 @@
 --- 
 title: Xen and the art of noise (management)
 layout: post
+author: Brian
 ---
 While I definitely appreciate the folks at [Textdrive](http://www.textdrive.com) for being early, and continuing, supporters of [Rails](www.rubyonrails.com), I recently decided to switch to a VDS for essentially the same reasons as [Octopod](http://outside-thoughts.octopod.info/articles/2006/02/22/why-the-move). Actually, I have him to thank for that little extra nudge provided by his blog entry. I hadn't given the idea much thought until then because it seemed like overkill for hosting a couple personal sites. Silly me.
 

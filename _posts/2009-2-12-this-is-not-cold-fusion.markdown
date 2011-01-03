@@ -1,6 +1,7 @@
 --- 
 title: This is NOT cold fusion
 layout: post
+author: Brian
 ---
 Um, whoops. It was really late last night. Have I mentioned you're wearing a great outfit today. Ok, already.
 

@@ -1,6 +1,7 @@
 --- 
 title: Call of the lemming
 layout: post
+author: Brian
 ---
 It's sometimes hard to gauge troll, tirade, or spirited challenge online. "The Opposite of Momentum":http://kirindave.tumblr.com/post/60776407/the-opposite-of-momentum strikes me as a mix, though in what percentages, I haven't decided. KirinDave is a little late to the bag&#45;on&#45;Ruby party, and if it's Javascript he wants, "Yegge":http://steve-yegge.blogspot.com/ was there well over a year ago. Browse some of the mind-expanding comments by the bottom feeders at "Reddit":http://www.reddit.com/r/programming/comments/7epu0/ruby_and_the_opposite_of_momentum/ chewing on KirinDave's post. It's a reassuring, if disappointing, commentary on the consistency of human behavior: it is always easier to complain than to fix.
 

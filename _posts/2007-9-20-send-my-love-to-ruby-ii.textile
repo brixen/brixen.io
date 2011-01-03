@@ -1,6 +1,7 @@
 --- 
 title: Send my love to Ruby II
 layout: post
+author: Brian
 ---
 In the "last post":http://blog.brightredglow.com/2007/9/20/send-my-love-to-ruby, we saw a nice use case for the @#send@ method. Now, we'll see some coolness that Rubinius adds. First, some code:
 

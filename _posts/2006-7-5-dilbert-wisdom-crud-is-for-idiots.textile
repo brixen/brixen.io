@@ -1,6 +1,7 @@
 --- 
 title: "Dilbert wisdom: CRUD is for idiots"
 layout: post
+author: Brian
 ---
 Last week, my esteemed colleague [Jeremy](http://www.jvoorhis.com), at his characteristic morning unveiling<sup>[1]</sup>, brought in a couple books on "Death March" projects. While he tackled the other, he lent me _Death March_: second edition, by Edward Yourdon. Edward defines a death march project as "one whose 'project parameters' exceed the norm by at least 50 percent". That is, one or more of the following is true: the project has less than half the budget, the staff, the time, or more than double the functionality, features, performance, or technical requirements. He discusses why death march projects are created, why people participate in them, and some things one might do to try to handle such a project (although he's pretty pessimistic about successfully changing a project of this type).  
 

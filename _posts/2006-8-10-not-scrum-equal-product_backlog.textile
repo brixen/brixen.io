@@ -1,6 +1,7 @@
 --- 
 title: not Scrum.equal :product_backlog
 layout: post
+author: Brian
 ---
 I think it's obvious to everyone that Scrum and the product backlog are not the same thing. Sometimes stating the obvious is useful. Scrum is a structured process of which the product backlog is a part. [Mechanism Alley](http://mechanismalley.com/blog) has posted an excellent, thoughtful [article](http://mechanismalley.com/blog/2006/08/06/what-is-scrum/) about Scrum with some references to some of what we've been saying about [d3](http://www.robbyonrails.com/articles/2006/08/08/d3-not-ddd). It's worth a careful read. In fact, I want to personally thank [MSM](http://mechanismalley.com) for not perceiving our comments as an invitation to start flaming about this or that pet methodology.
 

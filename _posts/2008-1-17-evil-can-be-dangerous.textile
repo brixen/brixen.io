@@ -1,6 +1,7 @@
 --- 
 title: Evil can be dangerous
 layout: post
+author: Brian
 ---
 The first post I read by "Evan":http://blog.fallingsnow.net/ about "Rubinius":http://rubini.us had a quote about "evil built in":http://blog.fallingsnow.net/rubinius/. Of course, that caught my eye. What was Evan's point? Legend has it (I wasn't there) that during Q&A someone asked about fundamental aspects of the Rubinius system being available for modification from normal user code. The issue was raised that perhaps something should restrict that unlimited power. Evan's response was that Rubinius sorta has evil built in. Usually, that's a good thing.
 

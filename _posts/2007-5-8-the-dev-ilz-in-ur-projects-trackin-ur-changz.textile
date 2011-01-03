@@ -1,6 +1,7 @@
 --- 
 title: The Dev'ilz in ur projects, trackin' ur changz
 layout: post
+author: Brian
 ---
 The "Dev'il":http://devil.brightredglow.com is out; get it while it's hot. What's that? you're wondering.
 

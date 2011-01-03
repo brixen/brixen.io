@@ -1,6 +1,7 @@
 --- 
 title: Contra--what?
 layout: post
+author: Brian
 ---
 I'm going to be pedantic for a minute. If you are Betrand Russell, feel free to spend your time more productively. Everyone else, don't be afraid of a few symbols.
 

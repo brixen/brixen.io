@@ -1,6 +1,7 @@
 --- 
 title: Irb on Rubinius
 layout: post
+author: Brian
 ---
 There are cat people and dog people, but when I say "Man's best friend", I don't mean either. I'm talking about that program that feels like a home away from home: @irb@. So, I've been chomping at the bit to get something resembling @irb@ running with "Rubinius":http://rubini.us.
 

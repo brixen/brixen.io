@@ -1,6 +1,7 @@
 --- 
 title: Behavior-Driven Collaboration
 layout: post
+author: Brian
 ---
 Eegads, how time flies. At the March 6th meeting of "pdx.rb":http://pdxruby.org, I gave a short talk introducing BDD (Behavior-driven development) with a couple examples from "RSpec":http://rspec.rubyforge.org. Since "David Chelimsky":http://blog.davidchelimsky.net/ has already done a terrific job writing an introduction "tutorial":http://rspec.rubyforge.org/tutorials/index.html, I decided to focus more on the big picture of BDD. My take is that BDD is some rather sweet glue that can foster collaboration across the spectrum of folks involved in software development, from clients to designers to developers to users. So far, we've got a lot of turf wars going on, and as in any war, there are casualties. In software there are crappy products, tortured users, unhappy developers, exasperated designers, cost overruns, and misunderstandings galore. BDD isn't some magic salve that can be slathered on a messy process like butter on a toasty English muffin and make it all better, but I do believe it has promise.
 

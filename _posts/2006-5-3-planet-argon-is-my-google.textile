@@ -1,6 +1,7 @@
 --- 
 title: PLANET ARGON is my Google
 layout: post
+author: Brian
 ---
 Late breaking news (I really need to speak to my publishing staff about getting these out on time): Monday, May 1st was my first day as part of the great team at [PLANET ARGON](http://www.planetargon.com). Everyone extended themselves to get me up to speed on the working of the company. And, in truly classy fashion, the company treated us to a team welcome lunch on my behalf.
 

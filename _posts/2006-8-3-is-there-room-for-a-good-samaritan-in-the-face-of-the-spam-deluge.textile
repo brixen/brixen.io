@@ -1,6 +1,7 @@
 --- 
 title: Is there room for a good Samaritan in the face of the spam deluge
 layout: post
+author: Brian
 ---
 We all love the spluge (spam deluge), don't we? Usually spam is so abnoxiously and obviously stupid it is easy to ignore. And, gmail does a wonderful job of ensuring I deal with very little of it. However, once in a while something comes through. A trend I've noticed recently are emails that begin with "This is an advertisement..." I've never read one careful but it's possible, but unlikely, that I somehow asked to receive it.
 

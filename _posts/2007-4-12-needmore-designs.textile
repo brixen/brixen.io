@@ -1,6 +1,7 @@
 --- 
 title: Needmore Designs
 layout: post
+author: Brian
 ---
 That pretty much sums up my feelings about the majority of the interactive gadgets I encounter, soft or hardware. So, I'm delighted to have the good fortune of joining the talented folks at "Needmore Designs":http://needmoredesigns.com. It'll be a challenge to keep the code as beautiful as "these designs":http://needmoredesigns.com/projects/, but using "Ruby":http://ruby-lang.org makes that a delicious challenge indeed.
 

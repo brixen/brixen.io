@@ -1,6 +1,7 @@
 --- 
 title: Boxers or Briefs? -- Neither?!
 layout: post
+author: Brian
 ---
 The emperor is wearing clothes and everything looks hunky-dory and sane on the outside. Usually, that's a good thing. For instance, when running "RubySpec":http://rubyspec.org on a released version of MRI, it's good to know that things are behaving as expected and _all known issues_ are accounted for. In other words, you won't see any failures unless a spec is broken or a new spec has uncovered a bug.
 

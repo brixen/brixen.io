@@ -1,6 +1,7 @@
 --- 
 title: What's it worth to me?
 layout: post
+author: Brian
 ---
 After you begin practicing "TDD":http://www.testdriven.com, or better "BDD":http://www.behavior-driven.org, for even a short while, it clicks. Once you get in the habit of thinking about the behavior you expect and describing that first in a test or spec, you realize there is a qualitative difference in how you are writing code. It's not simply that you are writing code faster, or writing better code. You are working differently. A quantum leap, if you will. It's a great, "Ah, hah!" experience.
 

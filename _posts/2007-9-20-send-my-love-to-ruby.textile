@@ -1,6 +1,7 @@
 --- 
 title: Send my love to Ruby
 layout: post
+author: Brian
 ---
 Over at the "Rubinius":http://rubini.us project, in between hatching plots to take over the world, we fit in some time for recreation. For example, we've got this masochistic interest in writing "RSpec":http://rspec.rubyforge.org compatible specs for the Ruby core library. One of the challenges there is the large number of aliased methods that Ruby has. Using RSpec's shared behaviors as an example, I've created a flavor of shared behaviors in our @mini_rspec@ implementation. As the code below shows, this makes it straightforward to spec all these aliases.
 

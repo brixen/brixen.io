@@ -1,6 +1,7 @@
 --- 
 title: Testing the tester
 layout: post
+author: Brian
 ---
 I recently wrote about the [assert_cookie](http://blog.brightredglow.com/articles/2006/08/27/assert_cookie-for-ooey-gooey-fun) custom test assertion plugin I put together. When I started writing the assertion, it was just a helper method to wrap up the funky logic for testing stuff about a cookie. I wasn't thinking about tests. And my first tries were definitely not test-driven.
 

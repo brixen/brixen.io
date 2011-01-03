@@ -1,6 +1,7 @@
 --- 
 title: Hash is all ponies
 layout: post
+author: Brian
 ---
 We've been hard at work replacing the C virtual machine in "Rubinius":http://rubini.us with one written in C++. Along the way, we decided to use a simpler data structure internally where we had been using a Hash before. This allowed us to rewrite Hash in pure Ruby. Since our goal is to write as much "Ruby in Ruby":http://blog.brightredglow.com/2008/4/28/ruby-in-ruby-seriously, I was happy to work on this rewrite.
 

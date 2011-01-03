@@ -1,6 +1,7 @@
 --- 
 title: "Dine in or take out: it's all free"
 layout: post
+author: Brian
 ---
 One of the more amazing and wonderful things about the internet is the sheer volume of information available for free. And just like going to a friend's party, one way to show appreciation is to partake of the feast prepared in honor of the guests. But a lot of the time it's more like a grocery store than a nice restaurant. Lots of food but not the place to savor the cooking. Once in a while, though, you happen across a gem.
 

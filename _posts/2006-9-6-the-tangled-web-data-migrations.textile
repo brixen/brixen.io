@@ -1,6 +1,7 @@
 --- 
 title: "The tangled web: data migrations"
 layout: post
+author: Brian
 ---
 Migrations are one of my favorite things about Rails. I remember being amazed at the simplicity and usefulness when I first saw them. I also remember a previous boss asserting that we would just use SQL in the migrations because, to paraphrase, that way we would know what was happening. There's that saying about tossing rubies before chickens, or something. But as I was saying, migrations.
 

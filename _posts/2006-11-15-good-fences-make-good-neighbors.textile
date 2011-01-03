@@ -1,6 +1,7 @@
 --- 
 title: Good fences make good neighbors
 layout: post
+author: Brian
 ---
 We might as well accept it now: "global warming is real":http://en.wikipedia.org/wiki/An_Inconvenient_Truth. We live in a finite world with finite resources. Given that, why would we want to expend time and effort building fences. They just sit there. Maybe they contribute to the aesthetic but they won't help the wheat grow any better in the field. Building them diverts productive capacity from planting, tending, harvesting. Be that as it may, long ago folks realized that good fences serve a purpose.
 

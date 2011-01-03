@@ -5,4 +5,6 @@ markdown: kramdown
 
 pygments: true
 permalink: /:categories/:year/:i_month/:i_day/:title
+
+host: http://blog.brightredglow.com
 ---

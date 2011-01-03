@@ -1,6 +1,7 @@
 --- 
 title: The pursuit of perfection
 layout: post
+author: Brian
 ---
 The law of diminishing returns: more and more gets you less and less. It's familiar in many domains: economics, martial arts training, propulsion. [Rush Limbaugh](http://www.rushlimbaugh.com/) would probably agree it even applies to [drug use](http://en.wikipedia.org/wiki/Rush_Limbaugh). It certainly applies to developing software. There's only a certain value derived from polishing a chunk of code. So, while I'll reserve opinion about whether this is a 'law' of nature, it's definitely something we observe in many contexts.
 

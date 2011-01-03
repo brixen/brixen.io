@@ -1,6 +1,7 @@
 --- 
 title: All shiny and new
 layout: post
+author: Brian
 ---
 *UPDATE 2.0:* You really did see the update below, right? You're getting "Charlie":http://blog.headius.com/ all worried with your enthusiasm for Rubinius.
 

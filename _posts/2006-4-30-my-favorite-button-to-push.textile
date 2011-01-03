@@ -1,6 +1,7 @@
 --- 
 title: My favorite button to push
 layout: post
+author: Brian
 ---
 A long time ago, I remember discovering while using Windows 3.1 a button with a question mark on it. Click on it and you got a cursor with a question mark and pointer. It was the "what's this" button; click on a control and up popped a blurb to explain something about it. Unfortunately, it seemed that developers saw this as mostly an after thought since I don't recall ever getting anything useful. Usually it was something like "Name field" when the control was already labeled "Name:". But it was the kernel of a great idea.
 

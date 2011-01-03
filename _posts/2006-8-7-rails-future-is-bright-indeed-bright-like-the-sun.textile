@@ -1,6 +1,7 @@
 --- 
 title: Rails' future is bright indeed, bright like the sun
 layout: post
+author: Brian
 ---
 If you don't get a chance to hang out on our irc channel much (#planetargon on irc.freenode.net), you may have missed some of the innovations on the horizon for Rails: We'll let you know when the nuclear-powered Rails beta is up for testing.
 

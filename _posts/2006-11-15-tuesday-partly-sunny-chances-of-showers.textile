@@ -1,6 +1,7 @@
 --- 
 title: "Tuesday: partly sunny, chances of showers"
 layout: post
+author: Brian
 ---
 Maybe it's all the rain during this season. I sure look forward to those dry, maybe sunny days when I notice them on my dashboard weather widget. Alas, I'm often disappointed. A nice, bright sun a few days away mysteriously turns into a cloud or rain drops. It's a big disappointment. Often I call up the weather station and complain. Why can't they be more accurate? Why don't they develop better processes? Sometimes it gets nasty and I threaten to sue them. I mean, if I've planned my picnic because Saturday is forecasted to be sunny, shouldn't somebody have to pay to clean my soggy picnic blanket?
 

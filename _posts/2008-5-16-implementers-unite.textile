@@ -1,6 +1,7 @@
 --- 
 title: Implementers Unite!
 layout: post
+author: Brian
 ---
 There's a lot of things that "Rubinius":http://rubini.us, "MatzRuby":http://ruby-lang.org/en/about (including "YARV":http://www.atdot.net/yarv/), "JRuby":http://jruby.codehaus.org, "IronRuby":http://www.ironruby.net/, "MacRuby":http://ruby.macosforge.org/trac/wiki/MacRuby, "Ruby.NET":http://rubyurl.com/XN99, "MagLev":http://ruby.gemstone.com/ don't agree on. But that's ok, because above all, they seem to agree that "Ruby":http://ruby-lang.org is one awesome language. And lately, that apparent agreement has gotten a boost of sorts.
 

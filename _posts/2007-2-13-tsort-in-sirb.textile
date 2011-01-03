@@ -1,6 +1,7 @@
 --- 
 title: TSort in sirb
 layout: post
+author: Brian
 ---
 They say good things come in threes, or perhaps I'll bore you with another post about Rubinius, but what the heck. So, the other day I imported Ruby's standard library from the SVN repository into the Rubinius repository. I've been itching to go through and see what successfully loads. Ah, now that we have @sirb@, the perfect opportunity presents itself.
 

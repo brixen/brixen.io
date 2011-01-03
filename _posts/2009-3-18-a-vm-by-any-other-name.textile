@@ -1,6 +1,7 @@
 --- 
 title: A VM by any other name
 layout: post
+author: Brian
 ---
 With the recent switch away from the spaghetti stack execution model, "Rubinius":http://rubini.us has also acquired native threads. A big part of understanding something is syncing up our mental model with reality. If you've ever tried to explain what an OS is to your mom, you know that can be a challenge. So let's peel back a few layers and see where these native thread critters fit into Rubinius.
 
@@ -8,23 +9,23 @@ Rubinius is an implementation of the Ruby programming language. One of the bigge
 
 Thinking about threads running inside a physical computer, you might visualize the relationship something like the following Ruby-ish pseudo code. As the program starts up, it creates a virtual machine.
 
-<pre><typo:code lang="ruby">
+{% highlight ruby linenos %}
 def main
   vm = VM.new
   # do some setup
   vm.run
 end
-</typo:code></pre>
+{% endhighlight %}
 
 Sometime later in the program, you add a new thread, which might be implemented something like this.
 
-<pre><typo:code lang="ruby">
+{% highlight ruby linenos %}
 def Thread.new
   thr = VM.threads.create
   # ...
   return thr
 end
-</typo:code></pre>
+{% endhighlight %}
 
 You might imagine the @VM@ instance having a @Scheduler@ component that would supervise the threads and arrange for running them on one or more processors or cores. In this model, the VM is really like a virtual computer in which all execution is occurring. In other words, the VM is composed of multiple threads of execution.
 
@@ -38,7 +39,7 @@ Whew. The point of this whirlwind tour is to illustrate that _VM_ is a rather fu
 
 Rubinius has a 1:1 native thread model. In other words, each time you do @Thread.new@ in your Ruby code, the instance returned maps to a single native thread. In fact, let's look at the code for @Thread.new@ in @kernel/common/thread.rb@.
 
-<pre><typo:code lang="ruby">
+{% highlight ruby linenos %}
 class Thread
   def self.new(*args, &block)
     thr = allocate
@@ -48,11 +49,11 @@ class Thread
     return thr
   end
 end
-</typo:code></pre>
+{% endhighlight %}
 
 The calls to @allocate@ and @fork@ are implemented as primitives in C++ code. They are short, so we'll take a look at them, too.
 
-<pre><typo:code lang="C++">
+{% highlight cpp linenos %}
 Thread* Thread::allocate(STATE) {
   VM* vm = state->shared.new_vm();
   Thread* thread = Thread::create(state, vm);
@@ -69,7 +70,7 @@ Object* Thread::fork(STATE) {
   native_thread_->run();
   return Qnil;
 }
-</typo:code></pre>
+{% endhighlight %}
 
 The call to @allocate@ creates a new instance of @VM@ as thread local data. The call to @fork@ creates the new native thread. The call to @native_thread_->run()@ will eventually call the @__run__@ method in @kernel/common/thread.rb@. Something to note about this snippet of C++ code is the nice consistency between the primitives and the Ruby code that calls them.
 

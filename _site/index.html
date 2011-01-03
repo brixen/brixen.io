@@ -27,58 +27,54 @@
        <div class="entrybody"><p>With the recent switch away from the spaghetti stack execution model, <a href="http://rubini.us">Rubinius</a> has also acquired native threads. A big part of understanding something is syncing up our mental model with reality. If you&#8217;ve ever tried to explain what an OS is to your mom, you know that can be a challenge. So let&#8217;s peel back a few layers and see where these native thread critters fit into Rubinius.</p>
 <p>Rubinius is an implementation of the Ruby programming language. One of the bigger components is the virtual machine. But what is that? Unfortunately, <em>virtual machine</em> is a label for a category of software (and maybe hardware) that, well, does a bunch of different things. Virtual machines are often thought of as virtual computers or virtual CPUs. The problem with trying to equate two things is that you look at the one you know about and try to understand the one you do not by looking for analogous structures. Therein lie the seeds of misunderstanding. Since Rubinius has this <code>vm/</code> directory, we&#8217;ve got to try to nail some of this gelatin to the wall.</p>
 <p>Thinking about threads running inside a physical computer, you might visualize the relationship something like the following Ruby-ish pseudo code. As the program starts up, it creates a virtual machine.</p>
-<pre>&lt;typo:code lang="ruby"&gt;
-def main
-  vm = VM.new
-  # do some setup
-  vm.run
-end
-&lt;/typo:code&gt;</pre>
-<p>Sometime later in the program, you add a new thread, which might be implemented something like this</p>
-<pre>&lt;typo:code lang="ruby"&gt;
-def Thread.new
-  thr = VM.threads.create
-  # ...
-  return thr
-end
-&lt;/typo:code&gt;</pre>
-<p>You might imagine the <code>VM</code> instance having a <code>Scheduler</code> component that would supervise the threads and arrange for running them on one or more processors or cores. In this model, the VM is really like a virtual computer in which all execution is occurring. In other words, the VM is composed of multiple threads of execution</p>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">main</span>
+<span class="lineno">2</span>   <span class="n">vm</span> <span class="o">=</span> <span class="no">VM</span><span class="o">.</span><span class="n">new</span>
+<span class="lineno">3</span>   <span class="c1"># do some setup</span>
+<span class="lineno">4</span>   <span class="n">vm</span><span class="o">.</span><span class="n">run</span>
+<span class="lineno">5</span> <span class="k">end</span>
+</code></pre>
+</div><p>Sometime later in the program, you add a new thread, which might be implemented something like this.</p>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nc">Thread</span><span class="o">.</span><span class="nf">new</span>
+<span class="lineno">2</span>   <span class="n">thr</span> <span class="o">=</span> <span class="no">VM</span><span class="o">.</span><span class="n">threads</span><span class="o">.</span><span class="n">create</span>
+<span class="lineno">3</span>   <span class="c1"># ...</span>
+<span class="lineno">4</span>   <span class="k">return</span> <span class="n">thr</span>
+<span class="lineno">5</span> <span class="k">end</span>
+</code></pre>
+</div><p>You might imagine the <code>VM</code> instance having a <code>Scheduler</code> component that would supervise the threads and arrange for running them on one or more processors or cores. In this model, the VM is really like a virtual computer in which all execution is occurring. In other words, the VM is composed of multiple threads of execution.</p>
 <p>The point of this mental exercise is to expose the tacit assumptions we might have about our mapping between a real computer and the virtual machine. Now let&#8217;s delve into Rubinius.</p>
 <p>The <code>main</code> function is located in <code>vm/drivers/cli.cpp</code>. The first thing it does is create an instance of <code>Environment</code>, which is composed of an instance of <code>VMManager</code>, <code>SharedState</code>, and <code>VM</code>. In the <code>Environment</code> constructor, the command line is parsed for configuration options. Then the manager creates a new shared state. The shared state creates a vm. And finally the vm is initialized. During initialization, the <code>ObjectMemory</code> is created. The object memory in turn is composed of garbage collected heaps for the young and mature generations.</p>
 <p>Back in <code>main</code>, a platform-specific configuration file is loaded, the &#8220;vm&#8221; is booted, the command line is loaded into <code>ARGV</code>, the kernel is loaded (i.e. the compiled versions of the files located in the <code>kernel/</code> directory), the preemption and signal threads are started, and finally the compiled version of <code>kernel/loader.rb</code> is run, which will process the command line arguments, run scripts, start <span class="caps">IRB</span>, etc. When your script, <span class="caps">IRB</span>, <code>-e</code> command, etc. finish running, <code>loader.rb</code> finishes, <code>main</code> finishes, resources are cleaned up, and finally the process exits</p>
 <p>Whew. The point of this whirlwind tour is to illustrate that <em>VM</em> is a rather fuzzy concept, even though we have a class named <code>VM</code>. Now let&#8217;s take a look at how threads fit in.</p>
 <p>Rubinius has a 1:1 native thread model. In other words, each time you do <code>Thread.new</code> in your Ruby code, the instance returned maps to a single native thread. In fact, let&#8217;s look at the code for <code>Thread.new</code> in <code>kernel/common/thread.rb</code>.</p>
-<pre>&lt;typo:code lang="ruby"&gt;
-class Thread
-  def self.new(*args, &amp;block)
-    thr = allocate
-    thr.initialize *args, &amp;block
-    thr.fork
-
-    return thr
-  end
-end
-&lt;/typo:code&gt;</pre>
-<p>The calls to <code>allocate</code> and <code>fork</code> are implemented as primitives in C++ code. They are short, so we&#8217;ll take a look at them, too</p>
-<pre>&lt;typo:code lang="C++"&gt;
-Thread* Thread::allocate(STATE) {
-  VM* vm = state-&gt;shared.new_vm();
-  Thread* thread = Thread::create(state, vm);
-
-  return thread;
-}
-
-Object* Thread::fork(STATE) {
-  state-&gt;interrupts.enable_preempt = true;
-
-  native_thread_ = new NativeThread(vm);
-
-  // Let it run.
-  native_thread_-&gt;run();
-  return Qnil;
-}
-&lt;/typo:code&gt;</pre>
-<p>The call to <code>allocate</code> creates a new instance of <code>VM</code> as thread local data. The call to <code>fork</code> creates the new native thread. The call to <code>native_thread_-&gt;run()</code> will eventually call the <code>__run__</code> method in <code>kernel/common/thread.rb</code>. Something to note about this snippet of C++ code is the nice consistency between the primitives and the Ruby code that calls them</p>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">class</span> <span class="nc">Thread</span>
+<span class="lineno">2</span>   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">new</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="lineno">3</span>     <span class="n">thr</span> <span class="o">=</span> <span class="n">allocate</span>
+<span class="lineno">4</span>     <span class="n">thr</span><span class="o">.</span><span class="n">initialize</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span>
+<span class="lineno">5</span>     <span class="n">thr</span><span class="o">.</span><span class="n">fork</span>
+<span class="lineno">6</span> 
+<span class="lineno">7</span>     <span class="k">return</span> <span class="n">thr</span>
+<span class="lineno">8</span>   <span class="k">end</span>
+<span class="lineno">9</span> <span class="k">end</span>
+</code></pre>
+</div><p>The calls to <code>allocate</code> and <code>fork</code> are implemented as primitives in C++ code. They are short, so we&#8217;ll take a look at them, too.</p>
+<div class="highlight"><pre><code class="cpp"><span class="lineno"> 1</span> <span class="n">Thread</span><span class="o">*</span> <span class="n">Thread</span><span class="o">::</span><span class="n">allocate</span><span class="p">(</span><span class="n">STATE</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>   <span class="n">VM</span><span class="o">*</span> <span class="n">vm</span> <span class="o">=</span> <span class="n">state</span><span class="o">-&gt;</span><span class="n">shared</span><span class="p">.</span><span class="n">new_vm</span><span class="p">();</span>
+<span class="lineno"> 3</span>   <span class="n">Thread</span><span class="o">*</span> <span class="kr">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">vm</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>   <span class="k">return</span> <span class="kr">thread</span><span class="p">;</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="n">Object</span><span class="o">*</span> <span class="n">Thread</span><span class="o">::</span><span class="n">fork</span><span class="p">(</span><span class="n">STATE</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>   <span class="n">state</span><span class="o">-&gt;</span><span class="n">interrupts</span><span class="p">.</span><span class="n">enable_preempt</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span>   <span class="n">native_thread_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NativeThread</span><span class="p">(</span><span class="n">vm</span><span class="p">);</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span>   <span class="c1">// Let it run.</span>
+<span class="lineno">14</span>   <span class="n">native_thread_</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">();</span>
+<span class="lineno">15</span>   <span class="k">return</span> <span class="n">Qnil</span><span class="p">;</span>
+<span class="lineno">16</span> <span class="p">}</span>
+</code></pre>
+</div><p>The call to <code>allocate</code> creates a new instance of <code>VM</code> as thread local data. The call to <code>fork</code> creates the new native thread. The call to <code>native_thread_-&gt;run()</code> will eventually call the <code>__run__</code> method in <code>kernel/common/thread.rb</code>. Something to note about this snippet of C++ code is the nice consistency between the primitives and the Ruby code that calls them.</p>
 <p>We&#8217;ve encountered the <code>VM</code> class in two contexts: 1) when starting up the Rubinius process, and 2) when creating a new <code>Thread</code>. We can consider the <code>VM</code> instance to be an abstraction of the state of a single thread of execution, and in fact, <code>state</code> is the name most often given to an instance of <code>VM</code> in the Rubinius source</p>
 <p>As we&#8217;ve seen, Rubinius as a running process is composed of various abstractions, including the <code>Environment</code>, <code>SharedState</code>, <code>NativeThread</code>, and <code>VM</code> to name a few. While it is accurate to call Rubinius a virtual machine, it is apparent that concept can cover a fair bit of complexity. But breaking it into parts makes it fairly easy to understand. Let us know what things you&#8217;d like to understand better. We have the <code>doc/</code> directory in the source that we&#8217;re (slowly) building out. If you&#8217;re interested in contributing, docs would be a great way to help everyone.<br />
 </p></div>
@@ -493,8 +489,8 @@ it anyway. All the rest in my <a href="/2009/2/12/all-shiny-and-new">previous po
     </div>
         <div id="sidebar">
       <div id="subscribe">
-        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="http://feeds2.feedburner.com/defeulerxcosxisinxend">
-          <img alt="subscribe" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" />
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="/feed/atom.xml">
+          <img alt="subscribe" src="/images/feed.png" />
         </a>
       </div>
 

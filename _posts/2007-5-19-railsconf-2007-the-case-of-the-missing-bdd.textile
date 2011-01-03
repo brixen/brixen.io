@@ -1,6 +1,7 @@
 --- 
 title: "RailsConf 2007: The case of the missing BDD"
 layout: post
+author: Brian
 ---
 Looks like the "RSpec":http://rspec.rubyforge.org folks dropped 1.0. Awesome! Congratulations!
 

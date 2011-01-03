@@ -1,6 +1,7 @@
 --- 
 title: User interaction blunders
 layout: post
+author: Brian
 ---
 I typically conduct all of my personal business online: mortgage, credit card bills, utility bills, cell phone bill, etc. It's a great convenience. That's probably the primary reason. It's simply more convenient than anything else. I can't think of any other reason I do it. If there were some attendant in a window I frequently walked by, I'd just as soon give the person a check or credit card to pay a bill. With no waiting line, it would take about the same amount of time.
 

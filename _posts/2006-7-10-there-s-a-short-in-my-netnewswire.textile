@@ -1,6 +1,7 @@
 --- 
 title: There's a short in my NetNewsWire
 layout: post
+author: Brian
 ---
 When I started at [PLANET ARGON](http://www.planetargon.com), I was given a bright new matte black MacBook to use. It's a beauty. This is the first time I've used a Mac extensively since around '89 and I love it. Well, mostly. For the last decade or so I've used Linux 90% of the time. First RedHat, then Fedora, and most recently Ubuntu, which in my experience is simply excellent.
 

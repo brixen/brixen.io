@@ -1,6 +1,7 @@
 --- 
 title: G'day Project Borat
 layout: post
+author: Brian
 ---
 Yesterday, Project Borat and I were formally introduced. I'll be the lead developer, picking up the [thread](http://peat.org/articles/2006/05/03/introducing-project-borat) and, along with [Robby](http://www.robbyonrails.com/articles/2006/05/03/project-borat-an-introduction), I'll continue to entertain you with insights we gain as we delve deeply into the process, knocking some moss off a few rocks and uncovering ideas that will work well for us and our clients.
 

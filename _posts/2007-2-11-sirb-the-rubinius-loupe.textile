@@ -1,6 +1,7 @@
 --- 
 title: "Sirb: The Rubinius Loupe"
 layout: post
+author: Brian
 ---
 If "my previous post":http://blog.brightredglow.com/2007/2/11/irb-on-rubinius about @sirb@ got you drooling a bit, read on. I've added some simple command line arguments to @sirb@ that enable you to request that s-expressions, assembly, or bytecodes (or all of them) are printed each time through the RCEPL loop. You can get a hint at all the goodness by passing the @-h@ switch.
 

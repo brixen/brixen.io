@@ -1,6 +1,7 @@
 --- 
 title: One cuckoo flew over the nest
 layout: post
+author: Brian
 ---
 Firstly, a disclaimer in the words of the inimitable Ken Kesey:
 >Take what you can use and let the rest go by.

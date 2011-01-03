@@ -1,6 +1,7 @@
 --- 
 title: Happy New Year
 layout: post
+author: Brian
 ---
 Sometime between Jan 1 and Chinese New Year it finally dawns on me that we've begun a, well, new year. I start writing the correct dates on checks, the bank honors them, the rent gets paid. Things go much more smoothly.
 

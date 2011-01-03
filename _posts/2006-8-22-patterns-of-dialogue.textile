@@ -1,6 +1,7 @@
 --- 
 title: Patterns of dialogue
 layout: post
+author: Brian
 ---
 Several weeks ago when [Robby](http://www.robbyonrails.com) and I started discussing how to better interact with clients, one of our goals was a simpler, more effective process. From my experiences as a math student, I knew that a few carefully chosen symbols along with adherence to a fairly simple structure enabled folks from the world over, with different native languages and different cultures, to discuss mathematics, learn from each other, and understand the topics.
 

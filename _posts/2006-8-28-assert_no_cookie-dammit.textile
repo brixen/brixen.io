@@ -1,6 +1,7 @@
 --- 
 title: assert_no_cookie dammit
 layout: post
+author: Brian
 ---
 I hate cookies. Or maybe I'm just feeling schizo today. Actually, I do love cookies, just not testing them with Rails.
 

@@ -1,6 +1,7 @@
 --- 
 title: OSCON 2008
 layout: post
+author: Brian
 ---
 If you're headed to "OSCON 2008":http://en.oreilly.com/oscon2008/public/content/home, I hope I'll have a chance to meet you. I'll be speaking on Thursday afternoon, something about Ruby performance. Come and heckle me if you wish. Here's the talk details:
 

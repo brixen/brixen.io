@@ -1,6 +1,7 @@
 --- 
 title: Dear glob
 layout: post
+author: Brian
 ---
 At some point, you likely needed to grab some files and do something with them. You probably had a vague recollection about @Dir[]@ from reading the Pickaxe book. To refresh your memory, you crack it open and fire up irb. Ah, easy...
 

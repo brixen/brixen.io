@@ -1,6 +1,7 @@
 --- 
 title: The "real world" can eat my shorts
 layout: post
+author: Brian
 ---
 Yesterday, [Robby](http://www.robbyonrails.com) messaged me that he was invited to be a speaker at Sys-Con Rails Conference. (Sorry, I'd have a link for you, but I'm getting a 500 page right now.) Right in the title, it mentions Ruby on Rails in the "real world". I am unable to suppress a groan every time I hear that quoted phrase _"real world"_.
 

@@ -1,6 +1,7 @@
 --- 
 title: What the hell
 layout: post
+author: Brian
 ---
 Warning. Long quote to follow. There, I've warned you. 
 

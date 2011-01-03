@@ -1,6 +1,7 @@
 --- 
 title: It's all about the dialogue
 layout: post
+author: Brian
 ---
 [Martin Fowler](http://www.martinfowler.com) is a paradox. That is, if you accept one of the common connotations of "enterprise software": evil. "I concentrate on designing enterprise software – looking at what makes a good design and what practices are needed to come up with good design.", says Martin. Yet, he is one of the giants of agile software development. Recently, at the second annual [foscon](http://oscamp.org/FOSCON), I won a raffle for a book. The one I selected from those available was Martin's _Patterns of Enterprise Application Architecture_. If you have not yet listened to his [RailsConf 2006 Keynote](http://blog.scribestudio.com/articles/2006/07/03/martin-fowler-railsconf-2006-keynote-address), I strongly urge you to do so.
 

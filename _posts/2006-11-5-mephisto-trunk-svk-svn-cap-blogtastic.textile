@@ -1,6 +1,7 @@
 --- 
 title: Mephisto trunk + svk + svn + cap = blogtastic
 layout: post
+author: Brian
 ---
 One "Mephisto":http://mephistoblog.com/ feature I really like is saving an article as a draft. Unfortunately, I'm more likely to start an article than finish it. So, I'm looking forward to that auto-write feature that maybe Rick is working on. Until then, I'll just have to continue finishing them on my own, even if it takes a few weeks. Ahem, like this one.
 

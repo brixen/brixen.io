@@ -1,6 +1,7 @@
 --- 
 title: What is RubySpec?
 layout: post
+author: Brian
 ---
 According to the folks over at "http://rubyspec.org":http::rubyspec.org, "RubySpec is a project to write a complete, executable specification for the Ruby programming language." As with any sufficiently concise summary, there's some opportunity for misunderstanding here, so let's explore a few aspects of this definition.
 

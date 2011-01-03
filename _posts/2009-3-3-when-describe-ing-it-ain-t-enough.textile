@@ -1,6 +1,7 @@
 --- 
 title: When describe'ing it ain't enough
 layout: post
+author: Brian
 ---
 One of the things I like about the "RSpec":http://rspec.info syntax is that it packs a lot of information into a few concise, consistent constructs. It's relatively easy to read through a spec file and pick out what I am looking for. The use of blocks both enable flexible execution strategies and provide simple containment boundaries.
 

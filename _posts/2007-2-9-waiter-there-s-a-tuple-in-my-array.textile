@@ -1,6 +1,7 @@
 --- 
 title: Waiter, there's a Tuple in my Array
 layout: post
+author: Brian
 ---
 Implementing Ruby in Ruby raises some challenges. In the beginning, Ruby was implemented in C. Well, at least the interpreter and core libraries. In C, you have the standard library that provides things like the math functions, functions for manipulating arrays of chars, which can be considered strings of text, etc. So, what happens when you want to build Ruby with Ruby? Well, you use Ruby, of course. And since Ruby is a class-based language, you probably will use a class. Ladies and Gentlemen, meet Tuple.
 

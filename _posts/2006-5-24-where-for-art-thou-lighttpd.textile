@@ -1,6 +1,7 @@
 --- 
 title: Where for art thou lighttpd
 layout: post
+author: Brian
 ---
 For the second time in a few days, lighttpd went awol on me. All that shows in the logs is 'graceful shutdown started', then 'server stopped'. The VDS is fine and dandy, showing up-time of 26+ days. And the rails fcgi processes are all fine as well.
 

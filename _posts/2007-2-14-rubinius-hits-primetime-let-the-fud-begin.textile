@@ -1,6 +1,7 @@
 --- 
 title: "Rubinius Hits Primetime: Let the FUD Begin"
 layout: post
+author: Brian
 ---
 For being a very young project (Evan's been working on it "about a year":http://blog.fallingsnow.net/rubinius, but it's only been in the public view for a few months), Rubinius has quickly hit primetime with the first (that I know of) "FUD-ish review":http://jesusphreak.infogami.com/blog/rubinius_fights_on The basic premise is that pypy had money, minds, and at least one goal to produce a simpler VM than CPython, but as it nears 1.0 it's much more complex than CPython. And since Rubinius is at least lacking in official monetary backing, it's got a real tough row to hoe. Maybe; but I'm unconvinced.
 

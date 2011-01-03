@@ -1,6 +1,7 @@
 --- 
 title: "Principles of d3: simplicity"
 layout: post
+author: Brian
 ---
 If you've paid any attention to our discussion of "d3":http://www.dialogue-driven.org, you've noticed that we're just beginning. We're trying to articulate the principles that we believe define an effective approach to "client" interaction. I say "client" because it's not necessarily true that the people are clients in the traditional sense. Organizations often address that with a term like "internal client" to refer to another department, for instance. But that's a different topic.
 

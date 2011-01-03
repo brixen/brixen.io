@@ -1,6 +1,7 @@
 --- 
 title: "Warning: Includes Known Bugs"
 layout: post
+author: Brian
 ---
 *UPDATE:* In further discussions with Jim Deville of IronRuby it appears that there may be a legal issue preventing IronRuby devs from patching Ruby code themselves. However it may be possible for IronRuby to use a commonly maintained and patched version of the standard library.
 

@@ -1,6 +1,7 @@
 --- 
 title: Ruby in Ruby--Seriously
 layout: post
+author: Brian
 ---
 All the attention that the various "Ruby":http://ruby-lang.org implementations are getting these days is a wonderful thing. Competition and lots of people trying out different ideas is a win for everyone. That said, there are still the silly human issues of ego and vested interest, always exacerbated by tossing some green into the mix.
 

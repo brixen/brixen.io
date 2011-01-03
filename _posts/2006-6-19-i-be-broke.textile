@@ -1,6 +1,7 @@
 --- 
 title: I be broke
 layout: post
+author: Brian
 ---
 So there I am, peacefully logged into my US Bank online account. Everything is going well. We're having a nice dialog. I click, it responds. I click... now I'm looking at a plain, white page with the following scrawled across the top in courier font:
 

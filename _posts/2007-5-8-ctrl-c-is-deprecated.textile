@@ -1,6 +1,7 @@
 --- 
 title: Ctrl-C is deprecated
 layout: post
+author: Brian
 ---
 Well, not exactly. But here's a nice anecdote that will give you pause then next time you sprint for the ^C escape hatch.
 

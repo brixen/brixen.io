@@ -1,6 +1,7 @@
 --- 
 title: As del.icio.us as a giant, steaming turd
 layout: post
+author: Brian
 ---
 I often dislike the interfaces that I'm forced to use. Banking sites are about the highest on my list of horrid. The pain these things inflict.
 

@@ -1,6 +1,7 @@
 --- 
 title: Caveat Lector
 layout: post
+author: Brian
 ---
 I really did double-check this time and I won't be making any wild claims here. Sorry to disappoint.
 
