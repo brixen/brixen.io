@@ -7,11 +7,11 @@ We've been hard at work replacing the C virtual machine in "Rubinius":http://rub
 
 You can check out the resulting code "here":http://github.com/evanphx/rubinius/tree/cpp/kernel/bootstrap/hash.rb and "here":http://github.com/evanphx/rubinius/tree/cpp/kernel/common/hash.rb. It hasn't been polished much yet, but the idea was to use expressive and natural Ruby. I didn't take any performance-conscious tacks. Hash should provide a great case study for looking at optimizations in our compiler and VM. For example, <code>Hash#keys</code> can be succinctly written as:
 
-<pre>
+{% highlight ruby linenos %}
 def keys
   inject([]) { |ary, entry| ary << entry.first }
 end
-</pre>
+{% endhighlight %}
 
 Since <code>#inject</code> comes from the <code>Enumerable</code> module, we know it's using <code>#each</code> internally. And for Hash, I implemented an external iterator of sorts to help hide the implementation details. That iterator is making a method call for each item. So we've piled on two block calls and a method call for each item. The point is, we want that expressive Ruby code in our applications and let the implementation optimize it. So far, we really haven't had any Ruby implementation to give us that.
 
@@ -21,8 +21,8 @@ As always, we love to hear from folks about what's bugging them with Ruby. Drop 
 
 *Update:* "Evan":http://blog.fallingsnow.net points out that this is a better implementation of <code>#keys</code>:
 
-<pre>
+{% highlight ruby linenos %}
 def keys
   map { |key, value| key }
 end
-</pre>
+{% endhighlight %}

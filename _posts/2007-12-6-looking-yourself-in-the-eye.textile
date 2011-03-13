@@ -9,14 +9,14 @@ Everyone at Engine Yard deserves big accolades for the vision, daring, and execu
 
 Oh yeah, but about this looking at your own eyeball without a mirror thing. Some of you may recall that I've been working a bit on writing specs for Ruby as part of this project. Since we could not run "RSpec":http://rspec.rubyforge.org initially because of its extensive use of very advanced Ruby features, we wrote a minimal replacement for it that I affectionately dubbed mini_rspec. At the time I wrote this, we were converting a ton of specs from the early host/target architecture I started with. We may have been able to run miniunit at that time, but my intention was to write specs for mini_rspec as I went along evolving the features of the framework itself. This is a very difficult bootstrap process akin to looking at your own eyeball... you get the picture. So, I must say I'm solely responsible for this little gem:
 
-<pre><code>
+{% highlight ruby linenos %}
 require File.dirname(__FILE__) + '/../spec_helper'
 
 # hmm, this is embarrassing
 
 describe "mini rspec" do
 end
-</code></pre>
+{% endhighlight %}
 
 Of course, I took a nice bit of friendly needling (or should I say snickering) from Ryan for that one. But let's not dwell on the sordid details of the past. Currently, in my branch I have a rewritten (and renamed) mSpec. This is a little better:
 

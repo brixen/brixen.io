@@ -22,7 +22,7 @@ Of course, it wouldn't be _that_ interesting were this the end of the story. It'
 
 It doesn't take but a minute to see that "Ola Bini's":http://ola-bini.blogspot.com/ java code is extraordinarily more readable than the MRI source. But both are daunting to say the least. So, I've decided to take a different route. 
 
-<pre style="overflow:auto;"><code>
+{% highlight ruby linenos %}
   def self.fnmatch(pattern, path, flags=0)
     pattern = StringValue(pattern).dup
     path = StringValue(path).dup
@@ -65,7 +65,7 @@ It doesn't take but a minute to see that "Ola Bini's":http://ola-bini.blogspot.c
       return false
     end
   end
-</code></pre>
+{% endhighlight %}
 
 This code is only passing 80% of our existing specs for @File.fnmatch?@, so the jury is still out. And I'm sure someone can make this much better. The lesson for me is that 1) Ruby's implementation is typically _not_ accessible (I already knew that), and 2) writing Ruby code is a good way to handle tough problems.
 

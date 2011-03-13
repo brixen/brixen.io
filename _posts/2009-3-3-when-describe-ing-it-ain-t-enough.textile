@@ -11,7 +11,7 @@ A compiler can be thought of as something that chews up data in one form and spi
 
 To write specs for such a process, it would be nice to focus just on the forms of the data (that's what we care about) with as little noise as possible about how they got there. Here's what we have in Rubinius:
 
-<pre><typo:code lang="ruby">
+{% highlight ruby linenos %}
 describe "An And node" do
   relates "(a and b)" do
     parse do
@@ -34,7 +34,7 @@ describe "An And node" do
     end
   end
 end
-</typo:code></pre>
+{% endhighlight %}
 
 The @relates@ block introduces the Ruby source code and contains the blocks that show various intermediate forms. A single word like @parse@ and @compile@ encapsulates the process of generating that particular form, as well as concisely documenting the specs.
 

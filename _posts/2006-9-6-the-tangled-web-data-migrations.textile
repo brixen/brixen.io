@@ -15,7 +15,7 @@ I decided that the one thing I could assert before and after a migration was tha
 
 My first stab at implementing this was a couple helper functions that I used in migrations to update the datafiles (in yaml format) with keys for the id's. This was a big problem because the files would be changing and were tracked in subversion, so they couldn't really be shared by more than one developer. Playing around a bit, I came across this idea:
 
-<pre><typo:code lang="ruby">
+{% highlight ruby linenos %}
 class CreateGeographicTypesFacts < ActiveRecord::Migration
   def self.up
     capture(:features, :details) do
@@ -27,11 +27,11 @@ class CreateGeographicTypesFacts < ActiveRecord::Migration
     release :features, :details
   end
 end
-</typo:code></pre>
+{% endhighlight %}
 
 Basically, as the data migration runs, I want to keep track of what records are created (and which of those are possibly destroyed). Obviously, this assumes that I'll be adding data on the up migration and removing it on the down. To implement this, I opened up the `ActiveRecord::Migration` class and added a couple methods:
 
-<pre><typo:code lang="ruby">
+{% highlight ruby linenos %}
 def self.capture(*args, &block)
   args.each do |name|
     klass = name.to_s.classify.constantize
@@ -61,12 +61,12 @@ def self.capture(*args, &block)
     }.to_yaml
   end
 end
-</typo:code></pre>
+{% endhighlight %}
 
 This `capture` method adds callbacks for `after\_create` and `after\_destroy` to keep track of the id's. This is written out to a file in a `data` subdirectory of the `db/migrate` directory. These files can be ignored by Subversion so each developer can run the migrations on their own databases without clashing.
 
 Migrating down is basically a matter of removing the records that were created when migrating up.
-<pre><typo:code lang="ruby">
+{% highlight ruby linenos %}
 def self.release(*args)
   data_file = data_migration_file(:down)
   data = File.open(data_file, 'r+') { |f| YAML.load f }
@@ -81,7 +81,7 @@ def self.release(*args)
   end
   File.unlink data_file
 end
-</typo:code></pre>
+{% endhighlight %}
 
 If you provide a block to the `release` method, you take care of doing whatever you want to the records. If you just want to delete them, don't pass a block and `release` will delete them. I used `delete` rather than `destroy` so that everything you specify on capture is deleted without running into issues with `:dependent => :destroy`.
 

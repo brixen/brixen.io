@@ -5,7 +5,7 @@ author: Brian
 ---
 Over at the "Rubinius":http://rubini.us project, in between hatching plots to take over the world, we fit in some time for recreation. For example, we've got this masochistic interest in writing "RSpec":http://rspec.rubyforge.org compatible specs for the Ruby core library. One of the challenges there is the large number of aliased methods that Ruby has. Using RSpec's shared behaviors as an example, I've created a flavor of shared behaviors in our @mini_rspec@ implementation. As the code below shows, this makes it straightforward to spec all these aliases.
 
-<pre><code>
+{% highlight ruby linenos %}
 hash_store = shared "Hash#store" do |cmd|
   describe "Hash##{cmd}" do
     it "associates the key with the value and return the value" do
@@ -43,6 +43,6 @@ end
 describe "Hash#[]=" do
   it_behaves_like(hash_store, :[]=)
 end
-</code></pre>
+{% endhighlight %}
 
 The very cool thing about this is how useful Ruby's @send@ method is. And in Rubinius, it gets even cooler, as you'll see in "part II":http://blog.brightredglow.com/2007/9/20/send-my-love-to-ruby-ii

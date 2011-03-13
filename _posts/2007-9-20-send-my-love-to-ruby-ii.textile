@@ -5,7 +5,7 @@ author: Brian
 ---
 In the "last post":http://blog.brightredglow.com/2007/9/20/send-my-love-to-ruby, we saw a nice use case for the @#send@ method. Now, we'll see some coolness that Rubinius adds. First, some code:
 
-<pre><code>
+{% highlight ruby linenos %}
 class Apple
   def seed
   end
@@ -15,7 +15,7 @@ a = Apple.new
 
 a.send :seed
 a.__send__ :seed
-</code></pre>
+{% endhighlight %}
 
 Now, with the convenient and useful @describe@ facility of the Rubinius compiler, we can see something interesting:
 
