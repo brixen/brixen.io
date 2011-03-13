@@ -3,7 +3,7 @@ title: Having a blast at webvisions 2006
 layout: post
 author: Brian
 ---
-I have had the good fortune of being sent to [webvisions | 2006](http://www.webvisionsevent.com/) by [PLANET ARGON](http://www.planetargon.com). I have it on good authority that this year it is much larger than last year. It's two days long and chock-full of great talks. 
+I have had the good fortune of being sent to [webvisions (2006)](http://www.webvisionsevent.com/) by [PLANET ARGON](http://www.planetargon.com). I have it on good authority that this year it is much larger than last year. It's two days long and chock-full of great talks. 
 
 So far, I have attended:
 

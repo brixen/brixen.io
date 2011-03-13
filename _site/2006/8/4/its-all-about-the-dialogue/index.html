@@ -25,23 +25,47 @@
         <p><span class="date">04 August 2006</span></p>
       </div>
 
-         <div class="entrybody"><p>[Martin Fowler](http://www.martinfowler.com) is a paradox. That is, if you accept one of the common connotations of &#8220;enterprise software&#8221;: evil. &#8220;I concentrate on designing enterprise software – looking at what makes a good design and what practices are needed to come up with good design.&#8221;, says Martin. Yet, he is one of the giants of agile software development. Recently, at the second annual [foscon](http://oscamp.org/<span class="caps">FOSCON</span>), I won a raffle for a book. The one I selected from those available was Martin&#8217;s <em>Patterns of Enterprise Application Architecture</em>. If you have not yet listened to his [RailsConf 2006 Keynote](http://blog.scribestudio.com/articles/2006/07/03/martin-fowler-railsconf-2006-keynote-address), I strongly urge you to do so.</p>
-<p>A couple days ago, [Robby](http://www.robbyonrails.com) posted about [Dialogue Driven Development](http://www.robbyonrails.com/articles/2006/08/02/dialogue-driven-development). We&#8217;ll leave it to the art historians to decide if the following artifact proves that while sitting together at Martin&#8217;s talk during RailsConf 2006, I first wrote the words, or jotted them down after Robby summarized one of Martin&#8217;s points. Robby often encourages &#8220;blog early, blog often&#8221;. So I can hardly complain if he pre-empted me on publishing <span class="caps">DDD</span> since RailsConf was over six weeks ago.</p>
+         <div class="entrybody"><p><a href="http://www.martinfowler.com">Martin Fowler</a> is a paradox. That is, if you accept one of the common connotations of &ldquo;enterprise software&rdquo;: evil. &ldquo;I concentrate on designing enterprise software – looking at what makes a good design and what practices are needed to come up with good design.&rdquo;, says Martin. Yet, he is one of the giants of agile software development. Recently, at the second annual <a href="http://oscamp.org/FOSCON">foscon</a>, I won a raffle for a book. The one I selected from those available was Martin&rsquo;s <em>Patterns of Enterprise Application Architecture</em>. If you have not yet listened to his <a href="http://blog.scribestudio.com/articles/2006/07/03/martin-fowler-railsconf-2006-keynote-address">RailsConf 2006 Keynote</a>, I strongly urge you to do so.</p>
+
+<p>A couple days ago, <a href="http://www.robbyonrails.com">Robby</a> posted about <a href="http://www.robbyonrails.com/articles/2006/08/02/dialogue-driven-development">Dialogue Driven Development</a>. We&rsquo;ll leave it to the art historians to decide if the following artifact proves that while sitting together at Martin&rsquo;s talk during RailsConf 2006, I first wrote the words, or jotted them down after Robby summarized one of Martin&rsquo;s points. Robby often encourages &ldquo;blog early, blog often&rdquo;. So I can hardly complain if he pre-empted me on publishing DDD since RailsConf was over six weeks ago.</p>
+
 <p><img src="http://blog.brightredglow.com/assets/2006/10/3/ddd_small.jpg" /></p>
-<p>The important thing is that <span class="caps">DDD</span> is not just another marketing term. Although, it could be useful as one, so we want to distinguish between <i>dialog</i>, those artifacts from desktop applications that we on the web infrequently encounter, and <i>dialogue</i>, <em>n. a discussion between two or more people or groups, esp. one directed toward exploration of a particular subject or resolution of a problem</em> (from my dashboard dictionary).</p>
-<p>For me, the <em>-ue</em> is all about user experience. And that is the meat and potatoes of application development that we should be targeting. Don&#8217;t believe me? Think it&#8217;s more about business logic, fancy technology, web 2.0, &lt;insert favorite CS concept here&gt;? I don&#8217;t think so. But, don&#8217;t take my word for it. You too can pre-empt me on a coming post by heading over and reading, if you have not, Alan Cooper, <em>About Face: The Essentials of User Interface Design</em>.</p>
-<p>So, <span class="caps">DDD</span>. What we&#8217;re trying to do is label a concept that is sorely in need of development. To flesh it out a bit from my perspective, here are a few points from Martin&#8217;s keynote that I found particularly interesting.</p>
-<pre><code>martin_keynote.points.each do |point|</code></pre>
+
+<p>The important thing is that DDD is not just another marketing term. Although, it could be useful as one, so we want to distinguish between <strong>dialog</strong>, those artifacts from desktop applications that we on the web infrequently encounter, and <strong>dialogue</strong>, <em>n. a discussion between two or more people or groups, esp. one directed toward exploration of a particular subject or resolution of a problem</em> (from my dashboard dictionary).</p>
+
+<p>For me, the <em>-ue</em> is all about user experience. And that is the meat and potatoes of application development that we should be targeting. Don&rsquo;t believe me? Think it&rsquo;s more about business logic, fancy technology, web 2.0, &lt;insert favorite CS concept here&gt;? I don&rsquo;t think so. But, don&rsquo;t take my word for it. You too can pre-empt me on a coming post by heading over and reading, if you have not, Alan Cooper, <em>About Face: The Essentials of User Interface Design</em>.</p>
+
+<p>So, DDD. What we&rsquo;re trying to do is label a concept that is sorely in need of development. To flesh it out a bit from my perspective, here are a few points from Martin&rsquo;s keynote that I found particularly interesting.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>&lt;pre&gt;<code>martin_keynote.points.each do</code></td>
+      <td>point</td>
+      <td>&lt;/code&gt;&lt;/pre&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 <blockquote>
-<ul><li>The interesting thing about Rails is that it tries to do things differently than other software over the last few years. It doesn&#8217;t try to be the one-size-fits-all solution.</li>
-<li>What we are seeing is a drive toward simplicity. Conventional wisdom once was &#8220;quick necessarily means dirty&#8221;. Ruby challenges that. As did Smalltalk, which showed that you could be quick and clean.</li>
-<li>What&#8217;s important about technology is the way it affects the whole conversation between customer and developers. It affects how we go about building software. The essence of XP from Kent Beck is this change in relationship so it is not a one way stream of &#8220;this is what I want&#8221;: want &#8594; tell &#8594; build &#8594; all is well. People may know what they want, but not what they need. We can build exactly what they want and still fail because it is not what they need.</li>
-</blockquote>
+<ul><li>The interesting thing about Rails is that it tries to do things differently than other software over the last few years. It doesn't try to be the one-size-fits-all solution.</li>
+
+<li>What we are seeing is a drive toward simplicity. Conventional wisdom once was "quick necessarily means dirty". Ruby challenges that. As did Smalltalk, which showed that you could be quick and clean.</li>
+
+<li>What's important about technology is the way it affects the whole conversation between customer and developers. It affects how we go about building software. The essence of XP from Kent Beck is this change in relationship so it is not a one way stream of "this is what I want": want -&gt; tell -&gt; build -&gt; all is well. People may know what they want, but not what they need. We can build exactly what they want and still fail because it is not what they need.</li>
+
+
 <pre><code>end</code></pre>
-<p>It was after jotting down that last note that I wrote &#8220;dialog-based develepment&#8221; and then &#8220;dialog driven development&#8221; in my notes (I know, I misspelled it, too). The <span class="caps">DDD</span> term was prompted by the recent conversations [Jeremy](http://www.jvoorhis.com) and I had with [Steven Baker](http://blog.lavalamp.ca/) and [David Goodlad](http://david.goodlad.ca/) on the train to Chicago about Behavior Driven Development as they worked a bunch on a next-generation RSpec.</p>
-<p>My pie in the sky is a Ruby <span class="caps">DSL</span> something like RSpec that could be used with clients to talk about the software. It would allow a spectrum from less specific-more tolerant to more-specific-less tolerant. At the left end is client dialogue about behavior of the software. Something like, &#8220;app should require login&#8221;. A &#8220;failure&#8221; at this high level could be something like, <em>not implemented</em>. The spectrum continues down to the level of <span class="caps">BDD</span> with something like RSpec, where the focus is on behavior of the code.</p>
-<p>Also on the train, [Josh Knowles](http://joshknowles.com/) was strongly advocating for much better acceptance testing. Of course, using iterative development, acceptance testing is not something done at the end, months or years into the project, but should be done frequently. The left end of the spectrum could support this <em>expectation based software behavior dialogue</em>.</p>
-<p>Of course, these are very rough ideas. What I want to do is build out the understanding behind the word &#8220;collaboration&#8221; in the [Agile Manifesto](http://www.agilemanifesto.org) and identify how &#8220;individuals and interactions&#8221; work to create excellent software. Join the fun!</p></div>
+
+It was after jotting down that last note that I wrote "dialog-based develepment" and then "dialog driven development" in my notes (I know, I misspelled it, too). The DDD term was prompted by the recent conversations [Jeremy](http://www.jvoorhis.com) and I had with [Steven Baker](http://blog.lavalamp.ca/) and [David Goodlad](http://david.goodlad.ca/) on the train to Chicago about Behavior Driven Development as they worked a bunch on a next-generation RSpec.
+
+My pie in the sky is a Ruby DSL something like RSpec that could be used with clients to talk about the software. It would allow a spectrum from less specific-more tolerant to more-specific-less tolerant. At the left end is client dialogue about behavior of the software. Something like, "app should require login". A "failure" at this high level could be something like, _not implemented_. The spectrum continues down to the level of BDD with something like RSpec, where the focus is on behavior of the code.
+
+Also on the train, [Josh Knowles](http://joshknowles.com/) was strongly advocating for much better acceptance testing. Of course, using iterative development, acceptance testing is not something done at the end, months or years into the project, but should be done frequently. The left end of the spectrum could support this _expectation based software behavior dialogue_.
+
+Of course, these are very rough ideas. What I want to do is build out the understanding behind the word "collaboration" in the [Agile Manifesto](http://www.agilemanifesto.org) and identify how "individuals and interactions" work to create excellent software. Join the fun!
+</ul></blockquote>
+</div>
       </div>
     </div>
         <div id="sidebar">

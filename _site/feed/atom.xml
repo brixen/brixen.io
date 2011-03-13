@@ -689,24 +689,39 @@ $ irb
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;I&amp;#8217;m going to be pedantic for a minute. If you are Betrand Russell, feel free to spend your time more productively. Everyone else, don&amp;#8217;t be afraid of a few symbols.&lt;/p&gt;
-&lt;p&gt;If you read my &lt;a href=&quot;http://blog.brightredglow.com/2008/1/17/evil-can-be-dangerous&quot;&gt;last post&lt;/a&gt;, you might be inclined, as is every human mind, to reduce all those words to something simple you can put in your back pocket (maybe take it out later and show it to a friend). Perhaps something like this:&lt;/p&gt;
+    <content type="html">&lt;p&gt;I&amp;rsquo;m going to be pedantic for a minute. If you are Betrand Russell, feel free to spend your time more productively. Everyone else, don&amp;rsquo;t be afraid of a few symbols.&lt;/p&gt;
+
+&lt;p&gt;If you read my &amp;ldquo;last post&amp;rdquo;:http://blog.brightredglow.com/2008/1/17/evil-can-be-dangerous, you might be inclined, as is every human mind, to reduce all those words to something simple you can put in your back pocket (maybe take it out later and show it to a friend). Perhaps something like this:&lt;/p&gt;
+
 &lt;pre&gt;
   Immutable == Security == Good
 &lt;/pre&gt;
-&lt;p&gt;If you do that, you might get lots of nods and a fair bit of affirmation from folks. Makes perfect sense, right. You can make all sorts of analogies that &lt;em&gt;prove&lt;/em&gt; this to you. Consider my front door, if it&amp;#8217;s not easily opened, I feel more secure. Perfect. Must be true.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s not. Things are not so easily distilled into such nifty little boxes.&lt;/p&gt;
+
+&lt;p&gt;If you do that, you might get lots of nods and a fair bit of affirmation from folks. Makes perfect sense, right. You can make all sorts of analogies that &lt;em&gt;prove&lt;/em&gt; this to you. Consider my front door, if it&amp;rsquo;s not easily opened, I feel more secure. Perfect. Must be true.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s not. Things are not so easily distilled into such nifty little boxes.&lt;/p&gt;
+
 &lt;p&gt;Now, once they have this shiny, handy, palm-sized summary in their back pocket, folks tend to go the extra mile. They decide to make one of the most fundamental logic errors. Essentially, trying to think all the way around this hairy problem, they decide:&lt;/p&gt;
+
 &lt;pre&gt;
   If Immutable == Security
   Then Not Immutable == Not Security
 &lt;/pre&gt;
-&lt;p&gt;Doh. That&amp;#8217;s where this contra thing comes in. Read the gory details on &lt;a href=&quot;http://en.wikipedia.org/wiki/Contraposition&quot;&gt;Wikipedia&lt;/a&gt;, but here&amp;#8217;s the summary:&lt;/p&gt;
-&lt;p&gt;In logic, something like &lt;code&gt;A -&amp;gt; B&lt;/code&gt; is read &amp;#8220;A implies B&amp;#8221; or &amp;#8220;if A then B&amp;#8221;. It is very tempting to then think, &amp;#8220;if not A then not B&amp;#8221;. Unfortunately, that is not generally true. Given &amp;#8220;A implies B&amp;#8221;, the statement &amp;#8220;if not A then not B&amp;#8221; is called the &lt;em&gt;inverse&lt;/em&gt;. Again, these are not generally logically equivalent. The statement &amp;#8220;if not B then not A&amp;#8221; is called the &lt;em&gt;contrapositive_, and it *_is&lt;/em&gt;* generally true that a statement and it&amp;#8217;s contrapositive are logically equivalent.&lt;/p&gt;
-&lt;p&gt;Applying this to the above, we can see that &lt;strong&gt;IF&lt;/strong&gt; (a very big if) it is true that &amp;#8220;if Immutable then Secure&amp;#8221; is true, then the statement &amp;#8220;if not Secure then not Immutable&amp;#8221; is equivalently true. However, it has not been demonstrated that immutability is equivalent to security. And indeed there are numerous ways to achieve &amp;#8220;security&amp;#8221; (a word that begs precise definition) in a variety of different systems.&lt;/p&gt;
-&lt;p&gt;So, before you start touting something like Java because it is statically typed, immutable and &amp;#8220;secure&amp;#8221;, consider whether you are making the mistake of confusing the inverse for the contrapositive. If you&amp;#8217;re feeling extra nimble and up for some mental gymnastics, consider this rather hyperbolic assertion:&lt;/p&gt;
-&lt;p&gt;&amp;gt; Ruby is a very, very sharp knife. Java is a little more like a butter knife. We safely leave butter knives on the table when the kids are around. But, we probably grumble more than a little when trying to cut our steak with a butter knife.&lt;/p&gt;
-&lt;p&gt;If we want to make Ruby &amp;#8220;safer&amp;#8221;, it&amp;#8217;s possible to do so in the same manner as dealing with sharp knives: we make something like a sheath. We don&amp;#8217;t just take a hammer to the blade and dull it.&lt;/p&gt;</content>
+
+&lt;p&gt;Doh. That&amp;rsquo;s where this contra thing comes in. Read the gory details on &amp;ldquo;Wikipedia&amp;rdquo;:http://en.wikipedia.org/wiki/Contraposition, but here&amp;rsquo;s the summary:&lt;/p&gt;
+
+&lt;p&gt;In logic, something like &lt;code&gt;A -&amp;gt; B&lt;/code&gt; is read &amp;ldquo;A implies B&amp;rdquo; or &amp;ldquo;if A then B&amp;rdquo;. It is very tempting to then think, &amp;ldquo;if not A then not B&amp;rdquo;. Unfortunately, that is not generally true. Given &amp;ldquo;A implies B&amp;rdquo;, the statement &amp;ldquo;if not A then not B&amp;rdquo; is called the &lt;em&gt;inverse&lt;/em&gt;. Again, these are not generally logically equivalent. The statement &amp;ldquo;if not B then not A&amp;rdquo; is called the &lt;em&gt;contrapositive&lt;/em&gt;, and it &lt;em&gt;&lt;strong&gt;is&lt;/strong&gt;&lt;/em&gt; generally true that a statement and it&amp;rsquo;s contrapositive are logically equivalent.&lt;/p&gt;
+
+&lt;p&gt;Applying this to the above, we can see that &lt;em&gt;IF&lt;/em&gt; (a very big if) it is true that &amp;ldquo;if Immutable then Secure&amp;rdquo; is true, then the statement &amp;ldquo;if not Secure then not Immutable&amp;rdquo; is equivalently true. However, it has not been demonstrated that immutability is equivalent to security. And indeed there are numerous ways to achieve &amp;ldquo;security&amp;rdquo; (a word that begs precise definition) in a variety of different systems.&lt;/p&gt;
+
+&lt;p&gt;So, before you start touting something like Java because it is statically typed, immutable and &amp;ldquo;secure&amp;rdquo;, consider whether you are making the mistake of confusing the inverse for the contrapositive. If you&amp;rsquo;re feeling extra nimble and up for some mental gymnastics, consider this rather hyperbolic assertion:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Ruby is a very, very sharp knife. Java is a little more like a butter knife. We safely leave butter knives on the table when the kids are around. But, we probably grumble more than a little when trying to cut our steak with a butter knife.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If we want to make Ruby &amp;ldquo;safer&amp;rdquo;, it&amp;rsquo;s possible to do so in the same manner as dealing with sharp knives: we make something like a sheath. We don&amp;rsquo;t just take a hammer to the blade and dull it.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -1512,14 +1527,22 @@ p. Figure 2. Circular &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; perspe
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;Developing anything in the digital realm can be fantastically rewarding precisely because the ropes on our wings of fantasy are greatly weakened. We can imagine practically anything, and we can implement a lot of what we can imagine. The whir of excitement in our stomachs at the vision of some excellent idea prompts my favorite utterance, &amp;#8220;Wouldn&amp;#8217;t it be cool if&amp;#8230;&amp;#8221;&lt;/p&gt;
-&lt;p&gt;Unfortunately, our flights of fantasy must interface with the &amp;#8220;physical&amp;#8221; world, even if through the digital medium. Faster than light travel doesn&amp;#8217;t exist. Perpetual motion doesn&amp;#8217;t exist. There is a cost for everything, and it&amp;#8217;s thousands of orders of magnitude greater than the few molecules of &lt;span class=&quot;caps&quot;&gt;ATP&lt;/span&gt; that literally fueled our fantasy.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Developing anything in the digital realm can be fantastically rewarding precisely because the ropes on our wings of fantasy are greatly weakened. We can imagine practically anything, and we can implement a lot of what we can imagine. The whir of excitement in our stomachs at the vision of some excellent idea prompts my favorite utterance, &amp;ldquo;Wouldn&amp;rsquo;t it be cool if&amp;hellip;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, our flights of fantasy must interface with the &amp;ldquo;physical&amp;rdquo; world, even if through the digital medium. Faster than light travel doesn&amp;rsquo;t exist. Perpetual motion doesn&amp;rsquo;t exist. There is a cost for everything, and it&amp;rsquo;s thousands of orders of magnitude greater than the few molecules of ATP that literally fueled our fantasy.&lt;/p&gt;
+
 &lt;p&gt;No great revelations there. But it sure helps to ground ourselves with this frequent reminder.&lt;/p&gt;
-&lt;p&gt;When it comes to software, I find that the single most difficult thing for &lt;em&gt;anyone&lt;/em&gt; to do is think outside of the &lt;b&gt;Feature Fantasy&lt;/b&gt;. This applies to everyone, developers, designers, clients, users, people. Everyone. With a breathless hop, skip, and jump, we leap right over the problem, the solution, and into some particular implementation. It&amp;#8217;s so automatic I would have assumed that we&amp;#8217;d been taught how to do this in specialized classes since grade school, with some folks getting advanced university degrees in it.&lt;/p&gt;
-&lt;p&gt;At [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com), one thing we are trying to develop through our process and our exploration of [d3](http://www.robbyonrails.com/articles/2006/08/08/d3-not-ddd), is how to effectively separate the problem, the solution, and the implementation. I would say better than 90% of our discussions start out at the feature, or implementation level. We actively and tireless attempt to refocus this back on the problem, describing and documenting it so we can think and dialogue about solutions.&lt;/p&gt;
-&lt;p&gt;As [Jeremy](http://www.jvoorhis.org) has explored a bit in his article on [Feature Ecology](http://www.jvoorhis.org/articles/2006/09/20/feature-ecology), the interaction or relation between features actually alters the product as a whole. Again, not an astounding idea, but the consequence of this is that a lot of time is spent chasing your tail if you focus on features without the benefit of well understanding the problem and solution.&lt;/p&gt;
-&lt;p&gt;Another benefit of focusing on the problem and solution is that it provides a natural meeting ground between clients and developers. Often the clients are not the users of the software. This makes it even more important to explore the problem to be solved rather than the client&amp;#8217;s ideas of particular features. One of the most valuable things I took from reading Alan Cooper&amp;#8217;s original &lt;em&gt;About Face&lt;/em&gt; almost a decade ago is that no one would use your software if they didn&amp;#8217;t have to. How&amp;#8217;s that for a response to, &amp;#8220;wouldn&amp;#8217;t it be cool if&amp;#8230;&amp;#8221;&lt;/p&gt;
-&lt;p&gt;If you want to create software that people won&amp;#8217;t hate using, focus on the problem and a very good description of a solution. Use your solution to implement a product. Get feedback from people on your understanding of the problem, your description of a solution, and only lastly, on your implementation of the product.&lt;/p&gt;</content>
+
+&lt;p&gt;When it comes to software, I find that the single most difficult thing for &lt;em&gt;anyone&lt;/em&gt; to do is think outside of the &lt;strong&gt;Feature Fantasy&lt;/strong&gt;. This applies to everyone, developers, designers, clients, users, people. Everyone. With a breathless hop, skip, and jump, we leap right over the problem, the solution, and into some particular implementation. It&amp;rsquo;s so automatic I would have assumed that we&amp;rsquo;d been taught how to do this in specialized classes since grade school, with some folks getting advanced university degrees in it.&lt;/p&gt;
+
+&lt;p&gt;At &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt;, one thing we are trying to develop through our process and our exploration of &lt;a href=&quot;http://www.robbyonrails.com/articles/2006/08/08/d3-not-ddd&quot;&gt;d3&lt;/a&gt;, is how to effectively separate the problem, the solution, and the implementation. I would say better than 90% of our discussions start out at the feature, or implementation level. We actively and tireless attempt to refocus this back on the problem, describing and documenting it so we can think and dialogue about solutions.&lt;/p&gt;
+
+&lt;p&gt;As &lt;a href=&quot;http://www.jvoorhis.org&quot;&gt;Jeremy&lt;/a&gt; has explored a bit in his article on &lt;a href=&quot;http://www.jvoorhis.org/articles/2006/09/20/feature-ecology&quot;&gt;Feature Ecology&lt;/a&gt;, the interaction or relation between features actually alters the product as a whole. Again, not an astounding idea, but the consequence of this is that a lot of time is spent chasing your tail if you focus on features without the benefit of well understanding the problem and solution.&lt;/p&gt;
+
+&lt;p&gt;Another benefit of focusing on the problem and solution is that it provides a natural meeting ground between clients and developers. Often the clients are not the users of the software. This makes it even more important to explore the problem to be solved rather than the client&amp;rsquo;s ideas of particular features. One of the most valuable things I took from reading Alan Cooper&amp;rsquo;s original &lt;em&gt;About Face&lt;/em&gt; almost a decade ago is that no one would use your software if they didn&amp;rsquo;t have to. How&amp;rsquo;s that for a response to, &amp;ldquo;wouldn&amp;rsquo;t it be cool if&amp;hellip;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;If you want to create software that people won&amp;rsquo;t hate using, focus on the problem and a very good description of a solution. Use your solution to implement a product. Get feedback from people on your understanding of the problem, your description of a solution, and only lastly, on your implementation of the product.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -1531,25 +1554,35 @@ p. Figure 2. Circular &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; perspe
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;I probably use Google search on average 20-30 times a day. It&amp;#8217;s an indispensable tool for me. It&amp;#8217;s definitely not the last word in search engines. I can imagine a lot of additional functionality, like contextualizing my searches over time or within categories. But overall, it works reasonably well.&lt;/p&gt;
-&lt;p&gt;Lately, I&amp;#8217;ve been reading &lt;em&gt;Ambient Findability&lt;/em&gt; by Peter Morville. He provides this definition for findability:&lt;/p&gt;
+    <content type="html">&lt;p&gt;I probably use Google search on average 20-30 times a day. It&amp;rsquo;s an indispensable tool for me. It&amp;rsquo;s definitely not the last word in search engines. I can imagine a lot of additional functionality, like contextualizing my searches over time or within categories. But overall, it works reasonably well.&lt;/p&gt;
+
+&lt;p&gt;Lately, I&amp;rsquo;ve been reading &lt;em&gt;Ambient Findability&lt;/em&gt; by Peter Morville. He provides this definition for findability:&lt;/p&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;findability &lt;em&gt;n&lt;/em&gt;&lt;br /&gt;
-&lt;ol&gt;&lt;br /&gt;
-&lt;li&gt;The quality of being locatable or navigable.&lt;/li&gt;&lt;br /&gt;
-&lt;li&gt;The degree to which a particular object is easy to discover or locate.&lt;/li&gt;&lt;br /&gt;
-&lt;li&gt;The degree to which a system or environment supports navigation and retrieval.&lt;/li&gt;&lt;/p&gt;
+findability &lt;em&gt;n&lt;/em&gt;
+&lt;ol&gt;
+&lt;li&gt;The quality of being locatable or navigable.&lt;/li&gt;
+&lt;li&gt;The degree to which a particular object is easy to discover or locate.&lt;/li&gt;
+&lt;li&gt;The degree to which a system or environment supports navigation and retrieval.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Peter explains that findability is defined at both the object and system levels. For example, the title of a document or the color of a pen on your desk. At the system level, you can ask questions like, &amp;#8220;Can a traveler navigate an airport,&amp;#8221; or &amp;#8220;Can a user navigate a website.&amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;Peter explains that findability is defined at both the object and system levels. For example, the title of a document or the color of a pen on your desk. At the system level, you can ask questions like, &amp;ldquo;Can a traveler navigate an airport,&amp;rdquo; or &amp;ldquo;Can a user navigate a website.&amp;rdquo;&lt;/p&gt;
+
 &lt;p&gt;While these ideas help us frame the concepts, how do we evaluate findability in concrete situations. Not surprisingly, there are elements of findability that we can examine:&lt;/p&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;Findability requires definition, distinction, difference. In physical environments, size, shape, color, and location set objects apart. In the digital realm, we rely heavily on words. Words as labels. Words as links. Keywords.&lt;/p&gt;
+Findability requires definition, distinction, difference. In physical environments, size, shape, color, and location set objects apart. In the digital realm, we rely heavily on words. Words as labels. Words as links. Keywords.
 &lt;/blockquote&gt;
-&lt;p&gt;Hmm, interesting. At [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com), we have been evaluating using the &lt;em&gt;rspec\&lt;em&gt;for\&lt;/em&gt;rails&lt;/em&gt; plugin to focus more heavily on [&lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt;](http://behavior-driven.org/). One of the things &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; emphasizes is leveraging the power of words to help us think more effectively (accurately) about our code. We have been incorporating &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; style method naming into our &lt;span class=&quot;caps&quot;&gt;TDD&lt;/span&gt; practices, as well as refining our ability to specify application behavior in our tests.&lt;/p&gt;
-&lt;p&gt;One thing I dislike about the regular `Test::Unit` framework is that the methods are often organized ad hoc. Whatever makes the most sense to the programmer when adding those particular tests. Sometimes it&amp;#8217;s just appending the method to the list of existing methods. Most often, I notice some sort of organization. Which makes sense; that&amp;#8217;s how we deal with information. But the framework doesn&amp;#8217;t provide any guidance here.&lt;/p&gt;
-&lt;p&gt;With the [RSpec](http://rspec.rubyforge.org/) framework (check out [RSpec on Rails](http://rspec.rubyforge.org/tools/rails.html)), you can arrange your methods into contexts. I think this encourages better organization and contributes to the quality of findability as discussed above. Tests are just another type of information we interact with. How much effort does it take to locate what you&amp;#8217;re looking for, understand what the tests are saying, understand the output when a test fails? Following along [Jeremy&amp;#8217;s](http://www.jvoorhis.com) questions about [acceptable](http://www.jvoorhis.org/articles/2006/08/26/is-your-test-suite-acceptable) tests:&lt;/p&gt;
-&lt;p&gt;Are your tests findable?&lt;/p&gt;</content>
+
+&lt;p&gt;Hmm, interesting. At &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt;, we have been evaluating using the &lt;em&gt;rspec_for_rails&lt;/em&gt; plugin to focus more heavily on &lt;a href=&quot;http://behavior-driven.org/&quot;&gt;BDD&lt;/a&gt;. One of the things BDD emphasizes is leveraging the power of words to help us think more effectively (accurately) about our code. We have been incorporating BDD style method naming into our TDD practices, as well as refining our ability to specify application behavior in our tests.&lt;/p&gt;
+
+&lt;p&gt;One thing I dislike about the regular &lt;code&gt;Test::Unit&lt;/code&gt; framework is that the methods are often organized ad hoc. Whatever makes the most sense to the programmer when adding those particular tests. Sometimes it&amp;rsquo;s just appending the method to the list of existing methods. Most often, I notice some sort of organization. Which makes sense; that&amp;rsquo;s how we deal with information. But the framework doesn&amp;rsquo;t provide any guidance here.&lt;/p&gt;
+
+&lt;p&gt;With the &lt;a href=&quot;http://rspec.rubyforge.org/&quot;&gt;RSpec&lt;/a&gt; framework (check out &lt;a href=&quot;http://rspec.rubyforge.org/tools/rails.html&quot;&gt;RSpec on Rails&lt;/a&gt;), you can arrange your methods into contexts. I think this encourages better organization and contributes to the quality of findability as discussed above. Tests are just another type of information we interact with. How much effort does it take to locate what you&amp;rsquo;re looking for, understand what the tests are saying, understand the output when a test fails? Following along &lt;a href=&quot;http://www.jvoorhis.com&quot;&gt;Jeremy&amp;rsquo;s&lt;/a&gt; questions about &lt;a href=&quot;http://www.jvoorhis.org/articles/2006/08/26/is-your-test-suite-acceptable&quot;&gt;acceptable&lt;/a&gt; tests:&lt;/p&gt;
+
+&lt;p&gt;Are your tests findable?&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -1655,10 +1688,14 @@ p. Figure 2. Circular &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; perspe
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;I recently wrote about the [assert_cookie](http://blog.brightredglow.com/articles/2006/08/27/assert_cookie-for-ooey-gooey-fun) custom test assertion plugin I put together. When I started writing the assertion, it was just a helper method to wrap up the funky logic for testing stuff about a cookie. I wasn&amp;#8217;t thinking about tests. And my first tries were definitely not test-driven.&lt;/p&gt;
-&lt;p&gt;When I was wrapping it up as a plugin, this started bugging me a lot. Especially because my first tries at the assertion method weren&amp;#8217;t very good. (Ugh! `svn diff -r59:72 http://svn.planetargon.org/rails/plugins/assert\&lt;em&gt;cookie/lib/assert\&lt;/em&gt;cookie.rb`) But the idea of testing it was confounding. How do you think about testing the tester?&lt;/p&gt;
-&lt;p&gt;The first thing I had to get straight was what I expected. It basically reduced to expecting the assertion to pass or fail. When an assertion fails, it raises the `AssertionFailedError` exception. Excellent, now I was making progress.&lt;/p&gt;
-&lt;p&gt;I started writing tests like:&lt;br /&gt;
+    <content type="html">&lt;p&gt;I recently wrote about the &lt;a href=&quot;http://blog.brightredglow.com/articles/2006/08/27/assert_cookie-for-ooey-gooey-fun&quot;&gt;assert_cookie&lt;/a&gt; custom test assertion plugin I put together. When I started writing the assertion, it was just a helper method to wrap up the funky logic for testing stuff about a cookie. I wasn&amp;rsquo;t thinking about tests. And my first tries were definitely not test-driven.&lt;/p&gt;
+
+&lt;p&gt;When I was wrapping it up as a plugin, this started bugging me a lot. Especially because my first tries at the assertion method weren&amp;rsquo;t very good. (Ugh! &lt;code&gt;svn diff -r59:72 http://svn.planetargon.org/rails/plugins/assert\_cookie/lib/assert\_cookie.rb&lt;/code&gt;) But the idea of testing it was confounding. How do you think about testing the tester?&lt;/p&gt;
+
+&lt;p&gt;The first thing I had to get straight was what I expected. It basically reduced to expecting the assertion to pass or fail. When an assertion fails, it raises the &lt;code&gt;AssertionFailedError&lt;/code&gt; exception. Excellent, now I was making progress.&lt;/p&gt;
+
+&lt;p&gt;I started writing tests like:&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;assert_nothing_raised&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assert_cookie&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:secure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
@@ -1667,52 +1704,40 @@ p. Figure 2. Circular &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; perspe
 &lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;assert_raise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;AssertionFailedError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assert_cookie&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:open_secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
 &lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt;       &lt;span class=&quot;ss&quot;&gt;:secure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&amp;lt;span class=&quot;lineno&quot;&amp;gt;1&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;def&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;nf&quot;&amp;gt;test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;2&amp;lt;/span&amp;gt;   &amp;lt;span class=&quot;n&quot;&amp;gt;assert_nothing_raised&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;p&quot;&amp;gt;{&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;n&quot;&amp;gt;assert_cookie&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;ss&quot;&amp;gt;:secret&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;p&quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;ss&quot;&amp;gt;:secure&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;o&quot;&amp;gt;=&amp;amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;kp&quot;&amp;gt;true&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;p&quot;&amp;gt;}&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;3&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;end&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;4&amp;lt;/span&amp;gt; 
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;5&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;def&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;nf&quot;&amp;gt;test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;6&amp;lt;/span&amp;gt;   &amp;lt;span class=&quot;n&quot;&amp;gt;assert_raise&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;p&quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;no&quot;&amp;gt;AssertionFailedError&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;p&quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;p&quot;&amp;gt;{&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;n&quot;&amp;gt;assert_cookie&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;ss&quot;&amp;gt;:open_secret&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;p&quot;&amp;gt;,&amp;lt;/span&amp;gt; 
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;7&amp;lt;/span&amp;gt;       &amp;lt;span class=&quot;ss&quot;&amp;gt;:secure&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;o&quot;&amp;gt;=&amp;amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;kp&quot;&amp;gt;true&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;p&quot;&amp;gt;}&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;8&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;end&amp;lt;/span&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/div&gt;&lt;/notextile&gt;&lt;/p&gt;
-&lt;p&gt;and notices a lot of repetition of `assert\&lt;em&gt;raise(AssertionFailedError)` and `assert\&lt;em&gt;nothing\&lt;em&gt;raised`. It was ugly to read. I decided to write a couple helper assertions:&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;and notices a lot of repetition of &lt;code&gt;assert\_raise(AssertionFailedError)&lt;/code&gt; and &lt;code&gt;assert\_nothing\_raised&lt;/code&gt;. It was ugly to read. I decided to write a couple helper assertions:&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;assert_pass&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;assert_block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;assert_pass must be called with a block.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block_given?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt;   &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; 
 &lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;assert_fail&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;   &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&amp;lt;span class=&quot;lineno&quot;&amp;gt; 1&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;def&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;nf&quot;&amp;gt;assert_pass&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt; 2&amp;lt;/span&amp;gt;   &amp;lt;span class=&quot;n&quot;&amp;gt;assert_block&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;p&quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;s2&quot;&amp;gt;&amp;amp;quot;assert_pass must be called with a block.&amp;amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;p&quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;p&quot;&amp;gt;{&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;nb&quot;&amp;gt;block_given?&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;p&quot;&amp;gt;}&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt; 3&amp;lt;/span&amp;gt;   &amp;lt;span class=&quot;k&quot;&amp;gt;yield&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt; 4&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;end&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt; 5&amp;lt;/span&amp;gt; 
-&amp;lt;span class=&quot;lineno&quot;&amp;gt; 6&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;def&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;nf&quot;&amp;gt;assert_fail&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt; 7&amp;lt;/span&amp;gt;   &amp;lt;span class=&quot;n&quot;&amp;gt;assert&lt;/em&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;assert&lt;/em&gt;fail must be called with a block.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block&lt;/em&gt;given?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;br /&gt;
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;   &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;br /&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;AssertionFailedError&lt;/span&gt;&lt;br /&gt;
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;br /&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/div&gt;&lt;/notextile&gt;&lt;/p&gt;
-&lt;p&gt;The hard part again was figuring out what I was expecting. My first try was to use `assert\&lt;em&gt;raise` and `assert\&lt;em&gt;nothing\&lt;em&gt;raised` as before. But those failed miserable because they call `yield`. I lamented to [Andrew](http://www.stopdropandrew.com/) that I wished `yield` would work like `raise`. After thinking a bit more, I realized I only cared whether an `AssertionFailedError` exception was raised or not. The previous tests now look like this:&lt;br /&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;assert_block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;assert_fail must be called with a block.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block_given?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;   &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;AssertionFailedError&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The hard part again was figuring out what I was expecting. My first try was to use &lt;code&gt;assert\_raise&lt;/code&gt; and &lt;code&gt;assert\_nothing\_raised&lt;/code&gt; as before. But those failed miserable because they call &lt;code&gt;yield&lt;/code&gt;. I lamented to &lt;a href=&quot;http://www.stopdropandrew.com/&quot;&gt;Andrew&lt;/a&gt; that I wished &lt;code&gt;yield&lt;/code&gt; would work like &lt;code&gt;raise&lt;/code&gt;. After thinking a bit more, I realized I only cared whether an &lt;code&gt;AssertionFailedError&lt;/code&gt; exception was raised or not. The previous tests now look like this:&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;assert_pass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assert_cookie&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:secure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; 
 &lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt;   &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&amp;lt;span class=&quot;lineno&quot;&amp;gt;1&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;def&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;nf&quot;&amp;gt;test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;2&amp;lt;/span&amp;gt;   &amp;lt;span class=&quot;n&quot;&amp;gt;assert_pass&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;p&quot;&amp;gt;{&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;n&quot;&amp;gt;assert_cookie&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;ss&quot;&amp;gt;:secret&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;p&quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;ss&quot;&amp;gt;:secure&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;o&quot;&amp;gt;=&amp;amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;kp&quot;&amp;gt;true&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;p&quot;&amp;gt;}&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;3&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;end&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;4&amp;lt;/span&amp;gt; 
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;5&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;k&quot;&amp;gt;def&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;nf&quot;&amp;gt;test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;lineno&quot;&amp;gt;6&amp;lt;/span&amp;gt;   &amp;lt;span class=&quot;n&quot;&amp;gt;assert&lt;/em&gt;fail&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assert&lt;/em&gt;cookie&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:open&lt;/em&gt;secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:secure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;br /&gt;
-&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;br /&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/div&gt;&lt;/notextile&gt;&lt;/p&gt;
-&lt;p&gt;There is one last thing that bugs me. I wanted the tests to run outside of Rails but function correctly in Rails. Rails adds a method to `Test::Unit::Assertions` called `clean\&lt;em&gt;backtrace`. I couldn&amp;#8217;t figure out how to get that required correctly, so I created a stub in `test\&lt;/em&gt;helper.rb`. Can anyone help me fix this?&lt;/p&gt;
-&lt;p&gt;Install the plugin with `script/plugin install http://svn.planetargon.org/rails/plugins/assert_cookie`. Navigate to the `vendor/plugins/assert_cookie` directory, type `rake` and watch the tests run. :)&lt;/p&gt;</content>
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;assert_fail&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assert_cookie&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:open_secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:secure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There is one last thing that bugs me. I wanted the tests to run outside of Rails but function correctly in Rails. Rails adds a method to &lt;code&gt;Test::Unit::Assertions&lt;/code&gt; called &lt;code&gt;clean\_backtrace&lt;/code&gt;. I couldn&amp;rsquo;t figure out how to get that required correctly, so I created a stub in &lt;code&gt;test\_helper.rb&lt;/code&gt;. Can anyone help me fix this?&lt;/p&gt;
+
+&lt;p&gt;Install the plugin with &lt;code&gt;script/plugin install http://svn.planetargon.org/rails/plugins/assert_cookie&lt;/code&gt;. Navigate to the &lt;code&gt;vendor/plugins/assert_cookie&lt;/code&gt; directory, type &lt;code&gt;rake&lt;/code&gt; and watch the tests run. :)&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -1724,24 +1749,42 @@ p. Figure 2. Circular &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; perspe
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;There&amp;#8217;s more than one way to shoot down a moving target. [Dave Thomas](http://blogs.pragprog.com/cgi-bin/pragdave.cgi) and [Andy Hunt](http://www.toolshed.com/blog/) have used the metaphor of tracer bullets to describe an approach to software development. [Martin](http://martin.ankerl.org/2006/03/03/tracer-bullet-development-versus-extreme-programming/), [Badgerism](http://www.badgerism.com/archives/2005/11/21/ship-it-chapter-3-pragmatic-project-techniques-2/), [Peter](http://www.pbell.com/index.cfm/2006/7/9/Ready-Fire-Aim), [Lights Out Production](http://www.lightsoutproduction.com/index.php?option=com_content&amp;amp;task=view&amp;amp;id=32&amp;amp;Itemid=71), and [Jeff](http://www.codinghorror.com/blog/archives/000256.html), in no particular order&lt;a href=&quot;#sub1&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; and among many others, have weighed in with their thoughts.&lt;/p&gt;
-&lt;p&gt;But how does firing at a moving target with tracer bullets work? It&amp;#8217;s a gross over-simplification to say you just fire-aim-fire-aim. In fact, the key to the process is how aiming itself provides immediate feedback to refine aiming. As Dave himself says,&lt;/p&gt;
-&lt;p&gt;&amp;gt; Basically, it all comes down to feedback. The more quickly you can get feedback, the less change you need to get back on target.&lt;/p&gt;
+    <content type="html">&lt;p&gt;There&amp;rsquo;s more than one way to shoot down a moving target. &lt;a href=&quot;http://blogs.pragprog.com/cgi-bin/pragdave.cgi&quot;&gt;Dave Thomas&lt;/a&gt; and &lt;a href=&quot;http://www.toolshed.com/blog/&quot;&gt;Andy Hunt&lt;/a&gt; have used the metaphor of tracer bullets to describe an approach to software development. &lt;a href=&quot;http://martin.ankerl.org/2006/03/03/tracer-bullet-development-versus-extreme-programming/&quot;&gt;Martin&lt;/a&gt;, &lt;a href=&quot;http://www.badgerism.com/archives/2005/11/21/ship-it-chapter-3-pragmatic-project-techniques-2/&quot;&gt;Badgerism&lt;/a&gt;, &lt;a href=&quot;http://www.pbell.com/index.cfm/2006/7/9/Ready-Fire-Aim&quot;&gt;Peter&lt;/a&gt;, &lt;a href=&quot;http://www.lightsoutproduction.com/index.php?option=com_content&amp;amp;task=view&amp;amp;id=32&amp;amp;Itemid=71&quot;&gt;Lights Out Production&lt;/a&gt;, and &lt;a href=&quot;http://www.codinghorror.com/blog/archives/000256.html&quot;&gt;Jeff&lt;/a&gt;, in no particular order&lt;a href=&quot;#sub1&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; and among many others, have weighed in with their thoughts.&lt;/p&gt;
+
+&lt;p&gt;But how does firing at a moving target with tracer bullets work? It&amp;rsquo;s a gross over-simplification to say you just fire-aim-fire-aim. In fact, the key to the process is how aiming itself provides immediate feedback to refine aiming. As Dave himself says,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Basically, it all comes down to feedback. The more quickly you can get feedback, the less change you need to get back on target.&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;p&gt;So, the process actually goes something like this:&lt;/p&gt;
-&lt;p&gt;1. you have already acquired a target&lt;br /&gt;
-2. you have initially aimed the gun&lt;br /&gt;
-3. you fire and watch where the tracers go&lt;br /&gt;
-4. you re-aim based on where the target is now in relation to the tracers&lt;/p&gt;
-&lt;p&gt;That&amp;#8217;s a single person aiming, firing, watching, aiming, &amp;#8230; That&amp;#8217;s a process that is happening over short instants of time. Where you aimed a fraction of a second ago is still visible in the stream of tracer bullets when you adjust your aim.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;you have already acquired a target&lt;/li&gt;
+  &lt;li&gt;you have initially aimed the gun&lt;/li&gt;
+  &lt;li&gt;you fire and watch where the tracers go&lt;/li&gt;
+  &lt;li&gt;you re-aim based on where the target is now in relation to the tracers&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That&amp;rsquo;s a single person aiming, firing, watching, aiming, &amp;hellip; That&amp;rsquo;s a process that is happening over short instants of time. Where you aimed a fraction of a second ago is still visible in the stream of tracer bullets when you adjust your aim.&lt;/p&gt;
+
 &lt;p&gt;Now translate that to a team developing software. No longer is it one person. No longer is the feedback loop on the order of fractions of a second. Time stretches to weeks or months between the initial target acquisition and aiming until the feedback comes in. How does that feedback inform the original rationale for the design decisions or even for the target acquisition?&lt;/p&gt;
-&lt;p&gt;In the process we are refining at [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com), we insist that we document the rationale for our design decisions. This includes documenting our discussions with the client and domain experts to identify the goals of the software and its users. This is a very lightweight process, usually about a small paragraph per major design decision. We typically use a wiki to record the documentation and aggregate in the same place useful references, project documentation, interviews, etc.&lt;/p&gt;
+
+&lt;p&gt;In the process we are refining at &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt;, we insist that we document the rationale for our design decisions. This includes documenting our discussions with the client and domain experts to identify the goals of the software and its users. This is a very lightweight process, usually about a small paragraph per major design decision. We typically use a wiki to record the documentation and aggregate in the same place useful references, project documentation, interviews, etc.&lt;/p&gt;
+
 &lt;p&gt;To some folks, documentation may be a dirty word, something to shun or dread. Not for us. Documentation is simply our way of providing a record of the decisions we make so that feedback can be evaluated in context. From my dashboard dictionary:&lt;/p&gt;
-&lt;p&gt;&amp;gt; &lt;em&gt;documentation&lt;/em&gt;, n.&lt;br /&gt;
-&amp;gt;&lt;br /&gt;
-&amp;gt; Material that provides official information or evidence or that serves as a record&lt;/p&gt;
-&lt;p&gt;I&amp;#8217;m at a loss to understand how else you would do it. Tracer bullets don&amp;#8217;t help you a bit if you are just firing randomly. And I think that&amp;#8217;s what people miss about the process. You really do &lt;em&gt;aim&lt;/em&gt; first. And if you can&amp;#8217;t remember why you aimed where you did, or if the person who did the aiming  has left by the time feedback is coming in, that feedback may be interesting, but it certainly isn&amp;#8217;t going to enable you to refine your decisions.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;documentation&lt;/em&gt;, n.&lt;/p&gt;
+
+  &lt;p&gt;Material that provides official information or evidence or that serves as a record&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I&amp;rsquo;m at a loss to understand how else you would do it. Tracer bullets don&amp;rsquo;t help you a bit if you are just firing randomly. And I think that&amp;rsquo;s what people miss about the process. You really do &lt;em&gt;aim&lt;/em&gt; first. And if you can&amp;rsquo;t remember why you aimed where you did, or if the person who did the aiming  has left by the time feedback is coming in, that feedback may be interesting, but it certainly isn&amp;rsquo;t going to enable you to refine your decisions.&lt;/p&gt;
+
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;a name=&quot;sup1&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; Thanks to [Robby](http://www.robbyonrails.com) for providing links to some of these articles&lt;/p&gt;</content>
+&lt;p&gt;&lt;a name=&quot;sup1&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; Thanks to &lt;a href=&quot;http://www.robbyonrails.com&quot;&gt;Robby&lt;/a&gt; for providing links to some of these articles&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -1753,15 +1796,31 @@ p. Figure 2. Circular &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; perspe
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;Recently, [Robby](http://www.robbyonrails.com) dropped off his copy of &lt;em&gt;The New Utopians&lt;/em&gt; by Robert Boguslaw at my desk with a section marked: &amp;#8220;For Whom and For What&amp;#8221;. Here are a couple interesting quotes on page 45:&lt;/p&gt;
-&lt;p&gt;&amp;gt; This, then, is one of the fundamental problems of application: on the one hand, the temptation is almost overpowering to establish the techniques and practices of practitioners as handbook truths available in situations of the sort we have termed established. It is the temptation to speak with the same degree of assurance under all professional circumstances as does the familiar stereotype of the TV repairman or journeyman carpenter.&lt;/p&gt;
-&lt;p&gt;&amp;gt; On the other hand, there may be found equally strong temptation to revert to unbridled intuitionism&amp;#8212;on the part of those who somehow sense the inadequacy of established situation science applied to emergent situation reality.&lt;/p&gt;
-&lt;p&gt;This reminded me of the recent blog exchange between [Peat](http://peat.wordpress.com/2006/08/14/software-and-common-sense-part-ii/) and [Alex](http://jooto.com/blog/index.php/2006/08/16/why-do-geeks-hate-common-sense/) regarding the role of common sense and intuition in application development.&lt;/p&gt;
-&lt;p&gt;It is an attractive and beguiling illusion that attempts to persuade us to think that if we just apply enough analysis from correct principles, we&amp;#8217;ll produce something &amp;#8220;correct.&amp;#8221; And we should do the analysis first. That pretty siren sings so sweetly over the shipwreck mess of many development projects. The allure is so powerful, of course, because sometimes it is correct. The problem is when to do this and at what scale.&lt;/p&gt;
-&lt;p&gt;Sometimes it is much better to analyze things first. Some people will say, &amp;#8220;First make it correct, then optimize it.&amp;#8221; But when speaking with [Stefan Kaes](http://railsexpress.de/blog/) at RailsConf 2006 after his talk, I thanked him for pointing out that some consideration for performance &lt;em&gt;must&lt;/em&gt; be made up front. To paraphrase his reply, &amp;#8220;Absolutely&amp;#8221;. Here, the scale is large. Broad decisions are made, not detailed ones. And it is necessary to do it earlier rather than later because this broad decision will dictate the confines under which many small decisions are made that create a structure of significant weight that will resist change.&lt;/p&gt;
-&lt;p&gt;I was a bit disturbed to read [this comparison](http://martin.ankerl.org/2006/03/03/tracer-bullet-development-versus-extreme-programming/) of Tracer Bullet Development versus eXtreme Programming where it was asserted that &lt;span class=&quot;caps&quot;&gt;TBD&lt;/span&gt; uses up-front design while XP does not. Obviously, using XP, you don&amp;#8217;t just start randomly writing code. &lt;em&gt;Somewhere&lt;/em&gt;, &lt;em&gt;somehow&lt;/em&gt; a bunch of decisions were made that create the context in which you start writing tests. Disregarding appropriate situations at which to make preliminary decisions is as dangerous as deciding too much.&lt;/p&gt;
-&lt;p&gt;Even if we know extremely well the technical details of the small bits of test-driven code we are writing, it&amp;#8217;s probably guaranteed that we have but a faint understanding of how those pieces will make a complete application. As Robert points out summarizing Kurt Lewin in &amp;#8220;Field Theory and Learning&amp;#8221;&lt;/p&gt;
-&lt;p&gt;&amp;gt; In short, it is not &amp;#8230; that the whole is &lt;em&gt;more&lt;/em&gt; than the sum of its parts; it is &lt;em&gt;different&lt;/em&gt; from the some of its parts&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;Recently, &lt;a href=&quot;http://www.robbyonrails.com&quot;&gt;Robby&lt;/a&gt; dropped off his copy of &lt;em&gt;The New Utopians&lt;/em&gt; by Robert Boguslaw at my desk with a section marked: &amp;ldquo;For Whom and For What&amp;rdquo;. Here are a couple interesting quotes on page 45:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This, then, is one of the fundamental problems of application: on the one hand, the temptation is almost overpowering to establish the techniques and practices of practitioners as handbook truths available in situations of the sort we have termed established. It is the temptation to speak with the same degree of assurance under all professional circumstances as does the familiar stereotype of the TV repairman or journeyman carpenter.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;On the other hand, there may be found equally strong temptation to revert to unbridled intuitionism&amp;ndash;on the part of those who somehow sense the inadequacy of established situation science applied to emergent situation reality.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This reminded me of the recent blog exchange between &lt;a href=&quot;http://peat.wordpress.com/2006/08/14/software-and-common-sense-part-ii/&quot;&gt;Peat&lt;/a&gt; and &lt;a href=&quot;http://jooto.com/blog/index.php/2006/08/16/why-do-geeks-hate-common-sense/&quot;&gt;Alex&lt;/a&gt; regarding the role of common sense and intuition in application development.&lt;/p&gt;
+
+&lt;p&gt;It is an attractive and beguiling illusion that attempts to persuade us to think that if we just apply enough analysis from correct principles, we&amp;rsquo;ll produce something &amp;ldquo;correct.&amp;rdquo; And we should do the analysis first. That pretty siren sings so sweetly over the shipwreck mess of many development projects. The allure is so powerful, of course, because sometimes it is correct. The problem is when to do this and at what scale.&lt;/p&gt;
+
+&lt;p&gt;Sometimes it is much better to analyze things first. Some people will say, &amp;ldquo;First make it correct, then optimize it.&amp;rdquo; But when speaking with &lt;a href=&quot;http://railsexpress.de/blog/&quot;&gt;Stefan Kaes&lt;/a&gt; at RailsConf 2006 after his talk, I thanked him for pointing out that some consideration for performance &lt;em&gt;must&lt;/em&gt; be made up front. To paraphrase his reply, &amp;ldquo;Absolutely&amp;rdquo;. Here, the scale is large. Broad decisions are made, not detailed ones. And it is necessary to do it earlier rather than later because this broad decision will dictate the confines under which many small decisions are made that create a structure of significant weight that will resist change.&lt;/p&gt;
+
+&lt;p&gt;I was a bit disturbed to read &lt;a href=&quot;http://martin.ankerl.org/2006/03/03/tracer-bullet-development-versus-extreme-programming/&quot;&gt;this comparison&lt;/a&gt; of Tracer Bullet Development versus eXtreme Programming where it was asserted that TBD uses up-front design while XP does not. Obviously, using XP, you don&amp;rsquo;t just start randomly writing code. &lt;em&gt;Somewhere&lt;/em&gt;, &lt;em&gt;somehow&lt;/em&gt; a bunch of decisions were made that create the context in which you start writing tests. Disregarding appropriate situations at which to make preliminary decisions is as dangerous as deciding too much.&lt;/p&gt;
+
+&lt;p&gt;Even if we know extremely well the technical details of the small bits of test-driven code we are writing, it&amp;rsquo;s probably guaranteed that we have but a faint understanding of how those pieces will make a complete application. As Robert points out summarizing Kurt Lewin in &amp;ldquo;Field Theory and Learning&amp;rdquo;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In short, it is not &amp;hellip; that the whole is &lt;em&gt;more&lt;/em&gt; than the sum of its parts; it is &lt;em&gt;different&lt;/em&gt; from the some of its parts&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</content>
   </entry>
   
   <entry>
@@ -1802,17 +1861,21 @@ end
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;I love cookies. There are, of course, tons of varieties and I&amp;#8217;m no connoisseur but I love the soft chocolate chip right out of the oven, hot and gooey. But, if you&amp;#8217;re like me, you don&amp;#8217;t want your Rails code to be gooey.&lt;/p&gt;
-&lt;p&gt;Last Friday, after spending a good frustrating hour trying to figure out why my tests were failing with a nil when a cookie was expected, I finally tried a google search for &amp;#8220;assert cookies&amp;#8221;. (A lot of more detailed searches pulled up nothing but Java stuff, a not-so-subtle reminder that Ruby is not yet the dominant language out there.) Seems that [Pluit Solutions](http://www.pluitsolutions.com/2006/08/02/rails-functional-test-with-cookie/) ran into the same problem. This got me thinking that a nice custom assertion might be in order. Actually, I just wrote a quick helper because that was faster than trying to figure out why Rails wasn&amp;#8217;t performing [as advertised](http://api.rubyonrails.com/classes/Test/Unit/Assertions.html). But it kept bugging me, so I wrapped it up as a plugin. It&amp;#8217;s still rough and tests are coming. Perhaps I&amp;#8217;m putting too much into a single assertion. Install it with `script/plugin install http://svn.planetargon.org/rails/plugins/assert_cookie`. And please send feedback.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I love cookies. There are, of course, tons of varieties and I&amp;rsquo;m no connoisseur but I love the soft chocolate chip right out of the oven, hot and gooey. But, if you&amp;rsquo;re like me, you don&amp;rsquo;t want your Rails code to be gooey. &lt;/p&gt;
+
+&lt;p&gt;Last Friday, after spending a good frustrating hour trying to figure out why my tests were failing with a nil when a cookie was expected, I finally tried a google search for &amp;ldquo;assert cookies&amp;rdquo;. (A lot of more detailed searches pulled up nothing but Java stuff, a not-so-subtle reminder that Ruby is not yet the dominant language out there.) Seems that &lt;a href=&quot;http://www.pluitsolutions.com/2006/08/02/rails-functional-test-with-cookie/&quot;&gt;Pluit Solutions&lt;/a&gt; ran into the same problem. This got me thinking that a nice custom assertion might be in order. Actually, I just wrote a quick helper because that was faster than trying to figure out why Rails wasn&amp;rsquo;t performing &lt;a href=&quot;http://api.rubyonrails.com/classes/Test/Unit/Assertions.html&quot;&gt;as advertised&lt;/a&gt;. But it kept bugging me, so I wrapped it up as a plugin. It&amp;rsquo;s still rough and tests are coming. Perhaps I&amp;rsquo;m putting too much into a single assertion. Install it with &lt;code&gt;script/plugin install http://svn.planetargon.org/rails/plugins/assert_cookie&lt;/code&gt;. And please send feedback.&lt;/p&gt;
+
 &lt;p&gt;The idea is to allow various assertions about cookies using a hash of arguments. In particular, you can do such things as:&lt;/p&gt;
-&lt;pre&gt;&amp;lt;typo:code lang=&quot;ruby&quot;&amp;gt;
+
+&lt;pre&gt;&lt;typo:code lang=&quot;ruby&quot;&gt;
 assert_cookie :pass, 
     :value =&amp;gt; lambda { |value| UUID.parse(value).valid? }
 assert_cookie :yellow, :value =&amp;gt; ['sunny', 'days']
 assert_cookie :delight, :value =&amp;gt; 'yum'
 assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ }, 
     :secure =&amp;gt; true
-&amp;lt;/typo:code&amp;gt;&lt;/pre&gt;</content>
+&lt;/typo:code&gt;&lt;/pre&gt;
+</content>
   </entry>
   
   <entry>
@@ -1824,13 +1887,20 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;Several weeks ago when [Robby](http://www.robbyonrails.com) and I started discussing how to better interact with clients, one of our goals was a simpler, more effective process. From my experiences as a math student, I knew that a few carefully chosen symbols along with adherence to a fairly simple structure enabled folks from the world over, with different native languages and different cultures, to discuss mathematics, learn from each other, and understand the topics.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Several weeks ago when &lt;a href=&quot;http://www.robbyonrails.com&quot;&gt;Robby&lt;/a&gt; and I started discussing how to better interact with clients, one of our goals was a simpler, more effective process. From my experiences as a math student, I knew that a few carefully chosen symbols along with adherence to a fairly simple structure enabled folks from the world over, with different native languages and different cultures, to discuss mathematics, learn from each other, and understand the topics.&lt;/p&gt;
+
 &lt;p&gt;The news press is another profession that makes excellent, effective use of a simple structure to interview people and elicit facts to reconstruct an event at which the reporter was not present. We have a rather high degree of confidence (depending on the media outlet) in the accuracy of the method.&lt;/p&gt;
-&lt;p&gt;These, among other things, encouraged us to focus on the dialogue we have with our clients. We want to examine the dialogue without any special props or artifacts from a particular methodology. What can we accomplish as knowledgeable people, potentially having different vocabularies and areas of expertise, sitting around a table perhaps with paper and pencil? So far, we&amp;#8217;ve mostly posted about these ideas. But our aim is to extend these ideas into identifying patterns of dialogue.&lt;/p&gt;
-&lt;p&gt;Here&amp;#8217;s one: You probably noticed that my posts tend to be pretty long. That&amp;#8217;s because, just like the three paragraphs above, I usually try to take time to lay some groundwork, get on the same page. And this is often what I do when talking with someone as well. Perhaps a good name would be the &lt;em&gt;Misunderstanding Prevention Focused Long Intro&lt;/em&gt; dialogue pattern. The problem is, unless you&amp;#8217;re pretty dedicated about paying attention, I might lose you before I get done painting the whole picture. A different pattern could focus on one small bit of the relevant topic, frequently check understanding, and build out the background to enhance understanding when necessary. To me, that pattern is much more like &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; and follows the principle of not solving a problem you haven&amp;#8217;t yet encountered.&lt;/p&gt;
-&lt;p&gt;Another thing we frequently observe is that any little feature of the software we&amp;#8217;re building acts just like a spark in tinder, setting a client off on a runaway course of, &amp;#8220;Wouldn&amp;#8217;t it be cool if&amp;#8230;&amp;#8221;. Attempting to blow out that flame before it derails the discussion, we often use totally irrelevant data that has less provocative affect. For example, in a recent prototype showing tagging features, we used names of food as tags, which have absolutely nothing to do with the application. The intent was to prevent the client from starting to think about the &amp;#8220;right tags&amp;#8221; and focus instead on the features of the tagging process.&lt;/p&gt;
-&lt;p&gt;We are attempting that sort of process on a bigger scale with clients who seem naturally to obsess on features. We try to structure the dialogue about the user&amp;#8217;s goals without referring to the software at all. At first glance, that may seem to increase the likelihood that we will misunderstand what the client wants. But, we find the reverse is true. Feature focus is more likely to contribute to misunderstanding what the client needs. And it prevents the client from learning as well.&lt;/p&gt;
-&lt;p&gt;What patterns do you observe in your dialogue? When are they appropriate? What are you trying to change about your client interaction?&lt;/p&gt;</content>
+
+&lt;p&gt;These, among other things, encouraged us to focus on the dialogue we have with our clients. We want to examine the dialogue without any special props or artifacts from a particular methodology. What can we accomplish as knowledgeable people, potentially having different vocabularies and areas of expertise, sitting around a table perhaps with paper and pencil? So far, we&amp;rsquo;ve mostly posted about these ideas. But our aim is to extend these ideas into identifying patterns of dialogue.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s one: You probably noticed that my posts tend to be pretty long. That&amp;rsquo;s because, just like the three paragraphs above, I usually try to take time to lay some groundwork, get on the same page. And this is often what I do when talking with someone as well. Perhaps a good name would be the &lt;em&gt;Misunderstanding Prevention Focused Long Intro&lt;/em&gt; dialogue pattern. The problem is, unless you&amp;rsquo;re pretty dedicated about paying attention, I might lose you before I get done painting the whole picture. A different pattern could focus on one small bit of the relevant topic, frequently check understanding, and build out the background to enhance understanding when necessary. To me, that pattern is much more like BDD and follows the principle of not solving a problem you haven&amp;rsquo;t yet encountered.&lt;/p&gt;
+
+&lt;p&gt;Another thing we frequently observe is that any little feature of the software we&amp;rsquo;re building acts just like a spark in tinder, setting a client off on a runaway course of, &amp;ldquo;Wouldn&amp;rsquo;t it be cool if&amp;hellip;&amp;rdquo;. Attempting to blow out that flame before it derails the discussion, we often use totally irrelevant data that has less provocative affect. For example, in a recent prototype showing tagging features, we used names of food as tags, which have absolutely nothing to do with the application. The intent was to prevent the client from starting to think about the &amp;ldquo;right tags&amp;rdquo; and focus instead on the features of the tagging process.&lt;/p&gt;
+
+&lt;p&gt;We are attempting that sort of process on a bigger scale with clients who seem naturally to obsess on features. We try to structure the dialogue about the user&amp;rsquo;s goals without referring to the software at all. At first glance, that may seem to increase the likelihood that we will misunderstand what the client wants. But, we find the reverse is true. Feature focus is more likely to contribute to misunderstanding what the client needs. And it prevents the client from learning as well.&lt;/p&gt;
+
+&lt;p&gt;What patterns do you observe in your dialogue? When are they appropriate? What are you trying to change about your client interaction?&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -1842,21 +1912,35 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;Growing up in the United States in the late 70&amp;#8217;s, early 80&amp;#8217;s, futbol was something I knew very little about. Let&amp;#8217;s see, we played once in a great while in gym class, my most memorable experience there was taking a hard-kicked ball right in the face. Later in high school, the soccer team was a mere blip on the screen in the shadow of football and baseball. Much later I started playing soccer and, having so much fun, lament that I didn&amp;#8217;t play as a kid. The interesting thing to me about soccer (and many games, but you&amp;#8217;ll especially appreciate this if you listen to a soccer game on a hispanic radio station) is that the myriad plays and activities that make up the game are all directed toward scoring a goal (and preventing the opposing team from doing so). In other words, the goal of the game is simple and clear, though not easily achieved.&lt;/p&gt;
-&lt;p&gt;[Alex Bunardzic](http://jooto.com/blog/) is a champion of what he terms &amp;#8220;ethical software&amp;#8221;. The idea goes by many names. My favorite is software that doesn&amp;#8217;t suck. I highly value Alex&amp;#8217;s ideas, so when I read his recent post, [Should-Driven Development](http://jooto.com/blog/index.php/2006/08/15/should-driven-development/), I couldn&amp;#8217;t easily dismiss his criticisms of Behavior Driven Development. At the same time, I don&amp;#8217;t agree that &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; itself is flawed as an approach to creating better software. &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; is a developer&amp;#8217;s tool. It&amp;#8217;s about coding. Of course, &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; cannot specify the goals of the software. So, if it is expected to, it will fail to produce software that doesn&amp;#8217;t suck.&lt;/p&gt;
-&lt;p&gt;One of the things about Scrum that I think is tremendously valuable, and yet one of those things that makes you say, &amp;#8220;Duh!&amp;#8221;, is the emphasis on empirical process control. There are three components to that: 1) observability, 2) inspection, and 3) adaptation.&lt;/p&gt;
-&lt;p&gt;What both Scrum and &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; need to be effective is a clear and accurate statement of the goals. With a goal-directed process you have these components:&lt;/p&gt;
-&lt;p&gt;1. somewhere you are trying to get to (using a geographic metaphor)&lt;br /&gt;
-2. some process that accurately compares where you are at with where you want to go&lt;br /&gt;
-3. a plan to move you incrementally closer to where you want to go&lt;br /&gt;
-4. a process to evaluate whether your plan got you any closer&lt;/p&gt;
+    <content type="html">&lt;p&gt;Growing up in the United States in the late 70&amp;rsquo;s, early 80&amp;rsquo;s, futbol was something I knew very little about. Let&amp;rsquo;s see, we played once in a great while in gym class, my most memorable experience there was taking a hard-kicked ball right in the face. Later in high school, the soccer team was a mere blip on the screen in the shadow of football and baseball. Much later I started playing soccer and, having so much fun, lament that I didn&amp;rsquo;t play as a kid. The interesting thing to me about soccer (and many games, but you&amp;rsquo;ll especially appreciate this if you listen to a soccer game on a hispanic radio station) is that the myriad plays and activities that make up the game are all directed toward scoring a goal (and preventing the opposing team from doing so). In other words, the goal of the game is simple and clear, though not easily achieved.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://jooto.com/blog/&quot;&gt;Alex Bunardzic&lt;/a&gt; is a champion of what he terms &amp;ldquo;ethical software&amp;rdquo;. The idea goes by many names. My favorite is software that doesn&amp;rsquo;t suck. I highly value Alex&amp;rsquo;s ideas, so when I read his recent post, &lt;a href=&quot;http://jooto.com/blog/index.php/2006/08/15/should-driven-development/&quot;&gt;Should-Driven Development&lt;/a&gt;, I couldn&amp;rsquo;t easily dismiss his criticisms of Behavior Driven Development. At the same time, I don&amp;rsquo;t agree that BDD itself is flawed as an approach to creating better software. BDD is a developer&amp;rsquo;s tool. It&amp;rsquo;s about coding. Of course, BDD cannot specify the goals of the software. So, if it is expected to, it will fail to produce software that doesn&amp;rsquo;t suck.&lt;/p&gt;
+
+&lt;p&gt;One of the things about Scrum that I think is tremendously valuable, and yet one of those things that makes you say, &amp;ldquo;Duh!&amp;rdquo;, is the emphasis on empirical process control. There are three components to that: 1) observability, 2) inspection, and 3) adaptation.&lt;/p&gt;
+
+&lt;p&gt;What both Scrum and BDD need to be effective is a clear and accurate statement of the goals. With a goal-directed process you have these components: &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;somewhere you are trying to get to (using a geographic metaphor)&lt;/li&gt;
+  &lt;li&gt;some process that accurately compares where you are at with where you want to go&lt;/li&gt;
+  &lt;li&gt;a plan to move you incrementally closer to where you want to go&lt;/li&gt;
+  &lt;li&gt;a process to evaluate whether your plan got you any closer&lt;/li&gt;
+&lt;/ol&gt;
+
 &lt;p&gt;Or more briefly: goal, assessment, plan, implementation, feedback and around again and again.&lt;/p&gt;
-&lt;p&gt;The practice of &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; captures this well. Write the test to capture the expected behavior of the system relative to the goal. The test fails. Write the &lt;em&gt;minimum&lt;/em&gt; code necessary to make the test pass. Refactor. And around. The process alternates between writing new tests to describe expected behavior and the code to make the test pass and then refactoring to make the code better without changing its behavior. The process is powerful.&lt;/p&gt;
-&lt;p&gt;But as I said earlier, it is a developer&amp;#8217;s tool. Developers should never be specifying the goals for the software, just as the client and user should never be specifying the implementation. I&amp;#8217;m rarely dogmatic, but about that I will be.&lt;/p&gt;
-&lt;p&gt;The problem that we face is how we can more accurately capture the goals for the software in our dialogue with the clients and users. Our exploration of that is what we are calling [d3](http://www.robbyonrails.com/articles/2006/08/08/d3-not-ddd). One significant part of that is education. Our experience is that &lt;em&gt;everyone&lt;/em&gt; from clients to developers begins thinking and talking in terms of the software implementation way, way too early. It&amp;#8217;s like talking to an architect about what finishes to use and what the windows look like long before you have established a vague idea of where the walls will be or if there will even be walls. The process is too often backwards. Talking about the minutiea of text field this and that before we have even established why in the world the user would be doing that in the first place. One approach that we are trying is dialoguing with the client about goals without talking at all about the web site. In other words, for that exploration, the web site doesn&amp;#8217;t even exist. Talk about thinking outside the tubes.&lt;/p&gt;
-&lt;p&gt;Another part of this is fostering a general respect for that fact that software that doesn&amp;#8217;t suck is constructed according to certain principles. Just because anyone can create an &lt;span class=&quot;caps&quot;&gt;HTML&lt;/span&gt; form doesn&amp;#8217;t mean they should. As long as we collectively persist in thinking that &lt;em&gt;anything&amp;#8217;s possible&lt;/em&gt; and therefore it all boils down to a matter of opinion about software design, we will continue to create software that sucks.&lt;/p&gt;
-&lt;p&gt;So rather than putting down &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; for failing, we need to recognize that right now in the state of our craft there is a huge chasm between client interaction to establish goals for the software and the much lower level development that can excel through application of &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;What we need to develop is how to dialogue to create common understanding. What I am noticing as I try hard to be more aware of how we are communicating with clients is that &amp;#8220;process&amp;#8221; and &amp;#8220;process artifacts&amp;#8221; can often be counter-productive and obscure issues. If we are just trying to &amp;#8220;fill in&amp;#8221; the boxes in our process, are we stopping to really listen? It&amp;#8217;s like assertiveness training where you are taught to reframe your expressions using &amp;#8220;I&amp;#8221; statements. Rather than, &amp;#8220;you are really pissing me off&amp;#8221; someone might as an initial stab try &amp;#8220;I feel like you are really pissing me off&amp;#8221;. Yeah, not very effective. Try that with your girlfriend if you don&amp;#8217;t believe me. More effective is, &amp;#8220;I feel hurt when you say you don&amp;#8217;t want to play with my new Mephisto blog.&amp;#8221; One approach attempts to conform to the structure of assertiveness, one effectively conforms to the principles. What are the principles of effective dialogue?&lt;/p&gt;</content>
+
+&lt;p&gt;The practice of BDD captures this well. Write the test to capture the expected behavior of the system relative to the goal. The test fails. Write the &lt;em&gt;minimum&lt;/em&gt; code necessary to make the test pass. Refactor. And around. The process alternates between writing new tests to describe expected behavior and the code to make the test pass and then refactoring to make the code better without changing its behavior. The process is powerful.&lt;/p&gt;
+
+&lt;p&gt;But as I said earlier, it is a developer&amp;rsquo;s tool. Developers should never be specifying the goals for the software, just as the client and user should never be specifying the implementation. I&amp;rsquo;m rarely dogmatic, but about that I will be.&lt;/p&gt;
+
+&lt;p&gt;The problem that we face is how we can more accurately capture the goals for the software in our dialogue with the clients and users. Our exploration of that is what we are calling &lt;a href=&quot;http://www.robbyonrails.com/articles/2006/08/08/d3-not-ddd&quot;&gt;d3&lt;/a&gt;. One significant part of that is education. Our experience is that &lt;em&gt;everyone&lt;/em&gt; from clients to developers begins thinking and talking in terms of the software implementation way, way too early. It&amp;rsquo;s like talking to an architect about what finishes to use and what the windows look like long before you have established a vague idea of where the walls will be or if there will even be walls. The process is too often backwards. Talking about the minutiea of text field this and that before we have even established why in the world the user would be doing that in the first place. One approach that we are trying is dialoguing with the client about goals without talking at all about the web site. In other words, for that exploration, the web site doesn&amp;rsquo;t even exist. Talk about thinking outside the tubes.&lt;/p&gt;
+
+&lt;p&gt;Another part of this is fostering a general respect for that fact that software that doesn&amp;rsquo;t suck is constructed according to certain principles. Just because anyone can create an HTML form doesn&amp;rsquo;t mean they should. As long as we collectively persist in thinking that &lt;em&gt;anything&amp;rsquo;s possible&lt;/em&gt; and therefore it all boils down to a matter of opinion about software design, we will continue to create software that sucks.&lt;/p&gt;
+
+&lt;p&gt;So rather than putting down BDD for failing, we need to recognize that right now in the state of our craft there is a huge chasm between client interaction to establish goals for the software and the much lower level development that can excel through application of BDD.&lt;/p&gt;
+
+&lt;p&gt;What we need to develop is how to dialogue to create common understanding. What I am noticing as I try hard to be more aware of how we are communicating with clients is that &amp;ldquo;process&amp;rdquo; and &amp;ldquo;process artifacts&amp;rdquo; can often be counter-productive and obscure issues. If we are just trying to &amp;ldquo;fill in&amp;rdquo; the boxes in our process, are we stopping to really listen? It&amp;rsquo;s like assertiveness training where you are taught to reframe your expressions using &amp;ldquo;I&amp;rdquo; statements. Rather than, &amp;ldquo;you are really pissing me off&amp;rdquo; someone might as an initial stab try &amp;ldquo;I feel like you are really pissing me off&amp;rdquo;. Yeah, not very effective. Try that with your girlfriend if you don&amp;rsquo;t believe me. More effective is, &amp;ldquo;I feel hurt when you say you don&amp;rsquo;t want to play with my new Mephisto blog.&amp;rdquo; One approach attempts to conform to the structure of assertiveness, one effectively conforms to the principles. What are the principles of effective dialogue?&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -1868,19 +1952,34 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;I think it&amp;#8217;s obvious to everyone that Scrum and the product backlog are not the same thing. Sometimes stating the obvious is useful. Scrum is a structured process of which the product backlog is a part. [Mechanism Alley](http://mechanismalley.com/blog) has posted an excellent, thoughtful [article](http://mechanismalley.com/blog/2006/08/06/what-is-scrum/) about Scrum with some references to some of what we&amp;#8217;ve been saying about [d3](http://www.robbyonrails.com/articles/2006/08/08/d3-not-ddd). It&amp;#8217;s worth a careful read. In fact, I want to personally thank [&lt;span class=&quot;caps&quot;&gt;MSM&lt;/span&gt;](http://mechanismalley.com) for not perceiving our comments as an invitation to start flaming about this or that pet methodology.&lt;/p&gt;
-&lt;p&gt;I certainly don&amp;#8217;t want our conversations about Scrum to be alienating to any of the excellent folks working hard under the agile umbrella. Further, I don&amp;#8217;t want Scrum only to be the focus of these conversations. Finally, I&amp;#8217;m not particularly interested in pumping another meme through the well-oiled Rails machine. Are we restating things said by others? Hell yes! We are standing on the shoulders of giants.&lt;/p&gt;
-&lt;p&gt;What I find a bit disturbing is that while I said a [number of things](http://blog.brightredglow.com/articles/2006/08/06/one-cuckoo-flew-over-the-nest) about Scrum, only what [Robby](http://www.robbyonrails.com) and I have said about the product backlog is getting attention. Further, the responses seem to fall generally into three categories:&lt;/p&gt;
-&lt;p&gt;1. the literature we read misrepresented the Scrum process&lt;br /&gt;
-2. we have misunderstood the literature&lt;br /&gt;
-3. the way the commenter uses the product backlog involves a lot of conversation, not a lot of dictation&lt;/p&gt;
+    <content type="html">&lt;p&gt;I think it&amp;rsquo;s obvious to everyone that Scrum and the product backlog are not the same thing. Sometimes stating the obvious is useful. Scrum is a structured process of which the product backlog is a part. &lt;a href=&quot;http://mechanismalley.com/blog&quot;&gt;Mechanism Alley&lt;/a&gt; has posted an excellent, thoughtful &lt;a href=&quot;http://mechanismalley.com/blog/2006/08/06/what-is-scrum/&quot;&gt;article&lt;/a&gt; about Scrum with some references to some of what we&amp;rsquo;ve been saying about &lt;a href=&quot;http://www.robbyonrails.com/articles/2006/08/08/d3-not-ddd&quot;&gt;d3&lt;/a&gt;. It&amp;rsquo;s worth a careful read. In fact, I want to personally thank &lt;a href=&quot;http://mechanismalley.com&quot;&gt;MSM&lt;/a&gt; for not perceiving our comments as an invitation to start flaming about this or that pet methodology.&lt;/p&gt;
+
+&lt;p&gt;I certainly don&amp;rsquo;t want our conversations about Scrum to be alienating to any of the excellent folks working hard under the agile umbrella. Further, I don&amp;rsquo;t want Scrum only to be the focus of these conversations. Finally, I&amp;rsquo;m not particularly interested in pumping another meme through the well-oiled Rails machine. Are we restating things said by others? Hell yes! We are standing on the shoulders of giants.&lt;/p&gt;
+
+&lt;p&gt;What I find a bit disturbing is that while I said a &lt;a href=&quot;http://blog.brightredglow.com/articles/2006/08/06/one-cuckoo-flew-over-the-nest&quot;&gt;number of things&lt;/a&gt; about Scrum, only what &lt;a href=&quot;http://www.robbyonrails.com&quot;&gt;Robby&lt;/a&gt; and I have said about the product backlog is getting attention. Further, the responses seem to fall generally into three categories:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;the literature we read misrepresented the Scrum process&lt;/li&gt;
+  &lt;li&gt;we have misunderstood the literature&lt;/li&gt;
+  &lt;li&gt;the way the commenter uses the product backlog involves a lot of conversation, not a lot of dictation&lt;/li&gt;
+&lt;/ol&gt;
+
 &lt;p&gt;Firstly, the book I referred to, &lt;em&gt;Agile Project Management with Scrum&lt;/em&gt; by Ken Schwaber seems to be a good source. It seems consistent with everything knowledgeable people have posted about Scrum. And it clearly advocates agile methods. Consider this quote:&lt;/p&gt;
-&lt;p&gt;&amp;gt;You can get through almost anything if you don&amp;#8217;t try to impose rigid solutions before problems even arise, instead devising solutions as necessary when problems crop up. (pg 131)&lt;/p&gt;
-&lt;p&gt;That&amp;#8217;s from chapter 9, &lt;em&gt;Scaling Projects Using Scrum&lt;/em&gt;, which described application of Scrum to a difficult project and discussed solutions implemented in the spirit of Scrum but rather far outside of a &amp;#8220;typical&amp;#8221; Scrum process (if such could be argued to exist).&lt;/p&gt;
-&lt;p&gt;Secondly, we are not claiming to be Scrum experts, but that said, I don&amp;#8217;t think I&amp;#8217;m misunderstanding the literature. What we are aiming at are things that we think could be better understood and articulated. Just like the agile manifesto doesn&amp;#8217;t prescribe a &amp;#8220;right&amp;#8221; way, it&amp;#8217;s clear there are many implementations of agile processes. At the same time, the agile manifesto is certainly opinionated about certain processes being preferred for (and I would go as far as saying essential to) effectively creating software.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You can get through almost anything if you don&amp;rsquo;t try to impose rigid solutions before problems even arise, instead devising solutions as necessary when problems crop up. (pg 131)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That&amp;rsquo;s from chapter 9, &lt;em&gt;Scaling Projects Using Scrum&lt;/em&gt;, which described application of Scrum to a difficult project and discussed solutions implemented in the spirit of Scrum but rather far outside of a &amp;ldquo;typical&amp;rdquo; Scrum process (if such could be argued to exist).&lt;/p&gt;
+
+&lt;p&gt;Secondly, we are not claiming to be Scrum experts, but that said, I don&amp;rsquo;t think I&amp;rsquo;m misunderstanding the literature. What we are aiming at are things that we think could be better understood and articulated. Just like the agile manifesto doesn&amp;rsquo;t prescribe a &amp;ldquo;right&amp;rdquo; way, it&amp;rsquo;s clear there are many implementations of agile processes. At the same time, the agile manifesto is certainly opinionated about certain processes being preferred for (and I would go as far as saying essential to) effectively creating software.&lt;/p&gt;
+
 &lt;p&gt;Thirdly, commenters that relate, in their experience, how much conversation is required around and facilitated by the product backlog are contributing to our confidence that there is a lot to say and understand about the dialogues we are having. Further, we are really interested in dialogues we are having with clients. We are finding this to be very challenging at best.&lt;/p&gt;
-&lt;p&gt;As Robby recently pointed out in a conversation with me, development processes often seem geared toward making the developers look good based on all the items they&amp;#8217;ve checked off the list of the client&amp;#8217;s wants. &amp;#8220;See, we&amp;#8217;ve delivered everything you&amp;#8217;ve asked for, and on time even!&amp;#8221; Yet through these processes, we (collectively) continue to successfully create software that sucks! We think that&amp;#8217;s because it&amp;#8217;s extraordinarily challenging to get processes to be goal directed based on [requirements versus solutions](http://www.robbyonrails.com/articles/2006/08/06/clients-deserve-simplicity). The way we get to this is through a lot of dialogue. We want to better understand the process and patterns of this dialogue.&lt;/p&gt;
-&lt;p&gt;And, ultimately, whether you are using Scrum or some other process under the agile umbrella, knowledge of how to conduct and facilitate this dialogue will be extremely valuable to you. So, please help us understand how you dialogue. If the product backlog is an artifact in this, please help us understand how?&lt;/p&gt;</content>
+
+&lt;p&gt;As Robby recently pointed out in a conversation with me, development processes often seem geared toward making the developers look good based on all the items they&amp;rsquo;ve checked off the list of the client&amp;rsquo;s wants. &amp;ldquo;See, we&amp;rsquo;ve delivered everything you&amp;rsquo;ve asked for, and on time even!&amp;rdquo; Yet through these processes, we (collectively) continue to successfully create software that sucks! We think that&amp;rsquo;s because it&amp;rsquo;s extraordinarily challenging to get processes to be goal directed based on &lt;a href=&quot;http://www.robbyonrails.com/articles/2006/08/06/clients-deserve-simplicity&quot;&gt;requirements versus solutions&lt;/a&gt;. The way we get to this is through a lot of dialogue. We want to better understand the process and patterns of this dialogue.&lt;/p&gt;
+
+&lt;p&gt;And, ultimately, whether you are using Scrum or some other process under the agile umbrella, knowledge of how to conduct and facilitate this dialogue will be extremely valuable to you. So, please help us understand how you dialogue. If the product backlog is an artifact in this, please help us understand how?&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -1988,36 +2087,55 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;Firstly, a disclaimer in the words of the inimitable Ken Kesey:&lt;br /&gt;
+    <content type="html">&lt;p&gt;Firstly, a disclaimer in the words of the inimitable Ken Kesey:
 &amp;gt;Take what you can use and let the rest go by.&lt;/p&gt;
-&lt;p&gt;Interestingly, when I googled this quote to ensure I was recalling it correctly, I found some other [excellent quotes](http://en.wikiquote.org/wiki/Ken_Kesey). Another that seems apropos:&lt;br /&gt;
-&amp;gt;You don&amp;#8217;t plow under the corn because the seed was planted with a neighbor&amp;#8217;s shovel.&lt;/p&gt;
-&lt;p&gt;If Dialog Driven Development is merely [rounded corners](http://mechanismalley.com/blog/2006/08/04/on-product-backlogs/) to you, please continue to enjoy your square ones. This exploration is not aimed at gathering the true believers. I&amp;#8217;m not the evangelist type. So, if you&amp;#8217;re worried I&amp;#8217;ll show up on your doorstep thumping my bible, rest assured I won&amp;#8217;t. I&amp;#8217;m an atheist.&lt;/p&gt;
-&lt;p&gt;That said, I think there is value in creating distinctions to better understand the terrain. Agile is a big umbrella. If the processes were formulaic, all we would need to worry about is a good algorithm.&lt;/p&gt;
-&lt;p&gt;Recently on a flight to DC to meet with a new client, I delved into a book [Robby](http://www.robbyonrails.com) brought along: &lt;em&gt;Agile Project Management with Scrum&lt;/em&gt; by Ken Schwaber, one of the co-founders of the Scrum method. Below are a few notes I jotted down on my index cards while reading the first 4 chapters and browsing the appendices. Since then I&amp;#8217;ve browsed some of the other chapters but I haven&amp;#8217;t finished the book.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;advantages of Scrum&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;Interestingly, when I googled this quote to ensure I was recalling it correctly, I found some other &lt;a href=&quot;http://en.wikiquote.org/wiki/Ken_Kesey&quot;&gt;excellent quotes&lt;/a&gt;. Another that seems apropos:
+&amp;gt;You don&amp;rsquo;t plow under the corn because the seed was planted with a neighbor&amp;rsquo;s shovel.&lt;/p&gt;
+
+&lt;p&gt;If Dialog Driven Development is merely &lt;a href=&quot;http://mechanismalley.com/blog/2006/08/04/on-product-backlogs/&quot;&gt;rounded corners&lt;/a&gt; to you, please continue to enjoy your square ones. This exploration is not aimed at gathering the true believers. I&amp;rsquo;m not the evangelist type. So, if you&amp;rsquo;re worried I&amp;rsquo;ll show up on your doorstep thumping my bible, rest assured I won&amp;rsquo;t. I&amp;rsquo;m an atheist.&lt;/p&gt;
+
+&lt;p&gt;That said, I think there is value in creating distinctions to better understand the terrain. Agile is a big umbrella. If the processes were formulaic, all we would need to worry about is a good algorithm. &lt;/p&gt;
+
+&lt;p&gt;Recently on a flight to DC to meet with a new client, I delved into a book &lt;a href=&quot;http://www.robbyonrails.com&quot;&gt;Robby&lt;/a&gt; brought along: &lt;em&gt;Agile Project Management with Scrum&lt;/em&gt; by Ken Schwaber, one of the co-founders of the Scrum method. Below are a few notes I jotted down on my index cards while reading the first 4 chapters and browsing the appendices. Since then I&amp;rsquo;ve browsed some of the other chapters but I haven&amp;rsquo;t finished the book. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;advantages of Scrum&lt;/strong&gt;&lt;/p&gt;
+
 &lt;ul&gt;
-	&lt;li&gt;emphasis on empirical process control&lt;/li&gt;
-	&lt;li&gt;iterations&lt;/li&gt;
-	&lt;li&gt;daily team meetings where each member presents what she did in the past 24 hours, what she&amp;#8217;ll do in the next 24 hours, and any blockers&lt;/li&gt;
-	&lt;li&gt;frequent feedback loop&lt;/li&gt;
-	&lt;li&gt;clear separation of responsibility using the pigs and chickens metaphor to facilitate more effective decision making and reduce interference by chickens, which can bog down the process&lt;/li&gt;
-	&lt;li&gt;The three legs that hold up the implementation of empirical process control: 1) visibility &amp;#8211; aspects that affect the outcome must be visible to those controlling the process; 2) inspection &amp;#8211; these aspects must be inspected frequently enough to change course if necessary before too much has elapsed; and 3) adaptation &amp;#8211; changing course when new information suggests it is necessary&lt;/li&gt;
-	&lt;li&gt;emphasis on having a &lt;em&gt;vision&lt;/em&gt;, it must be a vision that is fairly resistant to change in order to guide the project, but able to change when required&lt;/li&gt;
+  &lt;li&gt;emphasis on empirical process control&lt;/li&gt;
+  &lt;li&gt;iterations&lt;/li&gt;
+  &lt;li&gt;daily team meetings where each member presents what she did in the past 24 hours, what she&amp;rsquo;ll do in the next 24 hours, and any blockers&lt;/li&gt;
+  &lt;li&gt;frequent feedback loop&lt;/li&gt;
+  &lt;li&gt;clear separation of responsibility using the pigs and chickens metaphor to facilitate more effective decision making and reduce interference by chickens, which can bog down the process&lt;/li&gt;
+  &lt;li&gt;The three legs that hold up the implementation of empirical process control: 1) visibility - aspects that affect the outcome must be visible to those controlling the process; 2) inspection - these aspects must be inspected frequently enough to change course if necessary before too much has elapsed; and 3) adaptation - changing course when new information suggests it is necessary&lt;/li&gt;
+  &lt;li&gt;emphasis on having a &lt;em&gt;vision&lt;/em&gt;, it must be a vision that is fairly resistant to change in order to guide the project, but able to change when required&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;gt;&amp;quot;_You can get through almost anything if you don&amp;#8217;t try to impose rigid solutions before problems even arise, instead devising solutions as necessary when problems crop up._&amp;quot; (page 131)&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;drawbacks to Scrum&lt;/b&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&amp;rdquo;&lt;em&gt;You can get through almost anything if you don&amp;rsquo;t try to impose rigid solutions before problems even arise, instead devising solutions as necessary when problems crop up.&lt;/em&gt;&amp;rdquo; (page 131)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;drawbacks to Scrum&lt;/strong&gt;&lt;/p&gt;
+
 &lt;ul&gt;
-	&lt;li&gt;specifying the product backlog &amp;#8211; this suggests too much &lt;em&gt;dictation&lt;/em&gt; and not enough &lt;em&gt;collaboration&lt;/em&gt;. According to the book, the product owner specifies the backlog and prioritizes the items in it. The team meets to decide which items it can deliver in the next sprint. That process is two monologues not a dialogue.&lt;/li&gt;
-	&lt;li&gt;30-day sprint is too long. I don&amp;#8217;t think the feedback cycle is nearly as effective at this scale because we need feedback long before functionality is &amp;#8220;deliverable&amp;#8221;. More frequent testing is needed to refine features. Imagine getting a haircut where you tell the stylist what you want. She then takes you to a room with no mirrors and starts chopping away. When she&amp;#8217;s done she takes you to another room to demo your new haircut. Fortunately, the difference between a bad haircut and a good one is about 2 weeks. The same is hardly true of software.&lt;/li&gt;
+  &lt;li&gt;specifying the product backlog - this suggests too much &lt;em&gt;dictation&lt;/em&gt; and not enough &lt;em&gt;collaboration&lt;/em&gt;. According to the book, the product owner specifies the backlog and prioritizes the items in it. The team meets to decide which items it can deliver in the next sprint. That process is two monologues not a dialogue.&lt;/li&gt;
+  &lt;li&gt;30-day sprint is too long. I don&amp;rsquo;t think the feedback cycle is nearly as effective at this scale because we need feedback long before functionality is &amp;ldquo;deliverable&amp;rdquo;. More frequent testing is needed to refine features. Imagine getting a haircut where you tell the stylist what you want. She then takes you to a room with no mirrors and starts chopping away. When she&amp;rsquo;s done she takes you to another room to demo your new haircut. Fortunately, the difference between a bad haircut and a good one is about 2 weeks. The same is hardly true of software.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The process of software development requires a lot of educating of the people involved. The product backlog does not encourage thinking in this way. I dislike the sequential list where the only explicit organizing idea is priority. Where is the context and relation between what is being specified? And how does the process ensure that the product owner doesn&amp;#8217;t fall back to specifying things like, &amp;#8220;Dialog X needs a dropdown field to display Y&amp;#8221;, or &amp;#8220;Build a screen to display user stats&amp;#8221;? If you haven&amp;#8217;t had to deal with this, then I desperately want to come visit your universe. If you don&amp;#8217;t know why this is the biggest ingredient in a recipe for disaster, just continue building software this way.&lt;/p&gt;
-&lt;p&gt;The way to challenge this is with true, effective dialogue. What that looks like varies a lot. But it&amp;#8217;s not about particular artifacts. If you read [Manley&amp;#8217;s](http://mechanismalley.com/blog/about/) criticism of our [rounded corners](http://mechanismalley.com/blog/2006/08/04/on-product-backlogs/), he relates the necessity of educating product owners. If dialogue is at the center of your process, the product backlog could function as a passable way to document the evolving mutual understanding.&lt;/p&gt;
-&lt;p&gt;My favorite idiocy in software development is the crystal ball method. Everyone has a crystal ball on their desks from which they can conjure a precise, detailed, perfectly focused picture of any event at any point in the future. Of course, this is an absolute absurdity. But that doesn&amp;#8217;t stop people from believing such feats are possible. The product backlog easily falls prey to this delusion.&lt;/p&gt;
-&lt;p&gt;A much more useful metaphor is based on the simple fact of vision that any sighted person can appreciate. From where I stand, there are a number of things in crisp focus. Beyond that, things are mostly distinguishable by shape and relationship. I&amp;#8217;m seeing the forest. Beyond that, only the vaguest, broadest features are distinguishable. I see that mountain, but the dark areas juxtaposing the snow may be forest or exposed rock. I can&amp;#8217;t tell.&lt;/p&gt;
-&lt;p&gt;Attempting to draw on this fact of vision to inform and structure dialogue about a recent project, we set up a wiki with a page to capture descriptions of the software&amp;#8217;s behavior in terms of goals. We have three sections: 1) near term goals, 2) medium range goals, and 3) long range goals. These follow the rough divisions of visual clarity described above.&lt;/p&gt;
-&lt;p&gt;The process of transforming those goals into software features and determining their priority based on architectural constraints is &lt;b&gt;not&lt;/b&gt; something a client can dictate. You don&amp;#8217;t tell your architect how to construct your house, you describe what you want in it. The reason for that is simple: physics dictates what is a viable structure. In software, we have no appreciation for physics. Clients believe they can do anything. All the rusting hulks of failed software littering the desert notwithstanding.&lt;/p&gt;
-&lt;p&gt;The essential way to bring the analogue of physics to software development is mutual education mediated by effective dialogue. What that actually looks like needs a great deal of definition. If this is just rounded corners on existing work, please point us in the right direction.&lt;/p&gt;</content>
+
+&lt;p&gt;The process of software development requires a lot of educating of the people involved. The product backlog does not encourage thinking in this way. I dislike the sequential list where the only explicit organizing idea is priority. Where is the context and relation between what is being specified? And how does the process ensure that the product owner doesn&amp;rsquo;t fall back to specifying things like, &amp;ldquo;Dialog X needs a dropdown field to display Y&amp;rdquo;, or &amp;ldquo;Build a screen to display user stats&amp;rdquo;? If you haven&amp;rsquo;t had to deal with this, then I desperately want to come visit your universe. If you don&amp;rsquo;t know why this is the biggest ingredient in a recipe for disaster, just continue building software this way.&lt;/p&gt;
+
+&lt;p&gt;The way to challenge this is with true, effective dialogue. What that looks like varies a lot. But it&amp;rsquo;s not about particular artifacts. If you read &lt;a href=&quot;http://mechanismalley.com/blog/about/&quot;&gt;Manley&amp;rsquo;s&lt;/a&gt; criticism of our &lt;a href=&quot;http://mechanismalley.com/blog/2006/08/04/on-product-backlogs/&quot;&gt;rounded corners&lt;/a&gt;, he relates the necessity of educating product owners. If dialogue is at the center of your process, the product backlog could function as a passable way to document the evolving mutual understanding.&lt;/p&gt;
+
+&lt;p&gt;My favorite idiocy in software development is the crystal ball method. Everyone has a crystal ball on their desks from which they can conjure a precise, detailed, perfectly focused picture of any event at any point in the future. Of course, this is an absolute absurdity. But that doesn&amp;rsquo;t stop people from believing such feats are possible. The product backlog easily falls prey to this delusion.&lt;/p&gt;
+
+&lt;p&gt;A much more useful metaphor is based on the simple fact of vision that any sighted person can appreciate. From where I stand, there are a number of things in crisp focus. Beyond that, things are mostly distinguishable by shape and relationship. I&amp;rsquo;m seeing the forest. Beyond that, only the vaguest, broadest features are distinguishable. I see that mountain, but the dark areas juxtaposing the snow may be forest or exposed rock. I can&amp;rsquo;t tell.&lt;/p&gt;
+
+&lt;p&gt;Attempting to draw on this fact of vision to inform and structure dialogue about a recent project, we set up a wiki with a page to capture descriptions of the software&amp;rsquo;s behavior in terms of goals. We have three sections: 1) near term goals, 2) medium range goals, and 3) long range goals. These follow the rough divisions of visual clarity described above.&lt;/p&gt;
+
+&lt;p&gt;The process of transforming those goals into software features and determining their priority based on architectural constraints is &lt;strong&gt;not&lt;/strong&gt; something a client can dictate. You don&amp;rsquo;t tell your architect how to construct your house, you describe what you want in it. The reason for that is simple: physics dictates what is a viable structure. In software, we have no appreciation for physics. Clients believe they can do anything. All the rusting hulks of failed software littering the desert notwithstanding.&lt;/p&gt;
+
+&lt;p&gt;The essential way to bring the analogue of physics to software development is mutual education mediated by effective dialogue. What that actually looks like needs a great deal of definition. If this is just rounded corners on existing work, please point us in the right direction.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2029,23 +2147,47 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;[Martin Fowler](http://www.martinfowler.com) is a paradox. That is, if you accept one of the common connotations of &amp;#8220;enterprise software&amp;#8221;: evil. &amp;#8220;I concentrate on designing enterprise software – looking at what makes a good design and what practices are needed to come up with good design.&amp;#8221;, says Martin. Yet, he is one of the giants of agile software development. Recently, at the second annual [foscon](http://oscamp.org/&lt;span class=&quot;caps&quot;&gt;FOSCON&lt;/span&gt;), I won a raffle for a book. The one I selected from those available was Martin&amp;#8217;s &lt;em&gt;Patterns of Enterprise Application Architecture&lt;/em&gt;. If you have not yet listened to his [RailsConf 2006 Keynote](http://blog.scribestudio.com/articles/2006/07/03/martin-fowler-railsconf-2006-keynote-address), I strongly urge you to do so.&lt;/p&gt;
-&lt;p&gt;A couple days ago, [Robby](http://www.robbyonrails.com) posted about [Dialogue Driven Development](http://www.robbyonrails.com/articles/2006/08/02/dialogue-driven-development). We&amp;#8217;ll leave it to the art historians to decide if the following artifact proves that while sitting together at Martin&amp;#8217;s talk during RailsConf 2006, I first wrote the words, or jotted them down after Robby summarized one of Martin&amp;#8217;s points. Robby often encourages &amp;#8220;blog early, blog often&amp;#8221;. So I can hardly complain if he pre-empted me on publishing &lt;span class=&quot;caps&quot;&gt;DDD&lt;/span&gt; since RailsConf was over six weeks ago.&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.martinfowler.com&quot;&gt;Martin Fowler&lt;/a&gt; is a paradox. That is, if you accept one of the common connotations of &amp;ldquo;enterprise software&amp;rdquo;: evil. &amp;ldquo;I concentrate on designing enterprise software – looking at what makes a good design and what practices are needed to come up with good design.&amp;rdquo;, says Martin. Yet, he is one of the giants of agile software development. Recently, at the second annual &lt;a href=&quot;http://oscamp.org/FOSCON&quot;&gt;foscon&lt;/a&gt;, I won a raffle for a book. The one I selected from those available was Martin&amp;rsquo;s &lt;em&gt;Patterns of Enterprise Application Architecture&lt;/em&gt;. If you have not yet listened to his &lt;a href=&quot;http://blog.scribestudio.com/articles/2006/07/03/martin-fowler-railsconf-2006-keynote-address&quot;&gt;RailsConf 2006 Keynote&lt;/a&gt;, I strongly urge you to do so.&lt;/p&gt;
+
+&lt;p&gt;A couple days ago, &lt;a href=&quot;http://www.robbyonrails.com&quot;&gt;Robby&lt;/a&gt; posted about &lt;a href=&quot;http://www.robbyonrails.com/articles/2006/08/02/dialogue-driven-development&quot;&gt;Dialogue Driven Development&lt;/a&gt;. We&amp;rsquo;ll leave it to the art historians to decide if the following artifact proves that while sitting together at Martin&amp;rsquo;s talk during RailsConf 2006, I first wrote the words, or jotted them down after Robby summarized one of Martin&amp;rsquo;s points. Robby often encourages &amp;ldquo;blog early, blog often&amp;rdquo;. So I can hardly complain if he pre-empted me on publishing DDD since RailsConf was over six weeks ago.&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;http://blog.brightredglow.com/assets/2006/10/3/ddd_small.jpg&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;The important thing is that &lt;span class=&quot;caps&quot;&gt;DDD&lt;/span&gt; is not just another marketing term. Although, it could be useful as one, so we want to distinguish between &lt;i&gt;dialog&lt;/i&gt;, those artifacts from desktop applications that we on the web infrequently encounter, and &lt;i&gt;dialogue&lt;/i&gt;, &lt;em&gt;n. a discussion between two or more people or groups, esp. one directed toward exploration of a particular subject or resolution of a problem&lt;/em&gt; (from my dashboard dictionary).&lt;/p&gt;
-&lt;p&gt;For me, the &lt;em&gt;-ue&lt;/em&gt; is all about user experience. And that is the meat and potatoes of application development that we should be targeting. Don&amp;#8217;t believe me? Think it&amp;#8217;s more about business logic, fancy technology, web 2.0, &amp;lt;insert favorite CS concept here&amp;gt;? I don&amp;#8217;t think so. But, don&amp;#8217;t take my word for it. You too can pre-empt me on a coming post by heading over and reading, if you have not, Alan Cooper, &lt;em&gt;About Face: The Essentials of User Interface Design&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;So, &lt;span class=&quot;caps&quot;&gt;DDD&lt;/span&gt;. What we&amp;#8217;re trying to do is label a concept that is sorely in need of development. To flesh it out a bit from my perspective, here are a few points from Martin&amp;#8217;s keynote that I found particularly interesting.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;martin_keynote.points.each do |point|&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The important thing is that DDD is not just another marketing term. Although, it could be useful as one, so we want to distinguish between &lt;strong&gt;dialog&lt;/strong&gt;, those artifacts from desktop applications that we on the web infrequently encounter, and &lt;strong&gt;dialogue&lt;/strong&gt;, &lt;em&gt;n. a discussion between two or more people or groups, esp. one directed toward exploration of a particular subject or resolution of a problem&lt;/em&gt; (from my dashboard dictionary).&lt;/p&gt;
+
+&lt;p&gt;For me, the &lt;em&gt;-ue&lt;/em&gt; is all about user experience. And that is the meat and potatoes of application development that we should be targeting. Don&amp;rsquo;t believe me? Think it&amp;rsquo;s more about business logic, fancy technology, web 2.0, &amp;lt;insert favorite CS concept here&amp;gt;? I don&amp;rsquo;t think so. But, don&amp;rsquo;t take my word for it. You too can pre-empt me on a coming post by heading over and reading, if you have not, Alan Cooper, &lt;em&gt;About Face: The Essentials of User Interface Design&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;So, DDD. What we&amp;rsquo;re trying to do is label a concept that is sorely in need of development. To flesh it out a bit from my perspective, here are a few points from Martin&amp;rsquo;s keynote that I found particularly interesting.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&amp;lt;pre&amp;gt;&lt;code&gt;martin_keynote.points.each do&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;point&lt;/td&gt;
+      &lt;td&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
 &lt;blockquote&gt;
-&lt;ul&gt;&lt;li&gt;The interesting thing about Rails is that it tries to do things differently than other software over the last few years. It doesn&amp;#8217;t try to be the one-size-fits-all solution.&lt;/li&gt;
-&lt;li&gt;What we are seeing is a drive toward simplicity. Conventional wisdom once was &amp;#8220;quick necessarily means dirty&amp;#8221;. Ruby challenges that. As did Smalltalk, which showed that you could be quick and clean.&lt;/li&gt;
-&lt;li&gt;What&amp;#8217;s important about technology is the way it affects the whole conversation between customer and developers. It affects how we go about building software. The essence of XP from Kent Beck is this change in relationship so it is not a one way stream of &amp;#8220;this is what I want&amp;#8221;: want &amp;#8594; tell &amp;#8594; build &amp;#8594; all is well. People may know what they want, but not what they need. We can build exactly what they want and still fail because it is not what they need.&lt;/li&gt;
-&lt;/blockquote&gt;
+&lt;ul&gt;&lt;li&gt;The interesting thing about Rails is that it tries to do things differently than other software over the last few years. It doesn't try to be the one-size-fits-all solution.&lt;/li&gt;
+
+&lt;li&gt;What we are seeing is a drive toward simplicity. Conventional wisdom once was &quot;quick necessarily means dirty&quot;. Ruby challenges that. As did Smalltalk, which showed that you could be quick and clean.&lt;/li&gt;
+
+&lt;li&gt;What's important about technology is the way it affects the whole conversation between customer and developers. It affects how we go about building software. The essence of XP from Kent Beck is this change in relationship so it is not a one way stream of &quot;this is what I want&quot;: want -&amp;gt; tell -&amp;gt; build -&amp;gt; all is well. People may know what they want, but not what they need. We can build exactly what they want and still fail because it is not what they need.&lt;/li&gt;
+
+
 &lt;pre&gt;&lt;code&gt;end&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It was after jotting down that last note that I wrote &amp;#8220;dialog-based develepment&amp;#8221; and then &amp;#8220;dialog driven development&amp;#8221; in my notes (I know, I misspelled it, too). The &lt;span class=&quot;caps&quot;&gt;DDD&lt;/span&gt; term was prompted by the recent conversations [Jeremy](http://www.jvoorhis.com) and I had with [Steven Baker](http://blog.lavalamp.ca/) and [David Goodlad](http://david.goodlad.ca/) on the train to Chicago about Behavior Driven Development as they worked a bunch on a next-generation RSpec.&lt;/p&gt;
-&lt;p&gt;My pie in the sky is a Ruby &lt;span class=&quot;caps&quot;&gt;DSL&lt;/span&gt; something like RSpec that could be used with clients to talk about the software. It would allow a spectrum from less specific-more tolerant to more-specific-less tolerant. At the left end is client dialogue about behavior of the software. Something like, &amp;#8220;app should require login&amp;#8221;. A &amp;#8220;failure&amp;#8221; at this high level could be something like, &lt;em&gt;not implemented&lt;/em&gt;. The spectrum continues down to the level of &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; with something like RSpec, where the focus is on behavior of the code.&lt;/p&gt;
-&lt;p&gt;Also on the train, [Josh Knowles](http://joshknowles.com/) was strongly advocating for much better acceptance testing. Of course, using iterative development, acceptance testing is not something done at the end, months or years into the project, but should be done frequently. The left end of the spectrum could support this &lt;em&gt;expectation based software behavior dialogue&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Of course, these are very rough ideas. What I want to do is build out the understanding behind the word &amp;#8220;collaboration&amp;#8221; in the [Agile Manifesto](http://www.agilemanifesto.org) and identify how &amp;#8220;individuals and interactions&amp;#8221; work to create excellent software. Join the fun!&lt;/p&gt;</content>
+
+It was after jotting down that last note that I wrote &quot;dialog-based develepment&quot; and then &quot;dialog driven development&quot; in my notes (I know, I misspelled it, too). The DDD term was prompted by the recent conversations [Jeremy](http://www.jvoorhis.com) and I had with [Steven Baker](http://blog.lavalamp.ca/) and [David Goodlad](http://david.goodlad.ca/) on the train to Chicago about Behavior Driven Development as they worked a bunch on a next-generation RSpec.
+
+My pie in the sky is a Ruby DSL something like RSpec that could be used with clients to talk about the software. It would allow a spectrum from less specific-more tolerant to more-specific-less tolerant. At the left end is client dialogue about behavior of the software. Something like, &quot;app should require login&quot;. A &quot;failure&quot; at this high level could be something like, _not implemented_. The spectrum continues down to the level of BDD with something like RSpec, where the focus is on behavior of the code.
+
+Also on the train, [Josh Knowles](http://joshknowles.com/) was strongly advocating for much better acceptance testing. Of course, using iterative development, acceptance testing is not something done at the end, months or years into the project, but should be done frequently. The left end of the spectrum could support this _expectation based software behavior dialogue_.
+
+Of course, these are very rough ideas. What I want to do is build out the understanding behind the word &quot;collaboration&quot; in the [Agile Manifesto](http://www.agilemanifesto.org) and identify how &quot;individuals and interactions&quot; work to create excellent software. Join the fun!
+&lt;/ul&gt;&lt;/blockquote&gt;
+</content>
   </entry>
   
   <entry>
@@ -2057,19 +2199,51 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;We all love the spluge (spam deluge), don&amp;#8217;t we? Usually spam is so abnoxiously and obviously stupid it is easy to ignore. And, gmail does a wonderful job of ensuring I deal with very little of it. However, once in a while something comes through. A trend I&amp;#8217;ve noticed recently are emails that begin with &amp;#8220;This is an advertisement&amp;#8230;&amp;#8221; I&amp;#8217;ve never read one careful but it&amp;#8217;s possible, but unlikely, that I somehow asked to receive it.&lt;/p&gt;
-&lt;p&gt;Today, I got an odd email. I first thought to dismiss it, but upon reading it I decided it was either the best crafted bit of spam, or an honest mistake. Then I was faced with a decision: round-file it, or be a good Samaritan and let the guy know. Here&amp;#8217;s the email:&lt;/p&gt;
-&lt;p&gt;&amp;gt;Subject: travel to Missoula&lt;/p&gt;
-&lt;p&gt;&amp;gt;Thanks for getting the reservation at Downtown Motel.  The fellow I talked to said &amp;#8220;no available rooms the entire weekend&amp;#8221;.  I&amp;#8217;ll put &amp;gt;it on my credit card when I get there.&lt;/p&gt;
-&lt;p&gt;&amp;gt;I&amp;#8217;ve encountered another problem with scheduling.  I ordered my airline tickets through Priceline.Com and now they tell me there is no record of my order.  The airlines now want about $400 more because of the short notice.  Consequently, I&amp;#8217;m going to drive and will pick up Quincy and your mother.  We will arrive sometime late Friday and stay through Sunday.  See you then.&lt;/p&gt;
-&lt;p&gt;&amp;gt;                                         Love,  Uncle John&lt;/p&gt;
+    <content type="html">&lt;p&gt;We all love the spluge (spam deluge), don&amp;rsquo;t we? Usually spam is so abnoxiously and obviously stupid it is easy to ignore. And, gmail does a wonderful job of ensuring I deal with very little of it. However, once in a while something comes through. A trend I&amp;rsquo;ve noticed recently are emails that begin with &amp;ldquo;This is an advertisement&amp;hellip;&amp;rdquo; I&amp;rsquo;ve never read one careful but it&amp;rsquo;s possible, but unlikely, that I somehow asked to receive it.&lt;/p&gt;
+
+&lt;p&gt;Today, I got an odd email. I first thought to dismiss it, but upon reading it I decided it was either the best crafted bit of spam, or an honest mistake. Then I was faced with a decision: round-file it, or be a good Samaritan and let the guy know. Here&amp;rsquo;s the email:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Subject: travel to Missoula&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Thanks for getting the reservation at Downtown Motel.  The fellow I talked to said &amp;ldquo;no available rooms the entire weekend&amp;rdquo;.  I&amp;rsquo;ll put &amp;gt;it on my credit card when I get there.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I&amp;rsquo;ve encountered another problem with scheduling.  I ordered my airline tickets through Priceline.Com and now they tell me there is no record of my order.  The airlines now want about $400 more because of the short notice.  Consequently, I&amp;rsquo;m going to drive and will pick up Quincy and your mother.  We will arrive sometime late Friday and stay through Sunday.  See you then.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;pre&gt;&lt;code&gt;                                    Love,  Uncle John
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
 &lt;p&gt;Ultimately, I decided to reply:&lt;/p&gt;
-&lt;p&gt;&amp;gt;Hi John,&lt;/p&gt;
-&lt;p&gt;&amp;gt;I&amp;#8217;m sorry, but you&amp;#8217;ve reached the wrong email box.&lt;/p&gt;
-&lt;p&gt;&amp;gt;Forgive my suspicion, but if you do happen to be a spammer and are using this as a ploy to get a response from this email address, rest assured a real person lives here and I&amp;#8217;ll haunt your sleep forever if you continue to spam me. However, also note that, if you are a spammer, all your future spam will flutter totally un-noticed by me into my big circular bit bucket to live out eternity in utter unacknowledgement.&lt;/p&gt;
-&lt;p&gt;&amp;gt;Hope the trip goes well.&lt;/p&gt;
-&lt;p&gt;&amp;gt;Cheers.&lt;/p&gt;
-&lt;p&gt;What do you think&amp;#8212;was it spam? Would you have replied? The analogy is walking down the city street, only talking to our friends, eyeing with suspicion and from a distance any stranger we happen across. Do we need to recreate this dynamic on the tubes (pipes? I forget) as well, or can we allow for greater friendliness?&lt;/p&gt;</content>
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hi John,&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I&amp;rsquo;m sorry, but you&amp;rsquo;ve reached the wrong email box.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Forgive my suspicion, but if you do happen to be a spammer and are using this as a ploy to get a response from this email address, rest assured a real person lives here and I&amp;rsquo;ll haunt your sleep forever if you continue to spam me. However, also note that, if you are a spammer, all your future spam will flutter totally un-noticed by me into my big circular bit bucket to live out eternity in utter unacknowledgement.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hope the trip goes well.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Cheers.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What do you think&amp;ndash;was it spam? Would you have replied? The analogy is walking down the city street, only talking to our friends, eyeing with suspicion and from a distance any stranger we happen across. Do we need to recreate this dynamic on the tubes (pipes? I forget) as well, or can we allow for greater friendliness?&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2081,11 +2255,18 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;To paraphrase [Jared Spool](http://www.webvisionsevent.com/speakers/detail/?spkloc=spool_jared), who gave the closing [keynote](http://www.webvisionsevent.com/schedule/detail/?evtloc=jared_spool_keynote) at [webvisions | 2006](http://www.webvisionsevent.com/), designing compelling user experience is something that can be learned, but there&amp;#8217;s no good understanding of how it works. To illustrate this phenomenon, Jared refers to [chicken-sexing](http://en.wikipedia.org/wiki/Chicken_sexer). You can [read up](http://www2.dpi.qld.gov.au/poultry/15032.html) on it, but the basic idea is that to run a cost-effective chicken farm, you need to know the gender of the chicks about 2-3 weeks before any known mechanized process can successfully do so. The solution is to rely on professionals that watch the chicks go by and identify them as male or female.&lt;/p&gt;
+    <content type="html">&lt;p&gt;To paraphrase &lt;a href=&quot;http://www.webvisionsevent.com/speakers/detail/?spkloc=spool_jared&quot;&gt;Jared Spool&lt;/a&gt;, who gave the closing &lt;a href=&quot;http://www.webvisionsevent.com/schedule/detail/?evtloc=jared_spool_keynote&quot;&gt;keynote&lt;/a&gt; at &lt;a href=&quot;http://www.webvisionsevent.com/&quot;&gt;webvisions (2006)&lt;/a&gt;, designing compelling user experience is something that can be learned, but there&amp;rsquo;s no good understanding of how it works. To illustrate this phenomenon, Jared refers to &lt;a href=&quot;http://en.wikipedia.org/wiki/Chicken_sexer&quot;&gt;chicken-sexing&lt;/a&gt;. You can &lt;a href=&quot;http://www2.dpi.qld.gov.au/poultry/15032.html&quot;&gt;read up&lt;/a&gt; on it, but the basic idea is that to run a cost-effective chicken farm, you need to know the gender of the chicks about 2-3 weeks before any known mechanized process can successfully do so. The solution is to rely on professionals that watch the chicks go by and identify them as male or female.&lt;/p&gt;
+
 &lt;p&gt;Consider the ipod and netflix as two examples of compelling user experience despite, according to Jared, the former having inferior technology compared to competitor offerings and the latter not having any brick-and-mortar storefronts or any customer service other than through their website. Even so, the ipod is wildly more popular than any other portable music player, and Netflix membership dwarfs that of Blockbusters recent through-the-mail dvd rental service.&lt;/p&gt;
-&lt;p&gt;Obviously, there is great advantage to being able to learn good user experience design. And that was one of Jared&amp;#8217;s main points. It can be learned. This is supported by current research. Consider an article in the August 2006 issue of &lt;em&gt;Scientific American&lt;/em&gt;, &amp;#8220;The Expert Mind&amp;#8221;. Research into chess masters indicates that there is little actual contribution by &amp;#8220;talent&amp;#8221;. Rather these folks&amp;#8217; mastery consists primarily of categorizing a huge amount of knowledge of fruitful moves given the configuration of piece on the board.&lt;/p&gt;
-&lt;p&gt;&amp;gt; &lt;b&gt;Effortful study&lt;/b&gt; is the key to achieving success in chess, classical music, soccer and many other fields. New research has indicated that motivation is a more important factor than innate ability.&lt;/p&gt;
-&lt;p&gt;One key to effortful study is constantly pushing yourself to reach just beyond your current abilities. This is good news for those of us who have never felt we are natural born chicken-sexers.&lt;/p&gt;</content>
+
+&lt;p&gt;Obviously, there is great advantage to being able to learn good user experience design. And that was one of Jared&amp;rsquo;s main points. It can be learned. This is supported by current research. Consider an article in the August 2006 issue of &lt;em&gt;Scientific American&lt;/em&gt;, &amp;ldquo;The Expert Mind&amp;rdquo;. Research into chess masters indicates that there is little actual contribution by &amp;ldquo;talent&amp;rdquo;. Rather these folks&amp;rsquo; mastery consists primarily of categorizing a huge amount of knowledge of fruitful moves given the configuration of piece on the board.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Effortful study&lt;/strong&gt; is the key to achieving success in chess, classical music, soccer and many other fields. New research has indicated that motivation is a more important factor than innate ability.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;One key to effortful study is constantly pushing yourself to reach just beyond your current abilities. This is good news for those of us who have never felt we are natural born chicken-sexers.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2097,26 +2278,47 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;I have had the good fortune of being sent to [webvisions | 2006](http://www.webvisionsevent.com/) by [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com). I have it on good authority that this year it is much larger than last year. It&amp;#8217;s two days long and chock-full of great talks.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I have had the good fortune of being sent to &lt;a href=&quot;http://www.webvisionsevent.com/&quot;&gt;webvisions (2006)&lt;/a&gt; by &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt;. I have it on good authority that this year it is much larger than last year. It&amp;rsquo;s two days long and chock-full of great talks. &lt;/p&gt;
+
 &lt;p&gt;So far, I have attended:&lt;/p&gt;
+
 &lt;ul&gt;
-	&lt;li&gt;[Becoming a Professional Blogger](http://www.webvisionsevent.com/schedule/detail/?evtloc=professional_blogging)&lt;/li&gt;
-	&lt;li&gt;[People and Business: A Global Perspective](http://www.webvisionsevent.com/schedule/detail/?evtloc=people_business)&lt;/li&gt;
-	&lt;li&gt;[Practical Business Blogging Panel](http://www.webvisionsevent.com/schedule/detail/?evtloc=blogging_panel)&lt;/li&gt;
-	&lt;li&gt;[Designing for Socal Sharing](http://www.webvisionsevent.com/schedule/detail/?evtloc=anthrodesign)&lt;/li&gt;
-	&lt;li&gt;[Design Patterns for the Web](http://www.webvisionsevent.com/schedule/detail/?evtloc=design_patterns)&lt;/li&gt;
-	&lt;li&gt;[Mobile Development Panel](http://www.webvisionsevent.com/schedule/detail/?evtloc=mobile_development_panel)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.webvisionsevent.com/schedule/detail/?evtloc=professional_blogging&quot;&gt;Becoming a Professional Blogger&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.webvisionsevent.com/schedule/detail/?evtloc=people_business&quot;&gt;People and Business: A Global Perspective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.webvisionsevent.com/schedule/detail/?evtloc=blogging_panel&quot;&gt;Practical Business Blogging Panel&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.webvisionsevent.com/schedule/detail/?evtloc=anthrodesign&quot;&gt;Designing for Socal Sharing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.webvisionsevent.com/schedule/detail/?evtloc=design_patterns&quot;&gt;Design Patterns for the Web&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.webvisionsevent.com/schedule/detail/?evtloc=mobile_development_panel&quot;&gt;Mobile Development Panel&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The &amp;#8220;People and Business&amp;#8221; panel was a very interesting, if Portland-specific, look at government and industry participating to create and promote business. This was a bit unusual, I thought, since folks have come from all over to attend the conference. At the same time, it was intriguing to hear, especially from the Portland Development Commission, some things that may distinguish Portland as a hospitable environment for technology innovation. By coincidence, I think, the Portland City Council had voted just the night before to move forward with plans to build a free, public Wi-Fi blanket in Portland.&lt;/p&gt;
-&lt;p&gt;My favorite talk by far was &amp;#8220;Designing for Social Sharing&amp;#8221;. I recommend checking out [Rashmi&amp;#8217;s site](http://www.rashmisinha.com/). She was a vibrant, engaging, knowledgeable speaker. One of the most interesting points is that to create a successful site for social sharing, we need an object around which people can share. Now that we have sites like [Flickr](http://www.flickr.com), this seems like a no-brainer. But when we view how &amp;#8220;social networking&amp;#8221; sites have progressed from 1st generation, where the emphasis was only on the social network, we see how important this idea is. To paraphrase her, people don&amp;#8217;t just connect for the sake of connecting, they connect over &lt;em&gt;something&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;A big component of a successful site that encourages people to share is providing a way for people to contribute their own creativity or personality. In effect, the design of these sites must facilitate the user&amp;#8217;s ability to influence the design. Interestingly, I have recently been reading, &lt;em&gt;A Pattern Approach to Interaction Design&lt;/em&gt;, by Jan Borchers. The author goes to some length to present a more full exposition of Alexander&amp;#8217;s ideas on patterns. There is a lot of use of &amp;#8220;patterns&amp;#8221; this-or-that in various domains. To some extent, the word is often just stretched to cover a favorite concept. But the following quote seems particularly relevant in the context of a social sharing site:&lt;/p&gt;
-&lt;p&gt;&amp;gt; Every place is given its character by certain patterns of events that keep on happening there. These patterns of events are always interlocked with certain geometric patterns in the space.&lt;/p&gt;
-&lt;p&gt;&amp;gt; Christopher Alexander, &lt;em&gt;The Timeless Way of Building&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The &amp;ldquo;People and Business&amp;rdquo; panel was a very interesting, if Portland-specific, look at government and industry participating to create and promote business. This was a bit unusual, I thought, since folks have come from all over to attend the conference. At the same time, it was intriguing to hear, especially from the Portland Development Commission, some things that may distinguish Portland as a hospitable environment for technology innovation. By coincidence, I think, the Portland City Council had voted just the night before to move forward with plans to build a free, public Wi-Fi blanket in Portland.&lt;/p&gt;
+
+&lt;p&gt;My favorite talk by far was &amp;ldquo;Designing for Social Sharing&amp;rdquo;. I recommend checking out &lt;a href=&quot;http://www.rashmisinha.com/&quot;&gt;Rashmi&amp;rsquo;s site&lt;/a&gt;. She was a vibrant, engaging, knowledgeable speaker. One of the most interesting points is that to create a successful site for social sharing, we need an object around which people can share. Now that we have sites like &lt;a href=&quot;http://www.flickr.com&quot;&gt;Flickr&lt;/a&gt;, this seems like a no-brainer. But when we view how &amp;ldquo;social networking&amp;rdquo; sites have progressed from 1st generation, where the emphasis was only on the social network, we see how important this idea is. To paraphrase her, people don&amp;rsquo;t just connect for the sake of connecting, they connect over &lt;em&gt;something&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A big component of a successful site that encourages people to share is providing a way for people to contribute their own creativity or personality. In effect, the design of these sites must facilitate the user&amp;rsquo;s ability to influence the design. Interestingly, I have recently been reading, &lt;em&gt;A Pattern Approach to Interaction Design&lt;/em&gt;, by Jan Borchers. The author goes to some length to present a more full exposition of Alexander&amp;rsquo;s ideas on patterns. There is a lot of use of &amp;ldquo;patterns&amp;rdquo; this-or-that in various domains. To some extent, the word is often just stretched to cover a favorite concept. But the following quote seems particularly relevant in the context of a social sharing site:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Every place is given its character by certain patterns of events that keep on happening there. These patterns of events are always interlocked with certain geometric patterns in the space.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Christopher Alexander, &lt;em&gt;The Timeless Way of Building&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;p&gt;And this quote is nicely relevant to designers of such sites:&lt;/p&gt;
-&lt;p&gt;&amp;gt; Interestingly, Alexander&amp;#8217;s ideas were not always received well by his colleagues. One reason for this is that Alexander&amp;#8217;s concepts empowered the inhabitants, supplying them with more ways to influence the building process, and taking much of that power out of the hands of the professional. Obviously, this idea was not very popular among architects.&lt;/p&gt;
-&lt;p&gt;&amp;gt; Jan Borchers, &lt;em&gt;A Pattern Approach to Interaction Design&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Another excellent talk was &amp;#8220;Design Patterns for the Web&amp;#8221; by a guy from eBay and another from Yahoo!. A nice serendipity: I recently have been re-reading, &lt;em&gt;About Face: the essentials of user interface design&lt;/em&gt;, by Alan Cooper. This book was awesome when I first read it years ago, and even today I&amp;#8217;m amazed it is copyright 1995. Unfortunately, the content seems to be little-known in the web design world. Not at Yahoo! It appears to be very much an inspiration, as I will explain a bit more in a later post.&lt;/p&gt;
-&lt;p&gt;Okay, that&amp;#8217;s it for now. I&amp;#8217;ll mine my notes for juicy tidbits and snippet to share with you. Admittedly, I&amp;#8217;m not a good liveblogger. :-/&lt;/p&gt;</content>
+
+&lt;blockquote&gt;
+  &lt;p&gt;Interestingly, Alexander&amp;rsquo;s ideas were not always received well by his colleagues. One reason for this is that Alexander&amp;rsquo;s concepts empowered the inhabitants, supplying them with more ways to influence the building process, and taking much of that power out of the hands of the professional. Obviously, this idea was not very popular among architects.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Jan Borchers, &lt;em&gt;A Pattern Approach to Interaction Design&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Another excellent talk was &amp;ldquo;Design Patterns for the Web&amp;rdquo; by a guy from eBay and another from Yahoo!. A nice serendipity: I recently have been re-reading, &lt;em&gt;About Face: the essentials of user interface design&lt;/em&gt;, by Alan Cooper. This book was awesome when I first read it years ago, and even today I&amp;rsquo;m amazed it is copyright 1995. Unfortunately, the content seems to be little-known in the web design world. Not at Yahoo! It appears to be very much an inspiration, as I will explain a bit more in a later post.&lt;/p&gt;
+
+&lt;p&gt;Okay, that&amp;rsquo;s it for now. I&amp;rsquo;ll mine my notes for juicy tidbits and snippet to share with you. Admittedly, I&amp;rsquo;m not a good liveblogger. :-/&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2128,16 +2330,26 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;Yesterday, [Robby](http://www.robbyonrails.com) messaged me that he was invited to be a speaker at Sys-Con Rails Conference. (Sorry, I&amp;#8217;d have a link for you, but I&amp;#8217;m getting a 500 page right now.) Right in the title, it mentions Ruby on Rails in the &amp;#8220;real world&amp;#8221;. I am unable to suppress a groan every time I hear that quoted phrase &lt;em&gt;&amp;#8220;real world&amp;#8221;&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;The &amp;#8220;real world&amp;#8221; label is used to legitimize. If something works in the &amp;#8220;real world&amp;#8221;, that basically says it&amp;#8217;s not a toy, it&amp;#8217;s for real. But if you look around at what works in the real world, you might ask yourself, &amp;#8220;Why on earth would I want to imitate that?&amp;#8221; I certainly do. The &amp;#8220;real world&amp;#8221; is filled with lame, difficult, buggy, costly software.&lt;/p&gt;
-&lt;p&gt;This relates to a point from DHH&amp;#8217;s keynote at RailsConf that I&amp;#8217;ve been meaning to reiterate. &lt;span class=&quot;caps&quot;&gt;DHH&lt;/span&gt; essentially said that he lives in a fantasy world. I don&amp;#8217;t think most of us realize how lucky we are that he does.&lt;/p&gt;
-&lt;p&gt;Imagine if he didn&amp;#8217;t. Imagine &lt;span class=&quot;caps&quot;&gt;DHH&lt;/span&gt; working on a nascent ActiveRecord and being closely in touch with the &amp;#8220;real world&amp;#8221;. Certainly, he would want it to be legitimate, not merely a toy. To be legit, it should solve &amp;#8220;real world&amp;#8221; problems. The &amp;#8220;real world&amp;#8221; is full of complex databases. It better support any imaginable scheme for primary keys, even composite ones. Anything less would&amp;#8230; hmm, not work well in the &amp;#8220;real world&amp;#8221;.&lt;/p&gt;
-&lt;p&gt;The point is, we should be eager to say no to features. But in the &amp;#8220;real world&amp;#8221;, it is rare to find someone eager to do so. Sure, I can imagine my super-gizmo-mondo-cool coffee cup that is also a mobile phone, razor, electric toothbrush, talking tire gauge, and bottle opener. But why?! Just because it&amp;#8217;s possible, does not mean that it&amp;#8217;s desirable.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Yesterday, &lt;a href=&quot;http://www.robbyonrails.com&quot;&gt;Robby&lt;/a&gt; messaged me that he was invited to be a speaker at Sys-Con Rails Conference. (Sorry, I&amp;rsquo;d have a link for you, but I&amp;rsquo;m getting a 500 page right now.) Right in the title, it mentions Ruby on Rails in the &amp;ldquo;real world&amp;rdquo;. I am unable to suppress a groan every time I hear that quoted phrase &lt;em&gt;&amp;ldquo;real world&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &amp;ldquo;real world&amp;rdquo; label is used to legitimize. If something works in the &amp;ldquo;real world&amp;rdquo;, that basically says it&amp;rsquo;s not a toy, it&amp;rsquo;s for real. But if you look around at what works in the real world, you might ask yourself, &amp;ldquo;Why on earth would I want to imitate that?&amp;rdquo; I certainly do. The &amp;ldquo;real world&amp;rdquo; is filled with lame, difficult, buggy, costly software.&lt;/p&gt;
+
+&lt;p&gt;This relates to a point from DHH&amp;rsquo;s keynote at RailsConf that I&amp;rsquo;ve been meaning to reiterate. DHH essentially said that he lives in a fantasy world. I don&amp;rsquo;t think most of us realize how lucky we are that he does.&lt;/p&gt;
+
+&lt;p&gt;Imagine if he didn&amp;rsquo;t. Imagine DHH working on a nascent ActiveRecord and being closely in touch with the &amp;ldquo;real world&amp;rdquo;. Certainly, he would want it to be legitimate, not merely a toy. To be legit, it should solve &amp;ldquo;real world&amp;rdquo; problems. The &amp;ldquo;real world&amp;rdquo; is full of complex databases. It better support any imaginable scheme for primary keys, even composite ones. Anything less would&amp;hellip; hmm, not work well in the &amp;ldquo;real world&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;The point is, we should be eager to say no to features. But in the &amp;ldquo;real world&amp;rdquo;, it is rare to find someone eager to do so. Sure, I can imagine my super-gizmo-mondo-cool coffee cup that is also a mobile phone, razor, electric toothbrush, talking tire gauge, and bottle opener. But why?! Just because it&amp;rsquo;s possible, does not mean that it&amp;rsquo;s desirable.&lt;/p&gt;
+
 &lt;p&gt;Really, our ability to live in a fantasy world, even briefly, is a terribly two-edged sword. It gives us the ability to imagine a world that does not exist, and execute the steps necessary to manifest it. For example, Rails. At the same time, it gives us the ability to imagine a world that does not exist, and execute the steps necessary to manifest it. For example, J2EE.&lt;/p&gt;
-&lt;p&gt;One of those two is thriving in the &amp;#8220;real world&amp;#8221;, according to the connotations normally associated with that phrase. I think we&amp;#8217;re trying too hard in the wrong direction if we are chasing the &amp;#8220;real world&amp;#8221;. Rails is a disruptive technology; and that is something to be celebrated.&lt;/p&gt;
+
+&lt;p&gt;One of those two is thriving in the &amp;ldquo;real world&amp;rdquo;, according to the connotations normally associated with that phrase. I think we&amp;rsquo;re trying too hard in the wrong direction if we are chasing the &amp;ldquo;real world&amp;rdquo;. Rails is a disruptive technology; and that is something to be celebrated.&lt;/p&gt;
+
 &lt;p&gt;Rails does not need to be legitimized.&lt;/p&gt;
-&lt;p&gt;That&amp;#8217;s my opinion. In fact, I think we do a disservice to the disruptive potential of Rails by trying to legitimize it with the &amp;#8220;real world&amp;#8221; label. I may be reading too much into the &amp;#8220;real world&amp;#8221; phrase in the Sys-Con event title, but since it is billed as being for CEO&amp;#8217;s, CTO&amp;#8217;s, etc., I don&amp;#8217;t think so.&lt;/p&gt;
-&lt;p&gt;I think Rails is highly relevant to creating real world applications, meaning those that assist people to achieve their goals by doing much more with far, far less complexity. That requires us to have a vivid imagination and vibrant fantasy life. In other words, a good, healthy distance from the &amp;#8220;real world&amp;#8221;.&lt;/p&gt;</content>
+
+&lt;p&gt;That&amp;rsquo;s my opinion. In fact, I think we do a disservice to the disruptive potential of Rails by trying to legitimize it with the &amp;ldquo;real world&amp;rdquo; label. I may be reading too much into the &amp;ldquo;real world&amp;rdquo; phrase in the Sys-Con event title, but since it is billed as being for CEO&amp;rsquo;s, CTO&amp;rsquo;s, etc., I don&amp;rsquo;t think so.&lt;/p&gt;
+
+&lt;p&gt;I think Rails is highly relevant to creating real world applications, meaning those that assist people to achieve their goals by doing much more with far, far less complexity. That requires us to have a vivid imagination and vibrant fantasy life. In other words, a good, healthy distance from the &amp;ldquo;real world&amp;rdquo;.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2149,10 +2361,14 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;When I started at [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com), I was given a bright new matte black MacBook to use. It&amp;#8217;s a beauty. This is the first time I&amp;#8217;ve used a Mac extensively since around &amp;#8216;89 and I love it. Well, mostly. For the last decade or so I&amp;#8217;ve used Linux 90% of the time. First RedHat, then Fedora, and most recently Ubuntu, which in my experience is simply excellent.&lt;/p&gt;
-&lt;p&gt;What I miss most from Linux is the super responsive Gnome desktop, the wonderful Gnome Terminal, and the oodles of very high quality free software. With the Mac, I am quickly annoyed by the frequent appearance of that damned spinning color wheel, Mac-speak for, &amp;#8220;uh, hold on, I&amp;#8217;m having a moment&amp;#8221;; the typing through molasses feel of iTerm; and paying for so many little pieces of software. Mind you, I&amp;#8217;m fine trading my money for something of value, but if you are going to force the issue with me, you should probably ensure your process to lighten my wallet doesn&amp;#8217;t piss me off.&lt;/p&gt;
-&lt;p&gt;Enter NetNewsWire. I&amp;#8217;ve used it through it&amp;#8217;s evaluation period and it&amp;#8217;s been passable, nothing spectacular. But today, it wants money from me. So it puts up a friendly dialog, asking nicely. A bit miffed, I go ahead and click the &amp;#8220;Purchase Software&amp;#8221; radio button. Hmm, nothing happens. Seems that option is disabled. Oh well, sorry NetNewsWire, now I&amp;#8217;m evaluating [NewsFire](http://www.newsfirerss.com/)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://blog.brightredglow.com/assets/2006/10/3/netnewswire.jpg&quot; /&gt;&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;When I started at &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt;, I was given a bright new matte black MacBook to use. It&amp;rsquo;s a beauty. This is the first time I&amp;rsquo;ve used a Mac extensively since around &amp;lsquo;89 and I love it. Well, mostly. For the last decade or so I&amp;rsquo;ve used Linux 90% of the time. First RedHat, then Fedora, and most recently Ubuntu, which in my experience is simply excellent.&lt;/p&gt;
+
+&lt;p&gt;What I miss most from Linux is the super responsive Gnome desktop, the wonderful Gnome Terminal, and the oodles of very high quality free software. With the Mac, I am quickly annoyed by the frequent appearance of that damned spinning color wheel, Mac-speak for, &amp;ldquo;uh, hold on, I&amp;rsquo;m having a moment&amp;rdquo;; the typing through molasses feel of iTerm; and paying for so many little pieces of software. Mind you, I&amp;rsquo;m fine trading my money for something of value, but if you are going to force the issue with me, you should probably ensure your process to lighten my wallet doesn&amp;rsquo;t piss me off.&lt;/p&gt;
+
+&lt;p&gt;Enter NetNewsWire. I&amp;rsquo;ve used it through it&amp;rsquo;s evaluation period and it&amp;rsquo;s been passable, nothing spectacular. But today, it wants money from me. So it puts up a friendly dialog, asking nicely. A bit miffed, I go ahead and click the &amp;ldquo;Purchase Software&amp;rdquo; radio button. Hmm, nothing happens. Seems that option is disabled. Oh well, sorry NetNewsWire, now I&amp;rsquo;m evaluating &lt;a href=&quot;http://www.newsfirerss.com/&quot;&gt;NewsFire&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://blog.brightredglow.com/assets/2006/10/3/netnewswire.jpg&quot; /&gt;&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2164,16 +2380,30 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;Last week, my esteemed colleague [Jeremy](http://www.jvoorhis.com), at his characteristic morning unveiling&lt;sup&gt;&lt;sup class=&quot;footnote&quot; id=&quot;fnr1&quot;&gt;&lt;a href=&quot;#fn1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/sup&gt;, brought in a couple books on &amp;#8220;Death March&amp;#8221; projects. While he tackled the other, he lent me &lt;em&gt;Death March&lt;/em&gt;: second edition, by Edward Yourdon. Edward defines a death march project as &amp;#8220;one whose &amp;#8216;project parameters&amp;#8217; exceed the norm by at least 50 percent&amp;#8221;. That is, one or more of the following is true: the project has less than half the budget, the staff, the time, or more than double the functionality, features, performance, or technical requirements. He discusses why death march projects are created, why people participate in them, and some things one might do to try to handle such a project (although he&amp;#8217;s pretty pessimistic about successfully changing a project of this type).&lt;/p&gt;
+    <content type="html">&lt;p&gt;Last week, my esteemed colleague &lt;a href=&quot;http://www.jvoorhis.com&quot;&gt;Jeremy&lt;/a&gt;, at his characteristic morning unveiling&lt;sup&gt;[1]&lt;/sup&gt;, brought in a couple books on &amp;ldquo;Death March&amp;rdquo; projects. While he tackled the other, he lent me &lt;em&gt;Death March&lt;/em&gt;: second edition, by Edward Yourdon. Edward defines a death march project as &amp;ldquo;one whose &amp;lsquo;project parameters&amp;rsquo; exceed the norm by at least 50 percent&amp;rdquo;. That is, one or more of the following is true: the project has less than half the budget, the staff, the time, or more than double the functionality, features, performance, or technical requirements. He discusses why death march projects are created, why people participate in them, and some things one might do to try to handle such a project (although he&amp;rsquo;s pretty pessimistic about successfully changing a project of this type).  &lt;/p&gt;
+
 &lt;p&gt;Under the heading, &lt;em&gt;Why Do Death March Projects Happen&lt;/em&gt;, Edward starts off with a great quote by the author of the &lt;em&gt;Dilbert&lt;/em&gt; cartoons, Scott Adams:&lt;/p&gt;
-&lt;p&gt;&amp;gt;When I first started hearing these stories [about irrational corporate behavior] I was puzzled, but after careful analysis I have developed a sophisticated theory to explain the existence of this bizarre workplace behavior. People are idiots.&lt;/p&gt;
-&lt;p&gt;&amp;gt;Including me. Everyone is an idiot, not just the people with low &lt;span class=&quot;caps&quot;&gt;SAT&lt;/span&gt; scores. The only difference among us is that we&amp;#8217;re idiots about different things at different times. No matter how smart you are, you spend much of your day being an idiot.&lt;/p&gt;
-&lt;p&gt;Hopefully everyone is not totally insulted at this point. As in &lt;em&gt;Dilbert&lt;/em&gt;, this idea can be a great source of inspiration. It&amp;#8217;s really not as derogatory or as hopeless as it sounds. And for me, it puts some recent events in perspective.&lt;/p&gt;
-&lt;p&gt;Since DHH&amp;#8217;s keynote at RailsConf, there has been noticeable buzz about &lt;span class=&quot;caps&quot;&gt;CRUD&lt;/span&gt;. Everything from [new acronyms](http://jimonwebgames.com/articles/2006/06/26/dont-say-crud-say-fucd) to [debates](http://www.jvoorhis.com/articles/2006/06/28/journaled-domain-models-via-the-command-pattern-or-its-all-just-crud-pt-ii) about [nouns versus verbs](http://blog.jasonwatkins.net/articles/2006/06/27/are-nouns-better-than-verbs). All good stuff, interesting, thought provoking. But for me, probably the greatest benefit of more CRUDful modeling is better managing of complexity. I think this is the raison d&amp;#8217;être of &lt;span class=&quot;caps&quot;&gt;CRUD&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Similar to when &lt;span class=&quot;caps&quot;&gt;OOP&lt;/span&gt; was capturing hearts and minds, many people waxed poetic about reuse, more faithful domain modeling, etc. But the golden egg of &lt;span class=&quot;caps&quot;&gt;OOP&lt;/span&gt; is encapsulation, and encapsulation is another powerful abstraction that helps manage complexity. If there were one thing I would lobby to be added to the agile manifesto, it would be &amp;#8220;Simplicity over big, amazing, mind-boggling complexity&amp;#8221;. Certainly, the &amp;#8220;less software&amp;#8221; mantra is related to this, but even a tiny piece of software does not necessarily mean simple, not complex.&lt;/p&gt;
-&lt;p&gt;So, if you notice your controller method count is ballooning, or your controllers are more cross-wired than your plate of spaghetti, you might see an opportunity for using &lt;span class=&quot;caps&quot;&gt;CRUD&lt;/span&gt; to restore sanity. But you can also ruthlessly adopt Einstein&amp;#8217;s wisdom at every stage of development and use &lt;span class=&quot;caps&quot;&gt;CRUD&lt;/span&gt; to make your app as simple as possible, but not simpler.&lt;/p&gt;
-&lt;hr style=&quot;width: 10em;&quot;&gt;
-&lt;p&gt;&lt;sup&gt;&lt;sup class=&quot;footnote&quot; id=&quot;fnr1&quot;&gt;&lt;a href=&quot;#fn1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/sup&gt; Jeremy often comes to work with an announce if you will. For instance, one day we were discussing something about languages; I mentioned Erlang. The next day Jeremy announces when he arrived, &amp;#8220;I learned Erlang last night.&amp;#8221; Sweet!&lt;/p&gt;</content>
+
+&lt;blockquote&gt;
+  &lt;p&gt;When I first started hearing these stories [about irrational corporate behavior] I was puzzled, but after careful analysis I have developed a sophisticated theory to explain the existence of this bizarre workplace behavior. People are idiots.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Including me. Everyone is an idiot, not just the people with low SAT scores. The only difference among us is that we&amp;rsquo;re idiots about different things at different times. No matter how smart you are, you spend much of your day being an idiot.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Hopefully everyone is not totally insulted at this point. As in &lt;em&gt;Dilbert&lt;/em&gt;, this idea can be a great source of inspiration. It&amp;rsquo;s really not as derogatory or as hopeless as it sounds. And for me, it puts some recent events in perspective.&lt;/p&gt;
+
+&lt;p&gt;Since DHH&amp;rsquo;s keynote at RailsConf, there has been noticeable buzz about CRUD. Everything from &lt;a href=&quot;http://jimonwebgames.com/articles/2006/06/26/dont-say-crud-say-fucd&quot;&gt;new acronyms&lt;/a&gt; to &lt;a href=&quot;http://www.jvoorhis.com/articles/2006/06/28/journaled-domain-models-via-the-command-pattern-or-its-all-just-crud-pt-ii&quot;&gt;debates&lt;/a&gt; about &lt;a href=&quot;http://blog.jasonwatkins.net/articles/2006/06/27/are-nouns-better-than-verbs&quot;&gt;nouns versus verbs&lt;/a&gt;. All good stuff, interesting, thought provoking. But for me, probably the greatest benefit of more CRUDful modeling is better managing of complexity. I think this is the raison d&amp;rsquo;être of CRUD.&lt;/p&gt;
+
+&lt;p&gt;Similar to when OOP was capturing hearts and minds, many people waxed poetic about reuse, more faithful domain modeling, etc. But the golden egg of OOP is encapsulation, and encapsulation is another powerful abstraction that helps manage complexity. If there were one thing I would lobby to be added to the agile manifesto, it would be &amp;ldquo;Simplicity over big, amazing, mind-boggling complexity&amp;rdquo;. Certainly, the &amp;ldquo;less software&amp;rdquo; mantra is related to this, but even a tiny piece of software does not necessarily mean simple, not complex.&lt;/p&gt;
+
+&lt;p&gt;So, if you notice your controller method count is ballooning, or your controllers are more cross-wired than your plate of spaghetti, you might see an opportunity for using CRUD to restore sanity. But you can also ruthlessly adopt Einstein&amp;rsquo;s wisdom at every stage of development and use CRUD to make your app as simple as possible, but not simpler.&lt;/p&gt;
+
+&lt;hr style=&quot;width: 10em;&quot; /&gt;
+
+&lt;p&gt;&lt;sup&gt;[1]&lt;/sup&gt; Jeremy often comes to work with an announce if you will. For instance, one day we were discussing something about languages; I mentioned Erlang. The next day Jeremy announces when he arrived, &amp;ldquo;I learned Erlang last night.&amp;rdquo; Sweet!&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2185,10 +2415,14 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;So there I am, peacefully logged into my US Bank online account. Everything is going well. We&amp;#8217;re having a nice dialog. I click, it responds. I click&amp;#8230; now I&amp;#8217;m looking at a plain, white page with the following scrawled across the top in courier font:&lt;/p&gt;
-&lt;p&gt;`an exception occurred: Unable to complete your request at this time, ReferenceID = &amp;#8220;wl26*2006-71-59-03:21:11:742*XLP3-594861&amp;#8221;`&lt;/p&gt;
+    <content type="html">&lt;p&gt;So there I am, peacefully logged into my US Bank online account. Everything is going well. We&amp;rsquo;re having a nice dialog. I click, it responds. I click&amp;hellip; now I&amp;rsquo;m looking at a plain, white page with the following scrawled across the top in courier font:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;an exception occurred: Unable to complete your request at this time, ReferenceID = &quot;wl26*2006-71-59-03:21:11:742*XLP3-594861&quot;&lt;/code&gt;&lt;/p&gt;
+
 &lt;p&gt;Imagine what the scene might be if I were speaking to a human teller and suddenly in our interaction I received a response like this. I imagine the likes of a scene from the Exorcist. The breakdown in the expected flow is extreme.&lt;/p&gt;
-&lt;p&gt;On the one hand, US Bank is not a little entity. They have plenty of money for technology solutions. On the other, I understand that exceptions occur. Here&amp;#8217;s a gentle reminder to degrade gracefully and if you can write something to the screen, make it useful, somewhat reassuring, and perhaps apologetic. There&amp;#8217;s no good excuse for barfing your undigested exception in my face.&lt;/p&gt;</content>
+
+&lt;p&gt;On the one hand, US Bank is not a little entity. They have plenty of money for technology solutions. On the other, I understand that exceptions occur. Here&amp;rsquo;s a gentle reminder to degrade gracefully and if you can write something to the screen, make it useful, somewhat reassuring, and perhaps apologetic. There&amp;rsquo;s no good excuse for barfing your undigested exception in my face.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2200,8 +2434,10 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;I have been rescued from mundane obscurity. Yesterday I met with [Robby](http://robbyonrails.com) and [Allison](http://www.planetargon.com/about.html) and we settled on &lt;b&gt;Interaction Architect&lt;/b&gt; as my title. Those are certainly big shoes to fill, boats really, but I&amp;#8217;m looking forward to it. The title is broad enough to encompass interaction as it applies to humans-computers, humans-humans, and computers-computers. It&amp;#8217;s both justification and impetus to push my knowledge and understanding. For example, with Project Borat, we&amp;#8217;re focused on how we can facilitate client interaction throughout the project as well as pushing the envelope with features to support user interaction.&lt;/p&gt;
-&lt;p&gt;My interest in languages dates at least as far back as about 6 years old when I discovered Chinese writing. I was fascinated to the point of drawing nonsense characters for kids at school, telling them I could write Chinese. This interest extends to programming languages and mathematics. And since first working with one of the early Macintosh computers almost 20 years ago, human-computer interaction has been a persistent curiosity, if somewhat sidelined. In fact, design interests me more than coding, but unfortunately, I don&amp;#8217;t possess abundant artistic talent. For me, interaction design allows me to straddle that space between visual design and implementation and I&amp;#8217;m excited to further develop these skills along side the other highly talented folks at [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com).&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;I have been rescued from mundane obscurity. Yesterday I met with &lt;a href=&quot;http://robbyonrails.com&quot;&gt;Robby&lt;/a&gt; and &lt;a href=&quot;http://www.planetargon.com/about.html&quot;&gt;Allison&lt;/a&gt; and we settled on &lt;strong&gt;Interaction Architect&lt;/strong&gt; as my title. Those are certainly big shoes to fill, boats really, but I&amp;rsquo;m looking forward to it. The title is broad enough to encompass interaction as it applies to humans-computers, humans-humans, and computers-computers. It&amp;rsquo;s both justification and impetus to push my knowledge and understanding. For example, with Project Borat, we&amp;rsquo;re focused on how we can facilitate client interaction throughout the project as well as pushing the envelope with features to support user interaction.&lt;/p&gt;
+
+&lt;p&gt;My interest in languages dates at least as far back as about 6 years old when I discovered Chinese writing. I was fascinated to the point of drawing nonsense characters for kids at school, telling them I could write Chinese. This interest extends to programming languages and mathematics. And since first working with one of the early Macintosh computers almost 20 years ago, human-computer interaction has been a persistent curiosity, if somewhat sidelined. In fact, design interests me more than coding, but unfortunately, I don&amp;rsquo;t possess abundant artistic talent. For me, interaction design allows me to straddle that space between visual design and implementation and I&amp;rsquo;m excited to further develop these skills along side the other highly talented folks at &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt;.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2213,15 +2449,24 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;Yesterday, Project Borat and I were formally introduced. I&amp;#8217;ll be the lead developer, picking up the [thread](http://peat.org/articles/2006/05/03/introducing-project-borat) and, along with [Robby](http://www.robbyonrails.com/articles/2006/05/03/project-borat-an-introduction), I&amp;#8217;ll continue to entertain you with insights we gain as we delve deeply into the process, knocking some moss off a few rocks and uncovering ideas that will work well for us and our clients.&lt;/p&gt;
-&lt;p&gt;As this project is just getting under way, one of the first things we&amp;#8217;re facing is&amp;#8230; hmm, I hate to label it because along with that label comes all sorts of assumptions. Sure, we could call it requirements gathering, but that doesn&amp;#8217;t tell the whole story. Then there are stories, use cases, method &lt;span class=&quot;caps&quot;&gt;XYZ&lt;/span&gt;, and better mention &lt;span class=&quot;caps&quot;&gt;PQR&lt;/span&gt; for completeness. Before you run off googling those last two, I made them up. Point is, even though there is a lot of material on processes, and I&amp;#8217;m learning more every day, it&amp;#8217;s just not that simple.&lt;/p&gt;
-&lt;p&gt;So, today [Robby](http://robbyonrails.com) and I took a quick jaunt over to one of my favorite places on the planet. How cool to work this [close](http://rubyurl.com/jmM) to [Powells Technical Books](http://www.powells.com/technicalbooks). While he&amp;#8217;s deep into today&amp;#8217;s [acquisition](http://www.robbyonrails.com/articles/2006/06/08/trawling-for-requirements),  [Mastering the Requirements Process, 2nd Ed](http://www.powells.com/biblio/71-0321419499-0), I had my own [surprise](http://rubyurl.com/uGg) waiting on my doorstep this evening.&lt;/p&gt;
-&lt;p&gt;That brings me to one point about gathering requirements: the first value listed on the [agile manifesto](http://agilemanifesto.org/)&amp;#8212;&amp;#8220;Individuals and interactions over processes and tools&amp;#8221;. I&amp;#8217;m guessing there&amp;#8217;s more than a few reasons why that one is listed first.&lt;/p&gt;
-&lt;p&gt;Clients are people with varied backgrounds. If we are slaves to a particular methodology, we either 1) talk over the client&amp;#8217;s head with unintelligible jargon, 2) try to coerce the client into &amp;#8220;learning&amp;#8221; our methodology so we can &amp;#8220;be on the same page&amp;#8221;, or 3) continually translate, in the back of our heads or on our notes, what the client is saying into our method&amp;#8217;s jargon. The first two are disrespectful, the last one error prone. (Where&amp;#8217;s the feedback that must occur for checking understanding?)&lt;/p&gt;
-&lt;p&gt;When we, as developers, began focusing on user-centric design and usability, it was a recognition that users deserved respect and need not be rescued, if you will, by our bright ideas. In a big way, we needed to keep our bright ideas out of the user&amp;#8217;s way. In the same way, I&amp;#8217;m not convinced I should expect a client to care about stories, use cases, or &lt;span class=&quot;caps&quot;&gt;XYZ&lt;/span&gt; artifact. I do believe my role is to facilitate a client&amp;#8217;s understanding of what they want and capture that as faithfully as possible.&lt;/p&gt;
-&lt;p&gt;I think plain ol&amp;#8217; natural language is probably the most valuable tool for that. &amp;#8220;Ee gads, but natural language is fraught with ambiguities, imprecision, double meanings, and all things evil,&amp;#8221; you say. Well, perhaps. But consider this: mathematics is probably the most precise form of &amp;#8220;language&amp;#8221; humans have yet devised, and plain ol&amp;#8217; natural language suffices to convey mathematics given a couple rules of usage.&lt;/p&gt;
-&lt;p&gt;First, we do try to eliminate ambiguity and imprecision with definitions. If I&amp;#8217;m talking about a metric space, I begin with, &amp;#8220;given a set X and a metric d, (X,d)&amp;#8221;. There, no more ambiguity. And second, economy; introduce a symbol or name to mean a particularly well-defined concept. Add a dose of discipline, be conscientious about usage, and you can get very far using normal language to discuss very difficult concepts. Trust me, or visit a math class and watch people learning math.&lt;/p&gt;
-&lt;p&gt;So, that&amp;#8217;s the first of my explorations. How far can natural language take me before I start reaching for this or that &amp;#8220;representation&amp;#8221;? I&amp;#8217;ll aim to keep these posts short and pithy in the future, but thanks for ambling along with me on this one.&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;Yesterday, Project Borat and I were formally introduced. I&amp;rsquo;ll be the lead developer, picking up the &lt;a href=&quot;http://peat.org/articles/2006/05/03/introducing-project-borat&quot;&gt;thread&lt;/a&gt; and, along with &lt;a href=&quot;http://www.robbyonrails.com/articles/2006/05/03/project-borat-an-introduction&quot;&gt;Robby&lt;/a&gt;, I&amp;rsquo;ll continue to entertain you with insights we gain as we delve deeply into the process, knocking some moss off a few rocks and uncovering ideas that will work well for us and our clients.&lt;/p&gt;
+
+&lt;p&gt;As this project is just getting under way, one of the first things we&amp;rsquo;re facing is&amp;hellip; hmm, I hate to label it because along with that label comes all sorts of assumptions. Sure, we could call it requirements gathering, but that doesn&amp;rsquo;t tell the whole story. Then there are stories, use cases, method XYZ, and better mention PQR for completeness. Before you run off googling those last two, I made them up. Point is, even though there is a lot of material on processes, and I&amp;rsquo;m learning more every day, it&amp;rsquo;s just not that simple.&lt;/p&gt;
+
+&lt;p&gt;So, today &lt;a href=&quot;http://robbyonrails.com&quot;&gt;Robby&lt;/a&gt; and I took a quick jaunt over to one of my favorite places on the planet. How cool to work this &lt;a href=&quot;http://rubyurl.com/jmM&quot;&gt;close&lt;/a&gt; to &lt;a href=&quot;http://www.powells.com/technicalbooks&quot;&gt;Powells Technical Books&lt;/a&gt;. While he&amp;rsquo;s deep into today&amp;rsquo;s &lt;a href=&quot;http://www.robbyonrails.com/articles/2006/06/08/trawling-for-requirements&quot;&gt;acquisition&lt;/a&gt;,  &lt;a href=&quot;http://www.powells.com/biblio/71-0321419499-0&quot;&gt;Mastering the Requirements Process, 2nd Ed&lt;/a&gt;, I had my own &lt;a href=&quot;http://rubyurl.com/uGg&quot;&gt;surprise&lt;/a&gt; waiting on my doorstep this evening.&lt;/p&gt;
+
+&lt;p&gt;That brings me to one point about gathering requirements: the first value listed on the &lt;a href=&quot;http://agilemanifesto.org/&quot;&gt;agile manifesto&lt;/a&gt;&amp;ndash;&amp;ldquo;Individuals and interactions over processes and tools&amp;rdquo;. I&amp;rsquo;m guessing there&amp;rsquo;s more than a few reasons why that one is listed first.&lt;/p&gt;
+
+&lt;p&gt;Clients are people with varied backgrounds. If we are slaves to a particular methodology, we either 1) talk over the client&amp;rsquo;s head with unintelligible jargon, 2) try to coerce the client into &amp;ldquo;learning&amp;rdquo; our methodology so we can &amp;ldquo;be on the same page&amp;rdquo;, or 3) continually translate, in the back of our heads or on our notes, what the client is saying into our method&amp;rsquo;s jargon. The first two are disrespectful, the last one error prone. (Where&amp;rsquo;s the feedback that must occur for checking understanding?)&lt;/p&gt;
+
+&lt;p&gt;When we, as developers, began focusing on user-centric design and usability, it was a recognition that users deserved respect and need not be rescued, if you will, by our bright ideas. In a big way, we needed to keep our bright ideas out of the user&amp;rsquo;s way. In the same way, I&amp;rsquo;m not convinced I should expect a client to care about stories, use cases, or XYZ artifact. I do believe my role is to facilitate a client&amp;rsquo;s understanding of what they want and capture that as faithfully as possible.&lt;/p&gt;
+
+&lt;p&gt;I think plain ol&amp;rsquo; natural language is probably the most valuable tool for that. &amp;ldquo;Ee gads, but natural language is fraught with ambiguities, imprecision, double meanings, and all things evil,&amp;rdquo; you say. Well, perhaps. But consider this: mathematics is probably the most precise form of &amp;ldquo;language&amp;rdquo; humans have yet devised, and plain ol&amp;rsquo; natural language suffices to convey mathematics given a couple rules of usage. &lt;/p&gt;
+
+&lt;p&gt;First, we do try to eliminate ambiguity and imprecision with definitions. If I&amp;rsquo;m talking about a metric space, I begin with, &amp;ldquo;given a set X and a metric d, (X,d)&amp;rdquo;. There, no more ambiguity. And second, economy; introduce a symbol or name to mean a particularly well-defined concept. Add a dose of discipline, be conscientious about usage, and you can get very far using normal language to discuss very difficult concepts. Trust me, or visit a math class and watch people learning math.&lt;/p&gt;
+
+&lt;p&gt;So, that&amp;rsquo;s the first of my explorations. How far can natural language take me before I start reaching for this or that &amp;ldquo;representation&amp;rdquo;? I&amp;rsquo;ll aim to keep these posts short and pithy in the future, but thanks for ambling along with me on this one.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2233,9 +2478,12 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;For the second time in a few days, lighttpd went awol on me. All that shows in the logs is &amp;#8216;graceful shutdown started&amp;#8217;, then &amp;#8216;server stopped&amp;#8217;. The &lt;span class=&quot;caps&quot;&gt;VDS&lt;/span&gt; is fine and dandy, showing up-time of 26+ days. And the rails fcgi processes are all fine as well.&lt;/p&gt;
-&lt;p&gt;Perhaps this is a good time to give [Mongrel](http://mongrel.rubyforge.org/) a whirl. There&amp;#8217;s been interest expressed around the [office](http://www.planetargon.com), especially after [Redhanded&amp;#8217;s](http://redhanded.hobix.com/cult/zedGoesOffAboutMongrel.html) quote from the interview with Zed Shaw about Mongrel using a parser based on a real grammar and parser generator, [Ragel](http://www.cs.queensu.ca/~thurston/ragel/).&lt;/p&gt;
-&lt;p&gt;Alas, this bit of sysadmin has eaten the few minutes for my intended post, so I&amp;#8217;ll leave you with just the teaser of a title for the next post&amp;#8230;&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;For the second time in a few days, lighttpd went awol on me. All that shows in the logs is &amp;lsquo;graceful shutdown started&amp;rsquo;, then &amp;lsquo;server stopped&amp;rsquo;. The VDS is fine and dandy, showing up-time of 26+ days. And the rails fcgi processes are all fine as well.&lt;/p&gt;
+
+&lt;p&gt;Perhaps this is a good time to give &lt;a href=&quot;http://mongrel.rubyforge.org/&quot;&gt;Mongrel&lt;/a&gt; a whirl. There&amp;rsquo;s been interest expressed around the &lt;a href=&quot;http://www.planetargon.com&quot;&gt;office&lt;/a&gt;, especially after &lt;a href=&quot;http://redhanded.hobix.com/cult/zedGoesOffAboutMongrel.html&quot;&gt;Redhanded&amp;rsquo;s&lt;/a&gt; quote from the interview with Zed Shaw about Mongrel using a parser based on a real grammar and parser generator, &lt;a href=&quot;http://www.cs.queensu.ca/~thurston/ragel/&quot;&gt;Ragel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Alas, this bit of sysadmin has eaten the few minutes for my intended post, so I&amp;rsquo;ll leave you with just the teaser of a title for the next post&amp;hellip;&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2247,11 +2495,16 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;The law of diminishing returns: more and more gets you less and less. It&amp;#8217;s familiar in many domains: economics, martial arts training, propulsion. [Rush Limbaugh](http://www.rushlimbaugh.com/) would probably agree it even applies to [drug use](http://en.wikipedia.org/wiki/Rush_Limbaugh). It certainly applies to developing software. There&amp;#8217;s only a certain value derived from polishing a chunk of code. So, while I&amp;#8217;ll reserve opinion about whether this is a &amp;#8216;law&amp;#8217; of nature, it&amp;#8217;s definitely something we observe in many contexts.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s interesting to me to note where the law of diminishing returns appears to break down.&lt;/p&gt;
-&lt;p&gt;I have always been intrigued by one of the ad lines used by [Lexus](http://www.lexus.com.hk/b/b01.html): the relentless pursuit of perfection. For me, perfection is spelled [Porsche](http://www.rsportscars.com/eng/cars/carrera_gt.asp), but I like that Lexus boldly puts perfection as the aim. The idea of pursuing perfection seems to be thumbing one&amp;#8217;s nose at the ol&amp;#8217; law of diminishing returns.&lt;/p&gt;
-&lt;p&gt;While we&amp;#8217;re not all engrossed in engineering the ultimate automobile, I think human artistic endeavor in general doesn&amp;#8217;t pay much heed to the law of dimishing returns. I imagine an artist relies more on a sense of holistic completeness when deciding to stop working on a piece. Education is another area. Imagine telling your boss, &amp;#8220;Er, I think learning more about this is just pushing the law of diminishing returns.&amp;#8221;&lt;/p&gt;
-&lt;p&gt;In the end, it may be that the law of dimishing returns governs all our activities, but intriguing to me is how our perception influences our efforts. In the pursuit of perfection, I think we perceive each additional effort as adding value. We don&amp;#8217;t see that value dimishing or we would likely give up. So, despite the &amp;#8216;law&amp;#8217; of diminishing returns, it may be our perception that makes the difference between accomplishing something mediocre and something great.&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;The law of diminishing returns: more and more gets you less and less. It&amp;rsquo;s familiar in many domains: economics, martial arts training, propulsion. &lt;a href=&quot;http://www.rushlimbaugh.com/&quot;&gt;Rush Limbaugh&lt;/a&gt; would probably agree it even applies to &lt;a href=&quot;http://en.wikipedia.org/wiki/Rush_Limbaugh&quot;&gt;drug use&lt;/a&gt;. It certainly applies to developing software. There&amp;rsquo;s only a certain value derived from polishing a chunk of code. So, while I&amp;rsquo;ll reserve opinion about whether this is a &amp;lsquo;law&amp;rsquo; of nature, it&amp;rsquo;s definitely something we observe in many contexts.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s interesting to me to note where the law of diminishing returns appears to break down.&lt;/p&gt;
+
+&lt;p&gt;I have always been intrigued by one of the ad lines used by &lt;a href=&quot;http://www.lexus.com.hk/b/b01.html&quot;&gt;Lexus&lt;/a&gt;: the relentless pursuit of perfection. For me, perfection is spelled &lt;a href=&quot;http://www.rsportscars.com/eng/cars/carrera_gt.asp&quot;&gt;Porsche&lt;/a&gt;, but I like that Lexus boldly puts perfection as the aim. The idea of pursuing perfection seems to be thumbing one&amp;rsquo;s nose at the ol&amp;rsquo; law of diminishing returns.&lt;/p&gt;
+
+&lt;p&gt;While we&amp;rsquo;re not all engrossed in engineering the ultimate automobile, I think human artistic endeavor in general doesn&amp;rsquo;t pay much heed to the law of dimishing returns. I imagine an artist relies more on a sense of holistic completeness when deciding to stop working on a piece. Education is another area. Imagine telling your boss, &amp;ldquo;Er, I think learning more about this is just pushing the law of diminishing returns.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;In the end, it may be that the law of dimishing returns governs all our activities, but intriguing to me is how our perception influences our efforts. In the pursuit of perfection, I think we perceive each additional effort as adding value. We don&amp;rsquo;t see that value dimishing or we would likely give up. So, despite the &amp;lsquo;law&amp;rsquo; of diminishing returns, it may be our perception that makes the difference between accomplishing something mediocre and something great.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2263,10 +2516,14 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;Late breaking news (I really need to speak to my publishing staff about getting these out on time): Monday, May 1st was my first day as part of the great team at [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com). Everyone extended themselves to get me up to speed on the working of the company. And, in truly classy fashion, the company treated us to a team welcome lunch on my behalf.&lt;/p&gt;
-&lt;p&gt;I am delighted and honored to be working with these dedicated, enthusiastic, highly skilled and intelligent folks. Innovation in web applications in general and Rails in particular is occuring at such a rapid pace and [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com) is committed to being in the thick of it. On the day I started, if you pulled up google search, typed &amp;#8216;ruby rails development hosting&amp;#8217;, and hit I&amp;#8217;m Feeling Lucky, it would send you straight to the [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com) website. I&amp;#8217;m here to contribute all my expertise to these endeavors, and I expect to learn a tremendous amount along the way.&lt;/p&gt;
-&lt;p&gt;So, it may seem odd to compare a small company in Portland, OR to that giant of search engines, etc. but here&amp;#8217;s the connection: People I know who aspire to work at Google do so because of the company&amp;#8217;s perceived technological innovation and excellence. And that&amp;#8217;s the connection for me. The [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com) team is pursuing innovation and excellence in application design, development processes, project management, training and more. I was certain I wanted to be a part of the action.&lt;/p&gt;
-&lt;p&gt;Now boarding for [&lt;span class=&quot;caps&quot;&gt;PLANET&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;ARGON&lt;/span&gt;](http://www.planetargon.com). Stay tuned and I&amp;#8217;ll fill you in on the adventures.&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;Late breaking news (I really need to speak to my publishing staff about getting these out on time): Monday, May 1st was my first day as part of the great team at &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt;. Everyone extended themselves to get me up to speed on the working of the company. And, in truly classy fashion, the company treated us to a team welcome lunch on my behalf.&lt;/p&gt;
+
+&lt;p&gt;I am delighted and honored to be working with these dedicated, enthusiastic, highly skilled and intelligent folks. Innovation in web applications in general and Rails in particular is occuring at such a rapid pace and &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt; is committed to being in the thick of it. On the day I started, if you pulled up google search, typed &amp;lsquo;ruby rails development hosting&amp;rsquo;, and hit I&amp;rsquo;m Feeling Lucky, it would send you straight to the &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt; website. I&amp;rsquo;m here to contribute all my expertise to these endeavors, and I expect to learn a tremendous amount along the way.&lt;/p&gt;
+
+&lt;p&gt;So, it may seem odd to compare a small company in Portland, OR to that giant of search engines, etc. but here&amp;rsquo;s the connection: People I know who aspire to work at Google do so because of the company&amp;rsquo;s perceived technological innovation and excellence. And that&amp;rsquo;s the connection for me. The &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt; team is pursuing innovation and excellence in application design, development processes, project management, training and more. I was certain I wanted to be a part of the action.&lt;/p&gt;
+
+&lt;p&gt;Now boarding for &lt;a href=&quot;http://www.planetargon.com&quot;&gt;PLANET ARGON&lt;/a&gt;. Stay tuned and I&amp;rsquo;ll fill you in on the adventures.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2278,11 +2535,16 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;One great thing about Portland is the (usually) great snow less than 1.5 hours away. We have season passes this year for [SkiBowl](http://www.skibowl.com/winter/home.cfm) and the snow there has been great. But we had free passes for [Mt Hood Meadows](http://www.skihood.com/) so we decided to go there this weekend. Turns out April 30th was a free ski and board day at all area ski resorts, so our tickets will be good for another day till the end of the season. Anyway, it was beautiful, sunny weather and a lot of fun.&lt;/p&gt;
-&lt;p&gt;Now, this is really my first season snowboarding (I went once last season) and I&amp;#8217;ve never skied before. In other words, a rank beginner. But in this one season, I&amp;#8217;ve gone from often sliding down on my backside, to mastering the falling leaf and stopping on my edge rather than my butt, and finally linking turns. I&amp;#8217;ve also drastically reduced the frequency of sudden, bone-jarring endo&amp;#8217;s resulting from catching an edge in the wrong direction. Along with the increasing skill, I&amp;#8217;ve ventured into more difficult terrain. First the green circles, then the blue squares, and finally a couple black diamonds (but no double-black yet).&lt;/p&gt;
-&lt;p&gt;There&amp;#8217;s a big difference between a green run and a black one. It takes a lot more effort; there&amp;#8217;s a much greater chance of wiping out; it&amp;#8217;s definitely intimidating to stare down that near vertical (it seems) face at the black run ahead. So, what&amp;#8217;s the lure of the black diamond? If we consider some conventional wisdom about users of software, we may recall ideas like &amp;#8220;users are lazy&amp;#8221;, or &amp;#8220;people take the path of least resistence&amp;#8221;, or &amp;#8220;someone will do the minimum to get by&amp;#8221;, or &amp;#8220;people are just pleasure seekers&amp;#8221;. How does that add up? The path of least resistance is definitely not down the black diamond run.&lt;/p&gt;
-&lt;p&gt;It seems to me those ideas need refinement. I firmly believe that people are not lazy. Rather, living organisms are experts at balancing costs versus benefits, an expertise refined over hundreds of millions of years of evolution. I think people do what is most rewarding with the least cost. There is a premium on energy, so an organism must conserve it. That doesn&amp;#8217;t mean always using the least possible, but rather using the least necessary to accomplish a goal. The difference is significant.&lt;/p&gt;
-&lt;p&gt;If we conceive of people as being lazy, we&amp;#8217;re likely to design software that supports or encourages laziness. On the other hand, if we realize people are quite willing to expend the energy to tackle a black diamond run when the payoff in the thrill of the experience is great enough, we may wonder how we can design and construct software that brings out the best in people as they tackle challenges in their work. We may wonder how we can provoke people to be the best they can be. Does that sound too idealistic, too unrealistic? Or are we just too embedded in these silly over-simplifications that people are just lazy?&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;One great thing about Portland is the (usually) great snow less than 1.5 hours away. We have season passes this year for &lt;a href=&quot;http://www.skibowl.com/winter/home.cfm&quot;&gt;SkiBowl&lt;/a&gt; and the snow there has been great. But we had free passes for &lt;a href=&quot;http://www.skihood.com/&quot;&gt;Mt Hood Meadows&lt;/a&gt; so we decided to go there this weekend. Turns out April 30th was a free ski and board day at all area ski resorts, so our tickets will be good for another day till the end of the season. Anyway, it was beautiful, sunny weather and a lot of fun.&lt;/p&gt;
+
+&lt;p&gt;Now, this is really my first season snowboarding (I went once last season) and I&amp;rsquo;ve never skied before. In other words, a rank beginner. But in this one season, I&amp;rsquo;ve gone from often sliding down on my backside, to mastering the falling leaf and stopping on my edge rather than my butt, and finally linking turns. I&amp;rsquo;ve also drastically reduced the frequency of sudden, bone-jarring endo&amp;rsquo;s resulting from catching an edge in the wrong direction. Along with the increasing skill, I&amp;rsquo;ve ventured into more difficult terrain. First the green circles, then the blue squares, and finally a couple black diamonds (but no double-black yet).&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s a big difference between a green run and a black one. It takes a lot more effort; there&amp;rsquo;s a much greater chance of wiping out; it&amp;rsquo;s definitely intimidating to stare down that near vertical (it seems) face at the black run ahead. So, what&amp;rsquo;s the lure of the black diamond? If we consider some conventional wisdom about users of software, we may recall ideas like &amp;ldquo;users are lazy&amp;rdquo;, or &amp;ldquo;people take the path of least resistence&amp;rdquo;, or &amp;ldquo;someone will do the minimum to get by&amp;rdquo;, or &amp;ldquo;people are just pleasure seekers&amp;rdquo;. How does that add up? The path of least resistance is definitely not down the black diamond run.&lt;/p&gt;
+
+&lt;p&gt;It seems to me those ideas need refinement. I firmly believe that people are not lazy. Rather, living organisms are experts at balancing costs versus benefits, an expertise refined over hundreds of millions of years of evolution. I think people do what is most rewarding with the least cost. There is a premium on energy, so an organism must conserve it. That doesn&amp;rsquo;t mean always using the least possible, but rather using the least necessary to accomplish a goal. The difference is significant.&lt;/p&gt;
+
+&lt;p&gt;If we conceive of people as being lazy, we&amp;rsquo;re likely to design software that supports or encourages laziness. On the other hand, if we realize people are quite willing to expend the energy to tackle a black diamond run when the payoff in the thrill of the experience is great enough, we may wonder how we can design and construct software that brings out the best in people as they tackle challenges in their work. We may wonder how we can provoke people to be the best they can be. Does that sound too idealistic, too unrealistic? Or are we just too embedded in these silly over-simplifications that people are just lazy?&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
@@ -2294,9 +2556,12 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;While I definitely appreciate the folks at [Textdrive](http://www.textdrive.com) for being early, and continuing, supporters of [Rails](www.rubyonrails.com), I recently decided to switch to a &lt;span class=&quot;caps&quot;&gt;VDS&lt;/span&gt; for essentially the same reasons as [Octopod](http://outside-thoughts.octopod.info/articles/2006/02/22/why-the-move). Actually, I have him to thank for that little extra nudge provided by his blog entry. I hadn&amp;#8217;t given the idea much thought until then because it seemed like overkill for hosting a couple personal sites. Silly me.&lt;/p&gt;
-&lt;p&gt;After quite a bit of research, I decided to go with [Quantact](http://www.quantact.com) as well. And thanks to Ezra&amp;#8217;s great [tutorial](http://brainspl.at/rails_stack.html), I&amp;#8217;m up and enjoying myself a lot. Well, mostly. I decided to use Debian 3.1, which I&amp;#8217;ve never used before. However, since I&amp;#8217;ve been using [Ubuntu](www.ubuntu.com) for the past several months (which was a pretty big switch after RH and Fedora for years), the process was mostly painless. The one area I&amp;#8217;m not real comfortable with is the firewall. I&amp;#8217;m using Bastille, but I haven&amp;#8217;t closed the book on that yet. Actually, the idea that&amp;#8217;s pinging around in my head is: I wonder how it would work to use Rake to write the rules for iptables. Has anyone tried something like this? I&amp;#8217;ll let you know what I discover.&lt;/p&gt;
-&lt;p&gt;Okay, you might be wondering how the title fits in here. If you&amp;#8217;ve checked out [Quantact](http://www.quantact.com), you may have noticed they are using [Xen](http://www.xensource.com/) for the &lt;span class=&quot;caps&quot;&gt;VDS&lt;/span&gt;. Impressive technology. The rest? Well, when evaluating what I was finding most unsatisfactory about shared hosting, I realized it was the &amp;#8220;noise&amp;#8221;. All these processes, all these directories, all this stuff going on that had nothing to do with me. I was spending a lot of time in that noise, especially that webmin interface when I just wanted to type a few lines and be done. Now ps aux fills less than one screen of my xterm. I don&amp;#8217;t think about special cases or file tickets for a port. Mind you, I&amp;#8217;m not saying Textdrive has it all wrong. I&amp;#8217;m just saying, my Xen &lt;span class=&quot;caps&quot;&gt;VDS&lt;/span&gt; is nice and quiet.&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;While I definitely appreciate the folks at &lt;a href=&quot;http://www.textdrive.com&quot;&gt;Textdrive&lt;/a&gt; for being early, and continuing, supporters of &lt;a href=&quot;www.rubyonrails.com&quot;&gt;Rails&lt;/a&gt;, I recently decided to switch to a VDS for essentially the same reasons as &lt;a href=&quot;http://outside-thoughts.octopod.info/articles/2006/02/22/why-the-move&quot;&gt;Octopod&lt;/a&gt;. Actually, I have him to thank for that little extra nudge provided by his blog entry. I hadn&amp;rsquo;t given the idea much thought until then because it seemed like overkill for hosting a couple personal sites. Silly me.&lt;/p&gt;
+
+&lt;p&gt;After quite a bit of research, I decided to go with &lt;a href=&quot;http://www.quantact.com&quot;&gt;Quantact&lt;/a&gt; as well. And thanks to Ezra&amp;rsquo;s great &lt;a href=&quot;http://brainspl.at/rails_stack.html&quot;&gt;tutorial&lt;/a&gt;, I&amp;rsquo;m up and enjoying myself a lot. Well, mostly. I decided to use Debian 3.1, which I&amp;rsquo;ve never used before. However, since I&amp;rsquo;ve been using &lt;a href=&quot;www.ubuntu.com&quot;&gt;Ubuntu&lt;/a&gt; for the past several months (which was a pretty big switch after RH and Fedora for years), the process was mostly painless. The one area I&amp;rsquo;m not real comfortable with is the firewall. I&amp;rsquo;m using Bastille, but I haven&amp;rsquo;t closed the book on that yet. Actually, the idea that&amp;rsquo;s pinging around in my head is: I wonder how it would work to use Rake to write the rules for iptables. Has anyone tried something like this? I&amp;rsquo;ll let you know what I discover.&lt;/p&gt;
+
+&lt;p&gt;Okay, you might be wondering how the title fits in here. If you&amp;rsquo;ve checked out &lt;a href=&quot;http://www.quantact.com&quot;&gt;Quantact&lt;/a&gt;, you may have noticed they are using &lt;a href=&quot;http://www.xensource.com/&quot;&gt;Xen&lt;/a&gt; for the VDS. Impressive technology. The rest? Well, when evaluating what I was finding most unsatisfactory about shared hosting, I realized it was the &amp;ldquo;noise&amp;rdquo;. All these processes, all these directories, all this stuff going on that had nothing to do with me. I was spending a lot of time in that noise, especially that webmin interface when I just wanted to type a few lines and be done. Now ps aux fills less than one screen of my xterm. I don&amp;rsquo;t think about special cases or file tickets for a port. Mind you, I&amp;rsquo;m not saying Textdrive has it all wrong. I&amp;rsquo;m just saying, my Xen VDS is nice and quiet.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>

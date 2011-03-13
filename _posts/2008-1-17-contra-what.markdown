@@ -24,7 +24,7 @@ Now, once they have this shiny, handy, palm-sized summary in their back pocket, 
 
 Doh. That's where this contra thing comes in. Read the gory details on "Wikipedia":http://en.wikipedia.org/wiki/Contraposition, but here's the summary:
 
-In logic, something like <code>A -> B</code> is read "A implies B" or "if A then B". It is very tempting to then think, "if not A then not B". Unfortunately, that is not generally true. Given "A implies B", the statement "if not A then not B" is called the _inverse_. Again, these are not generally logically equivalent. The statement "if not B then not A" is called the _contrapositive_, and it *_is_* generally true that a statement and it's contrapositive are logically equivalent.
+In logic, something like <code>A -> B</code> is read "A implies B" or "if A then B". It is very tempting to then think, "if not A then not B". Unfortunately, that is not generally true. Given "A implies B", the statement "if not A then not B" is called the _inverse_. Again, these are not generally logically equivalent. The statement "if not B then not A" is called the _contrapositive_, and it _**is**_ generally true that a statement and it's contrapositive are logically equivalent.
 
 Applying this to the above, we can see that *IF* (a very big if) it is true that "if Immutable then Secure" is true, then the statement "if not Secure then not Immutable" is equivalently true. However, it has not been demonstrated that immutability is equivalent to security. And indeed there are numerous ways to achieve "security" (a word that begs precise definition) in a variety of different systems.
 
