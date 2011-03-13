@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -28,8 +29,7 @@
 <p>This is the story behind it. The <a href="http://rubini.us">Rubinius</a> project (where <strong>The Best Ruby VM of All Time</strong> &trade; is being built) had tried a couple project collaboration tools before <a href="http://blog.fallingsnow.net">Evan</a> gave me the ok to try something different. My goal was a project collaboration tool that collected the relevant information in one place, making it easy to access and modify. Communication is key, so I decided to build on the excellent <a href="http://beast.caboo.se">Beast</a> forum.</p>
 <p>The big question is: What is <em>relevant</em> information? I have some opinions about that. We have a liberal commit bit policy, which encourages a lot of participation. To balance that, we need to always stay on top of what is being committed. In my experience, that means <span class="caps">RSS</span> and graphical browsing of Subversion changes. We need tickets to track bugs. However, our tickets are super light. Basically, a ticket has a title, body, and status. A user can <em>take</em> a ticket to indicate that she is working on it. There are no comments, and no priorities. Tickets are versioned, so a user cannot destroy pertinent information. The ticket body should always be the definitive statement of the problem. No browsing through comments and attachments trying to figure out what is relevant. I&#8217;ll be writing more about the design decisions in the <a href="http://devil.brightredglow.com/pages">Dev&#8217;il docs</a>.</p>
 <p>I do owe a big debt to <a href="http://trac.edgewall.org/">Trac</a> , <a href="http://collaboa.org">Collaboa</a>, <a href="http://software.pmade.com/devalot">Devalot</a> , <a href="http://retrospectiva.org">Retrospectiva</a>, mostly for showing me (especially Trac) what I did not want to do, which can be a great source of inspiration. The name itself came from a combination of pure frustration working on Devalot and Evan&#8217;s quote about rubinius having &#8220;a little evil built in&#8221;. It was mostly a response to the &#8220;alot&#8221; in Devalot. I wanted something much lighter and easier to understand and use. Anyway, if you&#8217;re offended by the name, it&#8217;s very easy to change: drop a file named <code>project.rb</code> in your lib directory that contains your project name.</p>
-<p>The project is still under development. I&#8217;ve released the source because a few folks were clamoring for it. Drop by the <a href="http://devil.brightredglow.com/forums">Dev&#8217;il forums</a> for features in the works and to offer up some feedback.<br />
-</p></div>
+<p>The project is still under development. I&#8217;ve released the source because a few folks were clamoring for it. Drop by the <a href="http://devil.brightredglow.com/forums">Dev&#8217;il forums</a> for features in the works and to offer up some feedback.</p></div>
       </div>
     </div>
         <div id="sidebar">
@@ -77,11 +77,14 @@
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

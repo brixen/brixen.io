@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -28,39 +29,60 @@
 <p>When I was wrapping it up as a plugin, this started bugging me a lot. Especially because my first tries at the assertion method weren&#8217;t very good. (Ugh! `svn diff -r59:72 http://svn.planetargon.org/rails/plugins/assert\<em>cookie/lib/assert\</em>cookie.rb`) But the idea of testing it was confounding. How do you think about testing the tester?</p>
 <p>The first thing I had to get straight was what I expected. It basically reduced to expecting the assertion to pass or fail. When an assertion fails, it raises the `AssertionFailedError` exception. Excellent, now I was making progress.</p>
 <p>I started writing tests like:<br />
-<pre><typo:code lang="ruby"><br />
-def test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure<br />
-  assert_nothing_raised { assert_cookie :secret, :secure =&gt; true }<br />
-end</p>
-<p>def test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure<br />
-  assert_raise(AssertionFailedError) { assert_cookie :open_secret, <br />
-      :secure =&gt; true }<br />
-end</p>
-<p></typo:code></pre></p>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure</span>
+<span class="lineno">2</span>   <span class="n">assert_nothing_raised</span> <span class="p">{</span> <span class="n">assert_cookie</span> <span class="ss">:secret</span><span class="p">,</span> <span class="ss">:secure</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span>
+<span class="lineno">3</span> <span class="k">end</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="k">def</span> <span class="nf">test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure</span>
+<span class="lineno">6</span>   <span class="n">assert_raise</span><span class="p">(</span><span class="no">AssertionFailedError</span><span class="p">)</span> <span class="p">{</span> <span class="n">assert_cookie</span> <span class="ss">:open_secret</span><span class="p">,</span> 
+<span class="lineno">7</span>       <span class="ss">:secure</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span>
+<span class="lineno">8</span> <span class="k">end</span>
+</code><div class="highlight"><pre><code class="ruby">&lt;span class="lineno"&gt;1&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure&lt;/span&gt;
+&lt;span class="lineno"&gt;2&lt;/span&gt;   &lt;span class="n"&gt;assert_nothing_raised&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;assert_cookie&lt;/span&gt; &lt;span class="ss"&gt;:secret&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:secure&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="lineno"&gt;3&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="lineno"&gt;4&lt;/span&gt; 
+&lt;span class="lineno"&gt;5&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure&lt;/span&gt;
+&lt;span class="lineno"&gt;6&lt;/span&gt;   &lt;span class="n"&gt;assert_raise&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;AssertionFailedError&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;assert_cookie&lt;/span&gt; &lt;span class="ss"&gt;:open_secret&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+&lt;span class="lineno"&gt;7&lt;/span&gt;       &lt;span class="ss"&gt;:secure&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="lineno"&gt;8&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;
+</code></pre></p>
+<p></div></notextile></p>
 <p>and notices a lot of repetition of `assert\<em>raise(AssertionFailedError)` and `assert\<em>nothing\<em>raised`. It was ugly to read. I decided to write a couple helper assertions:<br />
-<pre><typo:code lang="ruby"><br />
-def assert_pass<br />
-  assert</em>block(&quot;assert</em>pass must be called with a block.&quot;) { block</em>given? }<br />
-  yield<br />
-end</p>
-<p>def assert_fail<br />
-  assert_block(&#8220;assert_fail must be called with a block.&#8221;) { block_given? }<br />
-  yield<br />
-rescue AssertionFailedError<br />
-end</p>
-<p></typo:code></pre></p>
+<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">assert_pass</span>
+<span class="lineno"> 2</span>   <span class="n">assert_block</span><span class="p">(</span><span class="s2">&quot;assert_pass must be called with a block.&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="nb">block_given?</span> <span class="p">}</span>
+<span class="lineno"> 3</span>   <span class="k">yield</span>
+<span class="lineno"> 4</span> <span class="k">end</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="k">def</span> <span class="nf">assert_fail</span>
+<span class="lineno"> 7</span>   <div class="highlight"><pre><code class="ruby">&lt;span class="lineno"&gt; 1&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;assert_pass&lt;/span&gt;
+&lt;span class="lineno"&gt; 2&lt;/span&gt;   &lt;span class="n"&gt;assert_block&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;assert_pass must be called with a block.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;block_given?&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="lineno"&gt; 3&lt;/span&gt;   &lt;span class="k"&gt;yield&lt;/span&gt;
+&lt;span class="lineno"&gt; 4&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="lineno"&gt; 5&lt;/span&gt; 
+&lt;span class="lineno"&gt; 6&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;assert_fail&lt;/span&gt;
+&lt;span class="lineno"&gt; 7&lt;/span&gt;   &lt;span class="n"&gt;assert</em>block</span><span class="p">(</span><span class="s2">&quot;assert</em>fail must be called with a block.&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="nb">block</em>given?</span> <span class="p">}</span><br />
+<span class="lineno"> 8</span>   <span class="k">yield</span><br />
+<span class="lineno"> 9</span> <span class="k">rescue</span> <span class="no">AssertionFailedError</span><br />
+<span class="lineno">10</span> <span class="k">end</span><br />
+</code></pre></p>
+<p></div></notextile></p>
 <p>The hard part again was figuring out what I was expecting. My first try was to use `assert\<em>raise` and `assert\<em>nothing\<em>raised` as before. But those failed miserable because they call `yield`. I lamented to [Andrew](http://www.stopdropandrew.com/) that I wished `yield` would work like `raise`. After thinking a bit more, I realized I only cared whether an `AssertionFailedError` exception was raised or not. The previous tests now look like this:<br />
-<pre><typo:code lang="ruby"><br />
-def test_assertion_cookie_is_secure_should_pass_when_cookie_is</em>secure<br />
-  assert</em>pass { assert</em>cookie :secret, :secure =&gt; true }<br />
-end</p>
-<p>def test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure<br />
-  assert_fail { assert_cookie :open_secret, :secure =&gt; true }<br />
-end</p>
-<p></typo:code></pre></p>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure</span>
+<span class="lineno">2</span>   <span class="n">assert_pass</span> <span class="p">{</span> <span class="n">assert_cookie</span> <span class="ss">:secret</span><span class="p">,</span> <span class="ss">:secure</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span>
+<span class="lineno">3</span> <span class="k">end</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="k">def</span> <span class="nf">test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure</span>
+<span class="lineno">6</span>   <div class="highlight"><pre><code class="ruby">&lt;span class="lineno"&gt;1&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_assertion_cookie_is_secure_should_pass_when_cookie_is_secure&lt;/span&gt;
+&lt;span class="lineno"&gt;2&lt;/span&gt;   &lt;span class="n"&gt;assert_pass&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;assert_cookie&lt;/span&gt; &lt;span class="ss"&gt;:secret&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:secure&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="lineno"&gt;3&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="lineno"&gt;4&lt;/span&gt; 
+&lt;span class="lineno"&gt;5&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_assertion_cookie_is_secure_should_fail_when_cookie_is_not_secure&lt;/span&gt;
+&lt;span class="lineno"&gt;6&lt;/span&gt;   &lt;span class="n"&gt;assert</em>fail</span> <span class="p">{</span> <span class="n">assert</em>cookie</span> <span class="ss">:open</em>secret</span><span class="p">,</span> <span class="ss">:secure</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span><br />
+<span class="lineno">7</span> <span class="k">end</span><br />
+</code></pre></p>
+<p></div></notextile></p>
 <p>There is one last thing that bugs me. I wanted the tests to run outside of Rails but function correctly in Rails. Rails adds a method to `Test::Unit::Assertions` called `clean\<em>backtrace`. I couldn&#8217;t figure out how to get that required correctly, so I created a stub in `test\</em>helper.rb`. Can anyone help me fix this?</p>
-<p>Install the plugin with `script/plugin install http://svn.planetargon.org/rails/plugins/assert_cookie`. Navigate to the `vendor/plugins/assert_cookie` directory, type `rake` and watch the tests run. :)<br />
-</p></div>
+<p>Install the plugin with `script/plugin install http://svn.planetargon.org/rails/plugins/assert_cookie`. Navigate to the `vendor/plugins/assert_cookie` directory, type `rake` and watch the tests run. :)</p></div>
       </div>
     </div>
         <div id="sidebar">
@@ -108,11 +130,14 @@ end</p>
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

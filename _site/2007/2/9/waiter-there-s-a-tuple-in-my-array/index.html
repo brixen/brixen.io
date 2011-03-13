@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -31,7 +32,7 @@ sirb:001&gt; t = Tuple.new(3) =&gt; #&lt;Tuple: nil, nil, nil&gt;
 sirb:002&gt; t.put(1, "foo")  =&gt; #&lt;Tuple: nil, "foo", nil&gt;
 sirb:003&gt; t.shift          =&gt; #&lt;Tuple: nil, "foo"&gt;
 </code></pre>
-<p>Here&#8217;s another example. Have you noticed the <code>chr</code> method available on instances of <code>Integer</code>. Well, while implementing some <code>String</code> methods, I decided it would be nice to say, <code>some_str[i].isspace</code>. If you&#8217;ve used C, you know that there is this thing <code>ctype</code> that has macros or functions like <code>isspace</code>. Stumbling around a bit, I finally decided to add a module <code>CType</code> and mix that in to <code>Integer</code>. Works pretty well</p>
+<p>Here&#8217;s another example. Have you noticed the <code>chr</code> method available on instances of <code>Integer</code>. Well, while implementing some <code>String</code> methods, I decided it would be nice to say, <code>some_str[i].isspace</code>. If you&#8217;ve used C, you know that there is this thing <code>ctype</code> that has macros or functions like <code>isspace</code>. Stumbling around a bit, I finally decided to add a module <code>CType</code> and mix that in to <code>Integer</code>. Works pretty well.</p>
 <p>So, there&#8217;s Tuple in all its glory sitting right in the middle of your Array. Is that a problem? I don&#8217;t think so. This is <em>Ruby</em>, folks. Duck typing, open classes, mixins, methods appearing and disappearing any old time of the day are <em>the norm</em>. To clarify, the <em>behavior</em> of the core classes, like Array, which have a different <em>implementation</em> in Rubinius from that of the C one used in <span class="caps">MRI</span>, will not change. In other words, if you use Array methods, they&#8217;ll behave like Array methods.</p>
 <p>I say, if your code depends on a class only having certain elements when you invoke <code>Foo.ancestors</code>, for Pete&#8217;s sake, refactor. And if you happen to have a ByteArray or Tuple in your application, refactor that, too. We&#8217;re the VM, we get certain privileges. Now, suppose you wrote your application to use all the deliciousness of Rubinius, thereby demonstrating you are a wise and thoughtful old soul. (Yes, that&#8217;s right, CompiledMethod, Method, MethodContext, BlockContext, BlockEnvironment, and more are <em>classes</em>. Yum. And that is just the tip of the iceberg, I assure you.) But, you heavily built in dependencies on, say, Tuple, and now you&#8217;re complaining it doesn&#8217;t run on <span class="caps">MRI</span>&#8230; Well, here&#8217;s your warning. In other words, don&#8217;t be that silly.</p>
 <p>However, if this raises concerns for you, here&#8217;s a suggestion: We&#8217;re working feverishly on <a href="http://rspec.rubyforge.org">RSpec</a> specs for all of the core and standard Ruby libraries. We also have a directory for incompatibilities in the Rubinius implementation, which is predictably found in <code>spec/core/incompatible</code>. Feel free to join us in writing these specs. That way, you can run them against your favorite Ruby implementation and know what works. Perhaps, you can even integrate this knowledge into your own project&#8217;s specs. You <em>are</em> writing specs for your projects, aren&#8217;t you?</p></div>
@@ -82,11 +83,14 @@ sirb:003&gt; t.shift          =&gt; #&lt;Tuple: nil, "foo"&gt;
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -39,7 +40,7 @@ Unable to find 'tsort' to load
                   main.load at core/compile.rb:56
             main.__script__ at core/__loader.rb:50
 </code></pre>
-<p>Hmm. Oh, yes! I think we need to check load path. (I&#8217;ve since added <code>stdlib</code> to the default load path.))</p>
+<p>Hmm. Oh, yes! I think we need to check load path. (I&#8217;ve since added <code>stdlib</code> to the default load path.)</p>
 <pre style="overflow: auto"><code>
 sirb(eval):001&gt; p $:
 [".", "runtime/compiler.rba", "lib"]
@@ -51,7 +52,7 @@ Couldn't find tsort.rbc in runtime/compiler.rba (No such file/-1)
 Couldn't find tsort.rb in runtime/compiler.rba (No such file/-1)
 =&gt; true
 </code></pre>
-<p>Oh baby. Just ignore those couple complaints. It&#8217;s that <code>=&gt; true</code> that we&#8217;re looking for. Nice! Now, we&#8217;ll just try the example in the <code>tsort.rb</code> file</p>
+<p>Oh baby. Just ignore those couple complaints. It&#8217;s that <code>=&gt; true</code> that we&#8217;re looking for. Nice! Now, we&#8217;ll just try the example in the <code>tsort.rb</code> file.</p>
 <pre style="overflow: auto"><code>
 sirb(eval):004&gt; class Hash
 sirb(eval):005&gt;   include TSort
@@ -67,14 +68,13 @@ sirb(eval):012&gt; {1=&gt;[2], 2=&gt;[3, 4], 3=&gt;[2], 4=&gt;[]}.strongly_conne
 =&gt; [[4], [2, 3], [1]]
 sirb(eval):013&gt;
 </code></pre>
-<p>Excellent! Er, what&#8217;s that? Did I hear you say, &#8220;So, big deal, <code>tsort.rb</code> isn&#8217;t that tough&#8221;? Well, ok, it isn&#8217;t. (I didn&#8217;t even know about <code>TSort</code> before browsing through the source.) But, we can do other stuff, too</p>
+<p>Excellent! Er, what&#8217;s that? Did I hear you say, &#8220;So, big deal, <code>tsort.rb</code> isn&#8217;t that tough&#8221;? Well, ok, it isn&#8217;t. (I didn&#8217;t even know about <code>TSort</code> before browsing through the source.) But, we can do other stuff, too.</p>
 <pre style="overflow: auto"><code>
 sirb(eval):008&gt; require 'csv'
 =&gt; true
 sirb(eval):009&gt;
 </code></pre>
-<p>Yep, that&#8217;s right, <code>csv.rb</code> compiles! But, I&#8217;ll spare you the pain that ensued trying to use it. Baby steps. Ok, enough fun. C&#8217;mon kids, there&#8217;s a bunch of the core library still to implement!<br />
-</p></div>
+<p>Yep, that&#8217;s right, <code>csv.rb</code> compiles! But, I&#8217;ll spare you the pain that ensued trying to use it. Baby steps. Ok, enough fun. C&#8217;mon kids, there&#8217;s a bunch of the core library still to implement!</p></div>
       </div>
     </div>
         <div id="sidebar">
@@ -122,11 +122,14 @@ sirb(eval):009&gt;
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

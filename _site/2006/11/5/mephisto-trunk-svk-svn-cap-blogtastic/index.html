@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -33,18 +34,18 @@ svk mkdir //mirror/mephisto
 svk mirror http://svn.techno-weenie.net/projects/mephisto/trunk //mirror/mephisto/trunk
 svk sync //mirror/mephisto/trunk
 </code></pre>
-<p>That&#8217;s the Mephisto side of the cable. Now, for my local svn side</p>
+<p>That&#8217;s the Mephisto side of the cable. Now, for my local svn side.</p>
 <pre style="overflow: auto;"><code>
 svk mkdir //svn
 svk mkdir //svn/mephisto
 svk mirror svn://svn.brightredglow.com/mephisto/trunk //svn/mephisto/trunk
 svk smerge --baseless //mirror/mephisto/trunk //svn/mephisto/trunk
 </code></pre>
-<p>Now, I simply use the <code>sync</code> command above to pull new Mephisto changes to my svk repository and the following command to push those changes to my svn repository::</p>
+<p>Now, I simply use the <code>sync</code> command above to pull new Mephisto changes to my svk repository and the following command to push those changes to my svn repository:</p>
 <pre style="overflow: auto;"><code>
 svk smerge --incremental --log //mirror/mephisto/trunk //svn/mephisto/trunk
 </code></pre>
-<p>From here, it&#8217;s pretty simple. I check out a working copy of my svn Mephisto trunk and work normally. Using <a href="http://rubyforge.org/projects/capistrano/">Capistrano</a>, I can <code>cap deploy</code> or <code>cap rollback</code> to my heart&#8217;s content</p>
+<p>From here, it&#8217;s pretty simple. I check out a working copy of my svn Mephisto trunk and work normally. Using <a href="http://rubyforge.org/projects/capistrano/">Capistrano</a>, I can <code>cap deploy</code> or <code>cap rollback</code> to my heart&#8217;s content.</p>
 <p>Finally, <a href="http://mongrel.rubyforge.org/index.html">Mongrel</a> + <a href="http://nginx.net/">Nginx</a> + Mephisto are working flawlessly. My mongrel processes never get over about 35MB and they hum along day after day, week after week. Sometimes load gets too high for my <span class="caps">VPS</span>, but I can live with that. Speaking of <span class="caps">VPS</span>, <a href="http://www.quantact.com">Quantact</a> has recently added OpenVZ options. They&#8217;re quiet but dependable. And recently I logged in to my control panel to find that I had 33% more <span class="caps">RAM</span> and another gig of disk space. I&#8217;m not saying they do this all the time, but for whatever reason they did it, I appreciate it.</p></div>
       </div>
     </div>
@@ -93,11 +94,14 @@ svk smerge --incremental --log //mirror/mephisto/trunk //svn/mephisto/trunk
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

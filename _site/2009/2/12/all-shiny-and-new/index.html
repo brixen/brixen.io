@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -36,26 +37,26 @@
 
     69 files, 763 examples, 5632 expectations, 0 failures, 0 errors
 </pre>
-<p>Now, on the Rubinius stackfull branch::</p>
+<p>Now, on the Rubinius stackfull branch:</p>
 <pre>
     Finished in 5.834874 seconds
 
     69 files, 754 examples, 5563 expectations, 6 failures, 19 errors
 </pre>
-<p>Here&#8217;s the numbers for running after the specs have been compiled</p>
+<p>Here&#8217;s the numbers for running after the specs have been compiled.</p>
 <p>Again, on the master branch:</p>
 <pre>
     Finished in 5.101799 seconds
 
     69 files, 763 examples, 5632 expectations, 0 failures, 0 errors
 </pre>
-<p>And now the stackfull branch::</p>
+<p>And now the stackfull branch:</p>
 <pre>
     Finished in 1.564942 seconds
 
     69 files, 754 examples, 5563 expectations, 6 failures, 19 errors
 </pre>
-<p>I&#8217;ll let that sink in a bit</p>
+<p>I&#8217;ll let that sink in a bit&#8230;</p>
 <p>The numbers for Hash with compilation are similar.</p>
 <p>Master:</p>
 <pre>
@@ -63,13 +64,13 @@
 
     48 files, 195 examples, 425 expectations, 0 failures, 0 errors
 </pre>
-<p>Stackfull::</p>
+<p>Stackfull:</p>
 <pre>
     Finished in 1.295544 seconds
 
     48 files, 193 examples, 421 expectations, 0 failures, 0 errors
 </pre>
-<p>That&#8217;s right, <del>between 4.1 and 4.4</del> <strong>approaching 2</strong> <em>times</em> faster (see the <span class="caps">UPDATE</span> above). And we are just getting started. The significant GC changes are not in yet. We are not <em>yet</em> doing any significant optimizations in the compiler, no profile-directed optimizations at runtime, and our nascent <span class="caps">JIT</span> is not hooked up by default. As I said at the outset, these optimizations are made easier by this architecture change</p>
+<p>That&#8217;s right, <del>between 4.1 and 4.4</del> <strong>approaching 2</strong> <em>times</em> faster (see the <span class="caps">UPDATE</span> above). And we are just getting started. The significant GC changes are not in yet. We are not <em>yet</em> doing any significant optimizations in the compiler, no profile-directed optimizations at runtime, and our nascent <span class="caps">JIT</span> is not hooked up by default. As I said at the outset, these optimizations are made easier by this architecture change.</p>
 <p>While I&#8217;m breaking the news, Evan deserves the credit for the architecture decisions and generally being courageous enough to try and learn (some would say fail) and try again. Some have doubted that the lofty goals Rubinius has set are realistic. Doubters have a seat.</p>
 <p>If you want to try this at home, clone the <a href="http://github.com/evanphx/rubinius/tree/master">Rubinius Github</a> repository and do the following:</p>
 <pre>
@@ -77,8 +78,7 @@
     $ rake build
     $ bin/mspec ci core/string
 </pre>
-<p>Thanks to <a href="http://engineyard.com">Engine Yard</a> for trusting in Evan&#8217;s excellent judgment and system architecture talents and in all our hard work even if it doesn&#8217;t look immediately relevant. The path is clear. The goods are in the truck and they will be delivered.<br />
-</p></div>
+<p>Thanks to <a href="http://engineyard.com">Engine Yard</a> for trusting in Evan&#8217;s excellent judgment and system architecture talents and in all our hard work even if it doesn&#8217;t look immediately relevant. The path is clear. The goods are in the truck and they will be delivered.</p></div>
       </div>
     </div>
         <div id="sidebar">
@@ -126,11 +126,14 @@
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

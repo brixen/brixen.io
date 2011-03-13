@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -43,7 +44,7 @@
 </div><p>You might imagine the <code>VM</code> instance having a <code>Scheduler</code> component that would supervise the threads and arrange for running them on one or more processors or cores. In this model, the VM is really like a virtual computer in which all execution is occurring. In other words, the VM is composed of multiple threads of execution.</p>
 <p>The point of this mental exercise is to expose the tacit assumptions we might have about our mapping between a real computer and the virtual machine. Now let&#8217;s delve into Rubinius.</p>
 <p>The <code>main</code> function is located in <code>vm/drivers/cli.cpp</code>. The first thing it does is create an instance of <code>Environment</code>, which is composed of an instance of <code>VMManager</code>, <code>SharedState</code>, and <code>VM</code>. In the <code>Environment</code> constructor, the command line is parsed for configuration options. Then the manager creates a new shared state. The shared state creates a vm. And finally the vm is initialized. During initialization, the <code>ObjectMemory</code> is created. The object memory in turn is composed of garbage collected heaps for the young and mature generations.</p>
-<p>Back in <code>main</code>, a platform-specific configuration file is loaded, the &#8220;vm&#8221; is booted, the command line is loaded into <code>ARGV</code>, the kernel is loaded (i.e. the compiled versions of the files located in the <code>kernel/</code> directory), the preemption and signal threads are started, and finally the compiled version of <code>kernel/loader.rb</code> is run, which will process the command line arguments, run scripts, start <span class="caps">IRB</span>, etc. When your script, <span class="caps">IRB</span>, <code>-e</code> command, etc. finish running, <code>loader.rb</code> finishes, <code>main</code> finishes, resources are cleaned up, and finally the process exits</p>
+<p>Back in <code>main</code>, a platform-specific configuration file is loaded, the &#8220;vm&#8221; is booted, the command line is loaded into <code>ARGV</code>, the kernel is loaded (i.e. the compiled versions of the files located in the <code>kernel/</code> directory), the preemption and signal threads are started, and finally the compiled version of <code>kernel/loader.rb</code> is run, which will process the command line arguments, run scripts, start <span class="caps">IRB</span>, etc. When your script, <span class="caps">IRB</span>, <code>-e</code> command, etc. finish running, <code>loader.rb</code> finishes, <code>main</code> finishes, resources are cleaned up, and finally the process exits.</p>
 <p>Whew. The point of this whirlwind tour is to illustrate that <em>VM</em> is a rather fuzzy concept, even though we have a class named <code>VM</code>. Now let&#8217;s take a look at how threads fit in.</p>
 <p>Rubinius has a 1:1 native thread model. In other words, each time you do <code>Thread.new</code> in your Ruby code, the instance returned maps to a single native thread. In fact, let&#8217;s look at the code for <code>Thread.new</code> in <code>kernel/common/thread.rb</code>.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">class</span> <span class="nc">Thread</span>
@@ -75,9 +76,8 @@
 <span class="lineno">16</span> <span class="p">}</span>
 </code></pre>
 </div><p>The call to <code>allocate</code> creates a new instance of <code>VM</code> as thread local data. The call to <code>fork</code> creates the new native thread. The call to <code>native_thread_-&gt;run()</code> will eventually call the <code>__run__</code> method in <code>kernel/common/thread.rb</code>. Something to note about this snippet of C++ code is the nice consistency between the primitives and the Ruby code that calls them.</p>
-<p>We&#8217;ve encountered the <code>VM</code> class in two contexts: 1) when starting up the Rubinius process, and 2) when creating a new <code>Thread</code>. We can consider the <code>VM</code> instance to be an abstraction of the state of a single thread of execution, and in fact, <code>state</code> is the name most often given to an instance of <code>VM</code> in the Rubinius source</p>
-<p>As we&#8217;ve seen, Rubinius as a running process is composed of various abstractions, including the <code>Environment</code>, <code>SharedState</code>, <code>NativeThread</code>, and <code>VM</code> to name a few. While it is accurate to call Rubinius a virtual machine, it is apparent that concept can cover a fair bit of complexity. But breaking it into parts makes it fairly easy to understand. Let us know what things you&#8217;d like to understand better. We have the <code>doc/</code> directory in the source that we&#8217;re (slowly) building out. If you&#8217;re interested in contributing, docs would be a great way to help everyone.<br />
-</p></div>
+<p>We&#8217;ve encountered the <code>VM</code> class in two contexts: 1) when starting up the Rubinius process, and 2) when creating a new <code>Thread</code>. We can consider the <code>VM</code> instance to be an abstraction of the state of a single thread of execution, and in fact, <code>state</code> is the name most often given to an instance of <code>VM</code> in the Rubinius source.</p>
+<p>As we&#8217;ve seen, Rubinius as a running process is composed of various abstractions, including the <code>Environment</code>, <code>SharedState</code>, <code>NativeThread</code>, and <code>VM</code> to name a few. While it is accurate to call Rubinius a virtual machine, it is apparent that concept can cover a fair bit of complexity. But breaking it into parts makes it fairly easy to understand. Let us know what things you&#8217;d like to understand better. We have the <code>doc/</code> directory in the source that we&#8217;re (slowly) building out. If you&#8217;re interested in contributing, docs would be a great way to help everyone.</p></div>
       </div>
     </div>
         <div id="sidebar">
@@ -125,11 +125,14 @@
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

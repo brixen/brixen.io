@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -26,12 +27,11 @@
 
          <div class="entrybody"><p>The first post I read by <a href="http://blog.fallingsnow.net/">Evan</a> about <a href="http://rubini.us">Rubinius</a> had a quote about <a href="http://blog.fallingsnow.net/rubinius/">evil built in</a>. Of course, that caught my eye. What was Evan&#8217;s point? Legend has it (I wasn&#8217;t there) that during Q&amp;A someone asked about fundamental aspects of the Rubinius system being available for modification from normal user code. The issue was raised that perhaps something should restrict that unlimited power. Evan&#8217;s response was that Rubinius sorta has evil built in. Usually, that&#8217;s a good thing.</p>
 <p>In fact, it&#8217;s a very sharp double-edged blade. We all cherish the dynamic nature of Ruby when it allows us to do useful things. For example, the following works great in <span class="caps">MRI</span>:</p>
-<pre><code>
-class Fixnum
-  alias / quo
-end
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">class</span> <span class="nc">Fixnum</span>
+<span class="lineno">2</span>   <span class="k">alias</span> <span class="o">/</span> <span class="n">quo</span>
+<span class="lineno">3</span> <span class="k">end</span>
 </code></pre>
-<p>That little snippet and you&#8217;ve redefined fixed-point math to return a floating point number. That gem is one of the core pieces of the Mathn library in the Ruby standard library collection. Together with the Rational library, you can do some cool stuff::</p>
+</div><p>That little snippet and you&#8217;ve redefined fixed-point math to return a floating point number. That gem is one of the core pieces of the Mathn library in the Ruby standard library collection. Together with the Rational library, you can do some cool stuff:</p>
 <pre><code>
 $ irb
 &gt;&gt; require 'rational'
@@ -43,44 +43,39 @@ $ irb
 &gt;&gt; 1 / 2 + 3 / 8
 =&gt; 7/8
 </code></pre>
-<p>Combine that with Matrix and Rational and you have at your disposal some pretty powerful tools for doing more realistic mathematics. Take a look at <a href="http://google.com/codesearch?q=lang%3Aruby+require+mathn&amp;hl=en&amp;btnG=Search+Code">what some folks do</a> with it</p>
+<p>Combine that with Matrix and Rational and you have at your disposal some pretty powerful tools for doing more realistic mathematics. Take a look at <a href="http://google.com/codesearch?q=lang%3Aruby+require+mathn&amp;hl=en&amp;btnG=Search+Code">what some folks do</a> with it.</p>
 <p>Fortunately, and unfortunately, Rubinius is very different than every other implementation of Ruby that I&#8217;m aware of. Rubinius follows the Smalltalk model and uses the Ruby language itself to build the implementation. That means that Array, for instance, calculates values for its internal operations using none other than the same Fixnum values that you use in your Ruby code. So, what happens when we redefine Fixnum#/ to return a Float instead?</p>
 <p>Yes, you guessed right. Things work differently. In fact, not at all.</p>
 <p>Since we&#8217;re not about to rescind the promise of a better Ruby, we have to figure out some way to deal with this. There are several approaches possible. One would be to code all of the core library with a different set of numeric classes, say BasicFixnum and BasicBignum, that are superclasses of Fixnum and Bignum. That would be really cumbersome. Another approach would be to use different methods in the core library. Again, cumbersome. So, this sounds like there are some basic goals we have in mind. In fact, there are. We want to keep the core library code as simple as possible and provide the full power of Ruby at every level, to the greatest extent possible.</p>
 <p>This isn&#8217;t necessarily the ultimate approach we&#8217;ll use, but I checked in some code today that leverages a very slick feature that Evan built into the compiler. I created the following compiler plugin:</p>
-<pre><code>
-class SafeMathOperators &lt; Plugin
-  plugin :safemath
-  
-  MathOps = {
-    :/ =&gt; :divide
-  }
-  
-  def handle(g, call)
-    name = MathOps[call.method]
-    if name and call.argcount == 1
-      call.emit_args(g)
-      call.receiver_bytecode(g)
-      g.send name, 1, false
-      return true
-    end
-    return false
-  end
-end
+<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nc">SafeMathOperators</span> <span class="o">&lt;</span> <span class="no">Plugin</span>
+<span class="lineno"> 2</span>   <span class="n">plugin</span> <span class="ss">:safemath</span>
+<span class="lineno"> 3</span>   
+<span class="lineno"> 4</span>   <span class="no">MathOps</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="ss">:/</span> <span class="o">=&gt;</span> <span class="ss">:divide</span>
+<span class="lineno"> 6</span>   <span class="p">}</span>
+<span class="lineno"> 7</span>   
+<span class="lineno"> 8</span>   <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">call</span><span class="p">)</span>
+<span class="lineno"> 9</span>     <span class="nb">name</span> <span class="o">=</span> <span class="no">MathOps</span><span class="o">[</span><span class="n">call</span><span class="o">.</span><span class="n">method</span><span class="o">]</span>
+<span class="lineno">10</span>     <span class="k">if</span> <span class="nb">name</span> <span class="ow">and</span> <span class="n">call</span><span class="o">.</span><span class="n">argcount</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="lineno">11</span>       <span class="n">call</span><span class="o">.</span><span class="n">emit_args</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="lineno">12</span>       <span class="n">call</span><span class="o">.</span><span class="n">receiver_bytecode</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="lineno">13</span>       <span class="n">g</span><span class="o">.</span><span class="n">send</span> <span class="nb">name</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kp">false</span>
+<span class="lineno">14</span>       <span class="k">return</span> <span class="kp">true</span>
+<span class="lineno">15</span>     <span class="k">end</span>
+<span class="lineno">16</span>     <span class="k">return</span> <span class="kp">false</span>
+<span class="lineno">17</span>   <span class="k">end</span>
+<span class="lineno">18</span> <span class="k">end</span>
 </code></pre>
-<p>Essentially, what this does is map any calls to the #/ method to the #divide method. I&#8217;ve changed the core library classes Fixnum, Bignum, Float, and Numeric to handle this. So, the code in core looks the same, but is protected from the redefinition that the Mathn library performs. The compiler plugin is activated with the -frbx-safe-math switch only when compiling the Rubinius core libraries</p>
+</div><p>Essentially, what this does is map any calls to the #/ method to the #divide method. I&#8217;ve changed the core library classes Fixnum, Bignum, Float, and Numeric to handle this. So, the code in core looks the same, but is protected from the redefinition that the Mathn library performs. The compiler plugin is activated with the -frbx-safe-math switch only when compiling the Rubinius core libraries.</p>
 <p>&gt; <strong><span class="caps">UPDATE</span>:</strong> Note that you do not have to do anything differently. The compiler flag is passed in automatically when you type <code>rake</code> to build the Rubinius libraries. If you are writing user code, you also do not need to do anything differently. You just write your code as you normally would. If you require the Mathn library, <code>1 / 2 =&gt; 0.5</code>. If you also require the Rational library <code>1 / 2 =&gt; 1/2</code>. Invisible, maybe even a little evil.</p>
 <p>Again, this is not necessarily the way we&#8217;ll always do it. The lessons are:</p>
 <ol>
-<p>Ruby is a great, powerful language</p>
-</li>
-<p>Rubinius makes Ruby even more powerful</p>
-</li>
-<p>We can work around snags pretty dang easily, even if temporarily</p>
-</li>
+	<li>Ruby is a great, powerful language</li>
+	<li>Rubinius makes Ruby even more powerful</li>
+	<li>We can work around snags pretty dang easily, even if temporarily</li>
 </ol>
-<p>Of course, we&#8217;re always learning. Any papers, systems, code, etc that you can point me to?<br />
-</p></div>
+<p>Of course, we&#8217;re always learning. Any papers, systems, code, etc that you can point me to?</p></div>
       </div>
     </div>
         <div id="sidebar">
@@ -128,11 +123,14 @@ end
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

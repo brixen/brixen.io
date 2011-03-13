@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -31,23 +32,20 @@
 <p>You, the trusting consumer, would probably like to receive such cautionary advertisement were you to use a product that did, in fact, ship to you code that includes known bugs. And not just known bugs, but known bugs that have fixes for them.</p>
 <p>You would like to know this, right? I mean, I&#8217;m not just some hard-headed asshole that thinks there&#8217;s something a bit whack here, am I? Please, do tell me.</p>
 <p>Well, as luck would have it, you can also tell this to <a href="http://http://blog.headius.com/">Charles Oliver Nutter</a> of <a href="http://jruby.codehaus.org/">JRuby</a> <del>and <a href="http://blogs.msdn.com/shrib/">Shri Borde</a> of <a href="http://www.ironruby.net/">IronRuby</a></del>.</p>
-<p>Here&#8217;s the drama: There&#8217;s this project <a href="http://rubyspec.org">RubySpec</a>. You may have heard of it. It attempts to describe the behavior of the Ruby programming language. All the alternative Ruby implementations use the RubySpec project to attempt to show that they are &#8220;Ruby&#8221;</p>
+<p>Here&#8217;s the drama: There&#8217;s this project <a href="http://rubyspec.org">RubySpec</a>. You may have heard of it. It attempts to describe the behavior of the Ruby programming language. All the alternative Ruby implementations use the RubySpec project to attempt to show that they are &#8220;Ruby&#8221;.</p>
 <p>All the alternative implementations also choose to ship some version or other of the Ruby standard library. At least the parts written in Ruby. Makes sense, since they all implement the Ruby programming language.</p>
 <p>As is the case with all software, from time to time bugs are discovered in Ruby. Usually, these are fixed soon after they are discovered and the fix is committed to the trunk version of <span class="caps">MRI</span> (Matz&#8217;s Ruby Implementation). Eventually, trunk becomes another stable release with a particular patchlevel.</p>
 <p>The RubySpecs deal with this situation with a <code>ruby_bug</code> guard. You can read the details of <a href="http://rubyspec.org/wiki/rubyspec/Guards">RubySpec guards</a>. This particular guard has two functions:</p>
 <ol>
-<p>It prevents the guarded spec from executing on any version of <span class="caps">MRI</span> less than or equal to the version specified in the guard. This is because <span class="caps">MRI</span> cannot re-release a particular patchlevel <em>after</em> it has been released. And the bugs are discovered <em>after</em> a release.</p>
-</li>
-<p>It documents the spec, which shows what the correct behavior should be.</p>
-</li>
+	<li>It prevents the guarded spec from executing on any version of <span class="caps">MRI</span> less than or equal to the version specified in the guard. This is because <span class="caps">MRI</span> cannot re-release a particular patchlevel <em>after</em> it has been released. And the bugs are discovered <em>after</em> a release.</li>
+	<li>It documents the spec, which shows what the correct behavior should be.</li>
 </ol>
 <p>A key feature of the <code>ruby_bug</code> guard is that it <em>does not</em> prevent the spec from running on any alternative implementation. That is because every alternative implementation is expected to have the <em>correct</em> behavior. Additionally, these guards are only added after Matz or ruby-core has stated that the behavior at issue is a bug and the behavior of the spec is the correct behavior.</p>
 <p>Now here is the rub, Charles does not want to manage patching the Ruby standard library that he ships with JRuby <em>with the patches that already exist for known bugs</em>. He wants to ship whatever version <span class="caps">MRI</span> has most recently released. Further, when you run the RubySpecs with JRuby, he wants to <em><strong><span class="caps">MASK</span></strong></em> those bugs because he doesn&#8217;t think it&#8217;s fair that JRuby fails a spec which shows a known bug in the Ruby standard library for which patches are available.</p>
 <p>That&#8217;s Charles choice of strategies for managing JRuby packaging. I&#8217;m strongly of the opinion that you, the user, would like to know that. Charles apparently disagrees.</p>
 <p>In fact, he disagrees so vehemently that he takes to calling me names in the #rubyspec <span class="caps">IRC</span> channel because I refuse to change the fact that the <code>ruby_bug</code> guard will not silently mask spec failures on JRuby or any other alternative implementation. Aside from being immature, I think there is a real problem with this. Don&#8217;t you?</p>
 <p>Charlie will argue that it is simply impossible to ship the trunk version of Ruby standard library because it is an unknown quantity? However, the best defense against bugs in the Ruby standard library is better specs. And we&#8217;re talking about specs here that <em>show the bugs</em> and for which patches exist. Furthermore, there are actually relatively few bugs noted in the specs and most of those are in older versions of Ruby, not the current stable release.</p>
-<p>So, here&#8217;s my question to you: Would you like to know that JRuby <del>and possibly IronRuby</del> ship you code that contains know bugs for which patches exist? Would you also like to know that Charles wants you to run RubySpec on JRuby and not know there is a bug?<br />
-</p></div>
+<p>So, here&#8217;s my question to you: Would you like to know that JRuby <del>and possibly IronRuby</del> ship you code that contains know bugs for which patches exist? Would you also like to know that Charles wants you to run RubySpec on JRuby and not know there is a bug?</p></div>
       </div>
     </div>
         <div id="sidebar">
@@ -95,11 +93,14 @@
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

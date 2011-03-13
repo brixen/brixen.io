@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -25,23 +26,17 @@
       </div>
 
          <div class="entrybody"><p>I really did double-check this time and I won&#8217;t be making any wild claims here. Sorry to disappoint.</p>
-<p>We&#8217;re going to be running <a href="http://antoniocangiano.com/">Antonio&#8217;s</a> <a href="http://github.com/acangiano/ruby-benchmark-suite/tree/master">Ruby Benchmark Suite</a> daily to track our progress on performance in <a href="http://rubini.us">Rubinius</a>. The current <span class="caps">RBS</span> is a bit of a beast so I imported the files into the Rubinius <a href="http://github.com/evanphx/rubinius/commits/master">repository</a> and did some refactoring. You can <a href="http://groups.google.com/group/ruby-benchmark-suite/browse_frm/thread/34b7b7472fa5b80">read the details</a> and up-vote that if you&#8217;d like to see this merged back</p>
+<p>We&#8217;re going to be running <a href="http://antoniocangiano.com/">Antonio&#8217;s</a> <a href="http://github.com/acangiano/ruby-benchmark-suite/tree/master">Ruby Benchmark Suite</a> daily to track our progress on performance in <a href="http://rubini.us">Rubinius</a>. The current <span class="caps">RBS</span> is a bit of a beast so I imported the files into the Rubinius <a href="http://github.com/evanphx/rubinius/commits/master">repository</a> and did some refactoring. You can <a href="http://groups.google.com/group/ruby-benchmark-suite/browse_frm/thread/34b7b7472fa5b80">read the details</a> and up-vote that if you&#8217;d like to see this merged back.</p>
 <p>Now, for some baseline <span class="caps">RBS</span> results. If you want to follow along at home, here&#8217;s what I did. I generated these by running the <code>rake bench</code> task using the <code>VM</code> option (see the benchmark/utils/<span class="caps">README</span> in the Rubinius repository) for Rubinius on the <code>stackfull</code> and <code>master</code> branch and for <span class="caps">MRI</span> using the version installed on Debian lenny, 1.8.7p22. The system is a dual Intel&#174; Xeon&#8482; <span class="caps">CPU</span> 2.40GHz. Then I ran the <code>rake bench:to_csv</code> task, imported the <span class="caps">CSV</span> file into Google Docs, added the comparison columns and colors, and exported to <span class="caps">PDF</span>.</p>
 <p><a href="http://blog.brightredglow.com/assets/2009/2/20/mini-rbx-shootout.jpg">Here&#8217;s what I got.</a> The green is faster, the red is slower. The reported time is the minimum time recorded in five &#8220;iterations&#8221; of each benchmark per input. The maximum time allowed to run five iterations is 300 seconds, or an average of 60 seconds per iteration.</p>
 <p>A few notes about these numbers:</p>
 <ul>
-<p>We&#8217;re still fixing the breakage on the stackfull branch, so it is not surprising, for instance, that all the thread benchmarks errored out. The new native thread support is not 100% done.</p>
-</li>
-<p>There are a couple speed regressions on the stackfull branch, most minor. We&#8217;ll fix those.</p>
-</li>
-<p>Most of the benches do run on the stackfull branch.</p>
-</li>
-<p>On most of the benches that run slower in stackfull than <span class="caps">MRI</span>, we&#8217;re 2x or less slower than <span class="caps">MRI</span>.</p>
-</li>
-<p>We are <em>a lot</em> faster than <span class="caps">MRI</span> on quite a few benchmarks.</p>
-</li>
-<p>Rubinius on either branch does quite well relative to <span class="caps">MRI</span> on benches that <span class="caps">MRI</span> times-out on for certain inputs.</p>
-</li>
+	<li>We&#8217;re still fixing the breakage on the stackfull branch, so it is not surprising, for instance, that all the thread benchmarks errored out. The new native thread support is not 100% done.</li>
+	<li>There are a couple speed regressions on the stackfull branch, most minor. We&#8217;ll fix those.</li>
+	<li>Most of the benches do run on the stackfull branch.</li>
+	<li>On most of the benches that run slower in stackfull than <span class="caps">MRI</span>, we&#8217;re 2x or less slower than <span class="caps">MRI</span>.</li>
+	<li>We are <em>a lot</em> faster than <span class="caps">MRI</span> on quite a few benchmarks.</li>
+	<li>Rubinius on either branch does quite well relative to <span class="caps">MRI</span> on benches that <span class="caps">MRI</span> times-out on for certain inputs.</li>
 </ul>
 <p>Perhaps the biggest point about the stackfull branch is that we haven&#8217;t done much optimization at all. Evan&#8217;s been coding in the basic new interpreter architecture, fixing the GC interaction, adding the native threading. We&#8217;re fixing breakage now so we can get this merged into the master branch. The <span class="caps">JIT</span> is not hooked up. The new GC work is not done. There is no inlining. In other words, there is lots of head room. And that is the key point. You can&#8217;t just &#8220;make it faster&#8221;. Architecture is crucial. Since RailsConf 2008, we&#8217;ve been working hard to lay the architectural foundations. With those (and the switch away from stackless), we can start focusing on the real dynamic language optimizations.</p>
 <p>While the benchmarks tell part of the story, there&#8217;s another part that is even more interesting <span class="caps">IMO</span>. And this is the part that <a href="http://blog.brightredglow.com/2009/2/12/all-shiny-and-new">got me so excited</a> I, um, well I <a href="http://blog.brightredglow.com/2009/2/12/this-is-not-cold-fusion">just got excited</a>&#8230;</p>
@@ -57,7 +52,7 @@
 
   Time spent in GC: 51.6s (39.3%)
 </pre>
-<p>And then on stackfull::</p>
+<p>And then on stackfull:</p>
 <pre style="overflow:auto">
   $ bin/mspec ci --gc-stats
   rubinius 0.11.0-dev (ruby 1.8.6) (e7b6a2d56 12/31/2009) [i686-apple-darwin9.6.0]
@@ -68,7 +63,7 @@
 
   Time spent in GC: 12.7s (19.1%)
 </pre>
-<p>Let&#8217;s calculate how we do in expectations per second::</p>
+<p>Let&#8217;s calculate how we do in expectations per second:</p>
 <pre>
   $ irb
   &gt;&gt; master = 23006 / 131.248169
@@ -78,13 +73,12 @@
   &gt;&gt; stackfull / master
   =&gt; 1.83499416782851
 </pre>
-<p>So, compiling and running the specs is about 1.8 times faster on stackfull. This is upside down from the normal results. Normally, we do better on the micro benchmarks and see that invert on &#8220;macro&#8221; benchmarks. On the <span class="caps">RBS</span> benches, stackfull is not 1.8 times faster than master. If I average the &#8220;x Master&#8221; column, I get </p>
+<p>So, compiling and running the specs is about 1.8 times faster on stackfull. This is upside down from the normal results. Normally, we do better on the micro benchmarks and see that invert on &#8220;macro&#8221; benchmarks. On the <span class="caps">RBS</span> benches, stackfull is not 1.8 times faster than master. If I average the &#8220;x Master&#8221; column, I get 1.39.</p>
 <p>There was something else in those spec run numbers I wanted to talk about&#8230; oh yeah, GC stats. We have a very simple GC timer stat right now. I&#8217;m going to be adding a few more stats. But what we see here is that the overall percentage of time spent in GC drops by half in stackfull. Even so, 19% is too much time to spend in GC. We expect to drop that by half again. Basically, leaning more on structures <code>alloca'd</code> on the C stack reduces a lot of pressure on the GC.</p>
 <p>Some would toss out that it&#8217;s not hard to be faster than <span class="caps">MRI</span>. Perhaps. But it is an accomplishment to write a reasonably good VM, garbage collector, compiler, and Ruby standard library without importing anyone else&#8217;s code. And, lest we forget, that is two VM&#8217;s in about 27 months of a public project.</p>
 <p>Some would also question the sanity of writing a VM and garbage collector when crazy smart people do things like that. Well, crazy smart people write papers that reasonably smart people can read and understand. From the benchmark result above, that is working pretty well.</p>
 <p>Here&#8217;s the point: Don&#8217;t ever let anyone tell you that something is a bad idea. Make your own decisions. We probably wouldn&#8217;t have Ruby itself if Matz fretted over whether Larry Wall or Adele Goldberg were smarter than he. My most recent favorites in this space: <a href="http://factorcode.org/">Factor</a>, <a href="http://clojure.org">Clojure</a>, and yes, <a href="http://code.macournoyer.com/tinyrb/">tinyrb</a>.</p>
-<p>We&#8217;re working frantically to get the stackfull branch breakages fixed and the branch merged back into master. Feel free to poke around and ask questions.<br />
-</p></div>
+<p>We&#8217;re working frantically to get the stackfull branch breakages fixed and the branch merged back into master. Feel free to poke around and ask questions.</p></div>
       </div>
     </div>
         <div id="sidebar">
@@ -132,11 +126,14 @@
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>

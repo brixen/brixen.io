@@ -4,8 +4,9 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
   <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
-  <meta name="generator" content="Mephisto" />
+  <meta name="generator" content="Jekyll" />
   <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
   <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
 
 </head>
@@ -25,47 +26,45 @@
       </div>
 
          <div class="entrybody"><p>Over at the <a href="http://rubini.us">Rubinius</a> project, in between hatching plots to take over the world, we fit in some time for recreation. For example, we&#8217;ve got this masochistic interest in writing <a href="http://rspec.rubyforge.org">RSpec</a> compatible specs for the Ruby core library. One of the challenges there is the large number of aliased methods that Ruby has. Using RSpec&#8217;s shared behaviors as an example, I&#8217;ve created a flavor of shared behaviors in our <code>mini_rspec</code> implementation. As the code below shows, this makes it straightforward to spec all these aliases.</p>
-<pre><code>
-hash_store = shared "Hash#store" do |cmd|
-  describe "Hash##{cmd}" do
-    it "associates the key with the value and return the value" do
-      h = { :a =&gt; 1 }
-      (h.send(cmd, :b, 2).should == 2
-      h.should == {:b=&gt;2, :a=&gt;1}
-    end
-
-    it "duplicates and freezes string keys" do
-      key = "foo"
-      h = {}
-      h.send(cmd, key, 0)
-      key &lt;&lt; "bar"
-
-      h.should == { "foo" =&gt; 0 }
-      h.keys[0].frozen?.should == true
-    end
-
-    it "duplicates string keys using dup semantics" do
-      # dup doesn't copy singleton methods
-      key = "foo"
-      def key.reverse() "bar" end
-      h = {}
-      h.send(cmd, key, 0)
-
-      h.keys[0].reverse.should == "oof"
-    end  
-
-    it "raises TypeError if called on a frozen instance" do
-      should_raise(TypeError) { hash.send(cmd, 1, 2) }
-    end
-  end
-end
-
-describe "Hash#[]=" do
-  it_behaves_like(hash_store, :[]=)
-end
+<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="n">hash_store</span> <span class="o">=</span> <span class="n">shared</span> <span class="s2">&quot;Hash#store&quot;</span> <span class="k">do</span> <span class="o">|</span><span class="n">cmd</span><span class="o">|</span>
+<span class="lineno"> 2</span>   <span class="n">describe</span> <span class="s2">&quot;Hash#</span><span class="si">#{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">do</span>
+<span class="lineno"> 3</span>     <span class="n">it</span> <span class="s2">&quot;associates the key with the value and return the value&quot;</span> <span class="k">do</span>
+<span class="lineno"> 4</span>       <span class="n">h</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:a</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="lineno"> 5</span>       <span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="ss">:b</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="lineno"> 6</span>       <span class="n">h</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="p">{</span><span class="ss">:b</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="ss">:a</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">}</span>
+<span class="lineno"> 7</span>     <span class="k">end</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span>     <span class="n">it</span> <span class="s2">&quot;duplicates and freezes string keys&quot;</span> <span class="k">do</span>
+<span class="lineno">10</span>       <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span>
+<span class="lineno">11</span>       <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno">12</span>       <span class="n">h</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">13</span>       <span class="n">key</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;bar&quot;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span>       <span class="n">h</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="p">{</span> <span class="s2">&quot;foo&quot;</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="lineno">16</span>       <span class="n">h</span><span class="o">.</span><span class="n">keys</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">frozen?</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="kp">true</span>
+<span class="lineno">17</span>     <span class="k">end</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span>     <span class="n">it</span> <span class="s2">&quot;duplicates string keys using dup semantics&quot;</span> <span class="k">do</span>
+<span class="lineno">20</span>       <span class="c1"># dup doesn&#39;t copy singleton methods</span>
+<span class="lineno">21</span>       <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span>
+<span class="lineno">22</span>       <span class="k">def</span> <span class="nc">key</span><span class="o">.</span><span class="nf">reverse</span><span class="p">()</span> <span class="s2">&quot;bar&quot;</span> <span class="k">end</span>
+<span class="lineno">23</span>       <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno">24</span>       <span class="n">h</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span>       <span class="n">h</span><span class="o">.</span><span class="n">keys</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">reverse</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="s2">&quot;oof&quot;</span>
+<span class="lineno">27</span>     <span class="k">end</span>  
+<span class="lineno">28</span> 
+<span class="lineno">29</span>     <span class="n">it</span> <span class="s2">&quot;raises TypeError if called on a frozen instance&quot;</span> <span class="k">do</span>
+<span class="lineno">30</span>       <span class="n">should_raise</span><span class="p">(</span><span class="no">TypeError</span><span class="p">)</span> <span class="p">{</span> <span class="nb">hash</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">}</span>
+<span class="lineno">31</span>     <span class="k">end</span>
+<span class="lineno">32</span>   <span class="k">end</span>
+<span class="lineno">33</span> <span class="k">end</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span> <span class="n">describe</span> <span class="s2">&quot;Hash#[]=&quot;</span> <span class="k">do</span>
+<span class="lineno">36</span>   <span class="n">it_behaves_like</span><span class="p">(</span><span class="n">hash_store</span><span class="p">,</span> <span class="ss">:[]=</span><span class="p">)</span>
+<span class="lineno">37</span> <span class="k">end</span>
 </code></pre>
-<p>The very cool thing about this is how useful Ruby&#8217;s <code>send</code> method is. And in Rubinius, it gets even cooler, as you&#8217;ll see in <a href="http://blog.brightredglow.com/2007/9/20/send-my-love-to-ruby-ii">part II</a><br />
-</p></div>
+</div><p>The very cool thing about this is how useful Ruby&#8217;s <code>send</code> method is. And in Rubinius, it gets even cooler, as you&#8217;ll see in <a href="http://blog.brightredglow.com/2007/9/20/send-my-love-to-ruby-ii">part II</a></p></div>
       </div>
     </div>
         <div id="sidebar">
@@ -113,11 +112,14 @@ end
         <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
     </div>
 
   </div>
 
-    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and running <a href="http://mephistoblog.com/">Mephisto</a></div>
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
 
 
 </body>
