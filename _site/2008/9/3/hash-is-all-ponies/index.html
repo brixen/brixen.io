@@ -31,7 +31,8 @@
 <span class="lineno">2</span>   <span class="n">inject</span><span class="p">(</span><span class="o">[]</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">ary</span><span class="p">,</span> <span class="n">entry</span><span class="o">|</span> <span class="n">ary</span> <span class="o">&lt;&lt;</span> <span class="n">entry</span><span class="o">.</span><span class="n">first</span> <span class="p">}</span>
 <span class="lineno">3</span> <span class="k">end</span>
 </code></pre>
-</div><p>Since <code>#inject</code> comes from the <code>Enumerable</code> module, we know it&#8217;s using <code>#each</code> internally. And for Hash, I implemented an external iterator of sorts to help hide the implementation details. That iterator is making a method call for each item. So we&#8217;ve piled on two block calls and a method call for each item. The point is, we want that expressive Ruby code in our applications and let the implementation optimize it. So far, we really haven&#8217;t had any Ruby implementation to give us that.</p>
+</div>
+<p>Since <code>#inject</code> comes from the <code>Enumerable</code> module, we know it&#8217;s using <code>#each</code> internally. And for Hash, I implemented an external iterator of sorts to help hide the implementation details. That iterator is making a method call for each item. So we&#8217;ve piled on two block calls and a method call for each item. The point is, we want that expressive Ruby code in our applications and let the implementation optimize it. So far, we really haven&#8217;t had any Ruby implementation to give us that.</p>
 <p>Another thing to check out is the structure of our <a href="http://github.com/evanphx/rubinius/tree/7f8af1531125850bc75b8315269a7e0528e98c50/kernel">kernel directory</a>. Talking to the folks working on <a href="http://ruby.gemstone.com/">MagLev</a>, we&#8217;ve restructured our runtime kernel (aka Ruby standard library) to better allow sharing with other implementations. The <code>bootstrap</code> and <code>delta</code> directories are implementation specific, while the <code>common</code> directory is intended to be shared. The <code>bootstrap</code> directory provides just enough functionality to load the <code>common</code> directory. The <code>delta</code> directory provides a location for implementation specialization where specific methods can be replaced with more performant or otherwise specialized versions.</p>
 <p>As always, we love to hear from folks about what&#8217;s bugging them with Ruby. Drop by #rubinius on freenode.net or check out the <a href="http://github.com/evanphx/rubinius/tree/master">Rubinius</a> project on <a href="http://github.com">Github</a>. Even though we&#8217;re in the middle of this VM rewrite, there&#8217;s plenty still to be done on the Ruby standard library.</p>
 <p><strong>Update:</strong> <a href="http://blog.fallingsnow.net">Evan</a> points out that this is a better implementation of <code>#keys</code>:</p>
@@ -55,6 +56,8 @@
 
       <h2 id="latest_posts">Latest posts</h2>
       <ul>
+      
+        <li><a href="/2011/10/3/nikita-the-ruby-secret-agent-slides">Slides for "Nikita - The Ruby Secret Agent"</a></li>
       
         <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
       
@@ -83,8 +86,6 @@
         <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
       
         <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
-      
-        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
       <p><a href="/posts_index.html">Show All Posts</a></p>

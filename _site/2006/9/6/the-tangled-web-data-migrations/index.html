@@ -43,7 +43,8 @@
 <span class="lineno">10</span>   <span class="k">end</span>
 <span class="lineno">11</span> <span class="k">end</span>
 </code></pre>
-</div><p>Basically, as the data migration runs, I want to keep track of what records are created (and which of those are possibly destroyed). Obviously, this assumes that I&#8217;ll be adding data on the up migration and removing it on the down. To implement this, I opened up the `ActiveRecord::Migration` class and added a couple methods:</p>
+</div>
+<p>Basically, as the data migration runs, I want to keep track of what records are created (and which of those are possibly destroyed). Obviously, this assumes that I&#8217;ll be adding data on the up migration and removing it on the down. To implement this, I opened up the `ActiveRecord::Migration` class and added a couple methods:</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">capture</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
 <span class="lineno"> 2</span>   <span class="n">args</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
 <span class="lineno"> 3</span>     <span class="n">klass</span> <span class="o">=</span> <span class="nb">name</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">classify</span><span class="o">.</span><span class="n">constantize</span>
@@ -74,7 +75,8 @@
 <span class="lineno">28</span>   <span class="k">end</span>
 <span class="lineno">29</span> <span class="k">end</span>
 </code></pre>
-</div><p>This `capture` method adds callbacks for `after\<em>create` and `after\</em>destroy` to keep track of the id&#8217;s. This is written out to a file in a `data` subdirectory of the `db/migrate` directory. These files can be ignored by Subversion so each developer can run the migrations on their own databases without clashing.</p>
+</div>
+<p>This `capture` method adds callbacks for `after\<em>create` and `after\</em>destroy` to keep track of the id&#8217;s. This is written out to a file in a `data` subdirectory of the `db/migrate` directory. These files can be ignored by Subversion so each developer can run the migrations on their own databases without clashing.</p>
 <p>Migrating down is basically a matter of removing the records that were created when migrating up.<br />
 <div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">release</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
 <span class="lineno"> 2</span>   <span class="n">data_file</span> <span class="o">=</span> <span class="n">data_migration_file</span><span class="p">(</span><span class="ss">:down</span><span class="p">)</span>
@@ -105,7 +107,8 @@
 &lt;span class="lineno"&gt;13&lt;/span&gt;   &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unlink&lt;/span&gt; &lt;span class="n"&gt;data_file&lt;/span&gt;
 &lt;span class="lineno"&gt;14&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;
 </code></pre></p>
-<p></div></notextile></p>
+</div>
+<p></notextile></p>
 <p>If you provide a block to the `release` method, you take care of doing whatever you want to the records. If you just want to delete them, don&#8217;t pass a block and `release` will delete them. I used `delete` rather than `destroy` so that everything you specify on capture is deleted without running into issues with `:dependent =&gt; :destroy`.</p>
 <p>This has been useful for add and removing data while trying out different table structures. Obviously, it&#8217;s a rather targeted solution. I&#8217;ll be packaging it as a plugin and posting it to [<span class="caps">PLANET</span> ARGON&#8217;s](http://www.planetargon.org) community site soon.</p></div>
       </div>
@@ -123,6 +126,8 @@
 
       <h2 id="latest_posts">Latest posts</h2>
       <ul>
+      
+        <li><a href="/2011/10/3/nikita-the-ruby-secret-agent-slides">Slides for "Nikita - The Ruby Secret Agent"</a></li>
       
         <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
       
@@ -151,8 +156,6 @@
         <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
       
         <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
-      
-        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
       <p><a href="/posts_index.html">Show All Posts</a></p>

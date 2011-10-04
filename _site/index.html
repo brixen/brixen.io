@@ -20,6 +20,36 @@
     <div id="content">
     
     <div class="entry home">
+      <h2 class="entrytitle"><a href="/2011/10/3/nikita-the-ruby-secret-agent-slides">Slides for "Nikita - The Ruby Secret Agent"</a></h2>
+            <div class="meta">
+        <p><span class="date">03 October 2011</span></p>
+      </div>
+
+       <div class="entrybody"><style>
+#rubyconf11-slides-container {
+  width: 650px;
+  height: 480px;
+  border: 1px solid black;
+  padding: 0;
+  overflow: hidden;
+}
+
+#rubyconf11-slides {
+  border: none;
+  width: 650px;
+  height: 480px;
+}
+</style>
+
+<div id="rubyconf11-slides-container">
+  <iframe id="rubyconf11-slides" src="http://falling-planet-5957.heroku.com/#1">
+    RubyConf11 Slides - Nikita: The Ruby Secret Agent
+  </iframe>
+</div>
+</div>
+    </div>
+    
+    <div class="entry home">
       <h2 class="entrytitle"><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></h2>
             <div class="meta">
         <p><span class="date">18 March 2009</span></p>
@@ -34,14 +64,16 @@
 <span class="lineno">4</span>   <span class="n">vm</span><span class="o">.</span><span class="n">run</span>
 <span class="lineno">5</span> <span class="k">end</span>
 </code></pre>
-</div><p>Sometime later in the program, you add a new thread, which might be implemented something like this.</p>
+</div>
+<p>Sometime later in the program, you add a new thread, which might be implemented something like this.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nc">Thread</span><span class="o">.</span><span class="nf">new</span>
 <span class="lineno">2</span>   <span class="n">thr</span> <span class="o">=</span> <span class="no">VM</span><span class="o">.</span><span class="n">threads</span><span class="o">.</span><span class="n">create</span>
 <span class="lineno">3</span>   <span class="c1"># ...</span>
 <span class="lineno">4</span>   <span class="k">return</span> <span class="n">thr</span>
 <span class="lineno">5</span> <span class="k">end</span>
 </code></pre>
-</div><p>You might imagine the <code>VM</code> instance having a <code>Scheduler</code> component that would supervise the threads and arrange for running them on one or more processors or cores. In this model, the VM is really like a virtual computer in which all execution is occurring. In other words, the VM is composed of multiple threads of execution.</p>
+</div>
+<p>You might imagine the <code>VM</code> instance having a <code>Scheduler</code> component that would supervise the threads and arrange for running them on one or more processors or cores. In this model, the VM is really like a virtual computer in which all execution is occurring. In other words, the VM is composed of multiple threads of execution.</p>
 <p>The point of this mental exercise is to expose the tacit assumptions we might have about our mapping between a real computer and the virtual machine. Now let&#8217;s delve into Rubinius.</p>
 <p>The <code>main</code> function is located in <code>vm/drivers/cli.cpp</code>. The first thing it does is create an instance of <code>Environment</code>, which is composed of an instance of <code>VMManager</code>, <code>SharedState</code>, and <code>VM</code>. In the <code>Environment</code> constructor, the command line is parsed for configuration options. Then the manager creates a new shared state. The shared state creates a vm. And finally the vm is initialized. During initialization, the <code>ObjectMemory</code> is created. The object memory in turn is composed of garbage collected heaps for the young and mature generations.</p>
 <p>Back in <code>main</code>, a platform-specific configuration file is loaded, the &#8220;vm&#8221; is booted, the command line is loaded into <code>ARGV</code>, the kernel is loaded (i.e. the compiled versions of the files located in the <code>kernel/</code> directory), the preemption and signal threads are started, and finally the compiled version of <code>kernel/loader.rb</code> is run, which will process the command line arguments, run scripts, start <span class="caps">IRB</span>, etc. When your script, <span class="caps">IRB</span>, <code>-e</code> command, etc. finish running, <code>loader.rb</code> finishes, <code>main</code> finishes, resources are cleaned up, and finally the process exits.</p>
@@ -57,7 +89,8 @@
 <span class="lineno">8</span>   <span class="k">end</span>
 <span class="lineno">9</span> <span class="k">end</span>
 </code></pre>
-</div><p>The calls to <code>allocate</code> and <code>fork</code> are implemented as primitives in C++ code. They are short, so we&#8217;ll take a look at them, too.</p>
+</div>
+<p>The calls to <code>allocate</code> and <code>fork</code> are implemented as primitives in C++ code. They are short, so we&#8217;ll take a look at them, too.</p>
 <div class="highlight"><pre><code class="cpp"><span class="lineno"> 1</span> <span class="n">Thread</span><span class="o">*</span> <span class="n">Thread</span><span class="o">::</span><span class="n">allocate</span><span class="p">(</span><span class="n">STATE</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>   <span class="n">VM</span><span class="o">*</span> <span class="n">vm</span> <span class="o">=</span> <span class="n">state</span><span class="o">-&gt;</span><span class="n">shared</span><span class="p">.</span><span class="n">new_vm</span><span class="p">();</span>
 <span class="lineno"> 3</span>   <span class="n">Thread</span><span class="o">*</span> <span class="kr">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">vm</span><span class="p">);</span>
@@ -75,7 +108,8 @@
 <span class="lineno">15</span>   <span class="k">return</span> <span class="n">Qnil</span><span class="p">;</span>
 <span class="lineno">16</span> <span class="p">}</span>
 </code></pre>
-</div><p>The call to <code>allocate</code> creates a new instance of <code>VM</code> as thread local data. The call to <code>fork</code> creates the new native thread. The call to <code>native_thread_-&gt;run()</code> will eventually call the <code>__run__</code> method in <code>kernel/common/thread.rb</code>. Something to note about this snippet of C++ code is the nice consistency between the primitives and the Ruby code that calls them.</p>
+</div>
+<p>The call to <code>allocate</code> creates a new instance of <code>VM</code> as thread local data. The call to <code>fork</code> creates the new native thread. The call to <code>native_thread_-&gt;run()</code> will eventually call the <code>__run__</code> method in <code>kernel/common/thread.rb</code>. Something to note about this snippet of C++ code is the nice consistency between the primitives and the Ruby code that calls them.</p>
 <p>We&#8217;ve encountered the <code>VM</code> class in two contexts: 1) when starting up the Rubinius process, and 2) when creating a new <code>Thread</code>. We can consider the <code>VM</code> instance to be an abstraction of the state of a single thread of execution, and in fact, <code>state</code> is the name most often given to an instance of <code>VM</code> in the Rubinius source.</p>
 <p>As we&#8217;ve seen, Rubinius as a running process is composed of various abstractions, including the <code>Environment</code>, <code>SharedState</code>, <code>NativeThread</code>, and <code>VM</code> to name a few. While it is accurate to call Rubinius a virtual machine, it is apparent that concept can cover a fair bit of complexity. But breaking it into parts makes it fairly easy to understand. Let us know what things you&#8217;d like to understand better. We have the <code>doc/</code> directory in the source that we&#8217;re (slowly) building out. If you&#8217;re interested in contributing, docs would be a great way to help everyone.</p></div>
     </div>
@@ -123,7 +157,8 @@
 <span class="lineno">21</span>   <span class="k">end</span>
 <span class="lineno">22</span> <span class="k">end</span>
 </code></pre>
-</div><p>The <code>relates</code> block introduces the Ruby source code and contains the blocks that show various intermediate forms. A single word like <code>parse</code> and <code>compile</code> encapsulates the process of generating that particular form, as well as concisely documenting the specs.</p>
+</div>
+<p>The <code>relates</code> block introduces the Ruby source code and contains the blocks that show various intermediate forms. A single word like <code>parse</code> and <code>compile</code> encapsulates the process of generating that particular form, as well as concisely documenting the specs.</p>
 <p>The format is sufficiently flexible to allow for other forms. For instance, <code>ast</code> for generating an <span class="caps">AST</span> directly from the parse tree rather than using the sexp as an intermediate form. Or <code>llvm</code> to emit <a href="http://llvm.org"><span class="caps">LLVM</span></a> IR directly from our compiler.</p>
 <p>Another interesting aspect of this, it was possible with only a few custom extensions to <a href="http://github.com/rubyspec/mspec/commits/master">MSpec</a>. Recently, I had added custom options to the MSpec runner scripts to enable such things as our <code>--gc-stats</code>. I didn&#8217;t know how easy it would be to add something more extensive. Turns out it was pretty easy. You can check out the source in our <a href="http://github.com/evanphx/rubinius/tree/master/spec/custom">spec/custom</a> directory.</p></div>
     </div>
@@ -443,23 +478,6 @@ it anyway. All the rest in my <a href="/2009/2/12/all-shiny-and-new">previous po
 <p>Thanks to <a href="http://engineyard.com">Engine Yard</a> for trusting in Evan&#8217;s excellent judgment and system architecture talents and in all our hard work even if it doesn&#8217;t look immediately relevant. The path is clear. The goods are in the truck and they will be delivered.</p></div>
     </div>
     
-    <div class="entry home">
-      <h2 class="entrytitle"><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></h2>
-            <div class="meta">
-        <p><span class="date">23 November 2008</span></p>
-      </div>
-
-       <div class="entrybody"><p>It&#8217;s sometimes hard to gauge troll, tirade, or spirited challenge online. <a href="http://kirindave.tumblr.com/post/60776407/the-opposite-of-momentum">The Opposite of Momentum</a> strikes me as a mix, though in what percentages, I haven&#8217;t decided. KirinDave is a little late to the bag&#45;on&#45;Ruby party, and if it&#8217;s Javascript he wants, <a href="http://steve-yegge.blogspot.com/">Yegge</a> was there well over a year ago. Browse some of the mind-expanding comments by the bottom feeders at <a href="http://www.reddit.com/r/programming/comments/7epu0/ruby_and_the_opposite_of_momentum/">Reddit</a> chewing on KirinDave&#8217;s post. It&#8217;s a reassuring, if disappointing, commentary on the consistency of human behavior: it is always easier to complain than to fix.</p>
-<p>But, anyway.</p>
-<p>True, the reference implementation of Ruby has some problems. But, Rubinius has a precise, generational garbage collector. It is definitely not &#8220;technically stagnant&#8221;, nor is it &#8220;in implementation limbo&#8221;. It was only in May of this year, before RailsConf, that we first got Rails running on Rubinius. We are close to getting it running again on the new VM. If we do that by year&#8217;s end, we will surely have some kind of record. For all the thousands of lines of Ruby code he&#8217;s written, KirinDave hasn&#8217;t contributed any code to Rubinius. That&#8217;s too bad.</p>
-<p>Ruby isn&#8217;t that extraordinary as a language. But it is a very good language. What is more, Ruby is a <em>humane</em> language, in the spirit of <a href="http://en.wikipedia.org/wiki/Jef_Raskin">Jef Raskin&#8217;s</a> <a href="http://www.amazon.com/Humane-Interface-Directions-Designing-Interactive/dp/0201379376/ref=pd_bbs_sr_1?ie=UTF8&amp;s=books&amp;qid=1227419893&amp;sr=8-1">The Humane Interface</a>. Furthermore, now like never before is the age of the dynamic programming language. The technical hurdles are being explored all around us. In fact, before the year is over, you should spend a few quality hours with one or more of the following languages.</p>
-<p><a href="http://www.factorcode.org/">Factor</a>. This fascinating <a href="http://en.wikipedia.org/wiki/Concatenative_language">concatenative</a> language will definitely get you thinking outside of the box. Rubinius is a stack-based VM. Writing some Factor code is a little like peeling back the syntax layer of Ruby and watching the muscles and tendons work. Check out the quotations and combinators and think about how you write functional code with Ruby. Don&#8217;t miss the Google <a href="http://www.youtube.com/watch?v=f_0QlhYlS8g">tech talk</a> by Factor&#8217;s creator, Slava Pestov.</p>
-<p><a href="http://clojure.org/">Clojure</a>. This is another fascinating language by another wicked smart guy, Rich Hickey (check out <a href="http://blip.tv/file/812787">the video</a>). In fact, this is currently my favorite language to study. It&#8217;s the Ruby of Lisps, in my opinion. And it contains a wealth of ideas that could be useful for implementing Rubinius, not to mention, thinking about writing concurrent programs.</p>
-<p><a href="http://www.iolanguage.com/">Io</a>. Like Javascript? You owe it to yourself to play with this language a bit. I&#8217;d be interested to see about an implementation of Io on <a href="http://webkit.org/blog/214/introducing-squirrelfish-extreme/">SquirrelFish Extreme</a></p>
-<p><a href="http://haskell.org/">Haskell</a>. Amaze your friends and improve your sex life. Jump stateful, side-effect tangled heaps of code with a single Monad. There is a cool new <a href="http://book.realworldhaskell.org/">online book</a> that will soon be released in print as well.</p>
-<p>Seriously, if you are a Ruby programmer, you could hardly do poorly by adopting any one of these languages. If Javascript makes your curly braces tingle, who am I to ridicule you. But if Ruby continues to maintain its captivating hold on your attention, don&#8217;t be disappointed. There is some awesome sauce in there, and we&#8217;re working on the recipe that really makes the flavor pop. Just a little request, instead of bitchin&#8217;, <a href="http://github.com/evanphx/rubinius/tree/master/doc/contributing.txt">pitch in</a>.</p></div>
-    </div>
-    
     </div>
         <div id="sidebar">
       <div id="subscribe">
@@ -474,6 +492,8 @@ it anyway. All the rest in my <a href="/2009/2/12/all-shiny-and-new">previous po
 
       <h2 id="latest_posts">Latest posts</h2>
       <ul>
+      
+        <li><a href="/2011/10/3/nikita-the-ruby-secret-agent-slides">Slides for "Nikita - The Ruby Secret Agent"</a></li>
       
         <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
       
@@ -502,8 +522,6 @@ it anyway. All the rest in my <a href="/2009/2/12/all-shiny-and-new">previous po
         <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
       
         <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
-      
-        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
       <p><a href="/posts_index.html">Show All Posts</a></p>

@@ -31,7 +31,8 @@
 <span class="lineno">2</span>   <span class="k">alias</span> <span class="o">/</span> <span class="n">quo</span>
 <span class="lineno">3</span> <span class="k">end</span>
 </code></pre>
-</div><p>That little snippet and you&#8217;ve redefined fixed-point math to return a floating point number. That gem is one of the core pieces of the Mathn library in the Ruby standard library collection. Together with the Rational library, you can do some cool stuff:</p>
+</div>
+<p>That little snippet and you&#8217;ve redefined fixed-point math to return a floating point number. That gem is one of the core pieces of the Mathn library in the Ruby standard library collection. Together with the Rational library, you can do some cool stuff:</p>
 <pre><code>
 $ irb
 &gt;&gt; require 'rational'
@@ -67,7 +68,8 @@ $ irb
 <span class="lineno">17</span>   <span class="k">end</span>
 <span class="lineno">18</span> <span class="k">end</span>
 </code></pre>
-</div><p>Essentially, what this does is map any calls to the #/ method to the #divide method. I&#8217;ve changed the core library classes Fixnum, Bignum, Float, and Numeric to handle this. So, the code in core looks the same, but is protected from the redefinition that the Mathn library performs. The compiler plugin is activated with the -frbx-safe-math switch only when compiling the Rubinius core libraries.</p>
+</div>
+<p>Essentially, what this does is map any calls to the #/ method to the #divide method. I&#8217;ve changed the core library classes Fixnum, Bignum, Float, and Numeric to handle this. So, the code in core looks the same, but is protected from the redefinition that the Mathn library performs. The compiler plugin is activated with the -frbx-safe-math switch only when compiling the Rubinius core libraries.</p>
 <p>&gt; <strong><span class="caps">UPDATE</span>:</strong> Note that you do not have to do anything differently. The compiler flag is passed in automatically when you type <code>rake</code> to build the Rubinius libraries. If you are writing user code, you also do not need to do anything differently. You just write your code as you normally would. If you require the Mathn library, <code>1 / 2 =&gt; 0.5</code>. If you also require the Rational library <code>1 / 2 =&gt; 1/2</code>. Invisible, maybe even a little evil.</p>
 <p>Again, this is not necessarily the way we&#8217;ll always do it. The lessons are:</p>
 <ol>
@@ -91,6 +93,8 @@ $ irb
 
       <h2 id="latest_posts">Latest posts</h2>
       <ul>
+      
+        <li><a href="/2011/10/3/nikita-the-ruby-secret-agent-slides">Slides for "Nikita - The Ruby Secret Agent"</a></li>
       
         <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
       
@@ -119,8 +123,6 @@ $ irb
         <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
       
         <li><a href="/2008/7/21/oscon-2008">OSCON 2008</a></li>
-      
-        <li><a href="/2008/5/16/implementers-unite">Implementers Unite!</a></li>
       
       </ul>
       <p><a href="/posts_index.html">Show All Posts</a></p>
