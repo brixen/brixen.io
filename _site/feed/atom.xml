@@ -34,7 +34,7 @@
 &lt;/style&gt;
 
 &lt;div id=&quot;rubyconf11-slides-container&quot;&gt;
-  &lt;iframe id=&quot;rubyconf11-slides&quot; src=&quot;http://falling-planet-5957.heroku.com/#1&quot;&gt;
+  &lt;iframe id=&quot;rubyconf11-slides&quot; src=&quot;http://brightredglow.com/presentations/rubyconf11&quot;&gt;
     RubyConf11 Slides - Nikita: The Ruby Secret Agent
   &lt;/iframe&gt;
 &lt;/div&gt;
