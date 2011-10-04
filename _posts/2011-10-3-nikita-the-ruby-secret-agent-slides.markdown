@@ -21,7 +21,7 @@ author: Brian
 </style>
 
 <div id="rubyconf11-slides-container">
-  <iframe id="rubyconf11-slides" src="http://brightredglow.com/presentations/rubyconf11">
+  <iframe id="rubyconf11-slides" src="http://rubyconf11.brightredglow.com/#1">
     RubyConf11 Slides - Nikita: The Ruby Secret Agent
   </iframe>
 </div>
