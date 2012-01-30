@@ -4,24 +4,14 @@ layout: post
 author: Brian
 ---
 
-<style>
-#rubyconf11-slides-container {
-  width: 650px;
-  height: 480px;
-  border: 1px solid black;
-  padding: 0;
-  overflow: hidden;
-}
+**ED.** I've converted the slides to PDF and uploaded them to
+[speakerdeck.com](http://speakerdeck.com/u/brixen/p/nikita-the-ruby-secret-agent).
 
-#rubyconf11-slides {
-  border: none;
-  width: 650px;
-  height: 480px;
-}
-</style>
+<a href="http://speakerdeck.com/u/brixen/p/nikita-the-ruby-secret-agent">
+  <img src="/images/nikita_slides.jpg" /></a>
 
-<div id="rubyconf11-slides-container">
-  <iframe id="rubyconf11-slides" src="http://rubyconf11.brightredglow.com/#1">
-    RubyConf11 Slides - Nikita: The Ruby Secret Agent
-  </iframe>
-</div>
+**ED.** The except from the 2011 OSCON Twitter talk is below.
+
+<iframe src="http://player.vimeo.com/video/29993216?title=0&amp;byline=0&amp;portrait=0"
+  width="750" height="420" frameborder="0"></iframe>
+
