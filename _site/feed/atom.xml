@@ -2,49 +2,38 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 
   <title>def euler(x); cos(x) + i*sin(x); end</title>
-  <link href="http://blog.brightredglow.com/feed/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="http://blog.brightredglow.com/" rel="alternate" type="text/html"/>
+  <link href="http://brixen.io/feed/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://brixen.io/" rel="alternate" type="text/html"/>
   <updated>Liquid error: undefined method `xmlschema' on nil:NilClass.</updated>
   <id>blog.brightredglow.com/</id>
 
   
   <entry>
     <title>Slides for "Nikita - The Ruby Secret Agent"</title>
-    <id>http://blog.brightredglow.com/2011/10/3/nikita-the-ruby-secret-agent-slides</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2011/10/3/nikita-the-ruby-secret-agent-slides" />
+    <id>http://brixen.io/2011/10/3/nikita-the-ruby-secret-agent-slides</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2011/10/3/nikita-the-ruby-secret-agent-slides" />
     <published>2011-10-03T00:00:00-07:00</published>
     <updated>2011-10-03T00:00:00-07:00</updated>
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;style&gt;
-#rubyconf11-slides-container {
-  width: 650px;
-  height: 480px;
-  border: 1px solid black;
-  padding: 0;
-  overflow: hidden;
-}
+    <content type="html">&lt;p&gt;&lt;strong&gt;ED.&lt;/strong&gt; I&amp;rsquo;ve converted the slides to PDF and uploaded them to
+&lt;a href=&quot;http://speakerdeck.com/u/brixen/p/nikita-the-ruby-secret-agent&quot;&gt;speakerdeck.com&lt;/a&gt;.&lt;/p&gt;
 
-#rubyconf11-slides {
-  border: none;
-  width: 650px;
-  height: 480px;
-}
-&lt;/style&gt;
+&lt;p&gt;&lt;a href=&quot;http://speakerdeck.com/u/brixen/p/nikita-the-ruby-secret-agent&quot;&gt;
+  &lt;img src=&quot;/images/nikita_slides.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;div id=&quot;rubyconf11-slides-container&quot;&gt;
-  &lt;iframe id=&quot;rubyconf11-slides&quot; src=&quot;http://rubyconf11.brightredglow.com/#1&quot;&gt;
-    RubyConf11 Slides - Nikita: The Ruby Secret Agent
-  &lt;/iframe&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;ED.&lt;/strong&gt; The except from the 2011 OSCON Twitter talk is below.&lt;/p&gt;
+
+&lt;iframe src=&quot;http://player.vimeo.com/video/29993216?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;750&quot; height=&quot;420&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
 </content>
   </entry>
   
   <entry>
     <title>A VM by any other name</title>
-    <id>http://blog.brightredglow.com/2009/3/18/a-vm-by-any-other-name</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2009/3/18/a-vm-by-any-other-name" />
+    <id>http://brixen.io/2009/3/18/a-vm-by-any-other-name</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2009/3/18/a-vm-by-any-other-name" />
     <published>2009-03-18T00:00:00-07:00</published>
     <updated>2009-03-18T00:00:00-07:00</updated>
     <author>
@@ -111,8 +100,8 @@
   
   <entry>
     <title>Come to the Open Source Bridge conference</title>
-    <id>http://blog.brightredglow.com/2009/3/6/come-to-the-open-source-bridge-conference</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2009/3/6/come-to-the-open-source-bridge-conference" />
+    <id>http://brixen.io/2009/3/6/come-to-the-open-source-bridge-conference</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2009/3/6/come-to-the-open-source-bridge-conference" />
     <published>2009-03-06T00:00:00-08:00</published>
     <updated>2009-03-06T00:00:00-08:00</updated>
     <author>
@@ -124,8 +113,8 @@
   
   <entry>
     <title>When describe'ing it ain't enough</title>
-    <id>http://blog.brightredglow.com/2009/3/3/when-describe-ing-it-ain-t-enough</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2009/3/3/when-describe-ing-it-ain-t-enough" />
+    <id>http://brixen.io/2009/3/3/when-describe-ing-it-ain-t-enough</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2009/3/3/when-describe-ing-it-ain-t-enough" />
     <published>2009-03-03T00:00:00-08:00</published>
     <updated>2009-03-03T00:00:00-08:00</updated>
     <author>
@@ -166,8 +155,8 @@
   
   <entry>
     <title>What is RubySpec?</title>
-    <id>http://blog.brightredglow.com/2009/3/3/what-is-rubyspec</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2009/3/3/what-is-rubyspec" />
+    <id>http://brixen.io/2009/3/3/what-is-rubyspec</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2009/3/3/what-is-rubyspec" />
     <published>2009-03-03T00:00:00-08:00</published>
     <updated>2009-03-03T00:00:00-08:00</updated>
     <author>
@@ -210,8 +199,8 @@
   
   <entry>
     <title>Boxers or Briefs? -- Neither?!</title>
-    <id>http://blog.brightredglow.com/2009/3/3/boxers-or-briefs-neither</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2009/3/3/boxers-or-briefs-neither" />
+    <id>http://brixen.io/2009/3/3/boxers-or-briefs-neither</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2009/3/3/boxers-or-briefs-neither" />
     <published>2009-03-03T00:00:00-08:00</published>
     <updated>2009-03-03T00:00:00-08:00</updated>
     <author>
@@ -291,8 +280,8 @@ Finished in 0.257000 seconds
   
   <entry>
     <title>Warning: Includes Known Bugs</title>
-    <id>http://blog.brightredglow.com/2009/2/26/warning-includes-known-bugs</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2009/2/26/warning-includes-known-bugs" />
+    <id>http://brixen.io/2009/2/26/warning-includes-known-bugs</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2009/2/26/warning-includes-known-bugs" />
     <published>2009-02-26T00:00:00-08:00</published>
     <updated>2009-02-26T00:00:00-08:00</updated>
     <author>
@@ -323,8 +312,8 @@ Finished in 0.257000 seconds
   
   <entry>
     <title>Caveat Lector</title>
-    <id>http://blog.brightredglow.com/2009/2/20/caveat-lector</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2009/2/20/caveat-lector" />
+    <id>http://brixen.io/2009/2/20/caveat-lector</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2009/2/20/caveat-lector" />
     <published>2009-02-20T00:00:00-08:00</published>
     <updated>2009-02-20T00:00:00-08:00</updated>
     <author>
@@ -388,8 +377,8 @@ Finished in 0.257000 seconds
   
   <entry>
     <title>This is NOT cold fusion</title>
-    <id>http://blog.brightredglow.com/2009/2/12/this-is-not-cold-fusion</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2009/2/12/this-is-not-cold-fusion" />
+    <id>http://brixen.io/2009/2/12/this-is-not-cold-fusion</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2009/2/12/this-is-not-cold-fusion" />
     <published>2009-02-12T00:00:00-08:00</published>
     <updated>2009-02-12T00:00:00-08:00</updated>
     <author>
@@ -434,8 +423,8 @@ it anyway. All the rest in my &lt;a href=&quot;/2009/2/12/all-shiny-and-new&quot
   
   <entry>
     <title>All shiny and new</title>
-    <id>http://blog.brightredglow.com/2009/2/12/all-shiny-and-new</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2009/2/12/all-shiny-and-new" />
+    <id>http://brixen.io/2009/2/12/all-shiny-and-new</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2009/2/12/all-shiny-and-new" />
     <published>2009-02-12T00:00:00-08:00</published>
     <updated>2009-02-12T00:00:00-08:00</updated>
     <author>
@@ -499,8 +488,8 @@ it anyway. All the rest in my &lt;a href=&quot;/2009/2/12/all-shiny-and-new&quot
   
   <entry>
     <title>Call of the lemming</title>
-    <id>http://blog.brightredglow.com/2008/11/23/call-of-the-lemmings</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/11/23/call-of-the-lemmings" />
+    <id>http://brixen.io/2008/11/23/call-of-the-lemmings</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/11/23/call-of-the-lemmings" />
     <published>2008-11-23T00:00:00-08:00</published>
     <updated>2008-11-23T00:00:00-08:00</updated>
     <author>
@@ -519,8 +508,8 @@ it anyway. All the rest in my &lt;a href=&quot;/2009/2/12/all-shiny-and-new&quot
   
   <entry>
     <title>Rubinius is a community project</title>
-    <id>http://blog.brightredglow.com/2008/11/18/rubinius-is-a-community-project</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/11/18/rubinius-is-a-community-project" />
+    <id>http://brixen.io/2008/11/18/rubinius-is-a-community-project</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/11/18/rubinius-is-a-community-project" />
     <published>2008-11-18T00:00:00-08:00</published>
     <updated>2008-11-18T00:00:00-08:00</updated>
     <author>
@@ -537,8 +526,8 @@ it anyway. All the rest in my &lt;a href=&quot;/2009/2/12/all-shiny-and-new&quot
   
   <entry>
     <title>Hash is all ponies</title>
-    <id>http://blog.brightredglow.com/2008/9/3/hash-is-all-ponies</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/9/3/hash-is-all-ponies" />
+    <id>http://brixen.io/2008/9/3/hash-is-all-ponies</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/9/3/hash-is-all-ponies" />
     <published>2008-09-03T00:00:00-07:00</published>
     <updated>2008-09-03T00:00:00-07:00</updated>
     <author>
@@ -564,8 +553,8 @@ it anyway. All the rest in my &lt;a href=&quot;/2009/2/12/all-shiny-and-new&quot
   
   <entry>
     <title>As del.icio.us as a giant, steaming turd</title>
-    <id>http://blog.brightredglow.com/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/8/1/as-del-icio-us-as-a-giant-steaming-turd" />
+    <id>http://brixen.io/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/8/1/as-del-icio-us-as-a-giant-steaming-turd" />
     <published>2008-08-01T00:00:00-07:00</published>
     <updated>2008-08-01T00:00:00-07:00</updated>
     <author>
@@ -579,8 +568,8 @@ it anyway. All the rest in my &lt;a href=&quot;/2009/2/12/all-shiny-and-new&quot
   
   <entry>
     <title>OSCON 2008</title>
-    <id>http://blog.brightredglow.com/2008/7/21/oscon-2008</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/7/21/oscon-2008" />
+    <id>http://brixen.io/2008/7/21/oscon-2008</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/7/21/oscon-2008" />
     <published>2008-07-21T00:00:00-07:00</published>
     <updated>2008-07-21T00:00:00-07:00</updated>
     <author>
@@ -599,8 +588,8 @@ it anyway. All the rest in my &lt;a href=&quot;/2009/2/12/all-shiny-and-new&quot
   
   <entry>
     <title>Implementers Unite!</title>
-    <id>http://blog.brightredglow.com/2008/5/16/implementers-unite</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/5/16/implementers-unite" />
+    <id>http://brixen.io/2008/5/16/implementers-unite</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/5/16/implementers-unite" />
     <published>2008-05-16T00:00:00-07:00</published>
     <updated>2008-05-16T00:00:00-07:00</updated>
     <author>
@@ -616,8 +605,8 @@ it anyway. All the rest in my &lt;a href=&quot;/2009/2/12/all-shiny-and-new&quot
   
   <entry>
     <title>Ruby in Ruby--Seriously</title>
-    <id>http://blog.brightredglow.com/2008/4/28/ruby-in-ruby-seriously</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/4/28/ruby-in-ruby-seriously" />
+    <id>http://brixen.io/2008/4/28/ruby-in-ruby-seriously</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/4/28/ruby-in-ruby-seriously" />
     <published>2008-04-28T00:00:00-07:00</published>
     <updated>2008-04-28T00:00:00-07:00</updated>
     <author>
@@ -635,8 +624,8 @@ it anyway. All the rest in my &lt;a href=&quot;/2009/2/12/all-shiny-and-new&quot
   
   <entry>
     <title>Rubinius runs RSpec 1.1.2</title>
-    <id>http://blog.brightredglow.com/2008/1/18/rubinius-runs-rspec-1-1-2</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/1/18/rubinius-runs-rspec-1-1-2" />
+    <id>http://brixen.io/2008/1/18/rubinius-runs-rspec-1-1-2</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/1/18/rubinius-runs-rspec-1-1-2" />
     <published>2008-01-18T00:00:00-08:00</published>
     <updated>2008-01-18T00:00:00-08:00</updated>
     <author>
@@ -659,8 +648,8 @@ Finished in 0.988572 seconds
   
   <entry>
     <title>Evil can be dangerous</title>
-    <id>http://blog.brightredglow.com/2008/1/17/evil-can-be-dangerous</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/1/17/evil-can-be-dangerous" />
+    <id>http://brixen.io/2008/1/17/evil-can-be-dangerous</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/1/17/evil-can-be-dangerous" />
     <published>2008-01-17T00:00:00-08:00</published>
     <updated>2008-01-17T00:00:00-08:00</updated>
     <author>
@@ -723,8 +712,8 @@ $ irb
   
   <entry>
     <title>Contra--what?</title>
-    <id>http://blog.brightredglow.com/2008/1/17/contra-what</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/1/17/contra-what" />
+    <id>http://brixen.io/2008/1/17/contra-what</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/1/17/contra-what" />
     <published>2008-01-17T00:00:00-08:00</published>
     <updated>2008-01-17T00:00:00-08:00</updated>
     <author>
@@ -767,8 +756,8 @@ $ irb
   
   <entry>
     <title>Irb in the house</title>
-    <id>http://blog.brightredglow.com/2008/1/5/irb-in-the-house</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2008/1/5/irb-in-the-house" />
+    <id>http://brixen.io/2008/1/5/irb-in-the-house</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2008/1/5/irb-in-the-house" />
     <published>2008-01-05T00:00:00-08:00</published>
     <updated>2008-01-05T00:00:00-08:00</updated>
     <author>
@@ -781,8 +770,8 @@ $ irb
   
   <entry>
     <title>Looking yourself in the eye</title>
-    <id>http://blog.brightredglow.com/2007/12/6/looking-yourself-in-the-eye</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/12/6/looking-yourself-in-the-eye" />
+    <id>http://brixen.io/2007/12/6/looking-yourself-in-the-eye</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/12/6/looking-yourself-in-the-eye" />
     <published>2007-12-06T00:00:00-08:00</published>
     <updated>2007-12-06T00:00:00-08:00</updated>
     <author>
@@ -815,8 +804,8 @@ Finished in 0.062927 seconds
   
   <entry>
     <title>Send my love to Ruby II</title>
-    <id>http://blog.brightredglow.com/2007/9/20/send-my-love-to-ruby-ii</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/9/20/send-my-love-to-ruby-ii" />
+    <id>http://brixen.io/2007/9/20/send-my-love-to-ruby-ii</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/9/20/send-my-love-to-ruby-ii" />
     <published>2007-09-20T00:00:00-07:00</published>
     <updated>2007-09-20T00:00:00-07:00</updated>
     <author>
@@ -879,8 +868,8 @@ ret
   
   <entry>
     <title>Send my love to Ruby</title>
-    <id>http://blog.brightredglow.com/2007/9/20/send-my-love-to-ruby</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/9/20/send-my-love-to-ruby" />
+    <id>http://brixen.io/2007/9/20/send-my-love-to-ruby</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/9/20/send-my-love-to-ruby" />
     <published>2007-09-20T00:00:00-07:00</published>
     <updated>2007-09-20T00:00:00-07:00</updated>
     <author>
@@ -931,8 +920,8 @@ ret
   
   <entry>
     <title>Rubinius sprint retrospective</title>
-    <id>http://blog.brightredglow.com/2007/9/17/rubinius-sprint-retrospective</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/9/17/rubinius-sprint-retrospective" />
+    <id>http://brixen.io/2007/9/17/rubinius-sprint-retrospective</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/9/17/rubinius-sprint-retrospective" />
     <published>2007-09-17T00:00:00-07:00</published>
     <updated>2007-09-17T00:00:00-07:00</updated>
     <author>
@@ -961,8 +950,8 @@ ret
   
   <entry>
     <title>Dear glob</title>
-    <id>http://blog.brightredglow.com/2007/9/17/dear-glob</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/9/17/dear-glob" />
+    <id>http://brixen.io/2007/9/17/dear-glob</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/9/17/dear-glob" />
     <published>2007-09-17T00:00:00-07:00</published>
     <updated>2007-09-17T00:00:00-07:00</updated>
     <author>
@@ -1033,8 +1022,8 @@ ret
   
   <entry>
     <title>RailsConf 2007: The case of the missing BDD</title>
-    <id>http://blog.brightredglow.com/2007/5/19/railsconf-2007-the-case-of-the-missing-bdd</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/5/19/railsconf-2007-the-case-of-the-missing-bdd" />
+    <id>http://brixen.io/2007/5/19/railsconf-2007-the-case-of-the-missing-bdd</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/5/19/railsconf-2007-the-case-of-the-missing-bdd" />
     <published>2007-05-19T00:00:00-07:00</published>
     <updated>2007-05-19T00:00:00-07:00</updated>
     <author>
@@ -1060,8 +1049,8 @@ The Home page
   
   <entry>
     <title>Oh, _why!</title>
-    <id>http://blog.brightredglow.com/2007/5/19/oh-_why</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/5/19/oh-_why" />
+    <id>http://brixen.io/2007/5/19/oh-_why</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/5/19/oh-_why" />
     <published>2007-05-19T00:00:00-07:00</published>
     <updated>2007-05-19T00:00:00-07:00</updated>
     <author>
@@ -1088,8 +1077,8 @@ The Home page
   
   <entry>
     <title>The Dev'ilz in ur projects, trackin' ur changz</title>
-    <id>http://blog.brightredglow.com/2007/5/8/the-dev-ilz-in-ur-projects-trackin-ur-changz</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/5/8/the-dev-ilz-in-ur-projects-trackin-ur-changz" />
+    <id>http://brixen.io/2007/5/8/the-dev-ilz-in-ur-projects-trackin-ur-changz</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/5/8/the-dev-ilz-in-ur-projects-trackin-ur-changz" />
     <published>2007-05-08T00:00:00-07:00</published>
     <updated>2007-05-08T00:00:00-07:00</updated>
     <author>
@@ -1104,8 +1093,8 @@ The Home page
   
   <entry>
     <title>Ctrl-C is deprecated</title>
-    <id>http://blog.brightredglow.com/2007/5/8/ctrl-c-is-deprecated</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/5/8/ctrl-c-is-deprecated" />
+    <id>http://brixen.io/2007/5/8/ctrl-c-is-deprecated</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/5/8/ctrl-c-is-deprecated" />
     <published>2007-05-08T00:00:00-07:00</published>
     <updated>2007-05-08T00:00:00-07:00</updated>
     <author>
@@ -1119,8 +1108,8 @@ The Home page
   
   <entry>
     <title>Needmore Designs</title>
-    <id>http://blog.brightredglow.com/2007/4/12/needmore-designs</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/4/12/needmore-designs" />
+    <id>http://brixen.io/2007/4/12/needmore-designs</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/4/12/needmore-designs" />
     <published>2007-04-12T00:00:00-07:00</published>
     <updated>2007-04-12T00:00:00-07:00</updated>
     <author>
@@ -1134,8 +1123,8 @@ The Home page
   
   <entry>
     <title>Behavior-Driven Collaboration</title>
-    <id>http://blog.brightredglow.com/2007/3/28/behavior-driven-collaboration</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/3/28/behavior-driven-collaboration" />
+    <id>http://brixen.io/2007/3/28/behavior-driven-collaboration</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/3/28/behavior-driven-collaboration" />
     <published>2007-03-28T00:00:00-07:00</published>
     <updated>2007-03-28T00:00:00-07:00</updated>
     <author>
@@ -1148,8 +1137,8 @@ The Home page
   
   <entry>
     <title>Rubinius Hits Primetime: Let the FUD Begin</title>
-    <id>http://blog.brightredglow.com/2007/2/14/rubinius-hits-primetime-let-the-fud-begin</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/2/14/rubinius-hits-primetime-let-the-fud-begin" />
+    <id>http://brixen.io/2007/2/14/rubinius-hits-primetime-let-the-fud-begin</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/2/14/rubinius-hits-primetime-let-the-fud-begin" />
     <published>2007-02-14T00:00:00-08:00</published>
     <updated>2007-02-14T00:00:00-08:00</updated>
     <author>
@@ -1162,8 +1151,8 @@ The Home page
   
   <entry>
     <title>TSort in sirb</title>
-    <id>http://blog.brightredglow.com/2007/2/13/tsort-in-sirb</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/2/13/tsort-in-sirb" />
+    <id>http://brixen.io/2007/2/13/tsort-in-sirb</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/2/13/tsort-in-sirb" />
     <published>2007-02-13T00:00:00-08:00</published>
     <updated>2007-02-13T00:00:00-08:00</updated>
     <author>
@@ -1223,8 +1212,8 @@ sirb(eval):009&amp;gt;
   
   <entry>
     <title>Sirb: The Rubinius Loupe</title>
-    <id>http://blog.brightredglow.com/2007/2/11/sirb-the-rubinius-loupe</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/2/11/sirb-the-rubinius-loupe" />
+    <id>http://brixen.io/2007/2/11/sirb-the-rubinius-loupe</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/2/11/sirb-the-rubinius-loupe" />
     <published>2007-02-11T00:00:00-08:00</published>
     <updated>2007-02-11T00:00:00-08:00</updated>
     <author>
@@ -1270,8 +1259,8 @@ sirb(eval):1&amp;gt;
   
   <entry>
     <title>Irb on Rubinius</title>
-    <id>http://blog.brightredglow.com/2007/2/11/irb-on-rubinius</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/2/11/irb-on-rubinius" />
+    <id>http://brixen.io/2007/2/11/irb-on-rubinius</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/2/11/irb-on-rubinius" />
     <published>2007-02-11T00:00:00-08:00</published>
     <updated>2007-02-11T00:00:00-08:00</updated>
     <author>
@@ -1308,8 +1297,8 @@ sirb(eval):11&amp;gt;
   
   <entry>
     <title>Waiter, there's a Tuple in my Array</title>
-    <id>http://blog.brightredglow.com/2007/2/9/waiter-there-s-a-tuple-in-my-array</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/2/9/waiter-there-s-a-tuple-in-my-array" />
+    <id>http://brixen.io/2007/2/9/waiter-there-s-a-tuple-in-my-array</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/2/9/waiter-there-s-a-tuple-in-my-array" />
     <published>2007-02-09T00:00:00-08:00</published>
     <updated>2007-02-09T00:00:00-08:00</updated>
     <author>
@@ -1330,8 +1319,8 @@ sirb:003&amp;gt; t.shift          =&amp;gt; #&amp;lt;Tuple: nil, &quot;foo&quot;
   
   <entry>
     <title>Happy New Year</title>
-    <id>http://blog.brightredglow.com/2007/2/8/happy-new-year</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2007/2/8/happy-new-year" />
+    <id>http://brixen.io/2007/2/8/happy-new-year</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2007/2/8/happy-new-year" />
     <published>2007-02-08T00:00:00-08:00</published>
     <updated>2007-02-08T00:00:00-08:00</updated>
     <author>
@@ -1348,8 +1337,8 @@ sirb:003&amp;gt; t.shift          =&amp;gt; #&amp;lt;Tuple: nil, &quot;foo&quot;
   
   <entry>
     <title>Tuesday: partly sunny, chances of showers</title>
-    <id>http://blog.brightredglow.com/2006/11/15/tuesday-partly-sunny-chances-of-showers</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/11/15/tuesday-partly-sunny-chances-of-showers" />
+    <id>http://brixen.io/2006/11/15/tuesday-partly-sunny-chances-of-showers</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/11/15/tuesday-partly-sunny-chances-of-showers" />
     <published>2006-11-15T00:00:00-08:00</published>
     <updated>2006-11-15T00:00:00-08:00</updated>
     <author>
@@ -1363,8 +1352,8 @@ sirb:003&amp;gt; t.shift          =&amp;gt; #&amp;lt;Tuple: nil, &quot;foo&quot;
   
   <entry>
     <title>Good fences make good neighbors</title>
-    <id>http://blog.brightredglow.com/2006/11/15/good-fences-make-good-neighbors</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/11/15/good-fences-make-good-neighbors" />
+    <id>http://brixen.io/2006/11/15/good-fences-make-good-neighbors</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/11/15/good-fences-make-good-neighbors" />
     <published>2006-11-15T00:00:00-08:00</published>
     <updated>2006-11-15T00:00:00-08:00</updated>
     <author>
@@ -1377,8 +1366,8 @@ sirb:003&amp;gt; t.shift          =&amp;gt; #&amp;lt;Tuple: nil, &quot;foo&quot;
   
   <entry>
     <title>What the hell</title>
-    <id>http://blog.brightredglow.com/2006/11/7/what-the-hell</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/11/7/what-the-hell" />
+    <id>http://brixen.io/2006/11/7/what-the-hell</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/11/7/what-the-hell" />
     <published>2006-11-07T00:00:00-08:00</published>
     <updated>2006-11-07T00:00:00-08:00</updated>
     <author>
@@ -1396,8 +1385,8 @@ sirb:003&amp;gt; t.shift          =&amp;gt; #&amp;lt;Tuple: nil, &quot;foo&quot;
   
   <entry>
     <title>Dine in or take out: it's all free</title>
-    <id>http://blog.brightredglow.com/2006/11/6/dine-in-or-take-out-it-s-all-free</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/11/6/dine-in-or-take-out-it-s-all-free" />
+    <id>http://brixen.io/2006/11/6/dine-in-or-take-out-it-s-all-free</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/11/6/dine-in-or-take-out-it-s-all-free" />
     <published>2006-11-06T00:00:00-08:00</published>
     <updated>2006-11-06T00:00:00-08:00</updated>
     <author>
@@ -1414,8 +1403,8 @@ sudo port install mozart
   
   <entry>
     <title>Mephisto trunk + svk + svn + cap = blogtastic</title>
-    <id>http://blog.brightredglow.com/2006/11/5/mephisto-trunk-svk-svn-cap-blogtastic</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/11/5/mephisto-trunk-svk-svn-cap-blogtastic" />
+    <id>http://brixen.io/2006/11/5/mephisto-trunk-svk-svn-cap-blogtastic</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/11/5/mephisto-trunk-svk-svn-cap-blogtastic" />
     <published>2006-11-05T00:00:00-08:00</published>
     <updated>2006-11-05T00:00:00-08:00</updated>
     <author>
@@ -1447,8 +1436,8 @@ svk smerge --incremental --log //mirror/mephisto/trunk //svn/mephisto/trunk
   
   <entry>
     <title>Inspiration under a rock</title>
-    <id>http://blog.brightredglow.com/2006/11/5/inspiration-under-a-rock</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/11/5/inspiration-under-a-rock" />
+    <id>http://brixen.io/2006/11/5/inspiration-under-a-rock</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/11/5/inspiration-under-a-rock" />
     <published>2006-11-05T00:00:00-08:00</published>
     <updated>2006-11-05T00:00:00-08:00</updated>
     <author>
@@ -1463,8 +1452,8 @@ svk smerge --incremental --log //mirror/mephisto/trunk //svn/mephisto/trunk
   
   <entry>
     <title>Principles of d3: simplicity</title>
-    <id>http://blog.brightredglow.com/2006/10/12/principles-of-d3-simplicity</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/10/12/principles-of-d3-simplicity" />
+    <id>http://brixen.io/2006/10/12/principles-of-d3-simplicity</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/10/12/principles-of-d3-simplicity" />
     <published>2006-10-12T00:00:00-07:00</published>
     <updated>2006-10-12T00:00:00-07:00</updated>
     <author>
@@ -1498,8 +1487,8 @@ svk smerge --incremental --log //mirror/mephisto/trunk //svn/mephisto/trunk
   
   <entry>
     <title>User interaction blunders</title>
-    <id>http://blog.brightredglow.com/2006/10/8/user-interaction-blunders</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/10/8/user-interaction-blunders" />
+    <id>http://brixen.io/2006/10/8/user-interaction-blunders</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/10/8/user-interaction-blunders" />
     <published>2006-10-08T00:00:00-07:00</published>
     <updated>2006-10-08T00:00:00-07:00</updated>
     <author>
@@ -1522,8 +1511,8 @@ Brian&lt;/p&gt;
   
   <entry>
     <title>What's it worth to me?</title>
-    <id>http://blog.brightredglow.com/2006/10/4/what-s-it-worth-to-me</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/10/4/what-s-it-worth-to-me" />
+    <id>http://brixen.io/2006/10/4/what-s-it-worth-to-me</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/10/4/what-s-it-worth-to-me" />
     <published>2006-10-04T00:00:00-07:00</published>
     <updated>2006-10-04T00:00:00-07:00</updated>
     <author>
@@ -1543,8 +1532,8 @@ p. Figure 2. Circular &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; perspe
   
   <entry>
     <title>Pardon my dust</title>
-    <id>http://blog.brightredglow.com/2006/10/3/pardon-my-dust</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/10/3/pardon-my-dust" />
+    <id>http://brixen.io/2006/10/3/pardon-my-dust</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/10/3/pardon-my-dust" />
     <published>2006-10-03T00:00:00-07:00</published>
     <updated>2006-10-03T00:00:00-07:00</updated>
     <author>
@@ -1565,8 +1554,8 @@ p. Figure 2. Circular &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; perspe
   
   <entry>
     <title>Why we focus on solutions, not products</title>
-    <id>http://blog.brightredglow.com/2006/9/21/why-we-focus-on-solutions-not-products</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/9/21/why-we-focus-on-solutions-not-products" />
+    <id>http://brixen.io/2006/9/21/why-we-focus-on-solutions-not-products</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/9/21/why-we-focus-on-solutions-not-products" />
     <published>2006-09-21T00:00:00-07:00</published>
     <updated>2006-09-21T00:00:00-07:00</updated>
     <author>
@@ -1592,8 +1581,8 @@ p. Figure 2. Circular &lt;span class=&quot;caps&quot;&gt;BDD&lt;/span&gt; perspe
   
   <entry>
     <title>Are your tests findable</title>
-    <id>http://blog.brightredglow.com/2006/9/20/are-your-tests-findable</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/9/20/are-your-tests-findable" />
+    <id>http://brixen.io/2006/9/20/are-your-tests-findable</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/9/20/are-your-tests-findable" />
     <published>2006-09-20T00:00:00-07:00</published>
     <updated>2006-09-20T00:00:00-07:00</updated>
     <author>
@@ -1632,8 +1621,8 @@ Findability requires definition, distinction, difference. In physical environmen
   
   <entry>
     <title>The tangled web: data migrations</title>
-    <id>http://blog.brightredglow.com/2006/9/6/the-tangled-web-data-migrations</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/9/6/the-tangled-web-data-migrations" />
+    <id>http://brixen.io/2006/9/6/the-tangled-web-data-migrations</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/9/6/the-tangled-web-data-migrations" />
     <published>2006-09-06T00:00:00-07:00</published>
     <updated>2006-09-06T00:00:00-07:00</updated>
     <author>
@@ -1729,8 +1718,8 @@ Findability requires definition, distinction, difference. In physical environmen
   
   <entry>
     <title>Testing the tester</title>
-    <id>http://blog.brightredglow.com/2006/8/30/testing-the-tester</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/30/testing-the-tester" />
+    <id>http://brixen.io/2006/8/30/testing-the-tester</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/30/testing-the-tester" />
     <published>2006-08-30T00:00:00-07:00</published>
     <updated>2006-08-30T00:00:00-07:00</updated>
     <author>
@@ -1790,8 +1779,8 @@ Findability requires definition, distinction, difference. In physical environmen
   
   <entry>
     <title>Tracer bullets are about aiming, not firing</title>
-    <id>http://blog.brightredglow.com/2006/8/29/tracer-bullets-are-about-aiming-not-firing</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/29/tracer-bullets-are-about-aiming-not-firing" />
+    <id>http://brixen.io/2006/8/29/tracer-bullets-are-about-aiming-not-firing</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/29/tracer-bullets-are-about-aiming-not-firing" />
     <published>2006-08-29T00:00:00-07:00</published>
     <updated>2006-08-29T00:00:00-07:00</updated>
     <author>
@@ -1837,8 +1826,8 @@ Findability requires definition, distinction, difference. In physical environmen
   
   <entry>
     <title>Agile thought 41 years ago</title>
-    <id>http://blog.brightredglow.com/2006/8/29/agile-thought-41-years-ago</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/29/agile-thought-41-years-ago" />
+    <id>http://brixen.io/2006/8/29/agile-thought-41-years-ago</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/29/agile-thought-41-years-ago" />
     <published>2006-08-29T00:00:00-07:00</published>
     <updated>2006-08-29T00:00:00-07:00</updated>
     <author>
@@ -1873,8 +1862,8 @@ Findability requires definition, distinction, difference. In physical environmen
   
   <entry>
     <title>assert_no_cookie dammit</title>
-    <id>http://blog.brightredglow.com/2006/8/28/assert_no_cookie-dammit</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/28/assert_no_cookie-dammit" />
+    <id>http://brixen.io/2006/8/28/assert_no_cookie-dammit</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/28/assert_no_cookie-dammit" />
     <published>2006-08-28T00:00:00-07:00</published>
     <updated>2006-08-28T00:00:00-07:00</updated>
     <author>
@@ -1902,8 +1891,8 @@ end
   
   <entry>
     <title>assert_cookie for ooey gooey fun</title>
-    <id>http://blog.brightredglow.com/2006/8/27/assert_cookie-for-ooey-gooey-fun</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/27/assert_cookie-for-ooey-gooey-fun" />
+    <id>http://brixen.io/2006/8/27/assert_cookie-for-ooey-gooey-fun</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/27/assert_cookie-for-ooey-gooey-fun" />
     <published>2006-08-27T00:00:00-07:00</published>
     <updated>2006-08-27T00:00:00-07:00</updated>
     <author>
@@ -1928,8 +1917,8 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
   
   <entry>
     <title>Patterns of dialogue</title>
-    <id>http://blog.brightredglow.com/2006/8/22/patterns-of-dialogue</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/22/patterns-of-dialogue" />
+    <id>http://brixen.io/2006/8/22/patterns-of-dialogue</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/22/patterns-of-dialogue" />
     <published>2006-08-22T00:00:00-07:00</published>
     <updated>2006-08-22T00:00:00-07:00</updated>
     <author>
@@ -1953,8 +1942,8 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
   
   <entry>
     <title>Ethical Software Needs Dialogue</title>
-    <id>http://blog.brightredglow.com/2006/8/16/ethical-software-needs-dialogue</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/16/ethical-software-needs-dialogue" />
+    <id>http://brixen.io/2006/8/16/ethical-software-needs-dialogue</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/16/ethical-software-needs-dialogue" />
     <published>2006-08-16T00:00:00-07:00</published>
     <updated>2006-08-16T00:00:00-07:00</updated>
     <author>
@@ -1993,8 +1982,8 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
   
   <entry>
     <title>not Scrum.equal :product_backlog</title>
-    <id>http://blog.brightredglow.com/2006/8/10/not-scrum-equal-product_backlog</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/10/not-scrum-equal-product_backlog" />
+    <id>http://brixen.io/2006/8/10/not-scrum-equal-product_backlog</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/10/not-scrum-equal-product_backlog" />
     <published>2006-08-10T00:00:00-07:00</published>
     <updated>2006-08-10T00:00:00-07:00</updated>
     <author>
@@ -2032,8 +2021,8 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
   
   <entry>
     <title>Rails' future is bright indeed, bright like the sun</title>
-    <id>http://blog.brightredglow.com/2006/8/7/rails-future-is-bright-indeed-bright-like-the-sun</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/7/rails-future-is-bright-indeed-bright-like-the-sun" />
+    <id>http://brixen.io/2006/8/7/rails-future-is-bright-indeed-bright-like-the-sun</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/7/rails-future-is-bright-indeed-bright-like-the-sun" />
     <published>2006-08-07T00:00:00-07:00</published>
     <updated>2006-08-07T00:00:00-07:00</updated>
     <author>
@@ -2128,8 +2117,8 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
   
   <entry>
     <title>One cuckoo flew over the nest</title>
-    <id>http://blog.brightredglow.com/2006/8/6/one-cuckoo-flew-over-the-nest</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/6/one-cuckoo-flew-over-the-nest" />
+    <id>http://brixen.io/2006/8/6/one-cuckoo-flew-over-the-nest</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/6/one-cuckoo-flew-over-the-nest" />
     <published>2006-08-06T00:00:00-07:00</published>
     <updated>2006-08-06T00:00:00-07:00</updated>
     <author>
@@ -2188,8 +2177,8 @@ assert_cookie :secret, :path =&amp;gt; lambda { |path| path =~ /secret/ },
   
   <entry>
     <title>It's all about the dialogue</title>
-    <id>http://blog.brightredglow.com/2006/8/4/its-all-about-the-dialogue</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/4/its-all-about-the-dialogue" />
+    <id>http://brixen.io/2006/8/4/its-all-about-the-dialogue</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/4/its-all-about-the-dialogue" />
     <published>2006-08-04T00:00:00-07:00</published>
     <updated>2006-08-04T00:00:00-07:00</updated>
     <author>
@@ -2232,8 +2221,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>Is there room for a good Samaritan in the face of the spam deluge</title>
-    <id>http://blog.brightredglow.com/2006/8/3/is-there-room-for-a-good-samaritan-in-the-face-of-the-spam-deluge</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/8/3/is-there-room-for-a-good-samaritan-in-the-face-of-the-spam-deluge" />
+    <id>http://brixen.io/2006/8/3/is-there-room-for-a-good-samaritan-in-the-face-of-the-spam-deluge</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/8/3/is-there-room-for-a-good-samaritan-in-the-face-of-the-spam-deluge" />
     <published>2006-08-03T00:00:00-07:00</published>
     <updated>2006-08-03T00:00:00-07:00</updated>
     <author>
@@ -2288,8 +2277,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>Good user experience design is like chicken-sexing</title>
-    <id>http://blog.brightredglow.com/2006/7/23/good-user-experience-design-is-like-chicken-sexing</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/7/23/good-user-experience-design-is-like-chicken-sexing" />
+    <id>http://brixen.io/2006/7/23/good-user-experience-design-is-like-chicken-sexing</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/7/23/good-user-experience-design-is-like-chicken-sexing" />
     <published>2006-07-23T00:00:00-07:00</published>
     <updated>2006-07-23T00:00:00-07:00</updated>
     <author>
@@ -2311,8 +2300,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>Having a blast at webvisions 2006</title>
-    <id>http://blog.brightredglow.com/2006/7/21/having-a-blast-at-webvisions-2006</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/7/21/having-a-blast-at-webvisions-2006" />
+    <id>http://brixen.io/2006/7/21/having-a-blast-at-webvisions-2006</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/7/21/having-a-blast-at-webvisions-2006" />
     <published>2006-07-21T00:00:00-07:00</published>
     <updated>2006-07-21T00:00:00-07:00</updated>
     <author>
@@ -2363,8 +2352,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>The "real world" can eat my shorts</title>
-    <id>http://blog.brightredglow.com/2006/7/20/the-real-world-can-eat-my-shorts</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/7/20/the-real-world-can-eat-my-shorts" />
+    <id>http://brixen.io/2006/7/20/the-real-world-can-eat-my-shorts</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/7/20/the-real-world-can-eat-my-shorts" />
     <published>2006-07-20T00:00:00-07:00</published>
     <updated>2006-07-20T00:00:00-07:00</updated>
     <author>
@@ -2394,8 +2383,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>There's a short in my NetNewsWire</title>
-    <id>http://blog.brightredglow.com/2006/7/10/there-s-a-short-in-my-netnewswire</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/7/10/there-s-a-short-in-my-netnewswire" />
+    <id>http://brixen.io/2006/7/10/there-s-a-short-in-my-netnewswire</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/7/10/there-s-a-short-in-my-netnewswire" />
     <published>2006-07-10T00:00:00-07:00</published>
     <updated>2006-07-10T00:00:00-07:00</updated>
     <author>
@@ -2413,8 +2402,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>Dilbert wisdom: CRUD is for idiots</title>
-    <id>http://blog.brightredglow.com/2006/7/5/dilbert-wisdom-crud-is-for-idiots</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/7/5/dilbert-wisdom-crud-is-for-idiots" />
+    <id>http://brixen.io/2006/7/5/dilbert-wisdom-crud-is-for-idiots</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/7/5/dilbert-wisdom-crud-is-for-idiots" />
     <published>2006-07-05T00:00:00-07:00</published>
     <updated>2006-07-05T00:00:00-07:00</updated>
     <author>
@@ -2448,8 +2437,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>I be broke</title>
-    <id>http://blog.brightredglow.com/2006/6/19/i-be-broke</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/6/19/i-be-broke" />
+    <id>http://brixen.io/2006/6/19/i-be-broke</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/6/19/i-be-broke" />
     <published>2006-06-19T00:00:00-07:00</published>
     <updated>2006-06-19T00:00:00-07:00</updated>
     <author>
@@ -2467,8 +2456,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>What I want to be when I grow up</title>
-    <id>http://blog.brightredglow.com/2006/6/16/what-i-want-to-be-when-i-grow-up</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/6/16/what-i-want-to-be-when-i-grow-up" />
+    <id>http://brixen.io/2006/6/16/what-i-want-to-be-when-i-grow-up</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/6/16/what-i-want-to-be-when-i-grow-up" />
     <published>2006-06-16T00:00:00-07:00</published>
     <updated>2006-06-16T00:00:00-07:00</updated>
     <author>
@@ -2482,8 +2471,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>G'day Project Borat</title>
-    <id>http://blog.brightredglow.com/2006/6/9/gday-project-borat</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/6/9/gday-project-borat" />
+    <id>http://brixen.io/2006/6/9/gday-project-borat</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/6/9/gday-project-borat" />
     <published>2006-06-09T00:00:00-07:00</published>
     <updated>2006-06-09T00:00:00-07:00</updated>
     <author>
@@ -2511,8 +2500,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>Where for art thou lighttpd</title>
-    <id>http://blog.brightredglow.com/2006/5/24/where-for-art-thou-lighttpd</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/5/24/where-for-art-thou-lighttpd" />
+    <id>http://brixen.io/2006/5/24/where-for-art-thou-lighttpd</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/5/24/where-for-art-thou-lighttpd" />
     <published>2006-05-24T00:00:00-07:00</published>
     <updated>2006-05-24T00:00:00-07:00</updated>
     <author>
@@ -2528,8 +2517,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>The pursuit of perfection</title>
-    <id>http://blog.brightredglow.com/2006/5/24/the-pursuit-of-perfection</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/5/24/the-pursuit-of-perfection" />
+    <id>http://brixen.io/2006/5/24/the-pursuit-of-perfection</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/5/24/the-pursuit-of-perfection" />
     <published>2006-05-24T00:00:00-07:00</published>
     <updated>2006-05-24T00:00:00-07:00</updated>
     <author>
@@ -2549,8 +2538,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>PLANET ARGON is my Google</title>
-    <id>http://blog.brightredglow.com/2006/5/3/planet-argon-is-my-google</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/5/3/planet-argon-is-my-google" />
+    <id>http://brixen.io/2006/5/3/planet-argon-is-my-google</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/5/3/planet-argon-is-my-google" />
     <published>2006-05-03T00:00:00-07:00</published>
     <updated>2006-05-03T00:00:00-07:00</updated>
     <author>
@@ -2568,8 +2557,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>The lure of the black diamond</title>
-    <id>http://blog.brightredglow.com/2006/5/2/the-lure-of-the-black-diamond</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/5/2/the-lure-of-the-black-diamond" />
+    <id>http://brixen.io/2006/5/2/the-lure-of-the-black-diamond</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/5/2/the-lure-of-the-black-diamond" />
     <published>2006-05-02T00:00:00-07:00</published>
     <updated>2006-05-02T00:00:00-07:00</updated>
     <author>
@@ -2589,8 +2578,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>Xen and the art of noise (management)</title>
-    <id>http://blog.brightredglow.com/2006/5/1/xen-and-the-art-of-noise-management</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/5/1/xen-and-the-art-of-noise-management" />
+    <id>http://brixen.io/2006/5/1/xen-and-the-art-of-noise-management</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/5/1/xen-and-the-art-of-noise-management" />
     <published>2006-05-01T00:00:00-07:00</published>
     <updated>2006-05-01T00:00:00-07:00</updated>
     <author>
@@ -2606,8 +2595,8 @@ Of course, these are very rough ideas. What I want to do is build out the unders
   
   <entry>
     <title>My favorite button to push</title>
-    <id>http://blog.brightredglow.com/2006/4/30/my-favorite-button-to-push</id>
-    <link rel="alternate" type="text/html" href="http://blog.brightredglow.com//2006/4/30/my-favorite-button-to-push" />
+    <id>http://brixen.io/2006/4/30/my-favorite-button-to-push</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2006/4/30/my-favorite-button-to-push" />
     <published>2006-04-30T00:00:00-07:00</published>
     <updated>2006-04-30T00:00:00-07:00</updated>
     <author>
