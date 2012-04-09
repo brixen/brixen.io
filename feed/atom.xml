@@ -7,7 +7,7 @@ layout: nil
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <link href="{{ site.host }}/feed/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="{{ site.host }}/" rel="alternate" type="text/html"/>
-  <updated>{{ post.date | date_to_xmlschema }}</updated>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>blog.brightredglow.com/</id>
 
   {% for post in site.posts %}
