@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>def euler(x); cos(x) + i*sin(x); end</title>
+  <meta name="description" content="This is the def euler(x); cos(x) + i*sin(x); end blog" />
+  <meta name="keywords" content="blog,def euler(x); cos(x) + i*sin(x); end" />
+  <meta name="generator" content="Jekyll" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/pygments.css" rel="stylesheet" type="text/css" />
+  <link href="/feed/atom.xml" rel="alternate" title="Articles for Home" type="application/atom+xml" />
+
+</head>
+<body>
+      <div id="header"><h1><a href="/">def euler(x); cos(x) + i*sin(x); end</a></h1>
+    <p class="description">euler(PI) # => -1</p>
+  </div>
+
+
+  <div id="wrap">
+    <div id="content">
+      <div class="entry home">
+        <h2 class="entrytitle">Is Node.js Better?</h2>
+        
+              <div class="meta">
+        <p><span class="date">09 April 2012</span></p>
+      </div>
+
+         <div class="entrybody"><p><strong>NOTE:</strong> <em>This is essentially a transcript of (though mostly written before)
+my JSConf 2012 talk, &ldquo;Is Node.js better?&rdquo;. It&rsquo;s long, I know. There is no
+tl;dr, sorry.</em></p>
+
+<p><strong>Is this better than that?</strong></p>
+
+<p>This is a question that we confront constantly. Numerous times a day, in fact.
+And sometimes a lot rides on the answer. Is this job offer better than that
+one? Is this car better than that one? Is this home for my ailing mother
+better than that one? Is this billing system better than that one? Is this tax
+plan better than that one?</p>
+
+<p>This question is everywhere. We cannot escape it. Yet for the frequency with
+which we confront it, our approach to resolving the question is quite likely
+<em>not</em> objective. Which is to say, we are probably not answering the question
+in a way that is mostly likely to benefit us. Many used car sales, software
+system sales, and political campaigns, to mention a few things, profit from
+our incompetence answering this question. We&rsquo;ll consider some of the reasons
+why that is true later. But just recognizing this is rather distressing.</p>
+
+<p>But we&rsquo;re not just asking, &ldquo;is this better than that?&rdquo; in general; we&rsquo;re here
+at JSConf and this talk is about Node.js. Why? You probably know that I&rsquo;m not
+a notable member of the Javascript community. I have not authored a single JS
+library. I&rsquo;ve never given a talk at a JSConf. Why am I here? And why am I
+talking about Node.js?</p>
+
+<p>I met Chris Williams at <a href="http://codeconf.com/">CodeConf 2011</a>, organized by
+<a href="https://github.com/">Github</a>. Chris sat down next to me during the Node.js
+talk by Ryan Dahl. I found the talk fascinating because much of it focused on
+improving the non-blocking I/O facilities in V8 for both Windows and Unix-ish
+platforms. This was something that we have a lot of interest in for the
+Rubinius project and I had then recently started porting Rubinius to Windows.</p>
+
+<p>At the time, I had no idea who Chris was. But we chatted a bit and at the
+break, Chris stood up and said, &ldquo;I&rsquo;m going to get some more beer, would you
+like some?&rdquo; Holy shit. <em>That&rsquo;s why I had been smelling beer for the last 45
+minutes!</em> Chris had a coffee cup full of beer. Hilarious. One person&rsquo;s
+moderation is another person&rsquo;s excess.</p>
+
+<p>I declined the beer then but we exchanged contact info and Chris put me in
+touch with folks from Microsoft who were assisting with getting Node.js
+running well on Windows. Chris also informed me of the upcoming JSConf that
+was being held in Portland, where I live. It was too late to get tickets but I
+was able to attend the opening party and made a point to hang out as much as I
+could with the other attendees at conference events. At the time of CodeConf,
+I was merely curious about Node.js, but I didn&rsquo;t have much of an opinion.</p>
+
+<p>Fast-forward almost nine months. I was seeing a flurry of tweets about
+Node.js. This got my attention, in part because of the people who where
+tweeting about it. I use Twitter as one of my main sources of information
+about developing technology. The more tweets I saw, the more uneasy I felt.
+Finally, one morning I posted this:</p>
+
+<p><img src="/images/node_challenge.png" alt="Node.js challenge" /></p>
+
+<p>My intent was not to be antagonistic. Rather, my challenge was focused on
+finding out what sort of problems people were solving with Node.js. But any
+challenge, even a sincere one, carries a connotation of aggressiveness. And it
+is a fact of human nature that when pushed, people tend to push back. Some of
+the responses to my tweet attempted to share knowledge but others were
+understandably of the genre, &ldquo;if you&rsquo;re looking for a fight, you&rsquo;ll find one
+here.&rdquo;</p>
+
+<p>It wasn&rsquo;t long before Chris DM&rsquo;d me and basically said, &ldquo;What&rsquo;s up with this
+&lsquo;challenge&rsquo;? You are working on important stuff, why are you wasting time on
+this?&rdquo; I answered that I was genuinely interested in understanding why people
+are using Node.js. We exchanged a few comments over a several days and Chris
+asked if I was willing to do a talk on the subject. So that is how I got here,
+talking about Node.js at JSConf. It is a honor and privilege to be here and I
+thank Chris and the conference organizers, as well as all of you.</p>
+
+<p>So who am I? I&rsquo;ve been working on the <a href="http://rubini.us">Rubinius</a> project for
+the past five years, and four of those while employed full-time by <a href="http://engineyard.com">Engine
+Yard</a>. I started the <a href="http://rubyspec.org">RubySpec</a>
+project as part of my work on Rubinius. Through my work on Rubinius, I have
+learned a lot about compilers, virtual machines, garbage collectors, and
+importantly, concurrency. One of the notable points about Rubinius is we have
+removed the global interpreter lock (GIL) so that multiple native threads can
+run Ruby code in parallel on multi-core or multi-CPU hardware. We see this
+ability as vital to the success of Rubinius.</p>
+
+<p>Now that you know how I came to be speaking at JSConf and you know a little
+about what I do, the question remains, &ldquo;<em>Why</em> am I speaking at JSConf? Why do
+I care about Node.js?&rdquo; The answer to that will take us on a journey through
+some interesting territory. I only ask that you suspend prejudice and follow
+along. If you ultimately disagree with me, there is nothing wrong with that.</p>
+
+<p><em>Organizations tend to perpetuate the problem they were created to solve.</em></p>
+
+<p>I don&rsquo;t remember exactly when I was introduced to this idea, but it had a
+significant effect on me. There are a lot of difficult problems to solve in
+the world and one of the first things we tend to do is create an organization
+that is dedicated to some aspect or another of a solution. Notice that there
+is a difference between people organizing to solve a problem and an
+organization. As soon as we have an organization, it will tend to take actions
+to perpetuate itself. Of course, these actions are really the decisions of
+people <em>in</em> the organization. The organization has no effective power
+independent of the people who comprise it, yet the organization as a whole is
+a system, and will tend to exhibit life-preserving actions. If an organization
+exists to solve a problem, and that problem is solved, the organization ceases
+to have a reason to exist.</p>
+
+<p>Every time we organize for any reason, there is a tendency for structures to
+solidify. The rigidity of those structures tend to inhibit movement and change
+as circumstances change. Therefore, a vital force in social organization is
+the force that opposes established order. There is a name for this force:
+<em>subversive</em>, something seeking or intending to subvert an established system
+or institution. People who participate in subversive activities are called
+subversives.</p>
+
+<p>There is another aspect to this that is important. People tend to be in one of
+two groups: those who fear change and those who create change. When we think
+of &ldquo;change&rdquo;, it usually has a positive connotation, and &ldquo;subversive&rdquo; has a
+negative connotation. But they are often the same thing. Change can be
+positive or negative. But as it has been said, &ldquo;there is only one constant:
+change.&rdquo;</p>
+
+<p>Javascript has been an amazing technology wielded by people who have radically
+and fundamentally changed how we interact on the web. This is fascinating and
+tremendously valuable for societies all over the world. So part of the reason
+why I&rsquo;m speaking here is that people enthusiastic about Javascript are people
+who are creating change. I want to acknowledge, assist, encourage, collaborate
+with, and influence people who are actively working to change the world for
+the better.</p>
+
+<p>This talk is about conflict resolution. Conflict is inherent in the question,
+&ldquo;Is this better than that?&rdquo;</p>
+
+<p>It&rsquo;s important to note that any contrast implies conflict. Sometimes people
+assert that you should be able to promote something without saying anything
+bad about something else. This idea is impossible to comprehend. If I say,
+&ldquo;water is good,&rdquo; it is inherent, even when implicit, that I&rsquo;m saying water has
+value and value is a concept that relies on a context and a standard. There is
+no concept of value that is not relational. Something is only good relative to
+what you are judging it against.</p>
+
+<p>Criticism is advocacy; advocacy is criticism. Criticism is also controversy
+and controversy is entertaining. However, despite the entertainment value,
+different ways of resolving conflict can have very negative consequences.
+Usually when there is conflict, we address it with aggression. We talk about
+having a &ldquo;shootout&rdquo;, &ldquo;fight&rdquo;, &ldquo;throw down&rdquo;, etc. But are fights a healthy,
+beneficial way to resolve controversy?</p>
+
+<p>Further, when a person comes out as a strong advocate for some technology,
+people opposed to the technology will hurl the epithet &ldquo;fanboi&rdquo; as an attempt
+to discredit the idea by attacking the person. From the other direction, if we
+don&rsquo;t like someone&rsquo;s criticism, we may call the person a &ldquo;troll&rdquo;.</p>
+
+<p>Other times, we will simply attempt to avoid conflict entirely. In Ruby, there
+is this idea, MINASWAN: <em>Matz is nice and so we are nice.</em> There is nothing
+wrong with being nice, but why is &ldquo;nice&rdquo; contrasted with &ldquo;criticism&rdquo;? Are we
+supposed to never challenge someone because being &ldquo;nice&rdquo; is more important and
+challenging them is inherently not nice?  What if someone is doing something
+that from our experience is not beneficial to themselves or others?</p>
+
+<p>For the most part, this is how I see us dealing with conflict. We either avoid
+it or we attempt to devalue the person rather than discuss the idea. This is
+dysfunctional. Basically, we suck at conflict.</p>
+
+<p>How can we improve how we deal with conflict?</p>
+
+<p>I assert that we need to use science. But how? What does that mean? To
+understand this, we need to look more deeply at how we as humans think. But
+before we get to that, let&rsquo;s consider a very common aspect of social
+organization: the tendency to surrender our own judgment to that of an
+&ldquo;expert&rdquo;.</p>
+
+<p>In 1948, Alex Osborn, who was an ad man at B.B.D.O., wrote a book, <em>Your
+Creative Power</em>, where he introduced &ldquo;brainstorming&rdquo;. Essentially, a group of
+people toss out solutions to a problem under consideration. The emphasis is on
+generating as many ideas as possible. A key element of the activity is that
+everyone is told not to criticize their own or other&rsquo;s ideas. It was asserted
+that creativity was too delicate a process to withstand the harsh light of a
+critical challenge.</p>
+
+<p>Of course, that made a lot of sense to people. Over the years, brainstorming
+has been used extensively in problem solving. It is still heavily used. The
+problem is, the method is flawed. The proscription against criticism happens
+to be wrong.</p>
+
+<p>There were two studies that tested the two main components of the
+brainstorming methodology for discovering creative solutions. The first
+focused on individuals versus groups. The result was that people working alone
+produced not just more but better ideas than the groups.</p>
+
+<p>The second study focused on the suspension of criticism. The subjects were
+divided into three groups. The first group were instructed to use
+brainstorming and told not to criticize their own or each other&rsquo;s ideas. The
+second group were instructed to challenge and debate one another. The last
+group was allowed to organize themselves without any instruction in a
+particular method. The results from this experiment were unambiguous. The
+debaters significantly outscored both other groups. The act of criticizing
+other&rsquo;s ideas causes both the questioner to understand the idea more fully and
+the person proposing the idea to go more deeply into it.</p>
+
+<p>The important lesson is two-fold. Criticism is an important aspect of
+creative, intellectual effort. Despite the proscription against criticism
+having superficial validity, it was rather easily disproved.</p>
+
+<p>Another interesting study related to creativity examined whether there was a
+correlation between the success of Broadway musicals and how well the team
+producing the musical knew each other. The measure of team familiarity was
+named the Q factor. A team where all the members had worked together before
+would have a high Q factor. A team where no members had worked together before
+would have a low Q factor. The study found that there was indeed a significant
+statistical correlation between Q factor and success of a musical. In other
+words, a certain range of Q factor was a good predictor of success. The value
+of Q that was most likely to predict success was from a team where most
+members had worked together previously but some members had not. A team where
+no one had worked together wasn&rsquo;t able to communicate effectively enough. A
+team where everyone had worked together didn&rsquo;t benefit from an outsider&rsquo;s
+perspective challenging ideas.</p>
+
+<p>These results are reported in <em>Groupthink: The Brainstorming Myth</em> by Jonah
+Lehrer, published in <em>New Yorker</em> magazine, January 30th, 2012. The lesson we
+can take is that criticism is important to creative solutions to problems and
+we should be seeking people who are unfamiliar with our favorite language or
+framework to join us and help our understanding of problems and the solutions
+we are building.</p>
+
+<p>Another lesson is that there is nothing that prevents a well-meaning and
+experienced expert from being wrong. One thing that we should all be
+challenging is &ldquo;appeals to authority&rdquo; in decision making. As you can see from
+the following tweet, Ward Cunningham thinks Node.js is the future of the
+server side. However, that assertion is most likely not taken by readers of
+the tweet as a neutral assertion of fact about Ward&rsquo;s opinion. It is taken as
+meaningful because Ward said it. Further, it is unremarkable that the
+assertion is unaccompanied by any evidence with which to help determine the
+validity of the assertion. Assertions by experts with no accompanying evidence
+are the <em>status quo</em> in our industry, and that should be extremely
+embarrassing.</p>
+
+<p><img src="/images/node_future.png" alt="Appeal to authority" /></p>
+
+<p>The next part of our journey takes us to one of the most interesting books I
+have read. <em>Thinking Fast and Slow</em> by Daniel Kahneman (Farrar, Straus and
+Giroux, 2011) is a book about how our minds work. There are basically two
+modes that have distinct and surprising features in the way we think. These
+two modes influence one another.</p>
+
+<p>One mode is called fast thinking because our brains activate an entire network
+of associations in a sub-second burst of activity. For example, if I display
+the word &ldquo;bacon&rdquo;, you will immediately have numerous memories and associations
+with bacon coming into awareness. This fast mode is all about pattern matching
+and the associations activated can be extensive and surprising. In this mode,
+the brain over-achieves, if you will. It activates far more associations than
+may be needed. And some associations may be surprising. It is up to the second
+mode to use those associations depending on the task we are confronted with.</p>
+
+<p>The other mode is called slow thinking and is related to such activities as
+concentration, judgment, monitoring, and selecting. If I ask, &ldquo;what is 23 x
+47?&rdquo; Answering this requires deliberate application of a set of tasks to
+arrive at the answer, unless the problem is one we are quite familiar with,
+in which case the fast thinking would just produce the answer as an
+association.</p>
+
+<p>The book is filled with fascinating knowledge about how our thinking works and
+I cannot recommend it highly enough. It discusses numerous ways in which our
+thinking can produce erroneous beliefs and ideas. One of the very interesting
+results is that our deliberate, slow thinking can be easily fooled into
+accepting a wrong answer provided by our fast thinking mode if we feel at
+ease. But if we feel anxious, our slow thinking mode will be more critical and
+less likely to just accept an answer provided by our fast thinking mode.</p>
+
+<p>Reading <em>Thinking Fast and Slow</em> and reflecting on the complex and
+inter-related behaviors that scientists have been able to discover facts about
+led me to the following conclusion:</p>
+
+<p><em>Programming is a behavioral science.</em></p>
+
+<p>Behavioral science is a very broad category that encompasses disciplines that
+explore the activities and interactions among organisms through systematic
+analysis and investigation using controlled observation and scientific
+experimentation.</p>
+
+<p>There is a distinction between programming and computer science. Writing
+software is an activity that is mostly centered on human behaviors. Most
+software will interact with people at some point. Basically, it is written by
+people, for people, and funded by people. Of course, there are mathematical
+foundations of computing and algorithms, but those are rarely the most
+important elements of the process of creating software.</p>
+
+<p>If you are familiar with the many methodologies under the &ldquo;Agile&rdquo; umbrella,
+you know that dealing with changing requirements is one of the most complex
+aspects of software construction. But note that those changes are almost
+entirely due to human behaviors. If we build a bridge, an environmental study
+will determine most of the forces that the bridge design must account for.
+Further, the laws of physics are quite well established. Engineering the
+bridge is not a terribly complex activity. However, in software, there is not
+a good way to clearly establish the constraints for the system we are
+building. People are responsible for most of the complexity in programming.
+That is why I assert it is a behavioral science.</p>
+
+<p>What is curious to me is that a typical undergrad psychology student will
+likely have more exposure to research methods than a typical computer science
+undergrad or even graduate student. Research methods are activities directed
+at determining the <em>validity</em> of assertions. They are what enable us to
+separate knowledge from opinion. Fundamentally, they are related to two
+aspects of existence: the nature of the world (meta-physics) and the theory of
+knowledge (epistemology). To learn more about this, I would recommend
+<em>Research Methods: the basics</em> by Nicholas Walliman (Routledge 2011).</p>
+
+<p>Turning from this general information about applying science to thinking and
+learning about research methods, let&rsquo;s look at Node.js again. One of the major
+assertions about Node.js is that it permits writing efficient web servers that
+must deal with many concurrent connections. So, let&rsquo;s look at some basic
+features of concurrency, including a possible definition of concurrency.</p>
+
+<p><em>People are selfish, lazy, and easily bored.</em></p>
+
+<p>I say that without any moral judgment. I think these are all biologically
+desirable features of organisms. We are selfish because we are responsible for
+our own well-being. We are lazy so we don&rsquo;t waste precious and
+costly-to-obtain energy. We are easily bored because we must constantly
+incorporate new material to maintain our existence. Of course, each of these
+attributes has an opposite and any individual will exhibit a combination of
+these behaviors. But these three attributes are interesting to consider in
+this context.</p>
+
+<p>Scarcity is a fact of life. Infinity is a mathematical fantasy. There are a
+finite number of computers.</p>
+
+<p>Combine scarcity with the attributes above about people and we have a reason
+for concurrency in computation.</p>
+
+<p>When a single CPU with a single core is running, it can basically execute one
+instruction at a time. Of course, this is a simplification, but it is
+basically true. If we consider a program to be a sequence of instructions,
+I<sub>1</sub>..I<sub>n</sub>, every possible ordering of those instructions is
+a plausible definition of concurrency. For example, a four instruction program
+could be I<sub>1</sub>, I<sub>2</sub>, I<sub>3</sub>, I<sub>4</sub> or
+I<sub>3</sub>, I<sub>1</sub>, I<sub>2</sub>, I<sub>4</sub>, etc. Not all
+orderings are going to be meaningful given the semantics we expect from the
+program.</p>
+
+<p>Now, consider that the program would be 100% efficient if all the instructions
+are dedicated to solving the problem for which the program exists. However, if
+any instructions are dedicated to changing the order of instructions, those
+would reduce the efficiency of the program by doing work that is not directly
+related to solving the problem.</p>
+
+<p>Once upon a time, computers solved problems one at a time. The jobs were
+processed from start to finish one at a time. This is great for efficiency but
+not great for people. People don&rsquo;t want to wait for everyone else&rsquo;s job to
+finish before theirs. Nor are they willing to do a lot of extra work to make
+the computer most efficient. So the idea of time-sharing systems was born.
+Essentially, everyone got a little slice of time to use the CPU. Even though
+some efficiency was lost, and so everyone&rsquo;s program would ultimately take
+longer to complete, the average time to wait went from hours (a whole day,
+perhaps) to possibly a few minutes. Computers became interactive.</p>
+
+<p>There are only a few mechanisms to re-order the instructions of a sequential
+program. (Note that we can generalize from the instructions of a single
+program to the instructions of a set of programs concatenated together. The
+fundamental considerations do not change.) One way would be to do a little
+work and then voluntarily yield control of the CPU to another program.  At
+some later time, another program would yield control back to us. This would
+implement cooperative multitasking. Another way would be for some sort of
+supervisor to allocate a short amount of time to each program in sequence.
+This would implement pre-emptive multitasking. Once your time-slice is over,
+you simply have to wait until everyone else gets a time-slice before you can
+run again. Yet another way would be to allow a program to run until it
+performed some action, like writing to the display or reading from the disk.</p>
+
+<p>Each of these mechanisms for interleaving the instructions of a serial program
+may have different trade-offs, and consequently, different efficiencies.
+However, there is nothing inherent in any method that dictates it would be
+more efficient than any other. I consider this a very important point missing
+from almost every assertion about the uniqueness of Node.js. People are
+saying, and others are repeating, that Node.js enables solutions that are not
+possible with other programming languages and frameworks. This is absolutely
+false.</p>
+
+<p>There is a lot more to understand about concurrency, modern CPUs, and
+efficiency than we can cover here. However, if you are concerned with the
+validity of the assertion that Node.js is good technology for writing
+efficient web servers, then you may want to understand more about concurrency.</p>
+
+<p>Besides concurrency, there are a number of justifications given for using
+Node.js. Are these justifications valid? I think consistency is important. If
+I say X is better than some Y because of some reason J, and there is some X&rsquo;
+that is basically equivalent to X and Y&rsquo; equivalent to Y, then X&rsquo; should
+probably be better than Y&rsquo; for the same reason J. That idea is expressed in
+symbols below, where the long horizontal line means that the statements above
+logically <em>imply</em> the statement below the line.</p>
+
+<p><img src="/images/justification.png" alt="Justification" /></p>
+
+<p>One reason given for using Node.js is that the same language, Javascript, can
+be used on both the client and the server. If that is true, then why shouldn&rsquo;t
+someone use <a href="https://developers.google.com/web-toolkit/">GWT</a> and use Java on
+both the client and server? Since the JVM works very well on the server,
+certainly the effort put into GWT could be seen as the equivalent of the
+effort put into Node.js to make a browser technology work well on the server.
+At the least, when you hear the &ldquo;same language&rdquo; justification, you should be
+looking for places where the same justification could be made but you don&rsquo;t
+find it convincing. If the justification isn&rsquo;t convincing when you substitute
+analogous elements, then either the justification is flawed or it is missing
+something that would differentiate the two situations.</p>
+
+<p>Often, the same language justification for using Node.js is promoted by people
+who are also bragging about being polyglot programmers. Not only is knowing
+more than one programming language beneficial, it&rsquo;s basically required these
+days. But if knowing more than one language is offered as a positive, why is
+it important to use the same language on client and server? I&rsquo;m not saying
+this argument is invalid, but rather that the justification should examined
+for consistency.</p>
+
+<p>Another reason given for using Node.js is that there are many Javascript
+programmers. However, statistically, that means there are many mediocre or
+poor quality Javascript programmers. And if concurrent applications are so
+hard, do you want a lot of mediocre or poor programmers building them? Again,
+many Javascript programmers <em>may</em> be a justification for using Node.js but by
+itself, the justification is problematic. It&rsquo;s likely an extreme
+over-simplification. As such, it has dubious value as more than just a
+convenient dismissal of someone who challenges the rationale for using
+Node.js.</p>
+
+<p>It may be that using Node.js is just more fun for many people. This is a great
+reason to use Node.js. However, it is not one that can be used to evaluate the
+technical merit of the technology. Which is fine. Recall that I&rsquo;m asserting
+programming is a <em>behavioral</em> science. We should be studying and giving
+adequate weight to considerations that are not merely technical. Humans are
+using Node.js.</p>
+
+<p>Finally, despite being controversial, I&rsquo;m going to give some opinions about
+Node.js based on my experience. The point is not whether you believe me or
+not.  These opinions should be examined critically with the objective of
+determining their validity using methods suggested above.</p>
+
+<p>More CPU cores is the trend for the future. Typical programs have a huge
+amount of state. Every library loaded is program state. Running multiple
+processes demands duplicating the memory used by each process times the
+number of running processes. As long as the total memory needed to saturate
+the CPU cores is less than the memory available, using processes should not be
+a problem. However, we have seen in Ruby, at least, that it is not typically
+the case. Memory pressure is a constant problem. Solutions to this memory
+pressure like copy-on-write (CoW) friendly garbage collection are hard and not
+guaranteed to be that effective. If the mutable part of the heap is small
+then there is also very likely little shared state that would complicate
+simply using threads. If the mutable part is large, you get the same memory
+pressure over time regardless of CoW-friendly GC.</p>
+
+<p>Since it is extremely unlikely that Javascript will add threads to the
+standard, Node.js will either be essentially single-threaded or programs will
+use non-standard libraries to introduce threading. This forces Node.js to use
+process concurrency to achieve parallelism. In this respect, I think that
+Node.js rejects the multi-core reality that confronts us.</p>
+
+<p>In fact, Node.js is already confronting the issue of process concurrency. In
+Ruby, we have <a href="http://www.modrails.com/">Passenger</a> for managing multiple
+worker processes.  There is now a similar system for Node.js called
+<a href="http://learnboost.github.com/cluster/">Cluster</a>.</p>
+
+<p>Another concern is that an entire ecosystem of libraries and tools must be
+built up for Node.js. Javascript was confined to the browser of a long time,
+and that environment is quite impoverished. In building those libraries, many
+mistakes that have been make in other languages will be made again. That is
+simply the nature of humans doing work. We make mistakes. Ruby and other
+languages have repeated mistakes from languages that came before them. I&rsquo;m not
+saying that the work that must be done won&rsquo;t be offset by its future value. I
+am saying the work must be done and its value should be questioned. There is
+always an opportunity cost for choosing to do an activity. It is the cost of
+not doing another activity. In attempting to answer the question whether
+Node.js is better for our problem, we must consider these issues.</p>
+
+<p>Concurrency is definitely a concern for practically every currently popular
+programming language. If you have heard that Node.js enables solutions not
+possible in other languages, I encourage you to look more deeply into the
+situation. In Ruby, I recommend checking out the
+<a href="https://github.com/celluloid">Celluloid</a> project by Tony Arcieri. The
+project&rsquo;s aim is to bring various concurrency mechanisms to Ruby. He is
+someone with a lot of experience and accomplishments and I&rsquo;m confident his
+projects will advance the state of the art in Ruby and hopefully other
+languages as well. If you are a Clojure enthusiast, you may want to look at
+Carl Lerche&rsquo;s <a href="https://github.com/momentumclj/momentum">momentum</a> project. Of
+course, there are many languages and frameworks that handle concurrency and
+more are under active development. Node.js is not new technology; it&rsquo;s merely
+new for Javascript.</p>
+
+<p>Ultimately, the answer to, &ldquo;Is Node.js better?&rdquo; is not that important. People
+will use Node.js even if it&rsquo;s not the best solution to their problem. Other
+people will not use it even if it is great for their particular problem. Both
+results limit the benefits available to all of us. Further, we will continue
+to confront the question, &ldquo;is this better than that?&rdquo; If we improve our
+ability to answer that question, hopefully we will increase the benefit to us
+all.</p>
+</div>
+      </div>
+    </div>
+        <div id="sidebar">
+      <div id="subscribe">
+        <a type="application/rss+xml" rel="alternate" title="Subscribe to my feed" href="/feed/atom.xml">
+          <img alt="subscribe" src="/images/feed.png" />
+        </a>
+      </div>
+
+      <div>
+        <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+      </div>
+
+      <h2 id="latest_posts">Latest posts</h2>
+      <ul>
+      
+        <li><a href="/2012/4/9/is_node_js_better">Is Node.js Better?</a></li>
+      
+        <li><a href="/2011/10/3/nikita-the-ruby-secret-agent-slides">Slides for "Nikita - The Ruby Secret Agent"</a></li>
+      
+        <li><a href="/2009/3/18/a-vm-by-any-other-name">A VM by any other name</a></li>
+      
+        <li><a href="/2009/3/6/come-to-the-open-source-bridge-conference">Come to the Open Source Bridge conference</a></li>
+      
+        <li><a href="/2009/3/3/when-describe-ing-it-ain-t-enough">When describe'ing it ain't enough</a></li>
+      
+        <li><a href="/2009/3/3/what-is-rubyspec">What is RubySpec?</a></li>
+      
+        <li><a href="/2009/3/3/boxers-or-briefs-neither">Boxers or Briefs? -- Neither?!</a></li>
+      
+        <li><a href="/2009/2/26/warning-includes-known-bugs">Warning: Includes Known Bugs</a></li>
+      
+        <li><a href="/2009/2/20/caveat-lector">Caveat Lector</a></li>
+      
+        <li><a href="/2009/2/12/this-is-not-cold-fusion">This is NOT cold fusion</a></li>
+      
+        <li><a href="/2009/2/12/all-shiny-and-new">All shiny and new</a></li>
+      
+        <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
+      
+        <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
+      
+        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
+      
+        <li><a href="/2008/8/1/as-del-icio-us-as-a-giant-steaming-turd">As del.icio.us as a giant, steaming turd</a></li>
+      
+      </ul>
+      <p><a href="/posts_index.html">Show All Posts</a></p>
+    </div>
+
+  </div>
+
+    <div id="footer">def euler(x); cos(x) + i*sin(x); end is using theme based
+    on <a href="http://ananasblau.com/themes/ananasblau">ananasblau</a> and
+    generated with <a href="http://jekyllrb.com/">Jekyll</a></div>
+
+
+</body>
+</html>
