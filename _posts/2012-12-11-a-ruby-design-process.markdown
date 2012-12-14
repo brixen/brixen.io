@@ -4,6 +4,9 @@ layout: post
 author: Brian
 ---
 
+**Ed:** _Since the initial post, I have fixed some minor grammatical and
+spelling errors pointed out by Rich Morin._
+
 The Ruby programming language needs a design process.
 
 I gave [a talk on this
@@ -24,7 +27,7 @@ Ruby. Matz was the initial author and over time various people contributed to
 the project. We generally refer to this implementation as **MRI** or **Matz's
 Ruby Implementation**. Today, there are half dozen significant Ruby
 implementations. These cover major platforms from the JVM to a Smalltalk VM to
-Microsoft's DLR. Each of these platforms are quite different and have specific
+Microsoft's DLR. Each of these platforms are quite different, having specific
 limitations and advantages.
 
 Matz still works on MRI to some extent, which is now only one implementation
@@ -54,8 +57,8 @@ concurrency primitives other than threads, and concurrent data structures are
 all topics that must be addressed.
 
 We are also seeing a huge change in the way applications are built and
-deployed.  Heterogenous networks of services deployed in the cloud and
-interacting in unforseen ways is the future. The future is not evenly
+deployed.  Heterogeneous networks of services deployed in the cloud and
+interacting in unforeseen ways is the future. The future is not evenly
 distributed but it is already all around us. In this environment, security is
 a vital consideration.  Further, an extension API for Ruby to integrate with
 libraries and applications written in numerous other languages is essential.
@@ -136,7 +139,7 @@ Here is the proposed process:
 ### 1. A Ruby Design Council
 
 A council of people with many different and sometimes competing interests has
-been used at every level of goverment and organizations to ensure that
+been used at every level of government and organizations to ensure that
 different viewpoints are considered and reasonably good decisions are made.
 
 A council is the only equitable way to ensure that the definition of Ruby
@@ -155,7 +158,7 @@ choose and using whatever testing or coding style they select. They are free
 to discuss the process in any forum using any language they choose.
 
 Writing code and playing with it is one of the main ways to get a feel for a
-feature. The design process proposed here does not intend to intefere with
+feature. The design process proposed here does not intend to interfere with
 that. It is also expected that discussions and collaboration between different
 Council members would be undertaken long before a proposal is submitted.
 
@@ -185,7 +188,7 @@ high expectation for a proposal is a benefit.
 
 ### 4. Proceeding with a Proposal
 
-Any proposed change that has meet the criteria has been carefully thought out
+Any proposed change that has met these criteria has been carefully thought out
 and described. The specific details of behavior have been written down in a
 way that any implementation can implement.
 
@@ -218,7 +221,7 @@ performs and interacts with the rest of Ruby that good decisions can be made.
 The express intent of all Council members is to implement a _unified_
 definition of Ruby. If the feature is going to be Ruby, it is going to be
 implemented by all members. It presents no burden to require that the
-implementation preceed the discussion. If, after implementation, the feature
+implementation precede the discussion. If, after implementation, the feature
 fails to meet the needs that motivated it, everyone can be satisfied that the
 best possible evaluation was given. If unforeseen implementation issues are
 discovered, the feature can be revised and resubmitted.
@@ -234,7 +237,7 @@ as a strength of the process, not as a liability.
 Matz still has the ability to say what features become officially Ruby. He can
 exercise his vote to not approve any feature. However, the rest of the Council
 could also vote not to approve a feature that Matz wanted. If this causes the
-slightest bit of fear for the well-being of Ruby, please allow me to dispell
+slightest bit of fear for the well-being of Ruby, please allow me to dispel
 it.
 
 First of all, the Council is made up of people who have spent _years_
@@ -280,7 +283,7 @@ previous comments in a comment, viewing comments by proposal or by
 sub-section, tracking changes to a proposal, tracking references to RubySpecs
 and implementation code, and recording votes. The contents of proposals should
 be searchable and indexable. The process of deciding on proposals should be
-secure and auditable.
+secure and audit-able.
 
 I will create a specific application for this purpose and host it at
 [design.rubyspec.org](http://design.rubyspec.org). Ruby deserves a
