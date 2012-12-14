@@ -4,7 +4,7 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <link href="http://brixen.io/feed/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="http://brixen.io/" rel="alternate" type="text/html"/>
-  <updated>2012-12-11T23:19:36-08:00</updated>
+  <updated>2012-12-13T17:01:57-08:00</updated>
   <id>blog.brightredglow.com/</id>
 
   
@@ -17,7 +17,10 @@
     <author>
       <name>Brian</name>
     </author>
-    <content type="html">&lt;p&gt;The Ruby programming language needs a design process.&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;strong&gt;Ed:&lt;/strong&gt; &lt;em&gt;Since the initial post, I have fixed some minor grammatical and
+spelling errors pointed out by Rich Morin.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The Ruby programming language needs a design process.&lt;/p&gt;
 
 &lt;p&gt;I gave &lt;a href=&quot;http://www.confreaks.com/videos/1278-rubyconf2012-toward-a-design-for-ruby&quot;&gt;a talk on this
 topic&lt;/a&gt;
@@ -36,7 +39,7 @@ Ruby. Matz was the initial author and over time various people contributed to
 the project. We generally refer to this implementation as &lt;strong&gt;MRI&lt;/strong&gt; or &lt;strong&gt;Matz&amp;rsquo;s
 Ruby Implementation&lt;/strong&gt;. Today, there are half dozen significant Ruby
 implementations. These cover major platforms from the JVM to a Smalltalk VM to
-Microsoft&amp;rsquo;s DLR. Each of these platforms are quite different and have specific
+Microsoft&amp;rsquo;s DLR. Each of these platforms are quite different, having specific
 limitations and advantages.&lt;/p&gt;
 
 &lt;p&gt;Matz still works on MRI to some extent, which is now only one implementation
@@ -66,8 +69,8 @@ concurrency primitives other than threads, and concurrent data structures are
 all topics that must be addressed.&lt;/p&gt;
 
 &lt;p&gt;We are also seeing a huge change in the way applications are built and
-deployed.  Heterogenous networks of services deployed in the cloud and
-interacting in unforseen ways is the future. The future is not evenly
+deployed.  Heterogeneous networks of services deployed in the cloud and
+interacting in unforeseen ways is the future. The future is not evenly
 distributed but it is already all around us. In this environment, security is
 a vital consideration.  Further, an extension API for Ruby to integrate with
 libraries and applications written in numerous other languages is essential.
@@ -150,7 +153,7 @@ become the definition of Ruby.&lt;/li&gt;
 &lt;h3 id=&quot;a-ruby-design-council&quot;&gt;1. A Ruby Design Council&lt;/h3&gt;
 
 &lt;p&gt;A council of people with many different and sometimes competing interests has
-been used at every level of goverment and organizations to ensure that
+been used at every level of government and organizations to ensure that
 different viewpoints are considered and reasonably good decisions are made.&lt;/p&gt;
 
 &lt;p&gt;A council is the only equitable way to ensure that the definition of Ruby
@@ -168,7 +171,7 @@ choose and using whatever testing or coding style they select. They are free
 to discuss the process in any forum using any language they choose.&lt;/p&gt;
 
 &lt;p&gt;Writing code and playing with it is one of the main ways to get a feel for a
-feature. The design process proposed here does not intend to intefere with
+feature. The design process proposed here does not intend to interfere with
 that. It is also expected that discussions and collaboration between different
 Council members would be undertaken long before a proposal is submitted.&lt;/p&gt;
 
@@ -196,7 +199,7 @@ high expectation for a proposal is a benefit.&lt;/p&gt;
 
 &lt;h3 id=&quot;proceeding-with-a-proposal&quot;&gt;4. Proceeding with a Proposal&lt;/h3&gt;
 
-&lt;p&gt;Any proposed change that has meet the criteria has been carefully thought out
+&lt;p&gt;Any proposed change that has met these criteria has been carefully thought out
 and described. The specific details of behavior have been written down in a
 way that any implementation can implement.&lt;/p&gt;
 
@@ -227,7 +230,7 @@ performs and interacts with the rest of Ruby that good decisions can be made.&lt
 &lt;p&gt;The express intent of all Council members is to implement a &lt;em&gt;unified&lt;/em&gt;
 definition of Ruby. If the feature is going to be Ruby, it is going to be
 implemented by all members. It presents no burden to require that the
-implementation preceed the discussion. If, after implementation, the feature
+implementation precede the discussion. If, after implementation, the feature
 fails to meet the needs that motivated it, everyone can be satisfied that the
 best possible evaluation was given. If unforeseen implementation issues are
 discovered, the feature can be revised and resubmitted.&lt;/p&gt;
@@ -242,7 +245,7 @@ as a strength of the process, not as a liability.&lt;/p&gt;
 &lt;p&gt;Matz still has the ability to say what features become officially Ruby. He can
 exercise his vote to not approve any feature. However, the rest of the Council
 could also vote not to approve a feature that Matz wanted. If this causes the
-slightest bit of fear for the well-being of Ruby, please allow me to dispell
+slightest bit of fear for the well-being of Ruby, please allow me to dispel
 it.&lt;/p&gt;
 
 &lt;p&gt;First of all, the Council is made up of people who have spent &lt;em&gt;years&lt;/em&gt;
@@ -286,7 +289,7 @@ previous comments in a comment, viewing comments by proposal or by
 sub-section, tracking changes to a proposal, tracking references to RubySpecs
 and implementation code, and recording votes. The contents of proposals should
 be searchable and indexable. The process of deciding on proposals should be
-secure and auditable.&lt;/p&gt;
+secure and audit-able.&lt;/p&gt;
 
 &lt;p&gt;I will create a specific application for this purpose and host it at
 &lt;a href=&quot;http://design.rubyspec.org&quot;&gt;design.rubyspec.org&lt;/a&gt;. Ruby deserves a
