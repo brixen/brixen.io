@@ -7,6 +7,9 @@ author: Brian
 **Ed:** _Since the initial post, I have fixed some minor grammatical and
 spelling errors pointed out by Rich Morin._
 
+**Ed:** _If you support the proposed design process, please add your voice by [signing
+here](http://rubyspec.org/design/)._
+
 The Ruby programming language needs a design process.
 
 I gave [a talk on this
