@@ -4,9 +4,258 @@
   <title>def euler(x); cos(x) + i*sin(x); end</title>
   <link href="http://brixen.io/feed/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="http://brixen.io/" rel="alternate" type="text/html"/>
-  <updated>2012-12-23T17:57:11-08:00</updated>
+  <updated>2012-12-30T15:22:07-08:00</updated>
   <id>blog.brightredglow.com/</id>
 
+  
+  <entry>
+    <title>A Ruby Design Process - Talking Points</title>
+    <id>http://brixen.io/2012/12/30/a-ruby-design-process-talking-points</id>
+    <link rel="alternate" type="text/html" href="http://brixen.io//2012/12/30/a-ruby-design-process-talking-points" />
+    <published>2012-12-30T00:00:00-08:00</published>
+    <updated>2012-12-30T00:00:00-08:00</updated>
+    <author>
+      <name>Brian</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;At RubyConf 2012, I gave a talk &lt;a href=&quot;http://confreaks.com/videos/1278-rubyconf2012-toward-a-design-for-ruby&quot;&gt;proposing a Ruby design
+process&lt;/a&gt;.
+Following the conference, I detailed the process &lt;a href=&quot;http://brixen.io/2012/12/11/a-ruby-design-process&quot;&gt;in a blog
+post&lt;/a&gt;. I submitted &lt;a href=&quot;http://bugs.ruby-lang.org/issues/7549&quot;&gt;a
+ticket on the MRI bug tracker&lt;/a&gt; asking
+Matz to consider my proposal. The &lt;a href=&quot;http://rubyspec.org/design/&quot;&gt;proposed design
+process&lt;/a&gt; is summarized on the RubySpec website.
+If you support the proposed process, please add your voice by signing at the
+above link.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The discussion of a Ruby design process is emotionally charged. People focus
+on their own ideas and illusions far more than facts. Conversations resemble
+political debates, not technical discussions. Consequently, ten times more
+energy is invested in clarifying misunderstandings and misinformation than in
+substantive discussions about the merits of the proposal.&lt;/p&gt;
+
+&lt;p&gt;To help keep the discussion focused on the merits, the following points
+amplify and further explain the proposal.&lt;/p&gt;
+
+&lt;h2 id=&quot;priorities&quot;&gt;Priorities&lt;/h2&gt;
+
+&lt;p&gt;Every reasonably complex endeavor has elements that compete. Examples are all
+around us. &amp;ldquo;You can have it fast, cheap, good; pick any two.&amp;rdquo; The CAP theorem.
+Enough time for recreation but enough money to pay the bills. The only way to
+resolve such tensions is to prioritize. The same is true of a Ruby design
+process.&lt;/p&gt;
+
+&lt;p&gt;The Ruby programming language is complex. Any implementation of the language
+is unavoidably complex. There are half a dozen significant implementations of
+Ruby. Those all represent different interests in Ruby. Attempting to implement
+a unified definition of Ruby is undeniably complex and difficult.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s easy to imagine that Matz would have different priorities than another
+team implementing Ruby. &lt;em&gt;The purpose of the proposed design process is to
+prioritize those things that create a unified Ruby programming language.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;For businesses and developers whose salaries derive from writing Ruby, the
+value of a unified Ruby programming language should be obvious. If someone
+believes that businesses, customers, and developer salaries would be better
+served by a fragmented Ruby language, they are encouraged to give their
+argument in support of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;There is no definition of the Ruby programming language that is complete and
+accurate enough to provide unity to the Ruby community.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The proposed Ruby design process prioritizes the following things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A precise and clear description of what exactly is the Ruby programming
+language.&lt;/li&gt;
+  &lt;li&gt;Efficient use of the time and attention of implementers.&lt;/li&gt;
+  &lt;li&gt;Fairness to all implementations in deciding Ruby programming language
+features.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;the-design-process-is-focused-on-the-definition-of-ruby&quot;&gt;The Design Process Is Focused On The Definition Of Ruby&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;The product of the proposed design process is a precise, verifiable, and
+unified definition of the Ruby programming language.&lt;/em&gt; The definition is
+independent of any particular implementation. There are numerous programming
+languages used to implement Ruby. None of those languages, or implementation
+artifacts that result from the use of those languages, should be given special
+preference in the definition of Ruby semantics.&lt;/p&gt;
+
+&lt;p&gt;The RubySpec project is the only project that has the explicit goal of a
+complete, executable description of the Ruby programming language. The
+product of the proposed design process is a more complete and more accurate
+RubySpec exactly describing the behavior of the Ruby language in a way that
+gives developers and the rest of the Ruby community clarity and confidence in
+understanding Ruby.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-design-process-is-as-simple-as-possible-but-no-simpler&quot;&gt;The Design Process Is As Simple As Possible, But No Simpler&lt;/h2&gt;
+
+&lt;p&gt;The proposed design process does not impose any restriction on any
+implementation with respect to experimenting with Ruby language features. This
+appears to be one of the most misunderstood parts of the proposal.&lt;/p&gt;
+
+&lt;p&gt;Every implementation is completely free to experiment with language features.
+They can use whatever development model they choose, whatever source control
+they like, write or not write tests in any framework they fancy. They may
+collaborate with other implementations in any way they wish. They can discuss
+features in any language, on any mailing list they choose, or by means of any
+medium they wish.&lt;/p&gt;
+
+&lt;p&gt;In other words, the MRI developers can continuing doing exactly what they have
+been doing.&lt;/p&gt;
+
+&lt;p&gt;The design process is only concerned with what becomes the official definition
+of Ruby. Experimental features may or may not ultimately have value. The
+design process is optimized for reaching consensus on the features that will
+be part of a unified definition of Ruby with the least amount of
+work or ceremony.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-design-process-is-open-to-the-community&quot;&gt;The Design Process Is Open To The Community&lt;/h2&gt;
+
+&lt;p&gt;Right now there is no formal design process for determining what features are
+officially Ruby. There has never been a design process. People sometimes
+propose a feature to Matz and sometimes he accepts it. Most of the time,
+language features result from Matz&amp;rsquo;s experimentation with the language. Matz
+has repeatedly said he has the absolute authority to decide what features can
+be called Ruby. If this &lt;em&gt;ad hoc&lt;/em&gt; process is &amp;ldquo;open&amp;rdquo; to the community, then so
+is the proposed design process.&lt;/p&gt;
+
+&lt;p&gt;Under the proposed design process, anyone, whether from the Ruby community or
+not, can propose a feature to Matz, just like they can now. If Matz agrees
+with the proposed feature he, or other MRI developers, can bring it to the
+Ruby design council for discussion and approval. Hence, the proposed process
+is just as &amp;ldquo;open&amp;rdquo; to the community.&lt;/p&gt;
+
+&lt;p&gt;However, the proposed process is even more open to the actual Ruby community.
+There are Ruby developers that are entering the community from Java and may
+never use MRI at all. If they have an idea for a Ruby feature, they may be
+able to implement it in Java but not C. They would be able to work with JRuby
+to propose a feature that has been implemented, tested, and validated with
+actual experience.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-design-process-is-efficient&quot;&gt;The Design Process Is Efficient&lt;/h2&gt;
+
+&lt;p&gt;The proposed design process requires that language experiments are clearly
+documented and described by precise specs before being proposed as official
+Ruby features. The discussion then focuses on concrete issues. This approach
+makes efficient use of the attention of Ruby implementers. It also limits
+communication about irrelevant details, further reducing the burden on Ruby
+implementers when reviewing proposals.&lt;/p&gt;
+
+&lt;p&gt;Most important, precise specs makes the effort of implementing the feature as
+small as possible. This also makes the most sense: Who is more qualified to
+describe precisely how a feature works by writing specs but the people
+proposing the feature?&lt;/p&gt;
+
+&lt;p&gt;While the design process requires documentation and RubySpecs, it does not
+prevent an implementation from writing fully functional code for the feature.
+The design process only lists what is &lt;em&gt;required&lt;/em&gt; in a proposal. It&amp;rsquo;s doubtful
+any feature could be proposed with sufficiently detailed documentation and
+RubySpecs without any code.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-design-process-concerns-language-evolution-not-experimentation&quot;&gt;The Design Process Concerns Language Evolution, Not Experimentation&lt;/h2&gt;
+
+&lt;p&gt;Under the proposed process, Matz is as free to experiment with the Ruby
+language as he ever has been. So is every other Ruby implementation. However,
+developers, businesses, and Ruby implementers get clarity, visibility, and
+transparency for what is officially Ruby. The proposed process is only
+concerned with features that will be part of the unified definition of the
+Ruby language.&lt;/p&gt;
+
+&lt;p&gt;The proposed design process is not concerned with how implementations
+experiment with language features, with what VCS they use, or what bug
+tracking software, whether they practice BDD/TDD or write tests at all, what
+language they use while discussing Ruby over lunch, or any of a myriad other
+activities not explicitly defined by the process.&lt;/p&gt;
+
+&lt;h2 id=&quot;english-is-a-reasonable-language-for-collaboration&quot;&gt;English Is A Reasonable Language For Collaboration&lt;/h2&gt;
+
+&lt;p&gt;The proposed design process attempts to reduce as much as possible the need
+for all implementers to discuss proposed language features. The discussion
+occurs after clear documentation is written, after precise RubySpecs are
+written, and after everyone implements the feature so that it passes RubySpec.
+The discussions then focus on concrete facts about the impact of the proposed
+feature to existing and future code, whether it is in libraries, frameworks,
+or applications.&lt;/p&gt;
+
+&lt;p&gt;For the limited discussion that is required, English is a reasonable language.
+It is the only language that is likely to be used to some extent by all the
+Ruby implementations. It is the language used by international communities in
+computing, science, mathematics, and other fields.&lt;/p&gt;
+
+&lt;p&gt;In fact, English is the language in which the Ruby ISO standard is written.
+And that standard was written by MRI Japanese developers.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-design-process-is-fair&quot;&gt;The Design Process is Fair&lt;/h2&gt;
+
+&lt;p&gt;Matz and other MRI developers have put a tremendous amount of effort into the
+Ruby language. However, so have all the developers of other implementations of
+Ruby. In fact, the combined effort on other implementations of Ruby very
+likely far exceeds all the effort dedicated to MRI. Every implementation of
+Ruby is helping Ruby and helping Ruby developers.&lt;/p&gt;
+
+&lt;p&gt;Most importantly, other implementations of Ruby are helping Ruby developers in
+ways that MRI and Matz are not. Furthermore, while Matz may know a lot about
+Ruby, he doesn&amp;rsquo;t know everything about the many challenges Ruby faces. Matz is
+not a concurrency guy, or a business guy. He&amp;rsquo;s said that himself. He&amp;rsquo;s also
+not likely a Java guy, or C# guy, or crypto guy.&lt;/p&gt;
+
+&lt;p&gt;The Ruby language needs a design process that fairly distributes authority
+over what features become officially Ruby. There is no process more fair than
+consensus among all the Ruby implementations. These are people who have
+dedicate tremendous effort to understand and implement the many complex
+idiosyncratic Ruby behaviors and support developers in many difficult
+environments.&lt;/p&gt;
+
+&lt;p&gt;If all the implementations believe that a feature is bad for Ruby, Matz should
+not ignore their collective wisdom and dedication to Ruby.  The proposed
+design process merely formalizes that fact. Finally, if Matz disagrees, he is
+still free to include the feature in MRI and demonstrate its importance. The
+same is true of every other Ruby implementation.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-design-process-is-critical-at-this-stage-of-rubys-development&quot;&gt;A Design Process Is Critical At This Stage Of Ruby&amp;rsquo;s Development&lt;/h2&gt;
+
+&lt;p&gt;At this stage of Ruby&amp;rsquo;s development, a design process is critical. Point out a
+single other widely used programming language with a half-dozen
+implementations with a unified definition of the language and no formal
+process for agreeing on that definition.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Ruby has no formal design process, despite Ruby being an industrial strength
+programming language, having hundreds of millions of dollars invested in
+businesses built around the language. There is no process to maintain unity of
+the Ruby language. There is no definitive resource defining Ruby. Developers
+can only support multiple Ruby implementations with trial and error.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;It is short-sighted and irresponsible to advocate for the ease of
+experimenting with random language features over the stability and unity of
+the Ruby language. Ruby is not a toy language. It is almost twenty years old.
+It powers many businesses and pays tens of thousands of developer salaries.&lt;/p&gt;
+
+&lt;p&gt;Matz created the language. His creation has been a gift to the world. The Ruby
+community has been and continues to be immensely grateful to Matz and
+deferential to his opinions and there is every reason to believe that will
+continue. Insisting that one&amp;rsquo;s ownership of a language is paramount at this
+stage of its development is unreasonable.&lt;/p&gt;
+
+&lt;p&gt;The proposed design process seeks to create these three things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A definition of the Ruby language that is independent of any particular
+implementation of Ruby.&lt;/li&gt;
+  &lt;li&gt;A definition of Ruby that is explicit and verifiable by running RubySpec.&lt;/li&gt;
+  &lt;li&gt;A process of deciding what features are in the Ruby language that is fair
+to all implementations of Ruby.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you disagree with those goals, please explain why the goals are not good
+for Ruby. If you believe the proposed process would not promote those goals,
+please explain why.&lt;/p&gt;
+
+&lt;p&gt;If you support the proposed process, please talk to people about it and why
+you support it. Also, please &lt;a href=&quot;http://rubyspec.org/design/&quot;&gt;add your voice&lt;/a&gt; in
+support.&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <title>A Ruby Design Process</title>
@@ -19,6 +268,9 @@
     </author>
     <content type="html">&lt;p&gt;&lt;strong&gt;Ed:&lt;/strong&gt; &lt;em&gt;Since the initial post, I have fixed some minor grammatical and
 spelling errors pointed out by Rich Morin.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ed:&lt;/strong&gt; &lt;em&gt;If you support the proposed design process, please add your voice by &lt;a href=&quot;http://rubyspec.org/design/&quot;&gt;signing
+here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;The Ruby programming language needs a design process.&lt;/p&gt;
 

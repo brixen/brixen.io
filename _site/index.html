@@ -20,6 +20,252 @@
     <div id="content">
     
     <div class="entry home">
+      <h2 class="entrytitle"><a href="/2012/12/30/a-ruby-design-process-talking-points">A Ruby Design Process - Talking Points</a></h2>
+            <div class="meta">
+        <p><span class="date">30 December 2012</span></p>
+      </div>
+
+       <div class="entrybody"><p><em>At RubyConf 2012, I gave a talk <a href="http://confreaks.com/videos/1278-rubyconf2012-toward-a-design-for-ruby">proposing a Ruby design
+process</a>.
+Following the conference, I detailed the process <a href="http://brixen.io/2012/12/11/a-ruby-design-process">in a blog
+post</a>. I submitted <a href="http://bugs.ruby-lang.org/issues/7549">a
+ticket on the MRI bug tracker</a> asking
+Matz to consider my proposal. The <a href="http://rubyspec.org/design/">proposed design
+process</a> is summarized on the RubySpec website.
+If you support the proposed process, please add your voice by signing at the
+above link.</em></p>
+
+<p>The discussion of a Ruby design process is emotionally charged. People focus
+on their own ideas and illusions far more than facts. Conversations resemble
+political debates, not technical discussions. Consequently, ten times more
+energy is invested in clarifying misunderstandings and misinformation than in
+substantive discussions about the merits of the proposal.</p>
+
+<p>To help keep the discussion focused on the merits, the following points
+amplify and further explain the proposal.</p>
+
+<h2 id="priorities">Priorities</h2>
+
+<p>Every reasonably complex endeavor has elements that compete. Examples are all
+around us. &ldquo;You can have it fast, cheap, good; pick any two.&rdquo; The CAP theorem.
+Enough time for recreation but enough money to pay the bills. The only way to
+resolve such tensions is to prioritize. The same is true of a Ruby design
+process.</p>
+
+<p>The Ruby programming language is complex. Any implementation of the language
+is unavoidably complex. There are half a dozen significant implementations of
+Ruby. Those all represent different interests in Ruby. Attempting to implement
+a unified definition of Ruby is undeniably complex and difficult.</p>
+
+<p>It&rsquo;s easy to imagine that Matz would have different priorities than another
+team implementing Ruby. <em>The purpose of the proposed design process is to
+prioritize those things that create a unified Ruby programming language.</em></p>
+
+<p>For businesses and developers whose salaries derive from writing Ruby, the
+value of a unified Ruby programming language should be obvious. If someone
+believes that businesses, customers, and developer salaries would be better
+served by a fragmented Ruby language, they are encouraged to give their
+argument in support of it.</p>
+
+<p><em><strong>There is no definition of the Ruby programming language that is complete and
+accurate enough to provide unity to the Ruby community.</strong></em></p>
+
+<p>The proposed Ruby design process prioritizes the following things:</p>
+
+<ol>
+  <li>A precise and clear description of what exactly is the Ruby programming
+language.</li>
+  <li>Efficient use of the time and attention of implementers.</li>
+  <li>Fairness to all implementations in deciding Ruby programming language
+features.</li>
+</ol>
+
+<h2 id="the-design-process-is-focused-on-the-definition-of-ruby">The Design Process Is Focused On The Definition Of Ruby</h2>
+
+<p><em>The product of the proposed design process is a precise, verifiable, and
+unified definition of the Ruby programming language.</em> The definition is
+independent of any particular implementation. There are numerous programming
+languages used to implement Ruby. None of those languages, or implementation
+artifacts that result from the use of those languages, should be given special
+preference in the definition of Ruby semantics.</p>
+
+<p>The RubySpec project is the only project that has the explicit goal of a
+complete, executable description of the Ruby programming language. The
+product of the proposed design process is a more complete and more accurate
+RubySpec exactly describing the behavior of the Ruby language in a way that
+gives developers and the rest of the Ruby community clarity and confidence in
+understanding Ruby.</p>
+
+<h2 id="the-design-process-is-as-simple-as-possible-but-no-simpler">The Design Process Is As Simple As Possible, But No Simpler</h2>
+
+<p>The proposed design process does not impose any restriction on any
+implementation with respect to experimenting with Ruby language features. This
+appears to be one of the most misunderstood parts of the proposal.</p>
+
+<p>Every implementation is completely free to experiment with language features.
+They can use whatever development model they choose, whatever source control
+they like, write or not write tests in any framework they fancy. They may
+collaborate with other implementations in any way they wish. They can discuss
+features in any language, on any mailing list they choose, or by means of any
+medium they wish.</p>
+
+<p>In other words, the MRI developers can continuing doing exactly what they have
+been doing.</p>
+
+<p>The design process is only concerned with what becomes the official definition
+of Ruby. Experimental features may or may not ultimately have value. The
+design process is optimized for reaching consensus on the features that will
+be part of a unified definition of Ruby with the least amount of
+work or ceremony.</p>
+
+<h2 id="the-design-process-is-open-to-the-community">The Design Process Is Open To The Community</h2>
+
+<p>Right now there is no formal design process for determining what features are
+officially Ruby. There has never been a design process. People sometimes
+propose a feature to Matz and sometimes he accepts it. Most of the time,
+language features result from Matz&rsquo;s experimentation with the language. Matz
+has repeatedly said he has the absolute authority to decide what features can
+be called Ruby. If this <em>ad hoc</em> process is &ldquo;open&rdquo; to the community, then so
+is the proposed design process.</p>
+
+<p>Under the proposed design process, anyone, whether from the Ruby community or
+not, can propose a feature to Matz, just like they can now. If Matz agrees
+with the proposed feature he, or other MRI developers, can bring it to the
+Ruby design council for discussion and approval. Hence, the proposed process
+is just as &ldquo;open&rdquo; to the community.</p>
+
+<p>However, the proposed process is even more open to the actual Ruby community.
+There are Ruby developers that are entering the community from Java and may
+never use MRI at all. If they have an idea for a Ruby feature, they may be
+able to implement it in Java but not C. They would be able to work with JRuby
+to propose a feature that has been implemented, tested, and validated with
+actual experience.</p>
+
+<h2 id="the-design-process-is-efficient">The Design Process Is Efficient</h2>
+
+<p>The proposed design process requires that language experiments are clearly
+documented and described by precise specs before being proposed as official
+Ruby features. The discussion then focuses on concrete issues. This approach
+makes efficient use of the attention of Ruby implementers. It also limits
+communication about irrelevant details, further reducing the burden on Ruby
+implementers when reviewing proposals.</p>
+
+<p>Most important, precise specs makes the effort of implementing the feature as
+small as possible. This also makes the most sense: Who is more qualified to
+describe precisely how a feature works by writing specs but the people
+proposing the feature?</p>
+
+<p>While the design process requires documentation and RubySpecs, it does not
+prevent an implementation from writing fully functional code for the feature.
+The design process only lists what is <em>required</em> in a proposal. It&rsquo;s doubtful
+any feature could be proposed with sufficiently detailed documentation and
+RubySpecs without any code.</p>
+
+<h2 id="the-design-process-concerns-language-evolution-not-experimentation">The Design Process Concerns Language Evolution, Not Experimentation</h2>
+
+<p>Under the proposed process, Matz is as free to experiment with the Ruby
+language as he ever has been. So is every other Ruby implementation. However,
+developers, businesses, and Ruby implementers get clarity, visibility, and
+transparency for what is officially Ruby. The proposed process is only
+concerned with features that will be part of the unified definition of the
+Ruby language.</p>
+
+<p>The proposed design process is not concerned with how implementations
+experiment with language features, with what VCS they use, or what bug
+tracking software, whether they practice BDD/TDD or write tests at all, what
+language they use while discussing Ruby over lunch, or any of a myriad other
+activities not explicitly defined by the process.</p>
+
+<h2 id="english-is-a-reasonable-language-for-collaboration">English Is A Reasonable Language For Collaboration</h2>
+
+<p>The proposed design process attempts to reduce as much as possible the need
+for all implementers to discuss proposed language features. The discussion
+occurs after clear documentation is written, after precise RubySpecs are
+written, and after everyone implements the feature so that it passes RubySpec.
+The discussions then focus on concrete facts about the impact of the proposed
+feature to existing and future code, whether it is in libraries, frameworks,
+or applications.</p>
+
+<p>For the limited discussion that is required, English is a reasonable language.
+It is the only language that is likely to be used to some extent by all the
+Ruby implementations. It is the language used by international communities in
+computing, science, mathematics, and other fields.</p>
+
+<p>In fact, English is the language in which the Ruby ISO standard is written.
+And that standard was written by MRI Japanese developers.</p>
+
+<h2 id="the-design-process-is-fair">The Design Process is Fair</h2>
+
+<p>Matz and other MRI developers have put a tremendous amount of effort into the
+Ruby language. However, so have all the developers of other implementations of
+Ruby. In fact, the combined effort on other implementations of Ruby very
+likely far exceeds all the effort dedicated to MRI. Every implementation of
+Ruby is helping Ruby and helping Ruby developers.</p>
+
+<p>Most importantly, other implementations of Ruby are helping Ruby developers in
+ways that MRI and Matz are not. Furthermore, while Matz may know a lot about
+Ruby, he doesn&rsquo;t know everything about the many challenges Ruby faces. Matz is
+not a concurrency guy, or a business guy. He&rsquo;s said that himself. He&rsquo;s also
+not likely a Java guy, or C# guy, or crypto guy.</p>
+
+<p>The Ruby language needs a design process that fairly distributes authority
+over what features become officially Ruby. There is no process more fair than
+consensus among all the Ruby implementations. These are people who have
+dedicate tremendous effort to understand and implement the many complex
+idiosyncratic Ruby behaviors and support developers in many difficult
+environments.</p>
+
+<p>If all the implementations believe that a feature is bad for Ruby, Matz should
+not ignore their collective wisdom and dedication to Ruby.  The proposed
+design process merely formalizes that fact. Finally, if Matz disagrees, he is
+still free to include the feature in MRI and demonstrate its importance. The
+same is true of every other Ruby implementation.</p>
+
+<h2 id="a-design-process-is-critical-at-this-stage-of-rubys-development">A Design Process Is Critical At This Stage Of Ruby&rsquo;s Development</h2>
+
+<p>At this stage of Ruby&rsquo;s development, a design process is critical. Point out a
+single other widely used programming language with a half-dozen
+implementations with a unified definition of the language and no formal
+process for agreeing on that definition.</p>
+
+<p><em>Ruby has no formal design process, despite Ruby being an industrial strength
+programming language, having hundreds of millions of dollars invested in
+businesses built around the language. There is no process to maintain unity of
+the Ruby language. There is no definitive resource defining Ruby. Developers
+can only support multiple Ruby implementations with trial and error.</em></p>
+
+<p>It is short-sighted and irresponsible to advocate for the ease of
+experimenting with random language features over the stability and unity of
+the Ruby language. Ruby is not a toy language. It is almost twenty years old.
+It powers many businesses and pays tens of thousands of developer salaries.</p>
+
+<p>Matz created the language. His creation has been a gift to the world. The Ruby
+community has been and continues to be immensely grateful to Matz and
+deferential to his opinions and there is every reason to believe that will
+continue. Insisting that one&rsquo;s ownership of a language is paramount at this
+stage of its development is unreasonable.</p>
+
+<p>The proposed design process seeks to create these three things:</p>
+
+<ol>
+  <li>A definition of the Ruby language that is independent of any particular
+implementation of Ruby.</li>
+  <li>A definition of Ruby that is explicit and verifiable by running RubySpec.</li>
+  <li>A process of deciding what features are in the Ruby language that is fair
+to all implementations of Ruby.</li>
+</ol>
+
+<p>If you disagree with those goals, please explain why the goals are not good
+for Ruby. If you believe the proposed process would not promote those goals,
+please explain why.</p>
+
+<p>If you support the proposed process, please talk to people about it and why
+you support it. Also, please <a href="http://rubyspec.org/design/">add your voice</a> in
+support.</p>
+</div>
+    </div>
+    
+    <div class="entry home">
       <h2 class="entrytitle"><a href="/2012/12/11/a-ruby-design-process">A Ruby Design Process</a></h2>
             <div class="meta">
         <p><span class="date">11 December 2012</span></p>
@@ -27,6 +273,9 @@
 
        <div class="entrybody"><p><strong>Ed:</strong> <em>Since the initial post, I have fixed some minor grammatical and
 spelling errors pointed out by Rich Morin.</em></p>
+
+<p><strong>Ed:</strong> <em>If you support the proposed design process, please add your voice by <a href="http://rubyspec.org/design/">signing
+here</a>.</em></p>
 
 <p>The Ruby programming language needs a design process.</p>
 
@@ -1094,68 +1343,6 @@ Finished in 0.257000 seconds
 <p>So, here&#8217;s my question to you: Would you like to know that JRuby <del>and possibly IronRuby</del> ship you code that contains know bugs for which patches exist? Would you also like to know that Charles wants you to run RubySpec on JRuby and not know there is a bug?</p></div>
     </div>
     
-    <div class="entry home">
-      <h2 class="entrytitle"><a href="/2009/2/20/caveat-lector">Caveat Lector</a></h2>
-            <div class="meta">
-        <p><span class="date">20 February 2009</span></p>
-      </div>
-
-       <div class="entrybody"><p>I really did double-check this time and I won&#8217;t be making any wild claims here. Sorry to disappoint.</p>
-<p>We&#8217;re going to be running <a href="http://antoniocangiano.com/">Antonio&#8217;s</a> <a href="http://github.com/acangiano/ruby-benchmark-suite/tree/master">Ruby Benchmark Suite</a> daily to track our progress on performance in <a href="http://rubini.us">Rubinius</a>. The current <span class="caps">RBS</span> is a bit of a beast so I imported the files into the Rubinius <a href="http://github.com/evanphx/rubinius/commits/master">repository</a> and did some refactoring. You can <a href="http://groups.google.com/group/ruby-benchmark-suite/browse_frm/thread/34b7b7472fa5b80">read the details</a> and up-vote that if you&#8217;d like to see this merged back.</p>
-<p>Now, for some baseline <span class="caps">RBS</span> results. If you want to follow along at home, here&#8217;s what I did. I generated these by running the <code>rake bench</code> task using the <code>VM</code> option (see the benchmark/utils/<span class="caps">README</span> in the Rubinius repository) for Rubinius on the <code>stackfull</code> and <code>master</code> branch and for <span class="caps">MRI</span> using the version installed on Debian lenny, 1.8.7p22. The system is a dual Intel&#174; Xeon&#8482; <span class="caps">CPU</span> 2.40GHz. Then I ran the <code>rake bench:to_csv</code> task, imported the <span class="caps">CSV</span> file into Google Docs, added the comparison columns and colors, and exported to <span class="caps">PDF</span>.</p>
-<p><a href="http://blog.brightredglow.com/assets/2009/2/20/mini-rbx-shootout.jpg">Here&#8217;s what I got.</a> The green is faster, the red is slower. The reported time is the minimum time recorded in five &#8220;iterations&#8221; of each benchmark per input. The maximum time allowed to run five iterations is 300 seconds, or an average of 60 seconds per iteration.</p>
-<p>A few notes about these numbers:</p>
-<ul>
-	<li>We&#8217;re still fixing the breakage on the stackfull branch, so it is not surprising, for instance, that all the thread benchmarks errored out. The new native thread support is not 100% done.</li>
-	<li>There are a couple speed regressions on the stackfull branch, most minor. We&#8217;ll fix those.</li>
-	<li>Most of the benches do run on the stackfull branch.</li>
-	<li>On most of the benches that run slower in stackfull than <span class="caps">MRI</span>, we&#8217;re 2x or less slower than <span class="caps">MRI</span>.</li>
-	<li>We are <em>a lot</em> faster than <span class="caps">MRI</span> on quite a few benchmarks.</li>
-	<li>Rubinius on either branch does quite well relative to <span class="caps">MRI</span> on benches that <span class="caps">MRI</span> times-out on for certain inputs.</li>
-</ul>
-<p>Perhaps the biggest point about the stackfull branch is that we haven&#8217;t done much optimization at all. Evan&#8217;s been coding in the basic new interpreter architecture, fixing the GC interaction, adding the native threading. We&#8217;re fixing breakage now so we can get this merged into the master branch. The <span class="caps">JIT</span> is not hooked up. The new GC work is not done. There is no inlining. In other words, there is lots of head room. And that is the key point. You can&#8217;t just &#8220;make it faster&#8221;. Architecture is crucial. Since RailsConf 2008, we&#8217;ve been working hard to lay the architectural foundations. With those (and the switch away from stackless), we can start focusing on the real dynamic language optimizations.</p>
-<p>While the benchmarks tell part of the story, there&#8217;s another part that is even more interesting <span class="caps">IMO</span>. And this is the part that <a href="http://blog.brightredglow.com/2009/2/12/all-shiny-and-new">got me so excited</a> I, um, well I <a href="http://blog.brightredglow.com/2009/2/12/this-is-not-cold-fusion">just got excited</a>&#8230;</p>
-<p>The two biggest pieces of Ruby software that we most often run are the Rubinius compiler and the <a href="http://rubyspec.org">RubySpecs</a>. The RubySpecs are much more &#8220;real-world&#8221; than these benchmarks. Here are the results of two complete CI runs on master and stackfull. Note that we are not quite running all the basic CI specs on stackfull, but we&#8217;ll figure in that difference in our calculations below.</p>
-<p>First, on master:</p>
-<pre style="overflow:auto">
-  $ bin/mspec ci --gc-stats
-  rubinius 0.10.0 (ruby 1.8.6) (f4c5576c4 12/31/2009) [i686-apple-darwin9.6.0]
-
-  Finished in 131.248169 seconds
-
-  1430 files, 6927 examples, 23006 expectations, 0 failures, 0 errors
-
-  Time spent in GC: 51.6s (39.3%)
-</pre>
-<p>And then on stackfull:</p>
-<pre style="overflow:auto">
-  $ bin/mspec ci --gc-stats
-  rubinius 0.11.0-dev (ruby 1.8.6) (e7b6a2d56 12/31/2009) [i686-apple-darwin9.6.0]
-
-  Finished in 66.357996 seconds
-
-  1349 files, 6298 examples, 21344 expectations, 0 failures, 0 errors
-
-  Time spent in GC: 12.7s (19.1%)
-</pre>
-<p>Let&#8217;s calculate how we do in expectations per second:</p>
-<pre>
-  $ irb
-  &gt;&gt; master = 23006 / 131.248169
-  =&gt; 175.286254850534
-  &gt;&gt; stackfull = 21344 / 66.357996
-  =&gt; 321.649255351232
-  &gt;&gt; stackfull / master
-  =&gt; 1.83499416782851
-</pre>
-<p>So, compiling and running the specs is about 1.8 times faster on stackfull. This is upside down from the normal results. Normally, we do better on the micro benchmarks and see that invert on &#8220;macro&#8221; benchmarks. On the <span class="caps">RBS</span> benches, stackfull is not 1.8 times faster than master. If I average the &#8220;x Master&#8221; column, I get 1.39.</p>
-<p>There was something else in those spec run numbers I wanted to talk about&#8230; oh yeah, GC stats. We have a very simple GC timer stat right now. I&#8217;m going to be adding a few more stats. But what we see here is that the overall percentage of time spent in GC drops by half in stackfull. Even so, 19% is too much time to spend in GC. We expect to drop that by half again. Basically, leaning more on structures <code>alloca'd</code> on the C stack reduces a lot of pressure on the GC.</p>
-<p>Some would toss out that it&#8217;s not hard to be faster than <span class="caps">MRI</span>. Perhaps. But it is an accomplishment to write a reasonably good VM, garbage collector, compiler, and Ruby standard library without importing anyone else&#8217;s code. And, lest we forget, that is two VM&#8217;s in about 27 months of a public project.</p>
-<p>Some would also question the sanity of writing a VM and garbage collector when crazy smart people do things like that. Well, crazy smart people write papers that reasonably smart people can read and understand. From the benchmark result above, that is working pretty well.</p>
-<p>Here&#8217;s the point: Don&#8217;t ever let anyone tell you that something is a bad idea. Make your own decisions. We probably wouldn&#8217;t have Ruby itself if Matz fretted over whether Larry Wall or Adele Goldberg were smarter than he. My most recent favorites in this space: <a href="http://factorcode.org/">Factor</a>, <a href="http://clojure.org">Clojure</a>, and yes, <a href="http://code.macournoyer.com/tinyrb/">tinyrb</a>.</p>
-<p>We&#8217;re working frantically to get the stackfull branch breakages fixed and the branch merged back into master. Feel free to poke around and ask questions.</p></div>
-    </div>
-    
     </div>
         <div id="sidebar">
       <div id="subscribe">
@@ -1166,10 +1353,14 @@ Finished in 0.257000 seconds
 
       <div>
         <p>I work at <a href="http://engineyard.com">Engine Yard</a> on <a href="http://rubini.us">Rubinius</a>. <a href="http://engineyard.com">Engine Yard offers Rails Hosting.</a></p>
+
+        <p>I'm <a href="http://twitter.com/brixen">@brixen</a> on Twitter.</p>
       </div>
 
       <h2 id="latest_posts">Latest posts</h2>
       <ul>
+      
+        <li><a href="/2012/12/30/a-ruby-design-process-talking-points">A Ruby Design Process - Talking Points</a></li>
       
         <li><a href="/2012/12/11/a-ruby-design-process">A Ruby Design Process</a></li>
       
@@ -1198,8 +1389,6 @@ Finished in 0.257000 seconds
         <li><a href="/2008/11/23/call-of-the-lemmings">Call of the lemming</a></li>
       
         <li><a href="/2008/11/18/rubinius-is-a-community-project">Rubinius is a community project</a></li>
-      
-        <li><a href="/2008/9/3/hash-is-all-ponies">Hash is all ponies</a></li>
       
       </ul>
       <p><a href="/posts_index.html">Show All Posts</a></p>
