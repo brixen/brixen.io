@@ -89,7 +89,7 @@ collaborate with other implementations in any way they wish. They can discuss
 features in any language, on any mailing list they choose, or by means of any
 medium they wish.
 
-In other words, the MRI developers can continuing doing exactly what they have
+In other words, the MRI developers can continue doing exactly what they have
 been doing.
 
 The design process is only concerned with what becomes the official definition
